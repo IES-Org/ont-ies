@@ -1,0 +1,43 @@
+# IDE - JetBrains (IntelliJ, WebStorm, etc)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# IDE - Eclipse
+.project
+.classpath
+.settings/
+*.launch
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows system files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
