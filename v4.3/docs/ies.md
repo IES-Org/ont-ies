@@ -3,7 +3,7 @@
 Crown Copyright (c) 2025
 ![Logo](../../assets/img/IES-logo-dark.png)
 
-# IES Model version: 4.3.3
+# IES Model version: 4.3
 
 ## Contents
 

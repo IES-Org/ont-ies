@@ -43,7 +43,7 @@ This repository includes:
 - [`ies.md`](./v4.3/docs/ies.md) – Background and purpose of the Information Exchange Standard  
 - [`Sample-Data/`](./v4.3/Sample-Data) – Sample datasets for validation, testing, and demonstration purposes
 - [`Specification`](./v4.3/Specification) - The ontology specification documents for the Information Exchange Standard
-- [`Supporting-Documentation/`](./v4.3/Supporting-Documents) – Additional guidance and reference materials
+- [`Supporting-Documents/`](./v4.3/Supporting-Documents) – Additional guidance and reference materials
 
 Further information is available on the [IES website](https://www.informationexchangestandard.org)
 

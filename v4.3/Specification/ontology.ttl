@@ -22,18 +22,38 @@
 
 
 # baseURI: http://ies.data.gov.uk/ontology/ies4
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix sparx: <http://data.sparxsystems.com#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix sparx:   <http://data.sparxsystems.com#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix ies:     <http://informationexchangestandard.org/ontology/ies#> .
 
+# Ontology Definition & Metadata
+ies: a owl:Ontology ;
+   dcterms:title "IES Ontology"@en-GB ;
+   dcterms:description
+   """
+   The Information Exchange Standard (IES) is a standard for information exchange developed within UK Government.
+   """@en-GB ;
+   dcterms:audience "Domain experts and data modelers"@en-GB ;
+   dcterms:coverage "Classes, properties, and annotations for describing common concepts"@en-GB ;
+   dcterms:type "IES Ontology"@en-GB ;
+   dcterms:created "2020"^^xsd:gYear ;
+   dcterms:modified "2025-03-13"^^xsd:date ;
+   dcterms:publisher "UK Department for Business and Trade"@en-GB ;
+   dcterms:language "en-GB" ;
+   dcterms:license <https://spdx.org/licenses/MIT.html> ;
+   dcterms:rights "Crown Copyright 2020-2025"@en-GB ;
+   dcterms:dateCopyrighted "2025"^^xsd:gYear ;
+   vann:preferredNamespacePrefix "ies" ;
+   vann:preferredNamespaceUri "http://informationexchangestandard.org/ontology/ies#" ;
+   owl:versionInfo "4.3.2" .
 
-<http://ies.data.gov.uk/ontology/ies4> rdf:type owl:Ontology .
 
 ies:Accent a rdfs:Class ;
     rdfs:label "Accent"^^xsd:string ;
@@ -165,6 +185,7 @@ ies:AmountOfMoney a rdfs:Class ;
     rdfs:label "Amount Of Money"^^xsd:string ;
     sparx:guid "{0DF94DE5-68B7-45b4-A106-A11CE06C31B8}" ;
     rdfs:comment "A specific amount of a given currency" ;
+    ies:powertype ies:ClassOfAmountOfMoney ;
     rdfs:subClassOf ies:Asset .
 
 ies:AmountOfSubstance a rdfs:Class ;
@@ -244,6 +265,7 @@ ies:Asset a rdfs:Class ;
     rdfs:label "Asset"^^xsd:string ;
     sparx:guid "{40231334-5ACC-4dd4-A8C1-05012E2170E0}" ;
     rdfs:comment "An Entity that is either man-made (or defined - see Rights) or whose extent is defined in such a way as to specify ownership - e.g. a parcel of real estate" ;
+    ies:powertype ies:ClassOfAsset ;
     rdfs:subClassOf ies:AssetState,
         ies:Entity .
 
@@ -569,6 +591,7 @@ Days of the week
 Standard procedures
 etc.
 """ ;
+    ies:powertype ies:ClassOfClassOfElement ;
     rdfs:subClassOf ies:Thing,
         rdfs:Class .
 
@@ -582,6 +605,7 @@ Examples:
 · Human groupings (e.g. Nigerian Women, British Men, Righthanded people, English Speakers);
 · Weapons
 · Etc.""" ;
+    ies:powertype ies:ClassOfClassOfEntity ;
     rdfs:subClassOf ies:ClassOfElement .
 
 ies:ClassOfEvent a rdfs:Class ;
@@ -1142,6 +1166,7 @@ ies:Element a rdfs:Class ;
     rdfs:label "Element"^^xsd:string ;
     sparx:guid "{97EDC90F-3B36-4da8-AE77-D5FDBDEA2B21}" ;
     rdfs:comment "An Thing that has a spatial extent and can have start and end dates" ;
+    ies:powertype ies:ClassOfElement ;
     rdfs:subClassOf ies:Thing .
 
 ies:EmailAccount a rdfs:Class ;
@@ -1206,6 +1231,7 @@ ies:Entity a rdfs:Class ;
     rdfs:label "Entity"^^xsd:string ;
     sparx:guid "{F4EDE167-6F5A-417d-9984-0221CCDF752C}" ;
     rdfs:comment "An Entity typically represents a tangible thing like a Person, a Communications Device, or a Location." ;
+    ies:powertype ies:ClassOfEntity ;
     rdfs:subClassOf ies:Element .
 
 ies:EntityInTransit a rdfs:Class ;
@@ -1224,6 +1250,7 @@ ies:Event a rdfs:Class ;
     rdfs:label "Event"^^xsd:string ;
     sparx:guid "{B376370E-F5E8-4287-A3EC-AC35532919B1}" ;
     rdfs:comment "An Event represents an activity or incident, involving one or more participating entities, that occurred/started at a specific point in time – e.g. a meeting, or a telephone call." ;
+    ies:powertype ies:ClassOfEvent ;
     rdfs:subClassOf ies:Element .
 
 ies:EventParticipant a rdfs:Class ;
@@ -1641,6 +1668,7 @@ ies:IndividualDocument a rdfs:Class ;
     rdfs:comment """An Asset that is a written, photographed or drawn representation of thoughts. This might include, but not limited to, formal reports, books, legal instruments. Such documents might exist in a wide variety of forms, both printed and in electronic form.
 
 Note: this is an individual document  - i.e. physical or (rarely) a specific electronic copy (e.g. on a specific hard disk...told you it was rare). In most cases, we refer to the document in general - WorkOfDocumentation """ ;
+    ies:powertype ies:ClassOfIndividualDocument ;
     rdfs:subClassOf ies:Asset .
 
 ies:IndividualDocumentID a rdfs:Class ;
@@ -1916,6 +1944,7 @@ ies:MeasureValue a rdfs:Class ;
 
 
 Note: A UnitOfMeasure is almost always required. The reason it is not mandatory is that in some cases (due to partial reporting) we do not have complete information - e.g. we know the value was stated to be 10 but we don't know if that's metres or feet""" ;
+    ies:powertype ies:ClassOfMeasureValue ;
     rdfs:subClassOf ies:Representation .
 
 ies:MediaFile a rdfs:Class ;
@@ -2409,6 +2438,7 @@ ies:Person a rdfs:Class ;
     rdfs:label "Person"^^xsd:string ;
     sparx:guid "{5D5C5B9B-5E90-4100-8353-8EE9F3D772E2}" ;
     rdfs:comment "A human being, living or dead. This also includes what may appear to be a person, but is in fact an Alias" ;
+    ies:powertype ies:ClassOfPerson ;
     rdfs:subClassOf ies:PersonState,
         ies:ResponsibleActor .
 
@@ -2445,6 +2475,7 @@ ies:PersonState a rdfs:Class ;
     rdfs:label "Person State"^^xsd:string ;
     sparx:guid "{38F8B795-0BCE-4945-8C69-8678ED935C1A}" ;
     rdfs:comment "A temporal state of a Person" ;
+    ies:powertype ies:ClassOfPersonState ;
     rdfs:subClassOf ies:ResponsibleActorState .
 
 ies:PersonTitle a rdfs:Class ;
@@ -2757,6 +2788,7 @@ ies:Representation a rdfs:Class ;
 Examples:
 * an identifier used for a Person
 * a document (though not an individual copy of a document)""" ;
+    ies:powertype ies:ClassOfRepresentation ;
     rdfs:subClassOf ies:ClassOfEntity .
 
 ies:RequestDocument a rdfs:Class ;
@@ -2783,6 +2815,7 @@ ies:ResponsibleActor a rdfs:Class ;
     rdfs:comment """An Actor that can be held legally responsible for their actions - generally a Person or an Organisation. This also includes Posts which may be filled by people or organisations.
 
 Note: there are many situations (mostly due to the law) where a Person or Organisation can be the subject of a relationship or Event interchangeably. Hence the need for a parent class in the IES ontology. """ ;
+    ies:powertype ies:ClassOfResponsibleActor ;
     rdfs:subClassOf ies:Actor,
         ies:ResponsibleActorState .
 
@@ -2792,6 +2825,7 @@ ies:ResponsibleActorState a rdfs:Class ;
     rdfs:comment """A temporal state of a ResponsibleActor
 
 Note:  this is the superclass of ResponsibleActor (the whole life person or organisation) because the whole-life state is just a special case of a ResponsibleActorState. This pattern is true for all states. """ ;
+    ies:powertype ies:ClassOfResponsibleActorState ;
     rdfs:subClassOf ies:ActorState .
 
 ies:Retailer a rdfs:Class ;
@@ -3003,6 +3037,7 @@ ies:State a rdfs:Class ;
 Note: IES requires that any State must be related to its whole-life Element. In some cases, the identity of the whole-life element may be unknown (or of unknown type) but a whole-life element must still be created and related to the State.
 
 Note: When Events are decomposed into temporal parts, those parts are often Events themselves. The exception is when the temporal part is arbitrary (e.g. the 11th second of a meeting) when a State should be used. These are rare though.""" ;
+    ies:powertype ies:ClassOfState ;
     rdfs:subClassOf ies:Element .
 
 ies:StoreCard a rdfs:Class ;
@@ -3664,7 +3699,7 @@ ies:assessed a owl:ObjectProperty ;
     rdfs:label "assessed"^^xsd:string ;
     sparx:guid "{669E3CD0-CD9D-496c-A711-ECDE3F589012}" ;
     rdfs:comment "An owl:objectProperty that links an AssesToBeTrue to the rdfs:Resource that is assessed to be true." ;
-    rdfs:domain ies:AssessToBeTrue ;
+    rdfs:domain ies:Assessment ;
     rdfs:range rdfs:Resource .
 
 ies:assessedToBeTheSameAs a owl:ObjectProperty ;

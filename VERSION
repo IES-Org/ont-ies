@@ -9,14 +9,18 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=4.3.1
-LAST_UPDATED=2025-03-03
+VERSION=4.3.2
+LAST_UPDATED=2025-03-13
 STATUS=stable
 
 # Version number explanation:
 # MAJOR version (1) - Incompatible changes (removing terms, changing IRIs)
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
+
+# Release Notes for 4.3.2
+1. Add missing ies:powertype properties to the ontology
+2. Correct the domain of ies:assessed to ies:Assessment
 
 # Release Notes for 4.3.1
 1. License change from Apache 2 to MIT
