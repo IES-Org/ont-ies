@@ -9,14 +9,17 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=4.3.2
-LAST_UPDATED=2025-03-13
+VERSION=4.3.3
+LAST_UPDATED=2025-03-31
 STATUS=stable
 
 # Version number explanation:
 # MAJOR version (1) - Incompatible changes (removing terms, changing IRIs)
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
+
+# Release Notes for 4.3.3
+1. Replaced (unresolvable) `sparx:guid` property with `dcterms:identifier`
 
 # Release Notes for 4.3.2
 1. Add missing ies:powertype properties to the ontology

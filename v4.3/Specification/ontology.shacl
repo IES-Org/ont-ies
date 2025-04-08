@@ -1,4 +1,4 @@
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -2144,7 +2144,7 @@ ies:areaOfCoverageRangeShape a sh:NodeShape ;
     sh:targetObjectsOf ies:areaOfCoverage .
 
 ies:assessedDomainShape a sh:NodeShape ;
-    sh:class ies:AssessToBeTrue ;
+    sh:class ies:Assessment ;
     sh:severity sh:Warning ;
     sh:targetSubjectsOf ies:assessed .
 
