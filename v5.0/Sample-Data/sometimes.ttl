@@ -1,0 +1,25 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies#> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
+@prefix iso8601: <http://iso.org/iso8601#> .
+
+<> dcterms:conformsTo [
+                        a owl:Ontology ;
+                        owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.0.0-rc1> ;
+                        dcterms:title "IES Ontology v5.0.0-rc1"
+                      ] .
+
+data:LK176LPX a ies:RoadVehicle .
+data:Acacia_Gardens a ies:Location .
+iso8601:19870601T090000 a ies:ParticularPeriod .
+iso8601:19870901T210400 a ies:ParticularPeriod .
+data:LK176LPX_in_Acacia_Gardens a ies:DiscontinuousState ;
+  ies:isStateOf data:LK176LPX ;
+  ies:inLocation data:Acacia_Gardens .
+data:LK176LPX_starts_parking a ies:BoundingState ;
+  ies:isStartOf data:LK176LPX_in_Acacia_Gardens ;
+  ies:inPeriod iso8601:19870601T090000 .
+data:LK176LPX_stops_parking a ies:BoundingState ;
+  ies:isEndOf data:LK176LPX_in_Acacia_Gardens ;
+  ies:inPeriod iso8601:19870901T210400 .
+
