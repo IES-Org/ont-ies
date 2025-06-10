@@ -21,7 +21,6 @@
 # SOFTWARE.
 
 
-# baseURI: http://ies.data.gov.uk/ontology/ies4
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
@@ -30,29 +29,29 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
-@prefix ies:     <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies#> .
 
 # Ontology Definition & Metadata
 ies: a owl:Ontology ;
    dcterms:title "IES Ontology"@en-GB ;
-   dcterms:description
-   """
-   The Information Exchange Standard (IES) is a standard for information exchange developed within UK Government.
+   dcterms:description """
+       The Information Exchange Standard (IES) is a standard for information exchange developed within UK Government.
    """@en-GB ;
    dcterms:audience "Domain experts and data modelers"@en-GB ;
    dcterms:coverage "Classes, properties, and annotations for describing common concepts"@en-GB ;
    dcterms:type "IES Ontology"@en-GB ;
    dcterms:created "2020"^^xsd:gYear ;
-   dcterms:modified "2025-03-28"^^xsd:date ;
+   dcterms:modified "2025-06-09"^^xsd:date ;
    dcterms:publisher "UK Department for Business and Trade"@en-GB ;
    dcterms:language "en-GB" ;
    dcterms:license <https://spdx.org/licenses/MIT.html> ;
    dcterms:rights "Crown Copyright 2020-2025"@en-GB ;
    dcterms:dateCopyrighted "2025"^^xsd:gYear ;
    vann:preferredNamespacePrefix "ies" ;
-   vann:preferredNamespaceUri "http://ies.data.gov.uk/ontology/ies4#" ;
-   owl:versionInfo "4.3.3" .
-
+   vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies#" ;
+   owl:versionInfo "5.0.0-rc1" ;
+   owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.0.0-rc1> ;
+   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.3.3> .
 
 ies:Accent a rdfs:Class ;
     rdfs:label "Accent"^^xsd:string ;

@@ -1,5 +1,5 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -3566,18 +3566,20 @@ ies: a owl:Ontology ;
     dcterms:created "2020"^^xsd:gYear ;
     dcterms:dateCopyrighted "2025"^^xsd:gYear ;
     dcterms:description """
-   The Information Exchange Standard (IES) is a standard for information exchange developed within UK Government.
+       The Information Exchange Standard (IES) is a standard for information exchange developed within UK Government.
    """@en-GB ;
     dcterms:language "en-GB" ;
     dcterms:license <https://spdx.org/licenses/MIT.html> ;
-    dcterms:modified "2025-03-28"^^xsd:date ;
+    dcterms:modified "2025-06-09"^^xsd:date ;
     dcterms:publisher "UK Department for Business and Trade"@en-GB ;
     dcterms:rights "Crown Copyright 2020-2025"@en-GB ;
     dcterms:title "IES Ontology"@en-GB ;
     dcterms:type "IES Ontology"@en-GB ;
     vann:preferredNamespacePrefix "ies" ;
-    vann:preferredNamespaceUri "http://ies.data.gov.uk/ontology/ies4#" ;
-    owl:versionInfo "4.3.3" .
+    vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies#" ;
+    owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.3.3> ;
+    owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.0.0-rc1> ;
+    owl:versionInfo "5.0.0-rc1" .
 
 ies:aCopyOf a owl:ObjectProperty ;
     rdfs:label "a Copy Of"^^xsd:string ;
