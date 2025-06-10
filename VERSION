@@ -9,14 +9,17 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=4.3.3
-LAST_UPDATED=2025-03-28
-STATUS=stable
+VERSION=5.0.0-rc1
+LAST_UPDATED=2025-06-09
+STATUS=release_candidate
 
 # Version number explanation:
 # MAJOR version (1) - Incompatible changes (removing terms, changing IRIs)
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
+
+# Release Notes for 5.0.0-rc1
+1. Changed ies namespace to <http://informationexchangestandard.org/ont/ies#>
 
 # Release Notes for 4.3.3
 1. Replaced (unresolvable) `sparx:guid` property with `dcterms:identifier`
