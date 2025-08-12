@@ -26,9 +26,7 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
-@prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix ies:     <http://ies.data.gov.uk/ontology/ies4#> .
 
@@ -43,7 +41,7 @@ ies: a owl:Ontology ;
    dcterms:coverage "Classes, properties, and annotations for describing common concepts"@en-GB ;
    dcterms:type "IES Ontology"@en-GB ;
    dcterms:created "2020"^^xsd:gYear ;
-   dcterms:modified "2025-03-28"^^xsd:date ;
+   dcterms:modified "2025-08-04"^^xsd:date ;
    dcterms:publisher "UK Department for Business and Trade"@en-GB ;
    dcterms:language "en-GB" ;
    dcterms:license <https://spdx.org/licenses/MIT.html> ;
@@ -51,7 +49,9 @@ ies: a owl:Ontology ;
    dcterms:dateCopyrighted "2025"^^xsd:gYear ;
    vann:preferredNamespacePrefix "ies" ;
    vann:preferredNamespaceUri "http://ies.data.gov.uk/ontology/ies4#" ;
-   owl:versionInfo "4.3.3" .
+   owl:versionInfo "4.4.0-rc1" ;
+   owl:versionIRI <http://ies.data.gov.uk/ontology/ies4/4.4.0-rc1> ;
+   owl:priorVersion <http://ies.data.gov.uk/ontology/ies4/4.3.3> .
 
 
 ies:Accent a rdfs:Class ;
@@ -1125,7 +1125,7 @@ ies:Duration a rdfs:Class ;
 ies:Easting a rdfs:Class ;
     rdfs:label "Easting"^^xsd:string ;
     dcterms:identifier "{A4502460-54B7-446b-A9AA-003B49F9682B}" ;
-    rdfs:comment "The GeoIdentity that is a representation of the eastward componrnent of cartesian point on a map - i.e. on a 2D projection of the globe such as a mercator projection." ;
+    rdfs:comment "The GeoIdentity that is a representation of the eastward component of cartesian point on a map - i.e. on a 2D projection of the globe such as a mercator projection." ;
     rdfs:subClassOf ies:GeoIdentity .
 
 ies:EducationalOrganisation a rdfs:Class ;
@@ -1158,7 +1158,7 @@ ies:ElectricCurrent a rdfs:Class ;
     rdfs:comment """The Measure of the flow of electric charge.
 
 
-Note: whilst this is a tricky Measure in a 4D ontology, it should be used in a niaive manner - i.e. a measure of a State of an Entity when the current is flowing through it.""" ;
+Note: whilst this is a tricky Measure in a 4D ontology, it should be used in a naive manner - i.e. a measure of a State of an Entity when the current is flowing through it.""" ;
     rdfs:subClassOf ies:StandardMeasure .
 
 ies:Element a rdfs:Class ;
@@ -1257,7 +1257,7 @@ ies:EventParticipant a rdfs:Class ;
     dcterms:identifier "{C5AB420C-1AB6-479a-97E1-4F2FD37725CB}" ;
     rdfs:comment """A State which is the participating role of an Entity in an Event.
 
-Note: this includes inactive participation (e.g. something that is being repaired). If the participation is known to be active then ActiveEventPartipant (or one of its subtypes) should be used. In BORO, EventParticipant would be "Involvement" and ActiveEventParticipant would be "Participation".""" ;
+Note: this includes inactive participation (e.g. something that is being repaired). If the participation is known to be active then ActiveEventParticipant (or one of its subtypes) should be used. In BORO, EventParticipant would be "Involvement" and ActiveEventParticipant would be "Participation".""" ;
     rdfs:subClassOf ies:State .
 
 ies:EventState a rdfs:Class ;
@@ -1374,7 +1374,7 @@ ies:GeoJSON a rdfs:Class ;
     dcterms:identifier "{417C1F4E-6A5D-4631-B275-8E982252791A}" ;
     rdfs:comment """GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.
 
-GeoJSON mandates use of WGS 84 coordinate system - see IETF RFC 7946""" ;
+GeoJSON mandates use of WGS84 coordinate system - see IETF RFC 7946""" ;
     rdfs:subClassOf ies:GeoRepresentation,
         ies:JsonData .
 
@@ -1553,7 +1553,7 @@ ies:ISO19125-WKT a rdfs:Class ;
     dcterms:identifier "{22B79CFD-DEDA-42e1-8864-E8421D36CF19}" ;
     rdfs:comment """A GeoRepresentation using Well-Known-Text encoding for ISO19125 simple features.
 
-Note: the WKT must include the coordinate reference system used - e.g WGS 84""" ;
+Note: the WKT must include the coordinate reference system used - e.g WGS84""" ;
     rdfs:subClassOf ies:GeoRepresentation .
 
 ies:ISO3166_1Alpha_3 a rdfs:Class ;
@@ -2112,7 +2112,7 @@ ies:NonDisclosureAgreement a rdfs:Class ;
 ies:Northing a rdfs:Class ;
     rdfs:label "Northing"^^xsd:string ;
     dcterms:identifier "{09649FE9-DDD7-4493-B9EC-7A716B0FC616}" ;
-    rdfs:comment "The GeoIdentity that is a representation of the northward componrnent of cartesian point on a map - i.e. on a 2D projection of the globe such as a mercator projection." ;
+    rdfs:comment "The GeoIdentity that is a representation of the northward component of cartesian point on a map - i.e. on a 2D projection of the globe such as a mercator projection." ;
     rdfs:subClassOf ies:GeoIdentity .
 
 ies:NotForProfitOrganisation a rdfs:Class ;
@@ -2562,7 +2562,7 @@ ies:PostState a rdfs:Class ;
 ies:PostalCode a rdfs:Class ;
     rdfs:label "Postal Code"^^xsd:string ;
     dcterms:identifier "{6A0385E2-3FB1-4a42-A254-BC382D92E27A}" ;
-    rdfs:comment "A GeoIdentity used to (partially) identify and address" ;
+    rdfs:comment "A GeoIdentity used to (partially) identify an address" ;
     rdfs:subClassOf ies:GeoIdentity .
 
 ies:Presence a rdfs:Class ;
@@ -2614,7 +2614,7 @@ ies:RadioCoverageArea a rdfs:Class ;
 
 Note: The RadioMast itself may not be part of this area, as often the immediate area around the base of a RadioMast is a deadspot.
 
-Note: Most radio area coverage is complex in shape, and the preferred representation in IES4 is GeoJSON. No attempt is made here to differentiate between signal strength zones. To do this, create multople RadioCoverAreas for the same RadioMast and label them appropriately. """ ;
+Note: Most radio area coverage is complex in shape, and the preferred representation in IES4 is GeoJSON. No attempt is made here to differentiate between signal strength zones. To do this, create multiple RadioCoverAreas for the same RadioMast and label them appropriately. """ ;
     rdfs:subClassOf ies:Location .
 
 ies:RadioMast a rdfs:Class ;
@@ -2761,9 +2761,9 @@ ies:ReplaceablePart a rdfs:Class ;
     dcterms:identifier "{624D6CD1-31D9-46db-B42D-56DAD35BABD8}" ;
     rdfs:comment """An Element which is a part of a whole that can be replaced (possibly multiple times) without altering its overall identity. It is coincident with any Element which fulfils its purpose, role or function to the whole.
 
-The identity of a RepleacablePart can survive periods when no Element fulfils its purpose.
+The identity of a ReplaceablePart can survive periods when no Element fulfils its purpose.
 
-A RepleacablePart does not survive the destruction of the whole it is a part of, though an Element that fulfils the RepleacablePart may do.
+A RepleacablePart does not survive the destruction of the whole it is a part of, though an Element that fulfils the ReplaceablePart may do.
 
 Examples include:
 -	Tyres of a car
@@ -3162,7 +3162,7 @@ ies:TelephoneNumber a rdfs:Class ;
 ies:TelephoneNumberRange a rdfs:Class ;
     rdfs:label "Telephone Number Range"^^xsd:string ;
     dcterms:identifier "{007F88AD-9CDF-4aa1-BE73-18C688DA8C05}" ;
-    rdfs:comment "A CommunicationsIdentifierRange of TelehoneNumbers" ;
+    rdfs:comment "A CommunicationsIdentifierRange of TelephoneNumbers" ;
     rdfs:subClassOf ies:CommunicationsIdentifierRange .
 
 ies:Temperature a rdfs:Class ;
@@ -4033,7 +4033,7 @@ ies:governedRegion a owl:ObjectProperty ;
     dcterms:identifier "{72DC3E90-53CE-434d-A5F3-89BDCE08A201}" ;
     rdfs:comment """The Location which the respective Government is in charge of.
 
-See also goverenedPopulation - sometimes Locations have no people, and sometimes people reside outside the region in which they are legally citizens.
+See also governedPopulation - sometimes Locations have no people, and sometimes people reside outside the region in which they are legally citizens.
 
 Note: A Government instance has a start and end date corresponding to its time in power. """ ;
     rdfs:domain ies:Government ;
@@ -5313,7 +5313,7 @@ ies:nearTo a owl:ObjectProperty ;
 ies:representationValue a owl:DatatypeProperty ;
     rdfs:label "representation Value"^^xsd:string ;
     dcterms:identifier "{AE00F1DE-F42B-4fc0-B07B-21F754F16FD4}" ;
-    rdfs:comment "The examplar text, number, etc. of a Representation" ;
+    rdfs:comment "The exemplar text, number, etc. of a Representation" ;
     rdfs:domain ies:Representation ;
     rdfs:subPropertyOf ies:attribute .
 
@@ -5407,3 +5407,156 @@ ies:pluriverse a ies:Element ;
     rdfs:label "pluriverse"^^xsd:string ;
     dcterms:identifier "{D3AA70B6-BA62-459a-B3F8-C504C2AF6A0B}" ;
     rdfs:comment "An instance of Element which is the sum of all possible worlds including everything in those worlds. Put another way, this is everything in our world and everything in all possible worlds." .
+
+#################################
+# Addition of minimal GeoSPARQL #
+#################################
+
+ies:WorldLine rdf:type rdfs:Class .
+ies:WorldLine rdfs:subClassOf ies:Element .
+ies:WorldLine rdfs:label "World Line" .
+ies:WorldLine rdfs:comment """An Element that is a spatial point through time.
+
+Note: A WorldLine begins its existence at one end, and ceases to exist at the other.""" .
+
+ies:DefineSpatialApproximation rdf:type rdfs:Class .
+ies:DefineSpatialApproximation rdfs:subClassOf ies:Event .
+ies:DefineSpatialApproximation rdfs:label "Define Spatial Approximation" .
+ies:DefineSpatialApproximation rdfs:comment """An Event that defines an Element that is a spatial approximation to another.
+
+Note 1: A spatial approximation can be created by computer program, where the spatial accuracy is a specified parameter.
+
+Note2 : A DefineSpatialApproximation can also be an AssessSpatialAccuracy.""" .
+
+ies:AssessSpatialAccuracy rdf:type rdfs:Class .
+ies:AssessSpatialAccuracy rdfs:subClassOf ies:Event .
+ies:AssessSpatialAccuracy rdfs:label "Assess Spatial Accuracy" .
+ies:AssessSpatialAccuracy rdfs:comment """An Event that assesses the accuracy of an Element that is a spatial approximation.
+
+Note: An AssessSpatialAccuracy can also be a DefineSpatialApproximation.""" .
+
+ies:hasGeometricApproximation rdf:type owl:ObjectProperty .
+ies:hasGeometricApproximation rdfs:subPropertyOf ies:relationship .
+ies:hasGeometricApproximation rdfs:domain ies:Element .
+ies:hasGeometricApproximation rdfs:range ies:Element .
+ies:hasGeometricApproximation rdfs:label "has Geometric Approximation" .
+ies:hasGeometricApproximation rdfs:comment """A relationship that is between one Element and another that is its geometric approximation.
+
+Note: This relationship corresponds to geo:hasGeometry.""" .
+
+ies:hasDefaulteometricApproximation rdf:type owl:ObjectProperty .
+ies:hasDefaultGeometricApproximation rdfs:subPropertyOf ies:hasGeometricApproximation .
+ies:hasDefaultGeometricApproximation rdfs:domain ies:Element .
+ies:hasDefaultGeometricApproximation rdfs:range ies:Element .
+ies:hasDefaultGeometricApproximation rdfs:label "has Default Geometric Approximation" .
+ies:hasGeometricApproximation rdfs:comment """A hasGeometricApproximation that is a default approximation.
+
+Note: This relationship corresponds to geo:hasDefaultGeometry.""" .
+
+ies:hasCentroid rdf:type owl:ObjectProperty .
+ies:hasCentroid rdfs:subPropertyOf ies:relationship .
+ies:hasCentroid rdfs:domain ies:Element .
+ies:hasCentroid rdfs:range ies:WorldLine .
+ies:hasCentroid rdfs:label "has Centroid" .
+ies:hasCentroid rdfs:comment """A relationship that is between an Element and a WorldLine that is its centroid.
+
+Note: This relationship corresponds to geo:hasCentroid.""" .
+
+ies:hasBoundingBox rdf:type owl:ObjectProperty .
+ies:hasBoundingBox rdfs:subPropertyOf ies:isPartOf .
+ies:hasBoundingBox rdfs:domain ies:Element .
+ies:hasBoundingBox rdfs:range ies:Element .
+ies:hasBoundingBox rdfs:label "has Bounding Box" .
+ies:hasBoundingBox rdfs:comment """An isPartOf relationship that is between an Element and an Element with simple geometry that it is part of.
+
+Note: This relationship corresponds to geo:hasBoundingBox.""" .
+
+ies:describes rdf:type owl:ObjectProperty .
+ies:describes rdfs:subPropertyOf ies:relationship .
+ies:describes rdfs:domain ies:Event .
+ies:describes rdfs:range ies:Element .
+ies:describes rdfs:label "describes" .
+ies:describes rdfs:comment """A relationship that is between an Event and an Element that states the Event creates a description of the Element.
+
+*** The semantics of this relationship and its integration with IES requires more work. ***""" .
+
+ies:accuracyReference rdf:type owl:ObjectProperty .
+ies:accuracyReference rdfs:subPropertyOf ies:relationship .
+ies:accuracyReference rdfs:domain ies:AssessSpatialAccuracy .
+ies:accuracyReference rdfs:range ies:Element .
+ies:accuracyReference rdfs:label "accuracy reference" .
+ies:accuracyReference rdfs:comment """A relationship that is between an AccuracyReference and an Element that states the Element is the subject for which the accuracy of an approximation is assessed.""" .
+
+ies:topologicalDimensionAtInstant rdf:type owl:DatatypeProperty .
+ies:topologicalDimensionAtInstant rdfs:subPropertyOf ies:attribute .
+ies:topologicalDimensionAtInstant rdfs:domain ies:Element .
+ies:topologicalDimensionAtInstant rdfs:range xsd:integer .
+ies:topologicalDimensionAtInstant rdfs:label "topological dimension at instant" .
+ies:topologicalDimensionAtInstant rdfs:comment """The topological dimension of an Element at an instant in time during its life.
+
+Note 1: The topologicalDimensionAtInstant is the dimension without time.  Hence the topologicalDimensionAtInstant of a WorldLine is 0.
+
+Note 2: This relationship corresponds to geo:dimension.
+
+*** In future work this attribute can be replaced by subclasses of Element. ***""" .
+
+ies:coordinateDimension rdf:type owl:DatatypeProperty .
+ies:coordinateDimension rdfs:subPropertyOf ies:attribute .
+ies:coordinateDimension rdfs:domain ies:Element .
+ies:coordinateDimension rdfs:range xsd:integer .
+ies:coordinateDimension rdfs:label "coordinate dimension" .
+ies:coordinateDimension rdfs:comment """The dimension of the coordinates that define the shape of an Element.
+
+Note: This relationship corresponds to geo:coordinateDimension.""" .
+
+ies:spatialDimension rdf:type owl:DatatypeProperty .
+ies:spatialDimension rdfs:subPropertyOf ies:attribute .
+ies:spatialDimension rdfs:domain ies:Element .
+ies:spatialDimension rdfs:range xsd:integer .
+ies:spatialDimension rdfs:label "spatial dimension" .
+ies:spatialDimension rdfs:comment """The dimension of the space that an Element is part of.
+
+Note: This relationship corresponds to geo:spatialDimension.""" .
+
+########################################################################
+# A minimal approach to shape representation                           #
+#                                                                      #
+# *** This is OK as TTL but needs much more work on the semantics! *** #
+########################################################################
+
+ies:MapToMathsSpace rdf:type rdfs:Class .
+ies:MapToMathsSpace rdfs:subClassOf ies:Thing .
+ies:MapToMathsSpace rdfs:label "Map To Maths Space" .
+ies:MapToMathsSpace rdfs:comment """A map or function that is between an Element and a maths space with respect to a CoordinateReferenceSystem.
+
+Note: See https://en.wikipedia.org/wiki/Map_(mathematics) .""" .
+
+ies:CoordinateReferenceSystem rdf:type rdfs:Class .
+ies:CoordinateReferenceSystem rdfs:subClassOf ies:Thing .
+ies:CoordinateReferenceSystem rdfs:label "CoordinateReferenceSystem" .
+ies:CoordinateReferenceSystem rdfs:comment """A coordinate reference system (CRS).
+
+Note: The mathematics of coordinate reference systems and maths spaces are not within the scope of IES at present.""" .
+
+ies:hasMapToMathsSpace rdf:type owl:ObjectProperty .
+ies:hasMapToMathsSpace rdfs:subPropertyOf ies:relationship .
+ies:hasMapToMathsSpace rdfs:domain ies:Element .
+ies:hasMapToMathsSpace rdfs:range ies:MapToMathsSpace .
+ies:hasMapToMathsSpace rdfs:label "has Map To Maths Space" .
+ies:hasMapToMathsSpace rdfs:comment """A MapToMathsSpace with respect to a CoordinateReferenceSystem for an Element.""" .
+
+ies:hasCoordinateReferenceSystem rdf:type owl:ObjectProperty .
+ies:hasCoordinateReferenceSystem rdfs:subPropertyOf ies:relationship .
+ies:hasCoordinateReferenceSystem rdfs:domain ies:MapToMathsSpace .
+ies:hasCoordinateReferenceSystem rdfs:range ies:CoordinateReferenceSystem .
+ies:hasCoordinateReferenceSystem rdfs:label "has CoordinateReferenceSystem" .
+ies:hashasCoordinateReferenceSystem rdfs:comment """The CoordinateReferenceSystem upon which a MapToMathSpace depends.""" .
+
+ies:hasWKT rdf:type owl:DatatypeProperty .
+ies:hasWKT rdfs:subPropertyOf ies:attribute .
+ies:hasWKT rdfs:domain ies:MapToMathsSpace .
+ies:hasWKT rdfs:range xsd:string .
+ies:hasWKT rdfs:label "has WKT" .
+ies:hasWKT rdfs:comment """The WKT (Well Known Text) representation of the maths space that is the domain of a MapToMathSpace.
+
+Note: This relationship corresponds to geo:asWKT, except that the coordinate reference system is recognised as an object.""" .
