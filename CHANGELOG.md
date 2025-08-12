@@ -4,9 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][keep-change-log]
 and this project adheres to [Semantic Versioning][semver].
 
-## [4.4.0-rc1] - 2025-08-04
-1. Added new, minimal model of Geospatial concepts using GeoSPARQL
-
 ## [5.0.0-rc2] - 2025-08-04
 1. Incorporated minimal model of Geospatial concepts using GeoSPARQL (from v4.4.0-rc1)
 
