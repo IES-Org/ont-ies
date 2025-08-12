@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][keep-change-log]
 and this project adheres to [Semantic Versioning][semver].
 
+## [4.4.0-rc1] - 2025-08-04
+1. Added new, minimal model of Geospatial concepts using GeoSPARQL
+
 ## [5.0.0-rc2] - 2025-08-04
 1. Incorporated minimal model of Geospatial concepts using GeoSPARQL (from v4.4.0-rc1)
 
@@ -16,7 +19,7 @@ and this project adheres to [Semantic Versioning][semver].
 ## [4.3.3] - 2025-03-28
 1. Replaced (unresolvable) `sparx:guid` property with `dcterms:identifier`
 
-## [4.3.2] - 2025-02-13
+## [4.3.2] - 2025-03-13
 1. Add missing ies:powertype properties to the ontology
 2. Correct the domain of ies:assessed to ies:Assessment
 
