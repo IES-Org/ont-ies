@@ -4,8 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][keep-change-log]
 and this project adheres to [Semantic Versioning][semver].
 
+## [5.0.0-rc2] - 2025-08-04
+1. Incorporated minimal model of Geospatial concepts using GeoSPARQL (from v4.4.0-rc1)
+
 ## [5.0.0-rc1] - 2025-06-09
 1. Changed ies namespace to <http://informationexchangestandard.org/ont/ies#>
+
+## [4.4.0-rc1] - 2025-08-04
+1. Added new, minimal model of Geospatial concepts using GeoSPARQL
 
 ## [4.3.3] - 2025-03-28
 1. Replaced (unresolvable) `sparx:guid` property with `dcterms:identifier`
