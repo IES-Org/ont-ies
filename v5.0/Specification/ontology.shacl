@@ -2,6 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ies:AccentShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -114,6 +115,10 @@ ies:ArrestingOfficerShape a sh:NodeShape ;
 ies:ArrivalShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Arrival .
+
+ies:AssessSpatialAccuracyShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:AssessSpatialAccuracy .
 
 ies:AssessToBeTrueShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -435,6 +440,10 @@ ies:CooperatorShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Cooperator .
 
+ies:CoordinateReferenceSystemShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:CoordinateReferenceSystem .
+
 ies:CountryShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Country .
@@ -530,6 +539,10 @@ ies:DeclaredTargetShape a sh:NodeShape ;
 ies:DeclaringPartyShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:DeclaringParty .
+
+ies:DefineSpatialApproximationShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:DefineSpatialApproximation .
 
 ies:DeliveryAddressShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -1074,6 +1087,10 @@ ies:MaliciousAccountUseShape a sh:NodeShape ;
 ies:MapGridAreaShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:MapGridArea .
+
+ies:MapToMathsSpaceShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:MapToMathsSpace .
 
 ies:MarriageShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -1695,6 +1712,10 @@ ies:SoftwareShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Software .
 
+ies:SparxGuidShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:SparxGuid .
+
 ies:StalkingShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Stalking .
@@ -2043,6 +2064,10 @@ ies:WorkOfDocumentationShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:WorkOfDocumentation .
 
+ies:WorldLineShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:WorldLine .
+
 ies:aCopyOfDomainShape a sh:NodeShape ;
     sh:class ies:IndividualDocument ;
     sh:severity sh:Warning ;
@@ -2072,6 +2097,16 @@ ies:accountProviderRangeShape a sh:NodeShape ;
     sh:class ies:Organisation ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:accountProvider .
+
+ies:accuracyReferenceDomainShape a sh:NodeShape ;
+    sh:class ies:AssessSpatialAccuracy ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:accuracyReference .
+
+ies:accuracyReferenceRangeShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:accuracyReference .
 
 ies:afterDomainShape a sh:NodeShape ;
     sh:class ies:Element ;
@@ -2266,6 +2301,16 @@ ies:cookieOriginSiteRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:cookieOriginSite .
 
+ies:coordinateDimensionDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:coordinateDimension .
+
+ies:coordinateDimensionRangeShape a sh:NodeShape ;
+    sh:class xsd:integer ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:coordinateDimension .
+
 ies:countryOfRegistrationDomainShape a sh:NodeShape ;
     sh:class ies:Account,
         ies:Organisation,
@@ -2322,6 +2367,16 @@ ies:currencyDenominationRangeShape a sh:NodeShape ;
     sh:class ies:Currency ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:currencyDenomination .
+
+ies:describesDomainShape a sh:NodeShape ;
+    sh:class ies:Event ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:describes .
+
+ies:describesRangeShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:describes .
 
 ies:dialInNumberDomainShape a sh:NodeShape ;
     sh:class ies:TeleConference ;
@@ -2528,6 +2583,26 @@ ies:hasAuthorRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasAuthor .
 
+ies:hasBoundingBoxDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasBoundingBox .
+
+ies:hasBoundingBoxRangeShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasBoundingBox .
+
+ies:hasCentroidDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasCentroid .
+
+ies:hasCentroidRangeShape a sh:NodeShape ;
+    sh:class ies:WorldLine ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasCentroid .
+
 ies:hasCharacteristicDomainShape a sh:NodeShape ;
     sh:class ies:Element ;
     sh:severity sh:Warning ;
@@ -2537,6 +2612,16 @@ ies:hasCharacteristicRangeShape a sh:NodeShape ;
     sh:class ies:Characteristic ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasCharacteristic .
+
+ies:hasCoordinateReferenceSystemDomainShape a sh:NodeShape ;
+    sh:class ies:MapToMathsSpace ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasCoordinateReferenceSystem .
+
+ies:hasCoordinateReferenceSystemRangeShape a sh:NodeShape ;
+    sh:class ies:CoordinateReferenceSystem ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasCoordinateReferenceSystem .
 
 ies:hasCountryOfIssueDomainShape a sh:NodeShape ;
     sh:class ies:IdentityDocument,
@@ -2548,6 +2633,16 @@ ies:hasCountryOfIssueRangeShape a sh:NodeShape ;
     sh:class ies:Country ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasCountryOfIssue .
+
+ies:hasDefaultGeometricApproximationDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasDefaultGeometricApproximation .
+
+ies:hasDefaultGeometricApproximationRangeShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasDefaultGeometricApproximation .
 
 ies:hasEmergencyContactAddressDomainShape a sh:NodeShape ;
     sh:class ies:IdentityDocument ;
@@ -2579,6 +2674,16 @@ ies:hasGeneticGenderRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasGeneticGender .
 
+ies:hasGeometricApproximationDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasGeometricApproximation .
+
+ies:hasGeometricApproximationRangeShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasGeometricApproximation .
+
 ies:hasIdentifiedGenderDomainShape a sh:NodeShape ;
     sh:class ies:PersonState ;
     sh:severity sh:Warning ;
@@ -2598,6 +2703,16 @@ ies:hasLanguageProficiencyRangeShape a sh:NodeShape ;
     sh:class ies:LanguageProficiency ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasLanguageProficiency .
+
+ies:hasMapToMathsSpaceDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasMapToMathsSpace .
+
+ies:hasMapToMathsSpaceRangeShape a sh:NodeShape ;
+    sh:class ies:MapToMathsSpace ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasMapToMathsSpace .
 
 ies:hasNameDomainShape a sh:NodeShape ;
     sh:class ies:Thing ;
@@ -2709,6 +2824,16 @@ ies:hasValueRangeShape a sh:NodeShape ;
     sh:class ies:MeasureValue ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasValue .
+
+ies:hasWKTDomainShape a sh:NodeShape ;
+    sh:class ies:MapToMathsSpace ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasWKT .
+
+ies:hasWKTRangeShape a sh:NodeShape ;
+    sh:class xsd:string ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasWKT .
 
 ies:hmlConfidenceDomainShape a sh:NodeShape ;
     sh:class ies:AssessToBeTrue ;
@@ -3510,6 +3635,16 @@ ies:similarEntityRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:similarEntity .
 
+ies:spatialDimensionDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:spatialDimension .
+
+ies:spatialDimensionRangeShape a sh:NodeShape ;
+    sh:class xsd:integer ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:spatialDimension .
+
 ies:spokenLanguageDomainShape a sh:NodeShape ;
     sh:class ies:LanguageProficiency ;
     sh:severity sh:Warning ;
@@ -3559,6 +3694,16 @@ ies:ticketDepartureLocationRangeShape a sh:NodeShape ;
     sh:class ies:Port ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:ticketDepartureLocation .
+
+ies:topologicalDimensionAtInstantDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:topologicalDimensionAtInstant .
+
+ies:topologicalDimensionAtInstantRangeShape a sh:NodeShape ;
+    sh:class xsd:integer ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:topologicalDimensionAtInstant .
 
 ies:tradedItemTypeDomainShape a sh:NodeShape ;
     sh:class ies:TradeEvent ;
