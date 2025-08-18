@@ -9,8 +9,8 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=5.0.0-rc2
-LAST_UPDATED=2025-08-04
+VERSION=5.0.0-rc3
+LAST_UPDATED=2025-08-18
 STATUS=release_candidate
 
 # Version number explanation:
@@ -18,13 +18,11 @@ STATUS=release_candidate
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
 
-# Release Notes for 5.0.0-rc2
-1. Incorporated minimal model of Geospatial concepts using GeoSPARQL (from v4.4.0-rc1)
-
-# Release Notes for 5.0.0-rc1
+# Release Notes for 5.0.0-rc3
 1. Changed ies namespace to <http://informationexchangestandard.org/ont/ies#>
+2. Removed all cases of `dcterms:identifier`
 
-# Release Notes for 4.4.0-rc1
+# Release Notes for 4.4.0
 1. Added new, minimal model of Geospatial concepts using GeoSPARQL
 
 # Release Notes for 4.3.3

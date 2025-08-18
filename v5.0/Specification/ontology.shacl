@@ -1712,10 +1712,6 @@ ies:SoftwareShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Software .
 
-ies:SparxGuidShape a sh:NodeShape ;
-    sh:severity sh:Warning ;
-    sh:targetClass ies:SparxGuid .
-
 ies:StalkingShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Stalking .
