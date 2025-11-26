@@ -1,4 +1,4 @@
-[back to readme](../../README.md)
+[back to readme](../README.md)
 
 # Introduction
 ## Background
@@ -39,4 +39,4 @@ As with previous versions of IES, the model is only loosely constrained. The mod
 ## Extending the Model
 As with the previous version of IES, version 4 allows the model to be extended within a particular data exchange file. Unlike the previous versions though, IES 4 uses the W3C's RDF Schema which allows new classes and properties to be defined in data payloads. When extending the IES, users should subtype from the most appropriate class, and also specialise properties from existing properties. This will aid understanding by the receiving party, which is likely to only know about the core IES classes.
 
-[back to readme](../../README.md)
+[back to readme](../README.md)
