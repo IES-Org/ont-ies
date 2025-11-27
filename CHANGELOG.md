@@ -15,7 +15,6 @@ and this project adheres to [Semantic Versioning][semver].
 1. License change from Apache 2 to MIT
 
 ## [4.3.0] - 2024-12-16
-- Changes resulting from project engagements
 1. Added Stuff and Count pattern, including addition of:
 - Stuff class
 - FiniteClassOfElement class
@@ -28,33 +27,42 @@ and this project adheres to [Semantic Versioning][semver].
 - Added example use
 3. Changes to Payloads and Groups pattern:
 - (Bug fix) Added rdfs:subClassOf relation between SecurityLabel and rdfs:Resource
-- (Bug fix) Added rdfs:subClassOf relation between ExchangedPayload and rdfs:Resource 4. Changes to Posts and Roles pattern:
+- (Bug fix) Added rdfs:subClassOf relation between ExchangedPayload and rdfs:Resource
+4. Changes to Posts and Roles pattern:
 - Removal of hasRole, Role and OrganisationRole (breaking change). Instead use ReplaceablePart/InPost example
 now provided in the same pattern
 - Update to definition of InPost now that is also a InstalledState
-- Corrected relationship between inPost and Post from isPartOf to isStateOf 5. Changes to Assessment pattern:
-- Addition of Assessment as a new superclass of AssessToBeTrue (non-breaking) 6. Changes to Location pattern:
+- Corrected relationship between inPost and Post from isPartOf to isStateOf
+5. Changes to Assessment pattern:
+- Addition of Assessment as a new superclass of AssessToBeTrue (non-breaking)
+6. Changes to Location pattern:
 - regionCountry, addressRegion deleted. Use inLocation instead
 - isCentroidOf corrected from being a subProperty of relationship to inLocation
 - MapGridArea no longer an Asset as well as a Location
-- RadioCoverageArea no longer an Asset as well as a Location 7. Changes to Where and When pattern:
-- happensIn, takesplaceIn deleted. Use inLocation instead. 8. Changes to Asset pattern
+- RadioCoverageArea no longer an Asset as well as a Location
+7. Changes to Where and When pattern:
+- happensIn, takesplaceIn deleted. Use inLocation instead.
+8. Changes to Asset pattern
 - storedIn deleted. Use inLocation instead.
 9. Changes to Communications Device pattern:
 - Removal of installedSoftware, replaced with InstanceOfSoftware which can be associated as being installed using
 isPartOf.
 - Removed ModelOfDevice and ClassOfDevice. Instantiations of ModelOfDevice to be done instead using
 subClassOf Device.
-- Linked Device to PartNumber using isIdentifiedBy 10. Changes to Period of Time pattern:
+- Linked Device to PartNumber using isIdentifiedBy
+10. Changes to Period of Time pattern:
 - ParticularPeriod URI pattern now mandated to be non-punctuated encoding (20070118T153000Z). This avoids
 the use of escape characters in the URI. NOTE: the literal for iso8601PeriodRepresentation remains punctuated.
 - ParticularPeriod mandated to be in UTC / Zulu time
 - Period of Time diagram changed to reflect changes to URI encoding
-- Updates to all examples to include new encoding 11. Changes to Disposition pattern:
+- Updates to all examples to include new encoding
+11. Changes to Disposition pattern:
 - Correction to allHaveDisposition rdfs:Domain - fixed to ClassOfElement not Element
 12. Changes to Amount of Money pattern:
 - Currency identifier correct to ISO4217Code not ISO639-3Code (country code)
-13. Changes to Online and Communication patterns covering Message. Message used to inherit from both OnlineEvent and Communication which didn't make sense considering SMS is a subtype of Message. Changes included:
+13. Changes to Online and Communication patterns covering Message. Message used to inherit from both
+OnlineEvent and Communication which didn't make sense considering SMS is a subtype of Message. Changes
+included:
 - Deleted subclass relation between Message and OnlineContentEvent
 - Added OnlineMessage class with the definition of "A Message that was sent Online."
 - Added OnlineMessage to the OnlineEvent diagram
@@ -62,7 +70,10 @@ the use of escape characters in the URI. NOTE: the literal for iso8601PeriodRepr
 - Added Communication class to OnlineEvent diagram
 - Changed Message definition from "A Communication or OnlineContentEvent where a message is sent" to "A
 Communication where a message is sent"
-14. IES 4.2 had ClassOfElements and subProperties of rdf:type which encouraged extending the IES classes via ClassOfElements hierarchy rather than the Elements hierarchy. IES 4.3 prunes some of classes (breaking changes) to discourage this behaviour and encourage one approach of extending IES. This approach is documented in "Extending IES4 2024-03-v1.0 O.pdf". Pruned classes and properties include:
+14. IES 4.2 had ClassOfElements and subProperties of rdf:type which encouraged extending the IES classes via
+ClassOfElements hierarchy rather than the Elements hierarchy. IES 4.3 prunes some of classes (breaking changes) to
+discourage this behaviour and encourage one approach of extending IES. This approach is documented in
+"Extending IES4 2024-03-v1.0 O.pdf". Pruned classes and properties include:
 - From Authorisation pattern - AuthorisationEventClass deleted – just use subclasses of AuthorisationRequest or
 GrantOfAuthority. Also requestedActivity, grantedActivityType and allAuthorisedAgainst deleted
 - From Operational pattern - ClassOfOperationalEvent, ClassOfCriminalActivity and typicallyTargets
@@ -76,7 +87,8 @@ ClassOfFinancialAccount
 - From Online pattern - deleted onlineServiceType and ClassOfOnlineService. Instead just extend OnlineService.
 Also deleted ClassOfWebResource.
 - From Travel Booking - deleted bookingType and ClassOfTravelBooking
-- From Communications Account - deleted ClassOfAccount 15. Other changes:
+- From Communications Account - deleted ClassOfAccount
+15. Other changes:
 - ExchangedItem changed to Thing. Its definition has also been changed.
 - VersionNumber - update to definition to apply to anything that is identifiable
 - currencyDenomination no longer a subProperty of relationship and rdf:type. Its now just a subtype of rdf:type
