@@ -1,0 +1,54 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix data: <http://data.gov.uk/testdata#> .
+@prefix iso8601: <http://iso8601.iso.org/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+# The vehicle
+data:LK176LPX a ies:RoadVehicle .
+
+# The location with its geometry
+data:Acacia_Gardens a ies:Location, geo:Feature ;
+    geo:hasGeometry data:AcaciaGardens_CarPark_Geometry .
+
+data:AcaciaGardens_CarPark_Geometry a geo:Geometry ;
+    geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/27700> POLYGON((544920 258340, 544920 258380, 544970 258380, 544970 258340, 544920 258340))"^^geo:wktLiteral ;
+    geo:asGeoJSON """{
+        "type": "Polygon",
+        "coordinates": [[
+            [544920, 258340],
+            [544920, 258380],
+            [544970, 258380],
+            [544970, 258340],
+            [544920, 258340]
+        ]],
+        "crs": {
+            "type": "name",
+            "properties": {
+                "name": "EPSG:27700"
+            }
+        }
+    }"""^^geo:geoJSONLiteral .
+
+# The periods of time
+iso8601:19870601T090000 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "1987-06-01T09:00:00"^^xsd:dateTime .
+
+iso8601:19870901T210400 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "1987-09-01T21:04:00"^^xsd:dateTime .
+
+# The parked state of the vehicle
+data:LK176LPX_parked_at_Acacia_Gardens a ies:Parked ;
+    ies:isStateOf data:LK176LPX ;
+    ies:inLocation data:Acacia_Gardens .
+
+# Bounding states to mark start and end
+data:LK176LPX_starts_parking a ies:BoundingState ;
+    ies:isStartOf data:LK176LPX_parked_at_Acacia_Gardens ;
+    ies:inPeriod iso8601:19870601T090000 .
+
+data:LK176LPX_stops_parking a ies:BoundingState ;
+    ies:isEndOf data:LK176LPX_parked_at_Acacia_Gardens ;
+    ies:inPeriod iso8601:19870901T210400 .

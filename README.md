@@ -39,11 +39,11 @@ The development of this work is supported by private sector suppliers and techni
 
 This repository includes:  
 
-- [`4dOntologyIntro.md`](docs/4dOntologyIntro.md) – Introduction to the 4D Ontology  
-- [`ies.md`](docs/ies.md) – Background and purpose of the Information Exchange Standard  
-- [`Sample-Data/`](docs/Sample-Data) – Sample datasets for validation, testing, and demonstration purposes
-- [`Specification`](docs/Specification) - The ontology specification documents for the Information Exchange Standard
-- [`Supporting-Documents/`](docs/Supporting-Documents) – Additional guidance and reference materials
+- [specification/](docs/specification/) – The main specification documents for the Information Exchange Standard Common ontology
+- [docs/assets/](docs/assets/) – Assets used in the documentation, including logos, images, and diagrams
+- [docs/examples/](docs/examples/) – Example usage patterns and data snippets demonstrating IES concepts
+- [docs/user-guides/](docs/user-guides/) – User guides and tutorials for implementing and using the Information Exchange Standard Common Ontology
+- [docs/Glossary.md](docs/Glossary.md) – Glossary of terms used in the IES documentation
 
 Further information is available on the [IES website](https://www.informationexchangestandard.org)
 
