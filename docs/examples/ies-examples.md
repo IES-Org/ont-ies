@@ -61,7 +61,7 @@ The diagram shows:
 ### RDF Triples
 
 ```turtle
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 @prefix data: <http://example.com/local-data#> .
@@ -167,7 +167,7 @@ The UPRN class is defined as a subclass of `ies:GeoIdentity`, demonstrating how 
 ### RDF Triples
 
 ```turtle
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -227,7 +227,7 @@ On 2023-01-01, simcard_a is part of handset_1 (via the state relationship). On 2
 
 ```turtle
 @prefix data: <http://example.com/local-data#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -298,7 +298,7 @@ This pattern shows how investigators make subjective judgements (assessments) ab
 
 ```turtle
 # Part 1 of 2
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix data: <http://example.com/local-data#> .
@@ -425,7 +425,7 @@ Each person participates through a PersonInCommunication state. The message cont
 
 ```turtle
 @prefix data: <http://example.com/local-data#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:personA a ies:Person .
@@ -493,7 +493,7 @@ The device participations are identified by telephone numbers:
 ### RDF Triples
 
 ```turtle
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix data: <http://example.com/local-data#> .
 

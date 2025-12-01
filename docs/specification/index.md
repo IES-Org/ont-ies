@@ -3,7 +3,7 @@ title: IES Specification
 description: Detailed specification of the Information Exchange Standard Common Ontology
 ---
 
-*Version: 4.4.0*  
+*Version: 5.0.0*  
 *Last Updated: 2025-11-29*  
 *© Crown Copyright 2020-2025*
 

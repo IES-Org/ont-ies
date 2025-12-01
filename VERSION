@@ -18,6 +18,9 @@ STATUS=release\ candidate
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
 
+# Release Notes for 5.0.0
+1. Changed namespace URI to http://informationexchange.org/ont/ies/common/
+
 # Release Notes for 4.4.0
 1. Added GeoSPARQL extension to Location pattern
 

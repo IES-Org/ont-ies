@@ -272,8 +272,8 @@ stardog data add samples hospital.ttl movement.ttl communications.ttl
 
 **SPARQL Example - Find all people in the samples:**
 ```sparql
-PREFIX ies: <http://ies.data.gov.uk/ontology/ies4#>
-PREFIX data: <http://data.gov.uk/testdata#>
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+PREFIX data: <http://informationexchangestandard.org/testdata#>
 
 SELECT ?person ?name
 WHERE {
@@ -285,7 +285,7 @@ WHERE {
 
 **SPARQL Example - Find events with participants:**
 ```sparql
-PREFIX ies: <http://ies.data.gov.uk/ontology/ies4#>
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
 
 SELECT ?event ?participant ?entity
 WHERE {

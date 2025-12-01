@@ -1,6 +1,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
-@prefix data: <http://data.gov.uk/testdata#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 
 data:LK176LPX a ies:RoadVehicle .

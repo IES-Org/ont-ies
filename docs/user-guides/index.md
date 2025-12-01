@@ -179,7 +179,7 @@ Throughout these guides, you'll encounter:
 **Code Examples:**
 ```turtle
 # RDF/Turtle examples use this style
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 
 data:example_1 a ies:Person .
 ```
@@ -204,7 +204,7 @@ Please [open an issue](https://github.com/IES-Org/ies-common/issues) on our GitH
 
 ## Version Information
 
-**Documentation Version:** 4.4.0  
+**Documentation Version:** 5.0.0  
 **Last Updated:** November 2025  
 **Applies to:** IES Common 4.x releases
 
