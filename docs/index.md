@@ -140,7 +140,7 @@ Whilst changing the name to reflect wider applicability has been considered, it 
 
 ## Version Information
 
-**Current Version:** 4.4.0  
+**Current Version:** 5.0.0
 **Licence:** MIT Licence (Crown Copyright 2020-2025)  
 **Publisher:** UK Department for Business and Trade  
 **Language:** British English (en-GB)

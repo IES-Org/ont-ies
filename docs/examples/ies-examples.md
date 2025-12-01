@@ -1,6 +1,6 @@
 # IES Examples
 
-**Based on version 4.4.0**
+**Based on version 5.0.0**
 
 This document provides a collection of worked examples demonstrating how to model various scenarios using the Information Exchange Standard (IES). Each example includes both a visual diagram and the corresponding RDF triples in Turtle syntax.
 

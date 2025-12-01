@@ -9,8 +9,8 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=4.4.0-rc1
-LAST_UPDATED=2025-11-05
+VERSION=5.0.0
+LAST_UPDATED=2025-11-29
 STATUS=release\ candidate
 
 # Version number explanation:

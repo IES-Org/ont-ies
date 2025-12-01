@@ -3,7 +3,7 @@ title: IES Model Diagrams
 description: Comprehensive visual documentation of IES concepts, relationships, and patterns
 ---
 
-*Version: 4.4.0*  
+*Version: 5.0.0*  
 *Last Updated: 2025-11-29*
 &copy; Crown Copyright 2020-2025
 
