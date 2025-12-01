@@ -1,0 +1,917 @@
+/**
+ * IES Accessibility Stylesheet
+ * WCAG 2.1 AA compliance implementation for inclusive design
+ * Based on IES Accessibility Guidelines and Standards
+ */
+
+/* ============================================================================
+   Accessibility Foundation
+   ============================================================================ */
+
+/* Ensure color contrast ratios meet WCAG AA standards (4.5:1 normal, 3:1 large text) */
+:root {
+  /* High contrast color overrides for accessibility */
+  --a11y-high-contrast-bg: #000000;
+  --a11y-high-contrast-fg: #ffffff;
+  --a11y-focus-color: #ffbf47;          /* High visibility focus indicator */
+  --a11y-error-color: #d93025;         /* Error state color */
+  --a11y-success-color: #0f9d58;       /* Success state color */
+  --a11y-warning-color: #ff9800;       /* Warning state color */
+
+  /* Ensure IES colors meet contrast requirements */
+  --ies-black-a11y: #020202;           /* 21:1 contrast with white */
+  --ies-green-blue-a11y: #315E63;      /* 4.5:1+ contrast verified */
+  --ies-light-navy-a11y: #034385;      /* 4.5:1+ contrast verified */
+  --ies-orange-a11y: #EA860F;          /* Adjusted for better contrast */
+}
+
+/* ============================================================================
+   Focus Management
+   ============================================================================ */
+
+/* Enhanced focus indicators for all interactive elements */
+*:focus {
+  outline: 3px solid var(--a11y-focus-color) !important;
+  outline-offset: 2px !important;
+  /* Ensure focus is never removed */
+}
+
+/* Custom focus styles for specific elements */
+button:focus,
+.btn:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 3px solid var(--a11y-focus-color) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 6px rgba(255, 191, 71, 0.2) !important;
+}
+
+/* Focus-visible support for modern browsers */
+:focus-visible {
+  outline: 3px solid var(--a11y-focus-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* Ensure focus is visible over all backgrounds */
+.has-ies-green-blue-background-color *:focus,
+.has-ies-black-background-color *:focus {
+  outline-color: var(--ies-orange) !important;
+  box-shadow: 0 0 0 6px rgba(234, 134, 15, 0.3) !important;
+}
+
+/* ============================================================================
+   Skip Links for Keyboard Navigation
+   ============================================================================ */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--ies-black);
+  color: var(--ies-white);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid var(--a11y-focus-color);
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 3px solid var(--a11y-focus-color);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-main {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-main:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+/* ============================================================================
+   Screen Reader Support
+   ============================================================================ */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Screen reader focusable content */
+.sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: inherit !important;
+  margin: inherit !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* Enhanced screen reader descriptions */
+.sr-description {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ============================================================================
+   High Contrast Mode Support
+   ============================================================================ */
+
+/* Windows High Contrast Mode detection and support */
+@media (prefers-contrast: high) {
+  :root {
+    --ies-black: #000000;
+    --ies-white: #ffffff;
+    --ies-light-gray: #808080;
+    --ies-gray: #666666;
+  }
+
+  /* Force borders on all interactive elements */
+  button,
+  .btn,
+  input,
+  textarea,
+  select {
+    border: 2px solid ButtonText !important;
+  }
+
+  /* Ensure text remains readable */
+  * {
+    color: WindowText !important;
+    background-color: Window !important;
+  }
+
+  /* Special handling for links */
+  a {
+    color: LinkText !important;
+  }
+
+  a:visited {
+    color: VisitedText !important;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ies-card,
+  .ies-details,
+  .ies-alert {
+    border: 1px solid CanvasText !important;
+  }
+
+  .ies-card__image-overlay {
+    background-color: Canvas !important;
+    color: CanvasText !important;
+  }
+}
+
+/* ============================================================================
+   Reduced Motion Support
+   ============================================================================ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable problematic animations */
+  .ies-card:hover,
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none !important;
+  }
+
+  /* Keep essential interactions but make them instant */
+  .ies-details summary::after {
+    transition: transform 0.01ms !important;
+  }
+}
+
+/* ============================================================================
+   Font Size and Zoom Support
+   ============================================================================ */
+
+/* Ensure content works at 200% zoom (WCAG requirement) */
+@media (min-resolution: 192dpi) {
+  body {
+    font-size: 18px; /* Larger base font for high DPI */
+  }
+}
+
+/* Support browser zoom up to 200% */
+html {
+  /* Prevent horizontal scroll at high zoom levels */
+  overflow-x: hidden;
+}
+
+@supports (zoom: 200%) {
+  @media (zoom: 200%) {
+    .container,
+    .is-layout-constrained {
+      padding-left: var(--spacing-md);
+      padding-right: var(--spacing-md);
+    }
+  }
+}
+
+/* ============================================================================
+   Color-Blind Friendly Enhancements
+   ============================================================================ */
+
+/* Ensure information isn't conveyed by color alone */
+.ies-status::before,
+.ies-badge::before {
+  content: attr(data-status-text) " ";
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+}
+
+/* Status indicators with text and patterns */
+.ies-status.draft::before {
+  content: "DRAFT ";
+}
+
+.ies-status.review::before {
+  content: "REVIEW ";
+}
+
+.ies-status.approved::before {
+  content: "APPROVED ";
+}
+
+.ies-status.deprecated::before {
+  content: "DEPRECATED ";
+}
+
+/* Add visual patterns for color-blind users */
+.ies-status.draft {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(0, 0, 0, 0.1) 4px,
+    rgba(0, 0, 0, 0.1) 8px
+  );
+}
+
+.ies-status.approved {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+}
+
+/* ============================================================================
+   Enhanced Link Accessibility
+   ============================================================================ */
+
+/* Ensure all links are descriptive and accessible */
+a[href^="http"]:not([href*="informationexchangestandard.org"])::after {
+  content: " (external link)";
+  font-size: 0.875em;
+  color: var(--ies-gray);
+  font-weight: normal;
+}
+
+a[href$=".pdf"]::after {
+  content: " (PDF)";
+  font-size: 0.875em;
+  color: var(--ies-gray);
+  font-weight: normal;
+}
+
+a[href$=".doc"]::after,
+a[href$=".docx"]::after {
+  content: " (Word document)";
+  font-size: 0.875em;
+  color: var(--ies-gray);
+  font-weight: normal;
+}
+
+/* Ensure sufficient color contrast for links */
+a {
+  color: var(--ies-light-navy-a11y);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--ies-green-blue);
+  text-decoration-thickness: 3px;
+}
+
+a:visited {
+  color: #5b2c87; /* Purple with sufficient contrast */
+}
+
+/* ============================================================================
+   Form Accessibility Enhancements
+   ============================================================================ */
+
+/* Ensure all form elements have proper labels */
+input:not([type="hidden"]):not([aria-label]):not([aria-labelledby]):not([title]) {
+  border: 3px solid var(--a11y-error-color) !important;
+}
+
+input:not([type="hidden"]):not([aria-label]):not([aria-labelledby]):not([title])::before {
+  content: "⚠️ Missing label";
+  color: var(--a11y-error-color);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Enhanced error states */
+.error,
+[aria-invalid="true"] {
+  border: 2px solid var(--a11y-error-color) !important;
+  background-color: rgba(217, 48, 37, 0.05) !important;
+}
+
+.error-message {
+  color: var(--a11y-error-color);
+  font-weight: 600;
+  margin-top: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 1.2em;
+}
+
+/* Required field indicators */
+.required::after,
+[required] + label::after,
+label[for] input[required] ~ *::after {
+  content: " *";
+  color: var(--a11y-error-color);
+  font-weight: bold;
+}
+
+/* ============================================================================
+   Table Accessibility
+   ============================================================================ */
+
+/* Ensure tables have proper structure */
+table:not([role="presentation"]) {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Enhance table header identification */
+th {
+  background-color: var(--ies-green-blue) !important;
+  color: var(--ies-white) !important;
+  font-weight: 700 !important;
+  text-align: left;
+  padding: var(--spacing-lg) !important;
+}
+
+/* Improve row readability */
+tbody tr:nth-child(even) {
+  background-color: var(--ies-off-white);
+}
+
+tbody tr:hover {
+  background-color: var(--ies-green-white) !important;
+  outline: 2px solid var(--ies-green-blue);
+}
+
+/* Table caption styling */
+caption {
+  font-weight: 600;
+  color: var(--ies-black);
+  text-align: left;
+  padding: var(--spacing-lg);
+  border-bottom: 2px solid var(--ies-green-blue);
+}
+
+/* ============================================================================
+   Heading Hierarchy and Structure
+   ============================================================================ */
+
+/* Ensure proper heading hierarchy visual cues */
+h1 {
+  border-bottom: 3px solid var(--ies-orange);
+  padding-bottom: var(--spacing-md);
+}
+
+h2 {
+  border-bottom: 2px solid var(--ies-green-blue);
+  padding-bottom: var(--spacing-sm);
+}
+
+h3 {
+  border-left: 4px solid var(--ies-opal-green);
+  padding-left: var(--spacing-lg);
+}
+
+/* Add visual indicators for heading levels in development */
+.debug-headings h1::before { content: "H1: "; color: var(--a11y-error-color); font-weight: normal; }
+.debug-headings h2::before { content: "H2: "; color: var(--a11y-warning-color); font-weight: normal; }
+.debug-headings h3::before { content: "H3: "; color: var(--a11y-success-color); font-weight: normal; }
+.debug-headings h4::before { content: "H4: "; color: var(--ies-gray); font-weight: normal; }
+.debug-headings h5::before { content: "H5: "; color: var(--ies-gray); font-weight: normal; }
+.debug-headings h6::before { content: "H6: "; color: var(--ies-gray); font-weight: normal; }
+
+/* ============================================================================
+   Alternative Text and Media Accessibility
+   ============================================================================ */
+
+/* Visual indicator for missing alt text in development */
+img:not([alt]) {
+  border: 3px solid var(--a11y-error-color) !important;
+  position: relative;
+}
+
+img:not([alt])::after {
+  content: "Missing alt text";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--a11y-error-color);
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Decorative images should have empty alt text */
+img[alt=""],
+img[role="presentation"] {
+  /* These are correctly marked as decorative */
+}
+
+/* Complex images should have long descriptions */
+img[aria-describedby] {
+  border: 2px solid var(--a11y-success-color);
+}
+
+/* ============================================================================
+   ARIA Live Regions
+   ============================================================================ */
+
+/* Style ARIA live regions for better visibility */
+[aria-live="polite"],
+[aria-live="assertive"] {
+  border: 1px solid var(--ies-opal-green);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background-color: var(--ies-green-white);
+  margin: var(--spacing-md) 0;
+}
+
+[aria-live="assertive"] {
+  border-color: var(--a11y-warning-color);
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+/* ============================================================================
+   Dyslexia-Friendly Typography Options
+   ============================================================================ */
+
+/* Optional dyslexia-friendly font class */
+.dyslexia-friendly {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive, sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.8 !important;
+}
+
+/* Large text mode for visual impairments */
+.large-text {
+  font-size: 1.25em !important;
+  line-height: 1.8 !important;
+}
+
+.large-text h1 { font-size: 2.5em !important; }
+.large-text h2 { font-size: 2.2em !important; }
+.large-text h3 { font-size: 1.8em !important; }
+.large-text h4 { font-size: 1.6em !important; }
+.large-text h5 { font-size: 1.4em !important; }
+.large-text h6 { font-size: 1.25em !important; }
+
+/* ============================================================================
+   Color Blind Friendly Patterns
+   ============================================================================ */
+
+/* Add patterns and textures for status indicators */
+.colorblind-friendly .ies-status,
+.colorblind-friendly .ies-badge,
+.colorblind-friendly .ies-alert {
+  position: relative;
+}
+
+/* Pattern overlays for different states */
+.colorblind-friendly .ies-status.warning::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 6px
+  );
+  pointer-events: none;
+}
+
+.colorblind-friendly .ies-status.error::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.2) 2px,
+    rgba(0, 0, 0, 0.2) 4px
+  );
+  pointer-events: none;
+}
+
+/* ============================================================================
+   Enhanced Interactive Element Accessibility
+   ============================================================================ */
+
+/* Ensure minimum touch target size (44x44px) */
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Exception for inline text links */
+a:not(.btn):not(.ies-card):not(.ies-doc-nav-card) {
+  min-height: auto;
+  min-width: auto;
+  display: inline;
+}
+
+/* Enhanced button states */
+button:disabled,
+.btn:disabled,
+[aria-disabled="true"] {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  border: 2px solid var(--ies-gray) !important;
+}
+
+button:disabled::after,
+.btn:disabled::after,
+[aria-disabled="true"]::after {
+  content: " (disabled)";
+  font-size: 0.875em;
+  color: var(--ies-gray);
+}
+
+/* ============================================================================
+   Data Table Accessibility Enhancements
+   ============================================================================ */
+
+/* Improved table navigation */
+.ies-table th,
+.ies-table td {
+  border: 1px solid var(--ies-light-gray) !important;
+}
+
+/* Table sorting indicators */
+th[aria-sort="ascending"]::after {
+  content: " ▲";
+  color: var(--ies-green-blue);
+}
+
+th[aria-sort="descending"]::after {
+  content: " ▼";
+  color: var(--ies-green-blue);
+}
+
+th[aria-sort="none"]::after {
+  content: " ↕";
+  color: var(--ies-gray);
+  opacity: 0.5;
+}
+
+/* ============================================================================
+   Error and Validation States
+   ============================================================================ */
+
+/* Comprehensive error styling */
+.validation-error {
+  border: 2px solid var(--a11y-error-color) !important;
+  background-color: rgba(217, 48, 37, 0.05) !important;
+  position: relative;
+}
+
+.validation-error::before {
+  content: "⚠️";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--a11y-error-color);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Success states */
+.validation-success {
+  border: 2px solid var(--a11y-success-color) !important;
+  background-color: rgba(15, 157, 88, 0.05) !important;
+}
+
+/* ============================================================================
+   Breadcrumb Accessibility
+   ============================================================================ */
+
+/* Enhanced breadcrumb navigation */
+.ies-breadcrumb {
+  background-color: var(--ies-off-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ies-light-gray);
+}
+
+.ies-breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.ies-breadcrumb li::after {
+  content: " / ";
+  color: var(--ies-gray);
+  margin: 0 var(--spacing-sm);
+  font-weight: normal;
+}
+
+.ies-breadcrumb li:last-child::after {
+  content: "";
+}
+
+.ies-breadcrumb [aria-current="page"] {
+  color: var(--ies-black);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ============================================================================
+   Language and Reading Support
+   ============================================================================ */
+
+/* Language declarations */
+[lang]:not([lang="en"]):not([lang="en-US"]):not([lang="en-GB"])::before {
+  content: "Language: " attr(lang) " ";
+  font-size: 0.75em;
+  color: var(--ies-gray);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Abbreviation and acronym support */
+abbr,
+acronym {
+  border-bottom: 1px dotted var(--ies-green-blue);
+  cursor: help;
+  text-decoration: none;
+}
+
+abbr[title]:hover::after,
+acronym[title]:hover::after {
+  content: " (" attr(title) ")";
+  color: var(--ies-gray);
+  font-size: 0.875em;
+  font-weight: normal;
+}
+
+/* ============================================================================
+   Print Accessibility
+   ============================================================================ */
+
+@media print {
+  /* Ensure sufficient contrast in print */
+  * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  /* Show link URLs in print */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: black;
+  }
+
+  /* Ensure focus indicators are visible in print */
+  :focus {
+    outline: 2px solid black !important;
+  }
+
+  /* Hide decorative elements */
+  .decorative,
+  [role="presentation"] {
+    display: none !important;
+  }
+}
+
+/* ============================================================================
+   Development and Testing Aids
+   ============================================================================ */
+
+/* Accessibility debugging mode */
+.debug-a11y [aria-hidden="true"] {
+  opacity: 0.3 !important;
+  border: 2px dashed orange !important;
+}
+
+.debug-a11y [tabindex="-1"] {
+  outline: 2px dashed red !important;
+}
+
+.debug-a11y [role] {
+  position: relative;
+}
+
+.debug-a11y [role]::before {
+  content: "Role: " attr(role);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: var(--ies-orange);
+  color: white;
+  padding: 2px 6px;
+  font-size: 10px;
+  border-radius: 3px;
+  z-index: 1000;
+}
+
+/* Landmark identification */
+.debug-a11y main::before { content: "MAIN"; }
+.debug-a11y nav::before { content: "NAV"; }
+.debug-a11y aside::before { content: "ASIDE"; }
+.debug-a11y header::before { content: "HEADER"; }
+.debug-a11y footer::before { content: "FOOTER"; }
+.debug-a11y section::before { content: "SECTION"; }
+
+/* ============================================================================
+   Dark Mode Accessibility
+   ============================================================================ */
+
+/* Enhanced dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ies-black: #E5E5E5;
+    --ies-white: #121212;
+    --ies-off-white: #1E1E1E;
+    --ies-light-gray: #404040;
+    --ies-gray: #888888;
+    --a11y-focus-color: #ffd700;
+  }
+
+  /* Ensure sufficient contrast in dark mode */
+  .ies-card,
+  .ies-details,
+  .ies-alert {
+    border: 1px solid var(--ies-light-gray);
+  }
+
+  /* Invert logos and decorative images */
+  .logo,
+  .decorative-image {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+/* ============================================================================
+   Performance and Loading States
+   ============================================================================ */
+
+/* Accessible loading indicators */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: "Loading...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ies-white);
+  color: var(--ies-black);
+  padding: var(--spacing-md);
+  border: 2px solid var(--ies-green-blue);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+/* Loading spinner for screen readers */
+.loading[aria-busy="true"]::before {
+  content: "Content is loading, please wait.";
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ============================================================================
+   Browser-Specific Accessibility Fixes
+   ============================================================================ */
+
+/* Safari VoiceOver improvements */
+@supports (-webkit-appearance: none) {
+  button,
+  .btn {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Firefox screen reader improvements */
+@-moz-document url-prefix() {
+  .ies-details summary {
+    -moz-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Edge/IE improvements */
+@supports (-ms-high-contrast: active) {
+  .ies-card,
+  .ies-details {
+    border: 1px solid WindowText;
+  }
+
+  button,
+  .btn {
+    border: 1px solid ButtonText;
+  }
+}

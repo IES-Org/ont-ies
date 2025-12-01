@@ -4,17 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][keep-change-log]
 and this project adheres to [Semantic Versioning][semver].
 
+## [4.4.0] - 2025-11-29
+1. Added GeoSPARQL extension to Location pattern
+
 ## [4.3.3] - 2025-03-28
 1. Replaced (unresolvable) `sparx:guid` property with `dcterms:identifier`
 
-## [4.3.2] - 2025-03-13
+## [4.3.2] - 2025-02-13
 1. Add missing ies:powertype properties to the ontology
 2. Correct the domain of ies:assessed to ies:Assessment
 
 ## [4.3.1] - 2025-03-03
 1. License change from Apache 2 to MIT
 
-## [4.3.0] - 2024-12-16
+## [4.3.0] - 2024-12-16 Changes resulting from project engagements
 1. Added Stuff and Count pattern, including addition of:
 - Stuff class
 - FiniteClassOfElement class

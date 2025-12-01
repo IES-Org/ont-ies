@@ -1,0 +1,752 @@
+/**
+ * IES Main Stylesheet
+ * Master stylesheet that imports all other stylesheets and provides MkDocs Material integration
+ * Based on Information Exchange Standard website (informationexchangestandard.org)
+ */
+
+/* ============================================================================
+   Import Required Fonts
+   ============================================================================ */
+
+/* Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* JetBrains Mono for code */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* ============================================================================
+   Import IES Stylesheets
+   ============================================================================ */
+
+/* Base styles - must be first */
+@import "base.css";
+
+/* Layout system */
+@import "layout.css";
+
+/* Components */
+@import "components.css";
+
+/* Utilities - must be last for proper cascade */
+@import "utilities.css";
+
+/* ============================================================================
+   MkDocs Material Theme Overrides
+   ============================================================================ */
+
+/* Override Material Design colors with IES brand */
+:root {
+  /* Primary color overrides */
+  --md-primary-fg-color: var(--ies-green-blue);
+  --md-primary-fg-color--light: var(--ies-slate-green);
+  --md-primary-fg-color--dark: var(--ies-black);
+
+  /* Accent color overrides */
+  --md-accent-fg-color: var(--ies-orange);
+  --md-accent-fg-color--transparent: rgba(234, 134, 15, 0.1);
+
+  /* Background colors */
+  --md-default-bg-color: var(--ies-white);
+  --md-default-fg-color: var(--ies-black);
+  --md-code-bg-color: var(--ies-off-white);
+  --md-code-fg-color: var(--ies-black);
+
+  /* Typography overrides */
+  --md-text-font: var(--font-family-primary);
+  --md-code-font: var(--font-family-code);
+
+  /* Link colors */
+  --md-typeset-a-color: var(--ies-light-navy);
+
+  /* Navigation colors */
+  --md-nav-fg-color: var(--ies-black);
+  --md-nav-fg-color--light: var(--ies-gray);
+  --md-nav-fg-color--lighter: var(--ies-light-gray);
+}
+
+/* Header customization */
+.md-header {
+  background-color: var(--ies-white) !important;
+  color: var(--ies-black) !important;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+.md-header__title {
+  color: var(--ies-black) !important;
+  font-weight: 700;
+}
+
+.md-header__button {
+  color: var(--ies-black) !important;
+}
+
+/* Navigation styling */
+.md-nav {
+  font-size: var(--font-size-base);
+}
+
+.md-nav__title {
+  color: var(--ies-green-blue) !important;
+  font-weight: 700;
+}
+
+.md-nav__link {
+  color: var(--ies-black) !important;
+  font-weight: 500;
+}
+
+.md-nav__link--active {
+  color: var(--ies-green-blue) !important;
+  font-weight: 600;
+}
+
+.md-nav__link:hover {
+  color: var(--ies-green-blue) !important;
+}
+
+/* Sidebar navigation */
+.md-sidebar__scrollwrap {
+  background-color: var(--ies-off-white);
+}
+
+/* Content area */
+.md-content {
+  background-color: var(--ies-white);
+}
+
+.md-content__inner {
+  margin: 0 auto;
+  max-width: var(--content-width);
+}
+
+/* Typography adjustments */
+.md-typeset h1 {
+  color: var(--ies-black);
+  font-weight: 700;
+  font-size: var(--font-size-h1);
+}
+
+.md-typeset h2 {
+  color: var(--ies-black);
+  font-weight: 700;
+  font-size: var(--font-size-h2);
+}
+
+.md-typeset h3 {
+  color: var(--ies-green-blue);
+  font-weight: 600;
+  font-size: var(--font-size-h3);
+}
+
+.md-typeset h4 {
+  color: var(--ies-green-blue);
+  font-weight: 600;
+  font-size: var(--font-size-h4);
+}
+
+/* Code blocks */
+.md-typeset pre {
+  background-color: var(--ies-off-white) !important;
+  border: 1px solid var(--ies-light-gray);
+  border-radius: var(--radius-lg);
+}
+
+.md-typeset code {
+  background-color: var(--ies-off-white) !important;
+  color: var(--ies-black) !important;
+  border-radius: var(--radius-sm);
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--ies-light-gray);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--ies-green-blue) !important;
+  color: var(--ies-white) !important;
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: var(--ies-off-white) !important;
+}
+
+/* Admonitions/Alerts */
+.md-typeset .admonition {
+  border-left: 4px solid var(--ies-green-blue);
+  background-color: var(--ies-green-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.md-typeset .admonition.note {
+  border-left-color: var(--ies-green-blue);
+  background-color: var(--ies-green-white);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: var(--ies-orange);
+  background-color: #FEF3C7;
+}
+
+.md-typeset .admonition.danger {
+  border-left-color: #DC2626;
+  background-color: #FEE2E2;
+}
+
+.md-typeset .admonition.success {
+  border-left-color: var(--ies-opal-green);
+  background-color: var(--ies-green-white);
+}
+
+.md-typeset .admonition-title {
+  font-weight: 600;
+  color: var(--ies-black);
+}
+
+/* Buttons and form elements */
+.md-search__form {
+  background-color: var(--ies-white);
+  border-radius: var(--radius-lg);
+}
+
+.md-search__input {
+  background-color: var(--ies-white);
+  color: var(--ies-black);
+}
+
+.md-search__input::placeholder {
+  color: var(--ies-gray);
+}
+
+/* Footer */
+.md-footer {
+  background-color: var(--ies-green-blue) !important;
+  color: var(--ies-white) !important;
+}
+
+.md-footer__link {
+  color: var(--ies-white) !important;
+}
+
+.md-footer__link:hover {
+  color: #C1D5ED !important;
+}
+
+/* ============================================================================
+   Custom IES Components for Documentation
+   ============================================================================ */
+
+/* Feature Cards Grid */
+.ies-feature-grid {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+  margin: var(--spacing-2xl) 0;
+}
+
+@media (min-width: 768px) {
+  .ies-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ies-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Documentation Navigation Cards */
+.ies-doc-nav {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+  margin: var(--spacing-2xl) 0;
+}
+
+@media (min-width: 640px) {
+  .ies-doc-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ies-doc-nav-card {
+  display: block;
+  padding: var(--spacing-xl);
+  background-color: var(--ies-white);
+  border: 2px solid var(--ies-light-gray);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.ies-doc-nav-card:hover {
+  border-color: var(--ies-green-blue);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.ies-doc-nav-card h3 {
+  color: var(--ies-green-blue);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-xl);
+}
+
+.ies-doc-nav-card p {
+  color: var(--ies-black);
+  margin: 0;
+  font-size: var(--font-size-base);
+}
+
+/* Process Flow Component */
+.ies-process-flow {
+  display: grid;
+  gap: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .ies-process-flow {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .ies-process-flow::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: linear-gradient(to right, var(--ies-green-blue), var(--ies-orange));
+    z-index: 1;
+  }
+}
+
+.ies-process-step {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.ies-process-step__number {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--ies-green-blue);
+  color: var(--ies-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+  margin: 0 auto var(--spacing-lg);
+  border: 4px solid var(--ies-white);
+  box-shadow: var(--shadow-md);
+}
+
+.ies-process-step:nth-child(even) .ies-process-step__number {
+  background-color: var(--ies-orange);
+}
+
+.ies-process-step h3 {
+  color: var(--ies-black);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.ies-process-step p {
+  color: var(--ies-gray);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Status Indicators */
+.ies-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ies-status.draft {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.ies-status.review {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+}
+
+.ies-status.approved {
+  background-color: var(--ies-green-white);
+  color: var(--ies-green-blue);
+}
+
+.ies-status.deprecated {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+/* Version Badge */
+.ies-version {
+  display: inline-block;
+  background-color: var(--ies-light-navy);
+  color: var(--ies-white);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-family-code);
+}
+
+/* ============================================================================
+   Documentation-Specific Enhancements
+   ============================================================================ */
+
+/* Table of Contents Styling */
+.md-nav--secondary .md-nav__link {
+  color: var(--ies-gray) !important;
+  font-size: var(--font-size-sm);
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--ies-green-blue) !important;
+  font-weight: 600;
+  border-left: 2px solid var(--ies-orange);
+  padding-left: calc(var(--spacing-lg) - 2px);
+}
+
+/* Search Results */
+.md-search-result__meta {
+  color: var(--ies-gray) !important;
+}
+
+.md-search-result__title {
+  color: var(--ies-black) !important;
+}
+
+.md-search-result__teaser {
+  color: var(--ies-gray) !important;
+}
+
+/* Tabs */
+.md-tabs {
+  background-color: var(--ies-green-blue) !important;
+}
+
+.md-tabs__link {
+  color: var(--ies-white) !important;
+  opacity: 0.8;
+}
+
+.md-tabs__link--active {
+  color: var(--ies-white) !important;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.md-tabs__link:hover {
+  opacity: 1;
+}
+
+/* Breadcrumbs integration */
+.md-typeset .ies-breadcrumb {
+  background-color: var(--ies-off-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-sm);
+}
+
+/* ============================================================================
+   Print Optimizations
+   ============================================================================ */
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer {
+    display: none !important;
+  }
+
+  .md-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .md-content__inner {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .ies-card {
+    border: 1px solid var(--ies-light-gray) !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .ies-details {
+    border: 1px solid var(--ies-light-gray) !important;
+    box-shadow: none !important;
+  }
+
+  .ies-details[open] .ies-details__content {
+    display: block !important;
+  }
+}
+
+/* ============================================================================
+   Dark Mode Support (Material Theme)
+   ============================================================================ */
+
+[data-md-color-scheme="slate"] {
+  --ies-black: #E5E5E5;
+  --ies-white: #1A1A1A;
+  --ies-off-white: #2D2D2D;
+  --ies-light-gray: #404040;
+  --ies-gray: #888888;
+  --ies-green-white: rgba(49, 94, 99, 0.1);
+}
+
+[data-md-color-scheme="slate"] .ies-card {
+  background-color: var(--ies-off-white);
+  color: var(--ies-black);
+}
+
+[data-md-color-scheme="slate"] .ies-details {
+  background-color: var(--ies-off-white);
+  color: var(--ies-black);
+}
+
+[data-md-color-scheme="slate"] .summary-title {
+  color: var(--ies-black);
+}
+
+/* ============================================================================
+   Animation Enhancements
+   ============================================================================ */
+
+/* Scroll-triggered animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-fade-in.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-slide-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-slide-in-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-slide-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-slide-in-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Loading states */
+.ies-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.ies-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ============================================================================
+   Responsive Embeds
+   ============================================================================ */
+
+.ies-embed {
+  position: relative;
+  width: 100%;
+  margin: var(--spacing-xl) 0;
+}
+
+.ies-embed-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.ies-embed-4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+.ies-embed-1x1 {
+  aspect-ratio: 1 / 1;
+}
+
+.ies-embed iframe,
+.ies-embed video,
+.ies-embed embed,
+.ies-embed object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================================
+   Custom Scrollbars
+   ============================================================================ */
+
+/* Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--ies-off-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ies-light-gray);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ies-gray);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ies-light-gray) var(--ies-off-white);
+}
+
+/* ============================================================================
+   Progressive Enhancement
+   ============================================================================ */
+
+/* CSS Grid support detection */
+@supports not (display: grid) {
+  .ies-feature-grid,
+  .ies-doc-nav,
+  .card-grid,
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ies-feature-grid > *,
+  .ies-doc-nav > *,
+  .card-grid > * {
+    flex: 1 1 300px;
+  }
+}
+
+/* Container queries fallback */
+@supports not (container-type: inline-size) {
+  .container-query {
+    /* Fallback layout without container queries */
+  }
+}
+
+/* ============================================================================
+   Development Helpers
+   ============================================================================ */
+
+/* Development mode grid overlay */
+body.debug-grid {
+  background-image:
+    linear-gradient(rgba(234, 134, 15, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 134, 15, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Component boundary indicators */
+.debug-components .ies-card,
+.debug-components .ies-details,
+.debug-components .ies-numbered-list {
+  outline: 2px dashed var(--ies-orange);
+  outline-offset: 2px;
+}
+
+/* Performance debugging */
+.debug-performance * {
+  background-color: rgba(255, 0, 0, 0.1) !important;
+  border: 1px solid red !important;
+}
+
+/* ============================================================================
+   Browser-Specific Fixes
+   ============================================================================ */
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+  .ies-card__image img {
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+}
+
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+  .ies-details summary {
+    cursor: pointer;
+  }
+}
+
+/* Edge-specific fixes */
+@supports (-ms-ime-align: auto) {
+  .grid {
+    display: -ms-grid;
+  }
+}

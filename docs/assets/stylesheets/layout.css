@@ -1,0 +1,791 @@
+/**
+ * IES Layout Styles
+ * Grid systems, containers, and layout utilities based on IES website
+ * Based on Information Exchange Standard website (informationexchangestandard.org)
+ */
+
+/* ============================================================================
+   Container System
+   ============================================================================ */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
+}
+
+.container-sm {
+  max-width: var(--narrow-width);
+}
+
+.container-md {
+  max-width: var(--content-width);
+}
+
+.container-lg {
+  max-width: var(--wide-width);
+}
+
+.container-full {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* WordPress Block Editor Layout Classes */
+.is-layout-constrained {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
+}
+
+.is-layout-constrained.wide {
+  max-width: var(--wide-width);
+}
+
+.alignfull {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.alignwide {
+  max-width: var(--wide-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ============================================================================
+   Flexbox Layout System
+   ============================================================================ */
+
+.is-layout-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* Flex Alignment */
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+/* Flex Grow/Shrink */
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-initial {
+  flex: 0 1 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* ============================================================================
+   WordPress Columns System
+   ============================================================================ */
+
+.wp-block-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.wp-block-column {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Column Responsive Behavior */
+@media (max-width: 781px) {
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+    flex-basis: 100% !important;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 782px) {
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+/* Column Vertical Alignment */
+.wp-block-columns.are-vertically-aligned-top {
+  align-items: flex-start;
+}
+
+.wp-block-columns.are-vertically-aligned-center {
+  align-items: center;
+}
+
+.wp-block-columns.are-vertically-aligned-bottom {
+  align-items: flex-end;
+}
+
+.wp-block-column.is-vertically-aligned-top {
+  align-self: flex-start;
+}
+
+.wp-block-column.is-vertically-aligned-center {
+  align-self: center;
+}
+
+.wp-block-column.is-vertically-aligned-bottom {
+  align-self: flex-end;
+}
+
+.wp-block-column.is-vertically-aligned-stretch {
+  align-self: stretch;
+}
+
+/* ============================================================================
+   CSS Grid System
+   ============================================================================ */
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+
+/* Column Spans */
+.col-span-1 { grid-column: span 1 / span 1; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.col-span-5 { grid-column: span 5 / span 5; }
+.col-span-6 { grid-column: span 6 / span 6; }
+.col-span-full { grid-column: 1 / -1; }
+
+/* Column Start */
+.col-start-1 { grid-column-start: 1; }
+.col-start-2 { grid-column-start: 2; }
+.col-start-3 { grid-column-start: 3; }
+.col-start-4 { grid-column-start: 4; }
+.col-start-5 { grid-column-start: 5; }
+.col-start-6 { grid-column-start: 6; }
+.col-start-7 { grid-column-start: 7; }
+
+/* Grid Gaps */
+.gap-0 { gap: 0; }
+.gap-1 { gap: var(--spacing-xs); }
+.gap-2 { gap: var(--spacing-sm); }
+.gap-3 { gap: var(--spacing-md); }
+.gap-4 { gap: var(--spacing-lg); }
+.gap-6 { gap: var(--spacing-xl); }
+.gap-8 { gap: var(--spacing-2xl); }
+
+/* Responsive Grid Classes */
+@media (min-width: 640px) {
+  .sm\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .sm\:col-span-1 { grid-column: span 1 / span 1; }
+  .sm\:col-span-2 { grid-column: span 2 / span 2; }
+  .sm\:col-span-3 { grid-column: span 3 / span 3; }
+  .sm\:col-span-4 { grid-column: span 4 / span 4; }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .md\:col-span-1 { grid-column: span 1 / span 1; }
+  .md\:col-span-2 { grid-column: span 2 / span 2; }
+  .md\:col-span-3 { grid-column: span 3 / span 3; }
+  .md\:col-span-4 { grid-column: span 4 / span 4; }
+  .md\:col-span-6 { grid-column: span 6 / span 6; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lg\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lg\:col-span-1 { grid-column: span 1 / span 1; }
+  .lg\:col-span-2 { grid-column: span 2 / span 2; }
+  .lg\:col-span-3 { grid-column: span 3 / span 3; }
+  .lg\:col-span-4 { grid-column: span 4 / span 4; }
+  .lg\:col-span-5 { grid-column: span 5 / span 5; }
+  .lg\:col-span-6 { grid-column: span 6 / span 6; }
+  .lg\:col-start-7 { grid-column-start: 7; }
+}
+
+/* ============================================================================
+   Section Layout
+   ============================================================================ */
+
+.section {
+  padding: var(--spacing-5xl) 0;
+}
+
+.section-sm {
+  padding: var(--spacing-3xl) 0;
+}
+
+.section-lg {
+  padding: var(--spacing-6xl) 0;
+}
+
+.section-xl {
+  padding: calc(var(--spacing-6xl) * 1.5) 0;
+}
+
+/* Section Background Variants */
+.section-white {
+  background-color: var(--ies-white);
+}
+
+.section-off-white {
+  background-color: var(--ies-off-white);
+}
+
+.section-green-blue {
+  background-color: var(--ies-green-blue);
+  color: var(--ies-white);
+}
+
+.section-green-white {
+  background-color: var(--ies-green-white);
+}
+
+/* ============================================================================
+   WordPress Block Groups
+   ============================================================================ */
+
+.wp-block-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.wp-block-group.has-background {
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+}
+
+.wp-block-group.alignfull {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  max-width: 100vw;
+}
+
+/* ============================================================================
+   Cover Block Layout
+   ============================================================================ */
+
+.wp-block-cover {
+  position: relative;
+  background-color: var(--ies-green-blue);
+  color: var(--ies-white);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wp-block-cover__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.wp-block-cover__inner-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.wp-block-cover.has-background-dim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(49, 94, 99, 0.5);
+  z-index: 2;
+}
+
+.wp-block-cover.has-background-dim-0::before {
+  opacity: 0;
+}
+
+.wp-block-cover.has-background-dim-50::before {
+  opacity: 0.5;
+}
+
+.wp-block-cover.has-background-dim-100::before {
+  opacity: 1;
+}
+
+/* ============================================================================
+   Mobile-Specific Layout Adaptations
+   ============================================================================ */
+
+.has-mobile-spacing {
+  /* Base class for mobile spacing overrides */
+}
+
+@media (max-width: 767px) {
+  .has-mobile-padding-top {
+    padding-top: var(--mobile-padding-top, var(--spacing-xl)) !important;
+  }
+
+  .has-mobile-padding-right {
+    padding-right: var(--mobile-padding-right, var(--spacing-lg)) !important;
+  }
+
+  .has-mobile-padding-bottom {
+    padding-bottom: var(--mobile-padding-bottom, var(--spacing-xl)) !important;
+  }
+
+  .has-mobile-padding-left {
+    padding-left: var(--mobile-padding-left, var(--spacing-lg)) !important;
+  }
+
+  .has-mobile-margin-top {
+    margin-top: var(--mobile-margin-top, var(--spacing-lg)) !important;
+  }
+
+  .has-mobile-margin-bottom {
+    margin-bottom: var(--mobile-margin-bottom, var(--spacing-lg)) !important;
+  }
+
+  .has-mobile-margin-left {
+    margin-left: var(--mobile-margin-left, var(--spacing-md)) !important;
+  }
+
+  .has-mobile-margin-right {
+    margin-right: var(--mobile-margin-right, var(--spacing-md)) !important;
+  }
+}
+
+/* ============================================================================
+   Stack Layout (Vertical Spacing)
+   ============================================================================ */
+
+.stack > * + * {
+  margin-top: var(--spacing-lg);
+}
+
+.stack-sm > * + * {
+  margin-top: var(--spacing-md);
+}
+
+.stack-lg > * + * {
+  margin-top: var(--spacing-xl);
+}
+
+.stack-xl > * + * {
+  margin-top: var(--spacing-2xl);
+}
+
+/* ============================================================================
+   Cluster Layout (Horizontal/Wrapped)
+   ============================================================================ */
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.cluster-sm {
+  gap: var(--spacing-md);
+}
+
+.cluster-lg {
+  gap: var(--spacing-xl);
+}
+
+.cluster-center {
+  justify-content: center;
+}
+
+.cluster-between {
+  justify-content: space-between;
+}
+
+/* ============================================================================
+   Sidebar Layout
+   ============================================================================ */
+
+.sidebar-layout {
+  display: grid;
+  gap: var(--spacing-2xl);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .sidebar-layout {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .sidebar-layout.sidebar-left {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+.sidebar {
+  background-color: var(--ies-off-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  height: fit-content;
+  position: sticky;
+  top: calc(var(--spacing-4xl) + 60px); /* Account for header height */
+}
+
+.main-content {
+  min-width: 0; /* Prevent overflow */
+}
+
+/* ============================================================================
+   Card Grid Layouts
+   ============================================================================ */
+
+.card-grid {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card-grid-2 {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .card-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card-grid-4 {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================================================
+   Aspect Ratio Containers
+   ============================================================================ */
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-wide {
+  aspect-ratio: 21 / 9;
+}
+
+/* ============================================================================
+   Positioning Utilities
+   ============================================================================ */
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+/* Position Values */
+.top-0 { top: 0; }
+.right-0 { right: 0; }
+.bottom-0 { bottom: 0; }
+.left-0 { left: 0; }
+
+.top-4 { top: var(--spacing-lg); }
+.right-4 { right: var(--spacing-lg); }
+.bottom-4 { bottom: var(--spacing-lg); }
+.left-4 { left: var(--spacing-lg); }
+
+/* Z-Index */
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* ============================================================================
+   Content Width Constraints
+   ============================================================================ */
+
+.prose {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose-sm {
+  max-width: 55ch;
+}
+
+.prose-lg {
+  max-width: 75ch;
+}
+
+.prose-xl {
+  max-width: 85ch;
+}
+
+/* ============================================================================
+   Overflow Utilities
+   ============================================================================ */
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* ============================================================================
+   Responsive Container Queries (Modern CSS)
+   ============================================================================ */
+
+@supports (container-type: inline-size) {
+  .container-query {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 400px) {
+    .cq-sm\:grid-cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @container (min-width: 600px) {
+    .cq-md\:grid-cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ============================================================================
+   Print Layout Adjustments
+   ============================================================================ */
+
+@media print {
+  .sidebar-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .card-grid,
+  .card-grid-2,
+  .card-grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .wp-block-columns {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .ies-header,
+  .ies-footer,
+  .sidebar {
+    display: none;
+  }
+
+  .alignfull {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ============================================================================
+   Layout Debugging (Development Only)
+   ============================================================================ */
+
+.debug-layout * {
+  outline: 1px solid rgba(234, 134, 15, 0.3) !important;
+}
+
+.debug-layout .container {
+  outline: 2px solid var(--ies-orange) !important;
+}
+
+.debug-layout .grid {
+  outline: 2px solid var(--ies-green-blue) !important;
+}
+
+.debug-layout .flex {
+  outline: 2px solid var(--ies-slate-green) !important;
+}
