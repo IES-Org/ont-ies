@@ -1,12 +1,12 @@
-# Extending IES4
+# Extending IES
 
-**Applicable to all minor versions of IES4**
+**Applicable to all minor versions of IES**
 
 Version: 202403v1.0 (derived from "Extending IES4 202403v1.0 O.pdf")
 
 ## Introduction
 
-This document provides guidance on how to extend IES4 for specific local needs.
+This document provides guidance on how to extend IES for specific local needs.
 
 You cannot simply add an orphaned concept into such a formal ontology. The concept must extend an existing concept in IES. We do this by finding the closest, similar concept. This is normally a more generalised concept of the one you seek to add. It is from this concept that we make our extension. 
 
@@ -42,7 +42,7 @@ Then, in our local ontology namespace, we add these new classes using the `rdfs:
 
 ```turtle
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix ont: <http://example.com/local-ontology#> .
 
 ont:PassengerShip rdfs:subClassOf ies:Ship .
@@ -298,7 +298,7 @@ Because of the faceted approach we have taken, our ship instances will now have 
 
 ```turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix ies: <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix ont: <http://example.com/local-ontology#> .
 @prefix data: <http://example.com/local-data#> .
 
@@ -390,7 +390,7 @@ Below is a set of mandatory (**MUST** and **MUST NOT**) rules and recommended (*
 
 ## Best Practices Summary
 
-When extending IES4, follow these best practices:
+When extending IES, follow these best practices:
 
 1. **Always extend from the closest matching IES concept** – Search the ontology thoroughly before creating extensions
 
@@ -414,7 +414,7 @@ When extending IES4, follow these best practices:
 
 - **Version:** 202403v1.0
 - **Status:** stable
-- **Applicable to:** All minor versions of IES4
+- **Applicable to:** All minor versions of IES4 and 5
 - **Related Documents:**
     - Information Exchange Standard r4.3.1
     - IES Examples 202403

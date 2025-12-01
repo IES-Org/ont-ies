@@ -1,12 +1,12 @@
-# Instantiation Patterns in IES4
+# Instantiation Patterns in IES
 
-*Based on version 4.4.0*
+*Based on version 5.0.0*
 
 ---
 
 ## Introduction
 
-Formal ontologies like IES4 are normally designed with very opinionated semantics based on logical and/or philosophical commitments like the [BORO 4D approach](boro-methodology.md) or set theory. This makes them ideal to be used as general-purpose data exchange standards. Consequently, these commitments necessitate additional considerations when mapping equivalent data to IES from representations like the JSON below.
+Formal ontologies like IES are normally designed with very opinionated semantics based on logical and/or philosophical commitments like the [BORO 4D approach](boro-methodology.md) or set theory. This makes them ideal to be used as general-purpose data exchange standards. Consequently, these commitments necessitate additional considerations when mapping equivalent data to IES from representations like the JSON below.
 
 One set of considerations is how things are instantiated. This document explores the most common instantiation patterns and articulates the rules that apply to their use.
 
@@ -62,7 +62,7 @@ ont:CEO rdfs:subClassOf ies:Post .
 
 ### Further Guidance
 
-For more details on creating subclasses against the IES ontology, see [Extending IES4](extending-ies.md).
+For more details on creating subclasses against the IES ontology, see [Extending IES](extending-ies.md).
 
 ---
 
@@ -153,6 +153,6 @@ ont:Brummie a ies:Accent .
 
 ## Additional Resources
 
-- **Extending IES4** - Guidance on creating subclasses and extending the ontology
+- **Extending IES** - Guidance on creating subclasses and extending the ontology
 - **IES Examples** - Worked examples of these patterns in practice
 - **ies.ttl** - The authoritative IES ontology specification

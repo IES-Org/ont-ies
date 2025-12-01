@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][keep-change-log]
 and this project adheres to [Semantic Versioning][semver].
 
+## [5.0.0] - 2025-11-29 Major release
+1. Changed namespace URI to http://informationexchange.org/ont/ies/common/
+
 ## [4.4.0] - 2025-11-29
 1. Added GeoSPARQL extension to Location pattern
 

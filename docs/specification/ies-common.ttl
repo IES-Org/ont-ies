@@ -30,7 +30,7 @@
 @prefix geof:    <http://www.opengis.net/def/function/geosparql/> .
 @prefix sf:      <http://www.opengis.net/ont/sf#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
-@prefix ies:     <http://ies.data.gov.uk/ontology/ies4#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
 
 # Ontology Definition & Metadata
 ies: a owl:Ontology ;
@@ -50,10 +50,10 @@ ies: a owl:Ontology ;
    dcterms:rights "Crown Copyright 2020-2025"@en-GB ;
    dcterms:dateCopyrighted "2025"^^xsd:gYear ;
    vann:preferredNamespacePrefix "ies" ;
-   vann:preferredNamespaceUri "http://ies.data.gov.uk/ontology/ies4#" ;
-   owl:versionInfo "4.4.0" ;
-   owl:versionIRI <http://ies.data.gov.uk/ontology/ies/4.4.0> ;
-   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.3.3> .
+   vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies/common/" ;
+   owl:versionInfo "5.0.0" ;
+   owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.0/> ;
+   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.4.0/> .
 
 
 ies:Accent a rdfs:Class ;
@@ -1967,7 +1967,7 @@ ies:Marriage a rdfs:Class ;
     dcterms:identifier "{9DFEDF24-1203-4341-B282-BD37C1B9CDF5}" ;
     rdfs:comment """An EndToEndActivity covering the entire extent of a two people's marriage (from the ceremony to either divorce or death)
 
-Note: As IES4 does not increase the scope of IES3, Marriage also includes common-law partners and civil partnerships""" ;
+Note: As IES4 & 5 does not increase the scope of IES3, Marriage also includes common-law partners and civil partnerships""" ;
     rdfs:subClassOf ies:EndToEndActivity .
 
 ies:Married a rdfs:Class ;
@@ -2673,7 +2673,7 @@ ies:RadioCoverageArea a rdfs:Class ;
 
 Note: The RadioMast itself may not be part of this area, as often the immediate area around the base of a RadioMast is a deadspot.
 
-Note: Most radio area coverage is complex in shape, and the preferred representation in IES4 is GeoJSON. No attempt is made here to differentiate between signal strength zones. To do this, create multiple RadioCoverAreas for the same RadioMast and label them appropriately. """ ;
+Note: Most radio area coverage is complex in shape, and the preferred representation in IES is GeoJSON. No attempt is made here to differentiate between signal strength zones. To do this, create multiple RadioCoverAreas for the same RadioMast and label them appropriately. """ ;
     rdfs:subClassOf ies:Location .
 
 ies:RadioMast a rdfs:Class ;
@@ -5525,7 +5525,7 @@ ies:attribute a owl:DatatypeProperty ;
     dcterms:identifier "{4A8E5877-32DF-428f-9A60-6AC3D083FFCA}" ;
     rdfs:comment """A feature or property of a Thing.
 
-Note: In IES4 it is important to distinguish between names and attributes - attribute should never be used to identify or name something - for that, use Name or Identifier.""" ;
+Note: In IES it is important to distinguish between names and attributes - attribute should never be used to identify or name something - for that, use Name or Identifier.""" ;
     rdfs:domain ies:Thing .
 
 ies:relationship a owl:ObjectProperty ;

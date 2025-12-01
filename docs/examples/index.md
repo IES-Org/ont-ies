@@ -370,7 +370,7 @@ If you need assistance understanding or adapting these examples:
 
 ## Version Information
 
-**Examples Version:** Based on IES 4.4.0  
+**Examples Version:** Based on IES 5.0.0 
 **Last Updated:** November 2025  
 **Status:** Active development
 

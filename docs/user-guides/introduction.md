@@ -1,6 +1,6 @@
 # Introduction to IES
 
-**Based on version 4.4.0**
+**Based on version 5.0.0**
 
 ---
 
@@ -161,18 +161,18 @@ Some things to note.
 
 | Subject                                 | Predicate | Object |
 |-----------------------------------------|-----------|--------|
-| <http://data.gov.uk/example#Fred>       | <http://data.gov.uk/myOntology#worksFor> | <http://data.gov.uk/example#Acme> . |
-| <http://data.gov.uk/example#Fred>       | <http://data.gov.uk/myOntology#hasName> | “Fred Smith” . |
-| <http://data.gov.uk/example#Acme>       | <http://data.gov.uk/myOntology#inLocation> | <http://data.gov.uk/example#Birmingham> . |
-| <http://data.gov.uk/example#Fred>       | <http://data.gov.uk/myOntology#livesIn> | <http://data.gov.uk/example#Coventry> . |
-| <http://data.gov.uk/example#Coventry>   | <http://data.gov.uk/myOntology#partOf> | <http://data.gov.uk/example#UK> . |
-| <http://data.gov.uk/example#Birmingham> | <http://data.gov.uk/myOntology#partOf> | <http://data.gov.uk/example#UK> . |
+| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#worksFor> | <http://informationexchangestandard.org/example#Acme> . |
+| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#hasName> | “Fred Smith” . |
+| <http://informationexchangestandard.org/example#Acme>       | <http://informationexchangestandard.org/myOntology#inLocation> | <http://informationexchangestandard.org/example#Birmingham> . |
+| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#livesIn> | <http://informationexchangestandard.org/example#Coventry> . |
+| <http://informationexchangestandard.org/example#Coventry>   | <http://informationexchangestandard.org/myOntology#partOf> | <http://informationexchangestandard.org/example#UK> . |
+| <http://informationexchangestandard.org/example#Birmingham> | <http://informationexchangestandard.org/myOntology#partOf> | <http://informationexchangestandard.org/example#UK> . |
 
 We can make this a bit easier to read using namespaces:
 
 ```turtle
-@prefix ont: <http://data.gov.uk/myOntology#> .
-@prefix data: <http://data.gov.uk/example#> .
+@prefix ont: <http://informationexchangestandard.org/myOntology#> .
+@prefix data: <http://informationexchangestandard.org/example#> .
 
 data:Fred ont:worksFor data:Acme .
 data:Fred ont:hasName “Fred Smith” .
@@ -219,12 +219,12 @@ In developing the IES, it was felt that a simple, graphical notation for example
 
 **Namespaces**
 
-|                |               |
-|----------------|---------------|
+|                |      |
+|----------------|------|
 | @prefix rdf:   | <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . |
 | @prefix rdfs:  | <http://www.w3.org/2000/01/rdf-schema#> . |
-| @prefix ies:   | <http://ies.data.gov.uk/ies4#> . |
-| @prefix data: | <http://data.gov.uk/testdata#> . |
+| @prefix ies:   | <http://informationexchangestandard.org/ont/ies/common/> . |
+| @prefix data: | <http://informationexchangestandard.org/testdata#> . |
 
 **KEY:**
 
@@ -245,8 +245,8 @@ In developing the IES, it was felt that a simple, graphical notation for example
 ```turtle
 @prefix         rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix         rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix         ies:                    <http://ies.data.gov.uk/ies4#> .
-@prefix         data:                   <http://data.gov.uk/testdata#> .
+@prefix         ies:                    <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix         data:                   <http://informationexchangestandard.org/testdata#> .
 
 data:john       a                       ies:Person .
 data:joe        a                       ies:Person .
@@ -623,8 +623,8 @@ Notice we've added in the name and NHS number.
 ```turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ies: <http://ies.data.gov.uk/ies4#> .
-@prefix data: <http://data.gov.uk/testdata#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/#> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
 @prefix iso8601: <http://iso.org/iso8601#> .
 
 data:NHS a ies:GovernmentOrganisation .
@@ -686,15 +686,15 @@ data:s2 ies:inLocation data:bed101 .
 ```json
 {
     "@context": { //this is the bit that maps the RDF constructs onto simple JSON keys
-    "@base":"http://data.gov.uk/testdata#",
-    "name": "http://ies.data.gov/ies4#hasName",
+    "@base":"http://informationexchangestandard.org/testdata#",
+    "name": "http://informationexchangestandard.org/ont/ies/common/hasName",
     "iso8601":"http://iso.org/iso8601#",
-    "ies": "http://ies.data.gov/ies4#",
+    "ies": "http://informationexchangestandard.org/ont/ies/common/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "hasStates" : {"@reverse":"http://ies.data.gov/ies4#isStateOf"}, //note reversal of predicate direction !!!
-    "startState" : {"@reverse":"http://ies.data.gov/ies4#isStartOf"},
-    "endState" : {"@reverse":"http://ies.data.gov/ies4#isEndOf"},
-    "hasParticipations" : {"@reverse":"http://ies.data.gov/ies4#isParticipationOf"}
+    "hasStates" : {"@reverse":"http://informationexchangestandard.org/ont/ies/common/isStateOf"}, //note reversal of predicate direction !!!
+    "startState" : {"@reverse":"http://informationexchangestandard.org/ont/ies/common/isStartOf"},
+    "endState" : {"@reverse":"http://informationexchangestandard.org/ont/ies/common/isEndOf"},
+    "hasParticipations" : {"@reverse":"http://informationexchangestandard.org/ont/ies/common/isParticipationOf"}
     },
     "@graph": [
         {

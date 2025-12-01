@@ -9,14 +9,17 @@
 # - stable: Production ready
 # - deprecated: Will be removed in future versions
 
-VERSION=4.4.0-rc1
-LAST_UPDATED=2025-11-05
+VERSION=5.0.0
+LAST_UPDATED=2025-11-29
 STATUS=release\ candidate
 
 # Version number explanation:
 # MAJOR version (1) - Incompatible changes (removing terms, changing IRIs)
 # MINOR version (2) - Backwards-compatible additions (new terms, properties)
 # PATCH version (3) - Backwards-compatible fixes (labels, annotations, documentation)
+
+# Release Notes for 5.0.0
+1. Changed namespace URI to http://informationexchange.org/ont/ies/common/
 
 # Release Notes for 4.4.0
 1. Added GeoSPARQL extension to Location pattern

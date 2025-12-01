@@ -3,7 +3,7 @@ title: IES Model Diagrams
 description: Comprehensive visual documentation of IES concepts, relationships, and patterns
 ---
 
-*Version: 4.4.0*  
+*Version: 5.0.0*  
 *Last Updated: 2025-11-29*
 &copy; Crown Copyright 2020-2025
 
@@ -109,7 +109,7 @@ The IES Specification is supported by a range of documents that provide addition
 
 ## <a id="9bea56ca-2e23-47b6-af37-991f72d7c4dd"></a>Notation
 
-The IES4 model has been developed using the OMG's ontology definition meta-model (ODM) profile for UML. Whilst UML may be somewhat foreign to ontology developers, ODM seemed a reasonable compromise for presenting the model to both data architects and ontologists.
+The IES model has been developed using the OMG's ontology definition meta-model (ODM) profile for UML. Whilst UML may be somewhat foreign to ontology developers, ODM seemed a reasonable compromise for presenting the model to both data architects and ontologists.
 
 **Notes for data modellers**:
 
@@ -661,7 +661,7 @@ There are physically things in the world that are difficult to call out as separ
 `Attributes` are RDF properties (actually, OWL datatype properties), typed by any XML Schema simple datatype, e.g.
 `xsd:string`, `xsd:double`, `xsd:dateTime`, etc. (refer to W3C XML Schema specification for complete list).
 
-`Attributes` are not as widely used in IES4 as in IES3 where they were used for measures, identifiers and names. In IES4
+`Attributes` are not as widely used in IES as in IES3 where they were used for measures, identifiers and names. In IES
 they are only used for categorical statements, e.g. the purpose of a mission, the amount of currency, etc.
 
 ![Attributes Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1A40117E_E6F6_4ae0_A438_8583E896BE00.png)
@@ -682,11 +682,11 @@ they are only used for categorical statements, e.g. the purpose of a mission, th
 
 ## <a id="60cd4a4c-652b-40c9-a65b-321a73329d6e"></a>Source References
 
-The IES3 Source Reference capability is maintained in IES4, but leverages the `Representation` pattern to achieve the same thing. The key relationship here is `hasSourceReference` which links the `Representation` (`Document`, `DataObject`, etc.) to the `Thing` it was the source for.
+The IES3 Source Reference capability is maintained in IES, but leverages the `Representation` pattern to achieve the same thing. The key relationship here is `hasSourceReference` which links the `Representation` (`Document`, `DataObject`, etc.) to the `Thing` it was the source for.
 
 `Representations` can be assembled into structures using the `inRepresentation` relationship.
 
-**Note**: As IES4 is modelled in RDF Schema, the data will be RDF (encoded as TTL, JSON, XML, etc.). Referring to relationships (i.e. triples) in RDF involves using the RDF reification pattern, so if sourceReferenceFor is to relate to an attribute or relationship then RDF reification is the approach that shall be used.
+**Note**: As IES is modelled in RDF Schema, the data will be RDF (encoded as TTL, JSON, XML, etc.). Referring to relationships (i.e. triples) in RDF involves using the RDF reification pattern, so if sourceReferenceFor is to relate to an attribute or relationship then RDF reification is the approach that shall be used.
 
 ![Source References Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_60CD4A4C_652B_40c9_A65B_321A73329D6E.png)
 
@@ -721,7 +721,7 @@ The IES3 Source Reference capability is maintained in IES4, but leverages the `R
 
 ## <a id="17f25b76-6d6d-4d6e-8bc8-f97c1b2dcc0b"></a>Payloads and Groups
 
-IES3 had the concept of an `ExchangePayload` object to which all the `Things` and `Groups` were attached. In reality, there was only ever one payload in a file, so in IES4, whilst the `ExchangePayload` class is kept, it is simply an object in the RDF file to which meta-data about the whole file can be attached. The concept of `GroupOfItems` is retained from
+IES3 had the concept of an `ExchangePayload` object to which all the `Things` and `Groups` were attached. In reality, there was only ever one payload in a file, so in IES, whilst the `ExchangePayload` class is kept, it is simply an object in the RDF file to which meta-data about the whole file can be attached. The concept of `GroupOfItems` is retained from
 IES3.
 
 It is sometimes important to specify the origins (organisation, system, etc.) of certain information. This is achieved using the `originator` and `originatingSystem` which link `rdf:Resources` (i.e. anything) to their origin. These can be applied to `GroupsOfItems` also, but care must be taken not to put the same `Thing` in different `GroupOfItem` instances that have `originator` or `originatingSystem` properties linked to them. If the source of a relationship (triple) has to be specified, the `originator` and `originatingSystem` properties can be applied to `rdf:Statement` (see RDF documentation on reification).
@@ -1008,7 +1008,7 @@ and/or applications. DataObjects might be geoobjects, video files, audio files, 
 
 In IES 3 there was just "Document", but it wasn't clear if this referred to a specific, individual copy of a document, or just the document in general (of which there may be many copies). For example, it wasn't clear if it was "my copy of War & Peace" or just "War and Peace".
 
-This has been rectified in IES4 and "Document" has been replaced by `WorkOfDocumentation` (the general case) and `IndividualDocument` (a particular instance of a document). In the majority of cases, `WorkOfDocumentation` will be used, but where we care about a particular instance (e.g. forensics, evidence, historical interest, etc.) then `IndividualDocument` should be used. The `IndividualDocument` can be related to the `WorkOfDocumentation` it is an instance of using the `aCopyOf` property.
+This has been rectified in IES and "Document" has been replaced by `WorkOfDocumentation` (the general case) and `IndividualDocument` (a particular instance of a document). In the majority of cases, `WorkOfDocumentation` will be used, but where we care about a particular instance (e.g. forensics, evidence, historical interest, etc.) then `IndividualDocument` should be used. The `IndividualDocument` can be related to the `WorkOfDocumentation` it is an instance of using the `aCopyOf` property.
 
 ![Document Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_7A96DA48_8EEF_46d2_9362_C506781AF268.png)
 
@@ -1546,7 +1546,7 @@ An `Event` is an activity or incident involving one or more participants (i.e. `
 
 There are two key types of `EventParticipant` - `Actor` and `ActedUpon`. `Actor` relates a `Person` or `Organisation` to the `Event` they conduct. `ActedUpon` relates an `Entity` to the `Event` that has an effect upon them. These two `EventParticipants` generalise and replace a number of the participants specified in IES 3.x (see the specific `Event` subtypes for examples).
 
-`Locations` of `Events` are handled with more precision in IES4. The `happensIn` relationship can be used to assert the encompassing `Location` for the whole `Event`, e.g. an arrest that takes place in Trafalgar Square. However, some
+`Locations` of `Events` are handled with more precision in IES. The `happensIn` relationship can be used to assert the encompassing `Location` for the whole `Event`, e.g. an arrest that takes place in Trafalgar Square. However, some
 `Locations` merely participate in the `Event`, e.g. departure and destination ports, weapon and target locations in attacks, etc. For this reason, `happensIn` should only be used when the `Event` takes place entirely within the envelope of the `Location`. This precision is necessary for interpreting `Events` in geo systems, timeline visualisations, etc.
 
 ![Events Dear Boy, Events Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_4C6AEF32_6360_4671_82E3_019DF67D2496.png)
@@ -1667,7 +1667,7 @@ The use of the `EventParticipation` pattern allows for the locations of `Observe
 
 ### <a id="c8ee24ef-889d-4e8f-96de-ccbe47d4be4f"></a>Agreement
 
-In IES4, `Agreements` are handled using a pattern of `AgreementStages` that form part of an `EndToEndAgreement`.
+In IES, `Agreements` are handled using a pattern of `AgreementStages` that form part of an `EndToEndAgreement`.
 
 ![Agreement Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C8EE24EF_889D_4e8f_96DE_CCBE47D4BE4F.png)
 
@@ -1705,7 +1705,7 @@ In IES4, `Agreements` are handled using a pattern of `AgreementStages` that form
 
 ### <a id="6eef4705-72ce-4979-90ff-1966940b7c35"></a>Disagreement and War
 
-IES3 listed disagreements and war in the event tables. IES4 has maintained these two concepts, making `War` a specialisation of `Disagreement`. There are two accompanying `EventParticipations` (`inDisagreement` and `atWar`) also.
+IES3 listed disagreements and war in the event tables. IES has maintained these two concepts, making `War` a specialisation of `Disagreement`. There are two accompanying `EventParticipations` (`inDisagreement` and `atWar`) also.
 
 ![Disagreement and War Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6EEF4705_72CE_4979_90FF_1966940B7C35.png)
 
@@ -1770,7 +1770,7 @@ The `BusinessEvent` model is really about `Events` that affect accounts - openin
 
 ### <a id="6780105e-2091-491e-aebf-c68e03b0074e"></a>Attendance
 
-The attendance model in IES4 introduces some new concepts form IES3 - `Meeting` and `CheckIn`. These events
+The attendance model in IES introduces some new concepts form IES3 - `Meeting` and `CheckIn`. These events
 weren't explicitly called out in IES3 - being colocated doesn't necessarily mean people are meeting.
 
 ![Attendance Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6780105E_2091_491e_AEBF_C68E03B0074E.png)
@@ -1857,7 +1857,7 @@ In the example shown, Fred calls Brenda (we know they were both on the call). We
 
 `LifecycleEvents` cover the creation, modification and destruction of things.
 
-Some of the roles originally in IES3 have been simplified in IES4 (see table at the bottom of the diagram).
+Some of the roles originally in IES3 have been simplified in IES (see table at the bottom of the diagram).
 
 ![Lifecycle Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_8DB48415_57E7_47d8_A6EE_97AD59CCA8B9.png)
 
@@ -1963,7 +1963,7 @@ Some of the roles originally in IES3 have been simplified in IES4 (see table at 
 
 ### <a id="460b1d00-10cb-4f93-a518-f2a96af54cf7"></a>Law Enforcement
 
-In IES3, law enforcement came under `OperationalEvent`, but has been separated out for IES4.
+In IES3, law enforcement came under `OperationalEvent`, but has been separated out for IES.
 
 ![Law Enforcement Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_460B1D00_10CB_4f93_A518_F2A96AF54CF7.png)
 
@@ -2129,7 +2129,7 @@ In IES3, law enforcement came under `OperationalEvent`, but has been separated o
 
 ### <a id="41f61d94-0e76-4f81-a005-ae93346db054"></a>Movement
 
-The Travel model in IES4 is based on that from IES3, but combines the concepts on `TravelService` and Travel into one model. As a result of this merging, the model can appear somewhat daunting, but is really made up of four basic concepts:
+The Travel model in IES is based on that from IES3, but combines the concepts on `TravelService` and Travel into one model. As a result of this merging, the model can appear somewhat daunting, but is really made up of four basic concepts:
 
 - `Movement`: an event where one or more `Entities` move from one `Location` to another. Pretty much everything about this is optional; we may not know what moved, where it started or where it ended.
 - `Moving`: the state of an `Entity` when it is moving (relative to some reference). This can be (and usually will be) part of a `Movement` event (when we want to say more about the other participants). However, it can be used on its own, as the state of an `Entity` just to say we knew the `Entity` moved.
@@ -2268,7 +2268,7 @@ The diagram below shows all the immediate subtypes of `Event`.
 
 ### <a id="c6937856-2424-4e96-bfe1-8ca3611869d1"></a>Familial
 
-Most of the familial relationships from IES3 end up being relationships in IES4 - in fact the blood relations end up being between whole-life `Person` entities as the relationship lasts for life. The one exception is `Marriage` which has been modelled as an `EndToEndActivity` due to its temporal nature and the fact that the "relationship" is bidirectional.
+Most of the familial relationships from IES3 end up being relationships in IES - in fact the blood relations end up being between whole-life `Person` entities as the relationship lasts for life. The one exception is `Marriage` which has been modelled as an `EndToEndActivity` due to its temporal nature and the fact that the "relationship" is bidirectional.
 
 ![Familial Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C6937856_2424_4e96_BFE1_8CA3611869D1.png)
 
@@ -2331,7 +2331,7 @@ General concepts are often the things of interest (e.g. football, finance, anima
 
 ### <a id="9e3102fc-46dc-4363-b0b4-d0ea7275d05d"></a>Lifecycle Relationships
 
-All of the `LifecycleEvent` relationships from IES3 end up being `EventParticipants` in IES4.
+All of the `LifecycleEvent` relationships from IES3 end up being `EventParticipants` in IES.
 
 ![Lifecycle Relationships Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_9E3102FC_46DC_4363_B0B4_D0EA7275D05D.png)
 
@@ -2353,7 +2353,7 @@ All of the `LifecycleEvent` relationships from IES3 end up being `EventParticipa
 
 ### <a id="9d1812ff-691f-4847-b79c-9136091d93e0"></a>Mutual Understanding
 
-All of the Mutual Understanding relationships from IES3 end up being EventParticipants in IES4.
+All of the Mutual Understanding relationships from IES3 end up being EventParticipants in IES.
 
 ![Mutual Understanding Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_9D1812FF_691F_4847_B79C_9136091D93E0.png)
 
@@ -2533,7 +2533,7 @@ these are used.
 
 ### <a id="20bf4e8f-9683-4bf4-b59c-f7f2ab2fb8f3"></a>Topological
 
-As with the Structural Relationships, Topological Relationships are handled differently in IES4 due to the criteria of identity (space and time - if "two things" occupy precisely the same space for the same period of time, they are the same thing and only one instance should be created).
+As with the Structural Relationships, Topological Relationships are handled differently in IES due to the criteria of identity (space and time - if "two things" occupy precisely the same space for the same period of time, they are the same thing and only one instance should be created).
 
 - "Equal to" is a case in point. Here, there should be just one location with multiple identifiers. Note that the
   examples in IES3 are not always exactly the same extent, so sometimes, these would be `isPartOf` relationships
@@ -2835,7 +2835,7 @@ Note - we may not know the identity of the person, so would just create only the
 ### <a id="4a8e5877-32df-428f-9a60-6ac3d083ffca"></a>attribute
 A feature or property of a Thing.
 
-Note: In IES4 it is important to distinguish between names and attributes - attribute should never be used to identify or name something - for that, use Name or Identifier.
+Note: In IES it is important to distinguish between names and attributes - attribute should never be used to identify or name something - for that, use Name or Identifier.
 
 ### <a id="89953404-8a71-46ef-8f7b-90c12ee286fd"></a>AtWar
 An <a href="#F12D45EA-66D5-4016-BDF7-E1CD8F48CCF5"><font color="#0000ff"><u>InDisagreement</u></font></a> where the parties have declared war
@@ -4157,7 +4157,7 @@ Note this is the actual area, not the map grid.
 ### <a id="9dfedf24-1203-4341-b282-bd37c1b9cdf5"></a>Marriage
 An <a href="#A88ABE99-1D6C-4843-A2E4-7531626D3859"><font color="#0000ff"><u>EndToEndActivity</u></font></a> covering the entire extent of a two people's marriage (from the ceremony to either divorce or death)
 
-Note: As IES4 does not increase the scope of IES3, <a href="#9DFEDF24-1203-4341-B282-BD37C1B9CDF5"><font color="#0000ff"><u>Marriage</u></font></a> also includes common-law partners and civil partnerships
+Note: As IES does not increase the scope of IES3, <a href="#9DFEDF24-1203-4341-B282-BD37C1B9CDF5"><font color="#0000ff"><u>Marriage</u></font></a> also includes common-law partners and civil partnerships
 
 ### <a id="d03a0d8b-79f5-4901-97bc-2767fd46cd5f"></a>Married
 A <a href="#47301D66-CBD5-4d10-9481-B66966A3F3A2"><font color="#0000ff"><u>State</u></font></a> when a <a href="#5D5C5B9B-5E90-4100-8353-8EE9F3D772E2"><font color="#0000ff"><u>Person</u></font></a> is married to another person
@@ -4698,7 +4698,7 @@ A <a href="#E1A494ED-D493-44ab-8BF9-ABC6889D4D9A"><font color="#0000ff"><u>Locat
 
 Note: The RadioMast itself may not be part of this area, as often the immediate area around the base of a RadioMast is a deadspot. 
 
-Note: Most radio area coverage is complex in shape, and the preferred representation in IES4 is <a href="#417C1F4E-6A5D-4631-B275-8E982252791A"><font color="#0000ff"><u>GeoJSON</u></font></a>. No attempt is made here to differentiate between signal strength zones. To do this, create multople RadioCoverAreas for the same RadioMast and label them appropriately. 
+Note: Most radio area coverage is complex in shape, and the preferred representation in IES is <a href="#417C1F4E-6A5D-4631-B275-8E982252791A"><font color="#0000ff"><u>GeoJSON</u></font></a>. No attempt is made here to differentiate between signal strength zones. To do this, create multople RadioCoverAreas for the same RadioMast and label them appropriately. 
 
 ### <a id="f02cff55-12a7-4308-9a60-e2353de5be58"></a>RadioMast
 An <a href="#115F2F9B-21F3-4903-8EAA-AB3AEFE97461"><font color="#0000ff"><u>Device</u></font></a> that is placed in a Location to provide either a link from a wired to wireless connection, or to relay between two wireless endpoints.
