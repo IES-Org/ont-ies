@@ -234,12 +234,12 @@ A `Representation` that documents or describes a `Thing`. Can be a physical docu
 
 For more detailed explanations of these concepts, see:
 
-- [Introduction to IES](user-guides/introduction.md) - Overview of IES purpose and philosophy
-- [What is an Ontology?](user-guides/what-is-an-ontology.md) - Fundamental ontology concepts
-- [4D Ontology Approach](user-guides/4d-ontology.md) - Understanding the four-dimensional approach
-- [BORO Methodology](user-guides/boro-methodology.md) - The BORO method and extent-based identity
-- [IES Specification](specification/) - Complete technical specification
+- [Introduction to IES](user-guides/introduction.md) — Overview of IES purpose and philosophy
+- [What is an Ontology?](user-guides/what-is-an-ontology.md) — Fundamental ontology concepts
+- [4D Ontology Approach](user-guides/4d-ontology.md) — Understanding the four-dimensional approach
+- [BORO Methodology](user-guides/boro-methodology.md) — The BORO method and extent-based identity
+- [IES Specification](specification/) — Complete technical specification
 
 ---
 
-*© Crown Copyright 2020-2025*
+*© Crown Copyright 2020-2026*
