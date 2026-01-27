@@ -1,0 +1,212 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
+@prefix iso8601: <http://iso.org/iso8601#> .
+
+# =============================================================================
+# Network Evolution Example - Networks That Change Over Time
+# =============================================================================
+# This example demonstrates how networks can evolve using the IES 4D approach.
+# The network changes over three years:
+#   2023: Network X consists of only Link A-B (Nodes A and B at each end)
+#   2024: Link A-B gains intermediate Node C (split into Link A-C and C-B)
+#   2025: New Link C-D is added, connecting to new Node D
+#
+# The key insight is that whole-life entities persist, but their States change.
+# The isSeriesPartOf relationship indicates sequential decomposition of a Link.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Time Periods
+# -----------------------------------------------------------------------------
+
+iso8601:2023 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2023"^^xsd:string .
+
+iso8601:2024 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:string .
+
+iso8601:2025 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025"^^xsd:string .
+
+# -----------------------------------------------------------------------------
+# Whole-life Entities
+# -----------------------------------------------------------------------------
+# These are the entities that persist through time. Their properties at
+# specific times are captured in States.
+
+data:NetworkX a ies:Network ;
+    rdfs:label "Network X"@en .
+
+data:LinkAB a ies:Link ;
+    rdfs:label "Link A-B"@en .
+
+data:NodeA a ies:Node ;
+    rdfs:label "Node A"@en .
+
+data:NodeB a ies:Node ;
+    rdfs:label "Node B"@en .
+
+data:NodeC a ies:Node ;
+    rdfs:label "Node C"@en .
+
+data:NodeD a ies:Node ;
+    rdfs:label "Node D"@en .
+
+data:LinkAC a ies:Link ;
+    rdfs:label "Link A-C"@en .
+
+data:LinkCB a ies:Link ;
+    rdfs:label "Link C-B"@en .
+
+data:LinkCD a ies:Link ;
+    rdfs:label "Link C-D"@en .
+
+# -----------------------------------------------------------------------------
+# 2023 State: Network X contains only Link A-B
+# -----------------------------------------------------------------------------
+# In 2023, the network is simple: one link between nodes A and B.
+
+data:NetworkX_2023 a ies:State ;
+    rdfs:label "Network X in 2023"@en ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2023 .
+
+data:LinkAB_2023 a ies:State ;
+    rdfs:label "Link A-B in 2023"@en ;
+    ies:isStateOf data:LinkAB ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 ;
+    ies:hasEnd data:NodeA_2023 ;
+    ies:hasEnd data:NodeB_2023 .
+
+data:NodeA_2023 a ies:State ;
+    rdfs:label "Node A in 2023"@en ;
+    ies:isStateOf data:NodeA ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 .
+
+data:NodeB_2023 a ies:State ;
+    rdfs:label "Node B in 2023"@en ;
+    ies:isStateOf data:NodeB ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 .
+
+# -----------------------------------------------------------------------------
+# 2024 State: Link A-B now has intermediate Node C
+# -----------------------------------------------------------------------------
+# An intermediate node has been added, splitting the original link into two
+# series parts. Link A-C and Link C-B are both series parts of Link A-B.
+
+data:NetworkX_2024 a ies:State ;
+    rdfs:label "Network X in 2024"@en ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2024 .
+
+data:LinkAB_2024 a ies:State ;
+    rdfs:label "Link A-B in 2024"@en ;
+    rdfs:comment "Now decomposed into Link A-C and Link C-B."@en ;
+    ies:isStateOf data:LinkAB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:LinkAC_2024 a ies:State ;
+    rdfs:label "Link A-C in 2024"@en ;
+    ies:isStateOf data:LinkAC ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isSeriesPartOf data:LinkAB_2024 ;
+    ies:hasEnd data:NodeA_2024 ;
+    ies:hasEnd data:NodeC_2024 .
+
+data:LinkCB_2024 a ies:State ;
+    rdfs:label "Link C-B in 2024"@en ;
+    ies:isStateOf data:LinkCB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isSeriesPartOf data:LinkAB_2024 ;
+    ies:hasEnd data:NodeC_2024 ;
+    ies:hasEnd data:NodeB_2024 .
+
+data:NodeA_2024 a ies:State ;
+    rdfs:label "Node A in 2024"@en ;
+    ies:isStateOf data:NodeA ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:NodeB_2024 a ies:State ;
+    rdfs:label "Node B in 2024"@en ;
+    ies:isStateOf data:NodeB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:NodeC_2024 a ies:State ;
+    rdfs:label "Node C in 2024"@en ;
+    rdfs:comment "New intermediate node added in 2024."@en ;
+    ies:isStateOf data:NodeC ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+# -----------------------------------------------------------------------------
+# 2025 State: New Link C-D added
+# -----------------------------------------------------------------------------
+# A new branch has been added from Node C to new Node D.
+
+data:NetworkX_2025 a ies:State ;
+    rdfs:label "Network X in 2025"@en ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2025 .
+
+data:LinkCD_2025 a ies:State ;
+    rdfs:label "Link C-D in 2025"@en ;
+    rdfs:comment "New link added in 2025."@en ;
+    ies:isStateOf data:LinkCD ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 ;
+    ies:hasEnd data:NodeC_2025 ;
+    ies:hasEnd data:NodeD_2025 .
+
+data:NodeC_2025 a ies:State ;
+    rdfs:label "Node C in 2025"@en ;
+    ies:isStateOf data:NodeC ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 .
+
+data:NodeD_2025 a ies:State ;
+    rdfs:label "Node D in 2025"@en ;
+    rdfs:comment "New node added in 2025."@en ;
+    ies:isStateOf data:NodeD ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 .
+
+# =============================================================================
+# SPARQL Query Examples
+# =============================================================================
+#
+# Find the composition of a link at a specific time:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   PREFIX iso8601: <http://iso.org/iso8601#>
+#   SELECT ?part ?partLabel
+#   WHERE {
+#       ?linkState ies:isStateOf data:LinkAB ;
+#                  ies:inPeriod iso8601:2024 .
+#       ?part ies:isSeriesPartOf ?linkState .
+#       ?part rdfs:label ?partLabel .
+#   }
+#
+# Find all nodes in the network at a specific time:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   PREFIX iso8601: <http://iso.org/iso8601#>
+#   SELECT ?node ?nodeLabel
+#   WHERE {
+#       ?networkState ies:isStateOf data:NetworkX ;
+#                     ies:inPeriod iso8601:2024 .
+#       ?nodeState ies:isPartOf ?networkState ;
+#                  ies:isStateOf ?node .
+#       ?node a ies:Node ;
+#             rdfs:label ?nodeLabel .
+#   }
+#
+# =============================================================================

@@ -1,0 +1,139 @@
+# Capacity Pattern Example: Water Distribution Point
+# This example demonstrates a car park with multiple capacities:
+# normal use as a car park, and emergency use as a water distribution point.
+
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:      <http://example.com/ontology#> .
+@prefix data:    <http://example.com/data#> .
+
+# ============================================================================
+# Domain-Specific Capacity Taxonomy
+# ============================================================================
+
+ex:HoldParkedVehicles a ies:Capacity ;
+    rdfs:label "Hold Parked Vehicles"@en-gb ;
+    rdfs:comment "The capacity to operate as a car park."@en-gb .
+
+ex:DistributePotableWater a ies:Capacity ;
+    rdfs:label "Distribute Potable Water"@en-gb ;
+    rdfs:comment "The capacity to serve as a distribution point for potable water."@en-gb .
+
+ex:AssessLocationsForEmergencyPlanning a ies:Capacity ;
+    rdfs:label "Assess Locations for Emergency Planning"@en-gb ;
+    rdfs:comment "The capacity to conduct emergency planning assessments."@en-gb .
+
+# ============================================================================
+# The Location and Its Capacities
+# ============================================================================
+
+data:SandownCarPark a ies:Location ;
+    rdfs:label "Sandown Town Centre Car Park"@en-gb ;
+    rdfs:comment "A car park normally used for vehicle parking, but assessed as suitable for emergency water distribution"@en-gb ;
+    ies:hasCapacity ex:HoldParkedVehicles ;
+    ies:hasCapacity ex:DistributePotableWater .
+
+# ============================================================================
+# The Organisation That Conducts Assessments
+# ============================================================================
+
+data:AcmeLtd a ies:Organisation ;
+    rdfs:label "Acme Ltd"@en-gb ;
+    rdfs:comment "A company that carries out emergency planning assessments"@en-gb ;
+    ies:hasCapacity ex:AssessLocationsForEmergencyPlanning .
+
+# ============================================================================
+# The Emergency Planning Assessment
+# ============================================================================
+
+data:WaterDistributionAssessment a ies:Assessment ;
+    rdfs:label "Water Distribution Point Assessment"@en-gb ;
+    rdfs:comment "An assessment of the car park as a potential water distribution point"@en-gb ;
+    ies:assessed data:CarParkAsWaterPoint .
+
+data:WaterAssessmentStart a ies:BoundingState ;
+    rdfs:label "Start of water distribution assessment"@en-gb ;
+    ies:isStartOf data:WaterDistributionAssessment ;
+    ies:inPeriod data:Period20240101 .
+
+data:WaterAssessmentEnd a ies:BoundingState ;
+    rdfs:label "End of water distribution assessment"@en-gb ;
+    ies:isEndOf data:WaterDistributionAssessment ;
+    ies:inPeriod data:Period20240131 .
+
+data:Period20240101 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-01T12:00:00Z"^^xsd:string .
+
+data:Period20240131 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-31T12:00:00Z"^^xsd:string .
+
+# A State of Acme Ltd performing the assessment
+data:AcmeAssessingWaterPoint a ies:Assessor, ex:AssessLocationsForEmergencyPlanning ;
+    rdfs:label "Acme Ltd assessing water distribution point"@en-gb ;
+    ies:isParticipationOf data:AcmeLtd ;
+    ies:isParticipantIn data:WaterDistributionAssessment .
+
+# ============================================================================
+# Normal Operations: Car Park (2024)
+# ============================================================================
+
+data:CarParkOperation a ies:Event ;
+    rdfs:label "Car Park Operation"@en-gb ;
+    rdfs:comment "Sandown Town Centre Car Park operating normally"@en-gb .
+
+data:CarParkOperationStart a ies:BoundingState ;
+    rdfs:label "Start of car park operation"@en-gb ;
+    ies:isStartOf data:CarParkOperation ;
+    ies:inPeriod data:Period20240101T1200 .
+
+data:CarParkOperationEnd a ies:BoundingState ;
+    rdfs:label "End of car park operation"@en-gb ;
+    ies:isEndOf data:CarParkOperation ;
+    ies:inPeriod data:Period20241231T1200 .
+
+data:Period20240101T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-01T12:00:00"^^xsd:string .
+
+data:Period20241231T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-12-31T12:00:00"^^xsd:string .
+
+# A State of the car park operating normally
+data:CarParkNormalOperation a ies:EventParticipant, ex:HoldParkedVehicles ;
+    rdfs:label "Sandown Car Park as vehicle parking"@en-gb ;
+    rdfs:comment "The car park operating in its normal capacity"@en-gb ;
+    ies:isParticipationOf data:SandownCarPark ;
+    ies:isParticipantIn data:CarParkOperation .
+
+# ============================================================================
+# Emergency Activation: Water Distribution Point (January 2025)
+# Following severe flooding that interrupted mains water supplies
+# ============================================================================
+
+data:WaterDistributionOperation a ies:Event ;
+    rdfs:label "Water Distribution Point Operation"@en-gb ;
+    rdfs:comment "Sandown Car Park operating as an emergency water distribution point for displaced persons"@en-gb .
+
+data:WaterDistributionStart a ies:BoundingState ;
+    rdfs:label "Start of water distribution operation"@en-gb ;
+    ies:isStartOf data:WaterDistributionOperation ;
+    ies:inPeriod data:Period20250101T1200 .
+
+data:WaterDistributionEnd a ies:BoundingState ;
+    rdfs:label "End of water distribution operation"@en-gb ;
+    ies:isEndOf data:WaterDistributionOperation ;
+    ies:inPeriod data:Period20250131T1200 .
+
+data:Period20250101T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025-01-01T12:00:00"^^xsd:string .
+
+data:Period20250131T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025-01-31T12:00:00"^^xsd:string .
+
+# A State of the car park actually distributing water
+data:CarParkAsWaterPoint a ies:EventParticipant, ex:DistributePotableWater ;
+    rdfs:label "Sandown Car Park as water distribution point"@en-gb ;
+    rdfs:comment "The car park operating as an emergency water distribution point"@en-gb ;
+    ies:isParticipationOf data:SandownCarPark ;
+    ies:isParticipantIn data:WaterDistributionOperation .

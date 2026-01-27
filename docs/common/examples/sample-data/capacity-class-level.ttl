@@ -1,0 +1,67 @@
+# Capacity Pattern Example: Class-Level Capacities with eachHasCapacity
+# This example demonstrates using eachHasCapacity to assert that all instances
+# of a class have a particular Capacity, versus hasCapacity for specific instances.
+
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:      <http://example.com/ontology#> .
+@prefix data:    <http://example.com/data#> .
+
+# ============================================================================
+# Domain-Specific Capacity Taxonomy
+# ============================================================================
+
+ex:HouseEmergencyVehicles a ies:Capacity ;
+    rdfs:label "House Emergency Vehicles"@en-gb ;
+    rdfs:comment "The capacity to house and deploy emergency vehicles."@en-gb .
+
+ex:ProvideFirstAid a ies:Capacity ;
+    rdfs:label "Provide First Aid"@en-gb ;
+    rdfs:comment "The capacity to provide first aid treatment."@en-gb .
+
+ex:ShelterDisplacedPersons a ies:Capacity ;
+    rdfs:label "Shelter Displaced Persons"@en-gb ;
+    rdfs:comment "The capacity to provide emergency shelter for displaced persons."@en-gb .
+
+# ============================================================================
+# Class-Level Capacity: All Fire Stations can house emergency vehicles
+# Using eachHasCapacity to assert this for ALL instances of the class
+# ============================================================================
+
+ex:FireStation rdfs:subClassOf ies:Location ;
+    rdfs:label "Fire Station"@en-gb ;
+    rdfs:comment "A facility for housing firefighting equipment and personnel."@en-gb ;
+    ies:eachHasCapacity ex:HouseEmergencyVehicles ;
+    ies:eachHasCapacity ex:ProvideFirstAid .
+
+# ============================================================================
+# Specific Instances: Individual fire stations inherit class-level capacities
+# but can also have additional instance-specific capacities
+# ============================================================================
+
+data:PortsmouthCentralFireStation a ex:FireStation ;
+    rdfs:label "Portsmouth Central Fire Station"@en-gb ;
+    rdfs:comment "Main fire station serving Portsmouth city centre."@en-gb .
+    # Note: This instance automatically has HouseEmergencyVehicles and ProvideFirstAid
+    # capacities via eachHasCapacity on ex:FireStation
+
+data:SouthseaFireStation a ex:FireStation ;
+    rdfs:label "Southsea Fire Station"@en-gb ;
+    rdfs:comment "Fire station serving the Southsea area."@en-gb ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .
+    # This specific station has an ADDITIONAL capacity to shelter displaced persons
+    # (perhaps it has extra space or has been designated for this purpose)
+
+# ============================================================================
+# Contrast: A community hall with only instance-level capacities
+# This Location does NOT have class-level capacities
+# ============================================================================
+
+data:SandownCommunityHall a ies:Location ;
+    rdfs:label "Sandown Community Hall"@en-gb ;
+    rdfs:comment "Community sports and events venue in Sandown."@en-gb ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .
+    # This specific building has been assessed as having shelter capacity
+    # but NOT all Locations have this - it's instance-specific

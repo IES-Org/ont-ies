@@ -1,0 +1,100 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ont: <http://informationexchangestandard.org/testontology#> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
+
+# =============================================================================
+# Network Example - Basic Highway Network
+# =============================================================================
+# This example demonstrates the IES Network pattern using a simple highway
+# network. A Network consists of Links (road sections) and Nodes (junctions).
+# Each Link has Nodes at its ends, connected via the hasEnd relationship.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Domain-specific extension classes
+# -----------------------------------------------------------------------------
+# These extend the core IES classes for the highway domain.
+# In practice, these would be defined in a domain-specific ontology.
+
+ont:HighwayNetwork rdfs:subClassOf ies:Network ;
+    rdfs:label "Highway Network"@en ;
+    rdfs:comment "A network of roads and road junctions forming part of the highway system."@en .
+
+ont:Road rdfs:subClassOf ies:Link ;
+    rdfs:label "Road"@en ;
+    rdfs:comment "A road section that enables traffic flow between its ends."@en .
+
+ont:RoadJunction rdfs:subClassOf ies:Node ;
+    rdfs:label "Road Junction"@en ;
+    rdfs:comment "A junction where multiple roads meet."@en .
+
+# -----------------------------------------------------------------------------
+# The Network
+# -----------------------------------------------------------------------------
+
+data:NetworkN a ont:HighwayNetwork ;
+    rdfs:label "Highway Network N"@en ;
+    rdfs:comment "A small portion of the UK highway network."@en .
+
+# -----------------------------------------------------------------------------
+# The Node (Junction)
+# -----------------------------------------------------------------------------
+# A Node is at the end of one or more Links. This junction has three roads
+# meeting at it.
+
+data:NodeN7 a ont:RoadJunction ;
+    rdfs:label "Junction N-7"@en ;
+    rdfs:comment "A road junction where three road sections meet."@en ;
+    ies:isPartOf data:NetworkN .
+
+# -----------------------------------------------------------------------------
+# The Links (Road Sections)
+# -----------------------------------------------------------------------------
+# Each Link has the junction as one of its ends. The hasEnd relationship
+# indicates that the Node is at an end of the Link.
+
+data:LinkL1 a ont:Road ;
+    rdfs:label "Road L-1"@en ;
+    rdfs:comment "A road section with one end at Junction N-7."@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+
+data:LinkL2 a ont:Road ;
+    rdfs:label "Road L-2"@en ;
+    rdfs:comment "A road section with one end at Junction N-7."@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+
+data:LinkL3 a ont:Road ;
+    rdfs:label "Road L-3"@en ;
+    rdfs:comment "A road section with one end at Junction N-7."@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+
+# =============================================================================
+# SPARQL Query Examples
+# =============================================================================
+#
+# Find all links that share a common node (i.e., roads meeting at a junction):
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   SELECT ?link1 ?link2 ?node
+#   WHERE {
+#       ?link1 ies:hasEnd ?node .
+#       ?link2 ies:hasEnd ?node .
+#       FILTER(?link1 != ?link2)
+#   }
+#
+# Find all elements in a network:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   SELECT ?element ?type
+#   WHERE {
+#       ?element ies:isPartOf data:NetworkN .
+#       ?element a ?type .
+#   }
+#
+# =============================================================================
