@@ -3747,7 +3747,7 @@ ies: a owl:Ontology ;
     dcterms:type "IES Common Ontology"@en-GB ;
     vann:preferredNamespacePrefix "ies" ;
     vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies#" ;
-    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.1.0-rc1> ;
+    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.0.0> ;
     owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.1.0-rc2> ;
     owl:versionInfo "5.1.0-rc2" .
 

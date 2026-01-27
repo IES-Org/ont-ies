@@ -44,7 +44,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:rights "Crown Copyright 2020-2026"@en-GB ;
     dcterms:title "IES Common Ontology"@en-GB ;
     dcterms:type "IES Common Ontology"@en-GB ;
-    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.1.0-rc1> ;
+    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.0.0> ;
     owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.1.0-rc2> ;
     owl:versionInfo "5.1.0-rc2" ;
     vann:preferredNamespacePrefix "ies" ;

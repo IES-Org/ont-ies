@@ -1113,7 +1113,7 @@ Note: there is usually no need for states here as the Cookie itself has begin an
     <vann:preferredNamespaceUri>http://informationexchangestandard.org/ont/ies#</vann:preferredNamespaceUri>
     <owl:versionInfo>5.1.0-rc2</owl:versionInfo>
     <owl:versionIRI rdf:resource="http://informationexchangestandard.org/ont/ies/5.1.0-rc2"/>
-    <owl:priorVersion rdf:resource="http://informationexchangestandard.org/ont/ies/5.1.0-rc1"/>
+    <owl:priorVersion rdf:resource="http://informationexchangestandard.org/ont/ies/5.0.0"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://informationexchangestandard.org/ont/ies/common/DatabaseItem">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>

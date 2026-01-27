@@ -1123,7 +1123,7 @@
     ],
     "http://www.w3.org/2002/07/owl#priorVersion": [
       {
-        "@id": "http://informationexchangestandard.org/ont/ies/5.1.0-rc1"
+        "@id": "http://informationexchangestandard.org/ont/ies/5.0.0"
       }
     ],
     "http://www.w3.org/2002/07/owl#versionIRI": [
