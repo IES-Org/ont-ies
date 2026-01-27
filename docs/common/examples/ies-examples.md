@@ -1,6 +1,6 @@
 # IES Examples
 
-**Based on version 5.0.0**
+**Based on version 5.1.0**
 
 This document provides a collection of worked examples demonstrating how to model various scenarios using the Information Exchange Standard (IES). Each example includes both a visual diagram and the corresponding RDF triples in Turtle syntax.
 
@@ -15,6 +15,8 @@ This document provides a collection of worked examples demonstrating how to mode
 7. [SMS Message](#7-sms-message)
 8. [Voice Call](#8-voice-call)
 9. [Movement](#9-movement)
+10. [Networks](#10-networks)
+11. [Capacity](#11-capacity)
 
 ---
 
@@ -588,30 +590,487 @@ This pattern allows for tracking of any moving entity through space and time, wi
 
 ---
 
+## 10. Networks
+
+### Overview
+
+An Element is classified as a **Network** if it is useful to record a decomposition into interconnected Elements. A Network consists of one or more **Links** and **Nodes**. A Link is an Element which is, or enables, a Flow between its ends. A Node is what exists at the end of a Link — it can be at the end of more than one Link.
+
+This pattern is widely applicable: road networks, utility networks (water, electricity, gas), communication networks, and logistics networks can all be modelled using these concepts. The Network pattern provides a higher-level abstraction that complements the more detailed Connection and Connector patterns documented elsewhere in IES.
+
+### Key Concepts
+
+**Network** - An Element consisting of one or more Links and Nodes. A Network can contain sub-Networks, and the same Link or Node can be part of multiple Networks.
+
+**Link** - An Element which is, or enables, a Flow between its ends. A Link can be an Entity (such as a road section) or an Event (such as a distribution activity). Links can enable Flow in either direction (bidirectional) or just one direction (using `hasStartEnd` and `hasFinishEnd`).
+
+**Node** - What exists at the end of a Link. A Node can be at the end of more than one Link, enabling the representation of junctions, interchanges, or branch points.
+
+### Diagram
+
+![Networks Diagram](../assets/images/diagrams/rendered/example-network.png)
+
+**Key:**
+- N: `ies:Network`
+- L: `ies:Link`
+- Nd: `ies:Node`
+- R: `ont:Road` (extension class)
+- RJ: `ont:RoadJunction` (extension class)
+- HN: `ont:HighwayNetwork` (extension class)
+
+### Description
+
+The example models a small portion of the UK highway network centred on a road junction. Three road sections (Links) meet at a common junction (Node). The specific domain classes (HighwayNetwork, Road, RoadJunction) are defined as extensions to the core IES Network, Link, and Node classes.
+
+The diagram shows:
+
+- A Highway Network that is a type of Network
+- Three Roads (L-1, L-2, L-3) that are types of Link
+- One Road Junction (N-7) that is a type of Node
+- Each Link has Node N-7 at one of its ends via the `hasEnd` relationship
+- All Links and the Node are part of the Network via `ies:isPartOf`
+
+This pattern allows queries such as "which roads meet at this junction?" or "what is the extent of this network?" to be answered directly from the data.
+
+### RDF Triples
+
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ont: <http://example.com/local-ontology#> .
+@prefix data: <http://example.com/local-data#> .
+
+# Domain-specific extensions
+ont:HighwayNetwork rdfs:subClassOf ies:Network ;
+    rdfs:label "Highway Network"@en ;
+    rdfs:comment "A network of roads and road junctions."@en .
+
+ont:Road rdfs:subClassOf ies:Link ;
+    rdfs:label "Road"@en ;
+    rdfs:comment "A road section that enables traffic flow between its ends."@en .
+
+ont:RoadJunction rdfs:subClassOf ies:Node ;
+    rdfs:label "Road Junction"@en ;
+    rdfs:comment "A junction where multiple roads meet."@en .
+
+# The highway network
+data:NetworkN a ont:HighwayNetwork ;
+    rdfs:label "Highway Network N"@en .
+
+# The road junction (Node)
+data:NodeN7 a ont:RoadJunction ;
+    rdfs:label "Junction N-7"@en ;
+    ies:isPartOf data:NetworkN .
+
+# Road sections (Links) with ends at the junction
+data:LinkL1 a ont:Road ;
+    rdfs:label "Road L-1"@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+
+data:LinkL2 a ont:Road ;
+    rdfs:label "Road L-2"@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+
+data:LinkL3 a ont:Road ;
+    rdfs:label "Road L-3"@en ;
+    ies:hasEnd data:NodeN7 ;
+    ies:isPartOf data:NetworkN .
+```
+
+---
+
+### 10.1 Networks That Change Over Time
+
+Networks change through time and space: new Links may be added, existing Links may gain intermediate Nodes, or Links may be decommissioned. The 4D approach in IES handles this elegantly by using States to represent the Network, Links, and Nodes at different periods of time.
+
+### Diagram
+
+![Network Evolution Diagram](../assets/images/diagrams/rendered/example-network-evolution.png)
+
+**Key:**
+- N: `ies:Network`
+- L: `ies:Link`
+- Nd: `ies:Node`
+- S: `ies:State`
+- PP: `ies:ParticularPeriod`
+
+### Description
+
+This example shows Network X evolving over three years:
+
+- **2023**: Network X consists of only Link A-B with Nodes A and B at each end
+- **2024**: Link A-B gains an intermediate Node C, effectively splitting into Link A-C and Link C-B (both series parts of the original Link A-B)
+- **2025**: A new Link C-D is added to the network, connecting Node C to new Node D
+
+The key insight is that the whole-life entities (Network X, Link A-B, Node A, etc.) persist through time, but their States change. The `isSeriesPartOf` relationship indicates that Link A-C and Link C-B together comprise the whole of Link A-B during the 2024-2025 period.
+
+### RDF Triples
+
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix data: <http://example.com/local-data#> .
+@prefix iso8601: <http://iso.org/iso8601#> .
+
+# Time periods
+iso8601:2023 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2023"^^xsd:string .
+
+iso8601:2024 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:string .
+
+iso8601:2025 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025"^^xsd:string .
+
+# Whole-life entities
+data:NetworkX a ies:Network .
+data:LinkAB a ies:Link .
+data:NodeA a ies:Node .
+data:NodeB a ies:Node .
+data:NodeC a ies:Node .
+data:NodeD a ies:Node .
+data:LinkAC a ies:Link .
+data:LinkCB a ies:Link .
+data:LinkCD a ies:Link .
+
+# 2023 state: Network X contains only Link A-B
+data:NetworkX_2023 a ies:State ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2023 .
+
+data:LinkAB_2023 a ies:State ;
+    ies:isStateOf data:LinkAB ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 ;
+    ies:hasEnd data:NodeA_2023 ;
+    ies:hasEnd data:NodeB_2023 .
+
+data:NodeA_2023 a ies:State ;
+    ies:isStateOf data:NodeA ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 .
+
+data:NodeB_2023 a ies:State ;
+    ies:isStateOf data:NodeB ;
+    ies:inPeriod iso8601:2023 ;
+    ies:isPartOf data:NetworkX_2023 .
+
+# 2024 state: Link A-B now has intermediate Node C
+data:NetworkX_2024 a ies:State ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2024 .
+
+data:LinkAB_2024 a ies:State ;
+    ies:isStateOf data:LinkAB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:LinkAC_2024 a ies:State ;
+    ies:isStateOf data:LinkAC ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isSeriesPartOf data:LinkAB_2024 ;
+    ies:hasEnd data:NodeA_2024 ;
+    ies:hasEnd data:NodeC_2024 .
+
+data:LinkCB_2024 a ies:State ;
+    ies:isStateOf data:LinkCB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isSeriesPartOf data:LinkAB_2024 ;
+    ies:hasEnd data:NodeC_2024 ;
+    ies:hasEnd data:NodeB_2024 .
+
+data:NodeA_2024 a ies:State ;
+    ies:isStateOf data:NodeA ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:NodeB_2024 a ies:State ;
+    ies:isStateOf data:NodeB ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+data:NodeC_2024 a ies:State ;
+    ies:isStateOf data:NodeC ;
+    ies:inPeriod iso8601:2024 ;
+    ies:isPartOf data:NetworkX_2024 .
+
+# 2025 state: New Link C-D added
+data:NetworkX_2025 a ies:State ;
+    ies:isStateOf data:NetworkX ;
+    ies:inPeriod iso8601:2025 .
+
+data:LinkCD_2025 a ies:State ;
+    ies:isStateOf data:LinkCD ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 ;
+    ies:hasEnd data:NodeC_2025 ;
+    ies:hasEnd data:NodeD_2025 .
+
+data:NodeC_2025 a ies:State ;
+    ies:isStateOf data:NodeC ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 .
+
+data:NodeD_2025 a ies:State ;
+    ies:isStateOf data:NodeD ;
+    ies:inPeriod iso8601:2025 ;
+    ies:isPartOf data:NetworkX_2025 .
+```
+
+---
+
+### 10.2 Network View of a Road Junction
+
+A Network provides a simplified, topological view that complements more detailed physical descriptions. This example shows how a T-junction can be represented both as a Network (with Links and Nodes) and in terms of the physical road sections that meet there.
+
+### Diagram
+
+![Network View of Road Junction Diagram](../assets/images/diagrams/rendered/example-network-junction.png)
+
+**Key:**
+- N: `ies:Network`
+- L: `ies:Link`
+- Nd: `ies:Node`
+- TJ: `ont:TeeJunction` (extension class)
+- RS: `ont:RoadSection` (extension class)
+
+### Description
+
+The A3055 runs north-south, with B3399 joining from the east at a T-junction. The Network view shows:
+
+- The junction itself as a Node
+- Three road sections as Links: A3055 north of the junction, A3055 south of the junction, and B3399 east of the junction
+- Each Link has the junction Node at one end
+
+This simplified view is sufficient for routing algorithms and connectivity analysis. More detailed information (such as the physical extent of each road, turn restrictions, or traffic flow directions) can be modelled using Connections and additional properties.
+
+### RDF Triples
+
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ont: <http://example.com/local-ontology#> .
+@prefix data: <http://example.com/local-data#> .
+
+# Extension classes
+ont:TeeJunction rdfs:subClassOf ies:Node ;
+    rdfs:label "Tee Junction"@en ;
+    rdfs:comment "A T-shaped road junction where one road joins another."@en .
+
+ont:RoadSection rdfs:subClassOf ies:Link ;
+    rdfs:label "Road Section"@en ;
+    rdfs:comment "A section of road between junctions."@en .
+
+ont:HighwayNetwork rdfs:subClassOf ies:Network .
+
+# The network
+data:IoWHighwayNetwork a ont:HighwayNetwork ;
+    rdfs:label "Isle of Wight Highway Network"@en .
+
+# The T-junction
+data:A3055_B3399_Junction a ont:TeeJunction ;
+    rdfs:label "A3055 to B3399 Junction"@en ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+# Road sections
+data:A3055_North a ont:RoadSection ;
+    rdfs:label "A3055 north of B3399"@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+data:A3055_South a ont:RoadSection ;
+    rdfs:label "A3055 south of B3399"@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+data:B3399_East a ont:RoadSection ;
+    rdfs:label "B3399 east of A3055"@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+```
+
+---
+
+## 11. Capacity
+
+### Overview
+
+A **Capacity** is a `ClassOfState` where all the members share the same Capacity that enables them (or is necessary at least in part) to perform some function as a participant in an `Event`.
+
+The key insight is that a Capacity represents what an Element *can* do, whether or not it has ever actually done it. An aircraft capable of Mach 2 has that Capacity even if it has never flown that fast.
+
+The `hasCapacity` relationship asserts that an Element can have a particular Capacity. This "has a" pattern is more intuitive than the older "is a" approach using `DispositionalClass` and `Capability`, though both remain valid in IES.
+
+### Key Concepts
+
+**Capacity** - A ClassOfState where members share the same potential to perform some function. Domain applications define their own Capacity taxonomies (e.g., "Shelter Displaced Persons", "Distribute Potable Water").
+
+**hasCapacity** - The relationship linking an Element to a Capacity it possesses. This is a "has a" relationship expressing potential, not actuality.
+
+**Using a Capacity** - When an Element actually employs its Capacity, this is modelled as a State (typed as an `EventParticipant` and as a member of the Capacity class) participating in an Event.
+
+### hasCapacity vs eachHasCapacity
+
+IES provides two properties for asserting Capacities:
+
+| Property | Scope | Use Case |
+|----------|-------|----------|
+| `hasCapacity` | Instance-level | "This specific building can shelter people" |
+| `eachHasCapacity` | Class-level | "All fire stations can house emergency vehicles" |
+
+**hasCapacity** asserts that a *specific Element* can have a particular Capacity. Use this when the Capacity applies to an individual instance.
+
+**eachHasCapacity** asserts that *all instances* of an Element (typically a class) can have a particular State. Use this when the Capacity is inherent to every member of a class.
+```turtle
+# Class-level: ALL fire stations can house emergency vehicles
+ex:FireStation rdfs:subClassOf ies:Location ;
+    ies:eachHasCapacity ex:HouseEmergencyVehicles .
+
+# Instance-level: THIS specific hall can shelter people
+data:SandownCommunityHall a ies:Location ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .
+
+# A specific fire station inherits class capacities AND can have additional ones
+data:SouthseaFireStation a ex:FireStation ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .  # Additional instance-specific capacity
+```
+
+The `eachHasCapacity` relationship is particularly useful when defining domain ontologies where certain types of facilities or assets always have particular capabilities by their nature.
+
+### Relationship to Existing Patterns
+
+IES has existing concepts for modelling capabilities through `DispositionalClass`, `Capability`, and `Tendency`. The Capacity pattern provides an alternative approach:
+
+- The existing `DispositionalClass` pattern is **retained for backwards compatibility**
+- The new `Capacity` pattern is **additive and non-breaking**
+- Implementers may choose whichever pattern better fits their data and use cases
+
+### Description
+
+The example shows a community hall (Sandown Community Hall) that has been assessed as having two Capacities:
+
+1. **Operate as Recreational Space** — its normal function
+2. **Shelter Displaced Persons** — an emergency function
+
+The scenario illustrates:
+
+- The Location with its declared Capacities via `hasCapacity`
+- An Assessment event where an organisation (Acme Ltd) evaluates the building's suitability
+- A period of normal operation as a recreational space (2024)
+- A period of emergency activation as a shelter (January 2025)
+
+Each operational period is modelled as an Event with a State of the Location participating. The State is dual-typed as both an `EventParticipant` and as a member of the relevant Capacity class.
+
+### RDF Triples
+
+```turtle
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:      <http://example.com/ontology#> .
+@prefix data:    <http://example.com/data#> .
+
+# Domain-specific Capacity instances
+ex:OperateAsRecreationalSpace a ies:Capacity ;
+    rdfs:label "Operate as Recreational Space"@en-gb .
+
+ex:ShelterDisplacedPersons a ies:Capacity ;
+    rdfs:label "Shelter Displaced Persons"@en-gb .
+
+# The Location with its Capacities
+data:SandownCommunityHall a ies:Location ;
+    rdfs:label "Sandown Community Hall"@en-gb ;
+    ies:hasCapacity ex:OperateAsRecreationalSpace ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .
+
+# Normal operation as recreational space (2024)
+data:RecreationalOperation a ies:Event ;
+    rdfs:label "Recreational Space Operation"@en-gb .
+
+data:RecreationalStart a ies:BoundingState ;
+    ies:isStartOf data:RecreationalOperation ;
+    ies:inPeriod [ a ies:ParticularPeriod ;
+                   ies:iso8601PeriodRepresentation "2024-01-01T12:00:00"^^xsd:string ] .
+
+data:RecreationalEnd a ies:BoundingState ;
+    ies:isEndOf data:RecreationalOperation ;
+    ies:inPeriod [ a ies:ParticularPeriod ;
+                   ies:iso8601PeriodRepresentation "2024-12-31T12:00:00"^^xsd:string ] .
+
+data:HallAsRecreationalSpace a ies:EventParticipant, ex:OperateAsRecreationalSpace ;
+    ies:isParticipationOf data:SandownCommunityHall ;
+    ies:isParticipantIn data:RecreationalOperation .
+
+# Emergency activation as shelter (January 2025)
+data:EmergencyShelterOperation a ies:Event ;
+    rdfs:label "Emergency Shelter Operation"@en-gb .
+
+data:ShelterStart a ies:BoundingState ;
+    ies:isStartOf data:EmergencyShelterOperation ;
+    ies:inPeriod [ a ies:ParticularPeriod ;
+                   ies:iso8601PeriodRepresentation "2025-01-01T12:00:00"^^xsd:string ] .
+
+data:ShelterEnd a ies:BoundingState ;
+    ies:isEndOf data:EmergencyShelterOperation ;
+    ies:inPeriod [ a ies:ParticularPeriod ;
+                   ies:iso8601PeriodRepresentation "2025-01-31T12:00:00"^^xsd:string ] .
+
+data:HallAsShelter a ies:EventParticipant, ex:ShelterDisplacedPersons ;
+    ies:isParticipationOf data:SandownCommunityHall ;
+    ies:isParticipantIn data:EmergencyShelterOperation .
+```
+
+### Pattern Summary for Capacity
+
+The Capacity pattern provides:
+
+- A clear way to express what an Element *can* do (potential)
+- Separation between having a Capacity and using it (actuality)
+- Support for assessments of Capacities
+- Temporal tracking of when Capacities are activated
+- A foundation for domain-specific Capacity taxonomies
+
+**Corresponds to:** [Capacity User Guide](../user-guides/capacity.md)
+
+---
+
 ## Pattern Summary
 
 These examples demonstrate several key IES patterns:
 
 ### Event Participation Pattern
-Used in meetings, communications, and observations. Entities participate in events through EventParticipant states.
+Used in [meetings](#1-a-meeting), [communications](#8-voice-call), and [observations](#2-observations-of-a-moving-aircraft). Entities participate in events through EventParticipant states.
 
 ### Part-Whole Pattern
-Demonstrated in the SIM card swap example, showing how parts can move between wholes over time through states.
+Demonstrated in the [SIM card swap example](#4-sim-card-swap-in-a-mobile-handset), showing how parts can move between wholes over time through states.
 
 ### Assessment Pattern
 Shows how subjective judgements are made by actors about states and entities, with proper temporal tracking.
 
 ### Replaceable Part Pattern
-Illustrated by organisational posts, where different entities can fulfil the same role over time.
+Illustrated by [organisational posts](#6-posts-of-organisations), where different entities can fulfil the same role over time.
 
 ### Movement Pattern
-Tracks entities through space and time using participant states at known locations and times.
+Tracks entities through space and time using participant states at known locations and times. See [Movement](#9-movement)
 
 ### Communication Pattern
-Models bi-directional communications (calls, messages) as composed events with sender/caller and recipient/callee parts.
+Models bi-directional communications (calls, messages) as composed events with sender/caller and recipient/callee parts. See also [SMS Message](#7-sms-message) and [Voice Call](#8-voice-call).
 
 ### Representation and Identification Pattern
-Shows how entities are identified and represented through names, identifiers, and other representations.
+Shows how entities are identified and represented through names, identifiers, and other representations. See [Representations of an Address](#3-representations-of-an-address)
+
+### Network Pattern
+[Networks](#10-networks) models interconnected systems as graphs of Links and Nodes, with support for temporal evolution and levels of detail.
+
+### Capacity Pattern
+Models what Elements can do (potential) separately from what they are actually doing (actuality), with support for domain-specific [Capacity](#11-capacity) taxonomies.
 
 ---
 
@@ -626,4 +1085,4 @@ When implementing IES in your systems:
 5. **Use consistent identifiers** appropriate to your naming schemes
 6. **Document your extensions** clearly for other implementers
 
-These examples are based on IES version 4.2.0. Always refer to the current IES specification for the most up-to-date class definitions and properties.
+These examples are based on IES version 5.1.0. Always refer to the current IES specification for the most up-to-date class definitions and properties.

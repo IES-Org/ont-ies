@@ -32,6 +32,24 @@ A class or category of `Elements`. ClassOfElement allows IES to model types and 
 ### ClassOfEntity
 A subclass of `ClassOfElement` specifically for categorising `Entities`. Used with the `ies:powertype` relationship to create type hierarchies.
 
+### Connection
+An `Element` that enables one or more `Flows` between two or more other `Elements`. A Flow can be of a fluid (such as water or natural gas), of energy (such as heat or electricity), of signal conveying information, of discrete entities (such as people, goods on pallets, or vehicles), or of mechanical load. See also [Connection user guide](user-guides/networks/connection.md).
+
+### ConnectionSide
+An `Element` that is a part of a `Connection` and part of an `Element` that is the source or destination of a flow through the Connection. A ConnectionSide can be all or part of a `Connector`.
+
+### Connector
+An `Element` that is, or is intended to, enable a `Connection` by being part of another `Element`. A Connector can exist without being part of another Element, and can be part of another Element without also being part of a Connection.
+
+### Contained
+An `Element` that is a part of a `Containment` and that is confined, protected, or handled. See also [Containment user guide](user-guides/networks/containment.md).
+
+### Container
+An `Element` that is, or is intended to, confine, protect or enable the handling of one or more `Contained` elements. A Container can exist without having a Contained element.
+
+### Containment
+An `Element` that confines, protects, or enables the handling of one or more `Contents`. See also [Containment user guide](user-guides/networks/containment.md).
+
 ### Continuous State
 A `State` with a single, uninterrupted temporal extent. Contrasts with `DiscontinuousState`.
 
@@ -48,6 +66,9 @@ A `Characteristic` describing an `Element`'s capability or tendency to do someth
 ---
 
 ## E
+
+### eachHasCapacity
+A relationship that asserts that all instances of an Element can have a particular instance of a State. Use `eachHasCapacity` for class-level capability assertions (e.g., "all fire stations can house emergency vehicles") versus `hasCapacity` for instance-level assertions. See [Capacity](user-guides/capacity.md).
 
 ### Element
 Anything with spatio-temporal extent—things that occupy space and time. The fundamental class in IES from which `Entity`, `State`, `Event`, and `PeriodOfTime` all descend. Informally: "things you can kick."
@@ -74,6 +95,18 @@ The "size" or "reach" of a thing. For physical things (`Elements`), extent is sp
 
 ## F
 
+### Flow
+A `State` that is the matter, energy or signal that crosses a surface or passes along a path. Flows can be connected together to form a `Network`. A Flow can also be called a 'stream'. See also [Flow user guide](user-guides/networks/flow.md).
+
+### FlowAcrossSurface
+A `Flow` that is across a surface. FlowAcrossSurface instances can serve as the start or finish boundaries of a `FlowAlongPath`.
+
+### FlowAlongPath
+A `Flow` that is along a path. A FlowAlongPath has start and finish boundaries that are `FlowAcrossSurface` instances.
+
+### FlowNode
+A `State` and a `Node` that is at the end of one or more `Flows`. Flows can merge or divide at a FlowNode.
+
 ### Four-Dimensional (4D) Ontology
 An ontological approach that treats time the same way as space. Things exist as four-dimensional objects with three spatial dimensions and one temporal dimension. Changes to things are modelled as different temporal parts (States) of those things.
 
@@ -98,6 +131,13 @@ An international standard for lifecycle data sharing in the oil and gas industry
 
 ---
 
+## L
+
+### Link
+An `Element` that is, or enables, a `Flow` between the ends. A Link can be bi-directional, or uni-directional with a start end and a finish end. The ends of a Link can change during its life. Links connect `Nodes` in a `Network`. See also [Network user guide](user-guides/networks/network.md).
+
+---
+
 ## M
 
 ### Measure
@@ -115,6 +155,12 @@ A `Representation` used to refer to a `Thing`. Unlike identifiers, names need no
 
 ### Naming Scheme
 A classification system for `Names` and `Identifiers`, often associated with a particular `Organisation` or `System`. For example, "National Insurance Number" is a naming scheme owned by the UK Department for Work and Pensions.
+
+### Network
+An `Element` that consists of `Links` and `Nodes`. A Network can consist of roads, railways, pipelines, `Flows` of energy or matter, or transport services conveying people or goods. A Network can change over time as Links or Nodes are added or removed. See also [Network user guide](user-guides/networks/network.md).
+
+### Node
+An `Element` that exists at the end of one or more `Links`. A Node is all or part of the `Connector` at the end of a Link, and can be a `Connection`. A Node can be at the end of different Links during its life. See also [Network user guide](user-guides/networks/network.md).
 
 ---
 
@@ -234,12 +280,13 @@ A `Representation` that documents or describes a `Thing`. Can be a physical docu
 
 For more detailed explanations of these concepts, see:
 
-- [Introduction to IES](user-guides/introduction.md) — Overview of IES purpose and philosophy
-- [What is an Ontology?](user-guides/what-is-an-ontology.md) — Fundamental ontology concepts
-- [4D Ontology Approach](user-guides/4d-ontology.md) — Understanding the four-dimensional approach
-- [BORO Methodology](user-guides/boro-methodology.md) — The BORO method and extent-based identity
-- [IES Specification](specification/) — Complete technical specification
+- [Introduction to IES](user-guides/introduction.md) - Overview of IES purpose and philosophy
+- [What is an Ontology?](user-guides/what-is-an-ontology.md) - Fundamental ontology concepts
+- [4D Ontology Approach](user-guides/4d-ontology.md) - Understanding the four-dimensional approach
+- [BORO Methodology](user-guides/boro-methodology.md) - The BORO method and extent-based identity
+- [Networks Overview](user-guides/networks/index.md) - Guide to network-related concepts
+- [IES Specification](specification/) - Complete technical specification
 
 ---
 
-*© Crown Copyright 2020-2026*
+*© Crown Copyright 2020-2025*

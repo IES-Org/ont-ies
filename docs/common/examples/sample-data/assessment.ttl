@@ -1,5 +1,5 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix ies: http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
 @prefix data: <http://informationexchangestandard.org/testdata#> .
 
 data:Scenario1 a ies:PossibleWorld .
@@ -53,4 +53,3 @@ data:S3Assessment ies:assessed data:Scenario3 ;
 data:S3Assessor ies:isParticipantIn data:S3Assessment ;
   ies:isParticipationOf data:Vladimir ;
   a ies:Assessor .
-  

@@ -3,9 +3,9 @@ title: IES Model Diagrams
 description: Comprehensive visual documentation of IES concepts, relationships, and patterns
 ---
 
-*Version: 5.0.0*  
-*Last Updated: 2025-11-29*
-&copy; Crown Copyright 2020-2025
+*Version: 5.1.0*  
+*Last Updated: 2026-01-09*
+&copy; Crown Copyright 2020-2026
 
 # The Information Exchange Standard (IES) Model Specification
 
@@ -37,6 +37,7 @@ The standard is modelled as an RDF Schema, RDF being the UK Government preferred
     * [Disposition](#c9919009-48a5-4db1-8123-90396a6f3ad0)
     * [Replaceable Parts](#6c923e0c-455b-46bb-b498-2a47aa1a8de3)
     * [Stuff and Count](#5b7a4e68-4f12-48d2-ae62-d359e4cba907)
+    * [Networks and Flows](#43178de2-a5d1-4b5f-af43-7939be236999)
     * [Attributes](#1a40117e-e6f6-4ae0-a438-8583e896be00)
     * [Source References](#60cd4a4c-652b-40c9-a65b-321a73329d6e)
     * [Payloads and Groups](#17f25b76-6d6d-4d6e-8bc8-f97c1b2dcc0b)
@@ -154,7 +155,7 @@ Basic background reading on how to use RDF is the book "Semantic Web for the Wor
 
 ### <a id="f2b6cfa8-1b10-4cb8-af0d-ffaf0a28c247"></a>Model Change Log
 
-The IES model has evolved over time. See the [CHANGELOG](../../CHANGELOG.md) for details of changes made in each version.
+The IES model has evolved over time. See the [CHANGELOG](https://github.com/IES-Org/ies-common/blob/main/CHANGELOG.md) for details of changes made in each version.
 
 ## <a id="e169a2f5-85cb-41a7-a8b5-5bfac5330ab5"></a>IES Overview
 
@@ -651,6 +652,41 @@ There are physically things in the world that are difficult to call out as separ
 * [attribute](#4a8e5877-32df-428f-9a60-6ac3d083ffca)
 * [finiteMembershipCount](#ff3ddc24-010c-4cd2-bf97-7464eaf45317)
 * [FiniteClassOfElement](#06bac6f4-f6b2-4be1-95c5-8e31c34796cb)
+
+---
+
+## <a id="43178de2-a5d1-4b5f-af43-7939be236999"></a>Networks and Flows
+
+The `Network` pattern provides a general framework for modelling interconnected systems where `Elements` are linked together to enable or represent `Flows` of matter, energy, signals, or discrete entities. `Networks` are composed of `Links` and `Nodes` — `Links` connect `Nodes`, and `Nodes` exist at the ends of `Links`. This pattern applies equally to physical infrastructure (roads, railways, pipelines), logical networks (communication systems, supply chains), and abstract representations of flow (traffic streams, energy distribution).
+
+A key distinction is made between the `Network` infrastructure itself and the `Flows` that may pass through it. A `Flow` is a `State` of matter, energy, or a signal crossing a surface or passing along a path. `Flows` can themselves be connected to form a network of flows, with `FlowNodes` representing points where flows merge or divide.
+
+The pattern also includes `Connection` and `Containment` concepts. A `Connection` enables one or more flows between elements, with `Connectors` being the parts of elements designed to participate in `Connections`. `Containment` models the relationship where one element confines, protects, or enables the handling of another.
+
+![Networks and Flows Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_70CF0200-A718-4BB9-8966-85F226057209.png)
+
+### IES elements in this diagram:
+
+* [Flow](#45b593fc-2335-48d1-98dd-d887d3d56d0d)
+* [FlowAcrossSurface](#423eedb0-f0a3-4eae-abd6-46b0f65b755b
+* [FlowAlongPath](#bf895c5a-c3a3-45ee-995b-fb89c13700c8
+* [FlowNode](#9ed957fa-fa66-4a37-9b76-acc9f82384c4
+* [isStartBoundaryOf](#55f8794e-25d7-49ae-92cb-b2494dc7d649
+* [isFinishBoundaryOf](#07fe1419-1915-4f59-a776-4fb230da2e68
+* [Connection](#999cf6c3-aa65-4109-9fc4-5e5c8ecec4a7
+* [ConnectionSide](#cc20f8f7-ebfc-4897-ad94-568e8b3f9e99)
+* [Connector](#41b78dbf-188f-4d64-a7cb-948c99e20061
+* [Containment](#4c4b80f3-ac42-4c15-a15c-987e0bfbe404)
+* [Contained](#b9c215e3-c8b3-4d6a-90b0-b650f2965f07
+* [Container](#d38509cd-1d01-465c-8468-2f55295633cd
+* [Network](#9144a435-2cf4-4e0d-9089-ffae1bd219c7
+* [Link](#440da92b-a183-4cd4-9912-0e02ef15ff64)
+* [Node](#2eeed67b-723d-480d-a610-dfcbb081cede)
+* [hasEnd](#36ac7b89-d63c-466f-a363-856c0426da9a)
+* [hasStart](#12a26f97-0e20-433b-8dcb-68a6fd73db88)
+* [hasFinish](#c50acace-b654-4094-a0ab-252ffd2a3e7c)
+* [isSeriesPartOf](#a59229b9-3f0c-4b3a-adef-d94cdda3ce15)
+* [isParallelPartOf](#2cbab225-3894-45b8-a665-93d879698f91)
 
 ---
 
@@ -3121,10 +3157,28 @@ An <a href="#A5713B2C-E098-4dd2-BD46-42DA51899FEA"><font color="#0000ff"><u>Part
 ### <a id="45fe24b3-b146-4199-b760-c1150cef9ab2"></a>confidence
 A qualitative or quantitative indication of the confidence of an AssessToBeTrue 
 
+### <a id="999cf6c3-aa65-4109-9fc4-5e5c8ecec4a7"></a>Connection
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that enables one or more <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flows</u></font></a> between two or more other Elements. Note: A Flow can be of a fluid, such as water or natural gas; of energy, such as heat or electricity; of signal conveying information; of discrete entities, such as people, goods on pallets, or vehicles; or of mechanical load.
+
+### ### <a id="cc20f8f7-ebfc-4897-ad94-568e8b3f9e99"></a>ConnectionSide
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that is a part of a <a href="#999CF6C3-AA65-4109-9FC4-5E5C8ECEC4A7"><font color="#0000ff"><u>Connection</u></font></a> and part of an Element that is the source or destination of a flow through the Connection. Note: A ConnectionSide can be all or part of a <a href="#41b78dbf-188f-4d64-a7cb-948c99e20061"><font color="#0000ff"><u>Connector</u></font></a>.
+
+### <a id="41b78dbf-188f-4d64-a7cb-948c99e20061"></a>Connector
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that is, or is intended to, enable a <a href="#999CF6C3-AA65-4109-9FC4-5E5C8ECEC4A7"><font color="#0000ff"><u>Connection</u></font></a> by being part of another Element. Note 1: A Connector can exist without being part of another Element. Note 2: A Connector can be part of another Element without also being part of a Connection.
+
 ### <a id="b54bb629-e007-4099-bc01-b512894f1e89"></a>contactDetailsOnBooking
 The contact details of the Person making the booking as recorded on the actual Travel Booking.
 
 Note that if these details can be parsed to identify the contact telephone number, contact email address etc. then they should be mapped as instances of <a href="#DCE662F5-7BDB-457e-AE7E-2E5FE43DBA1A"><font color="#0000ff"><u>relationship</u></font></a> to the respective <a href="#A82378B9-9774-46b9-9845-CC75BE882F06"><font color="#0000ff"><u>CommunicationsIdentifier</u></font></a> (TelephoneNumber, EmailAddress, etc.).
+
+### <a id="b9c215e3-c8b3-4d6a-90b0-b650f2965f07"></a>Contained
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that is a part of a <a href="#4c4b80f3-ac42-4c15-a15c-987e0bfbe404"><font color="#0000ff"><u>Containment</u></font></a> and that is confined, protected, or handled.
+
+### <a id="d38509cd-1d01-465c-8468-2f55295633cd"></a>Container
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that is, or is intended to, confining, protecting or enabling the handling of one or more <a href="#b9c215e3-c8b3-4d6a-90b0-b650f2965f07"><font color="#0000ff"><u>Contained</u></font></a> elements. Note: A Container can exist without having a Contained element.
+
+### <a id="4c4b80f3-ac42-4c15-a15c-987e0bfbe404"></a>Containment
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that confines, protects, or enables the handling of one or more Contents.
 
 ### <a id="8ca5551a-eaeb-4145-a75f-2e7d7dad5a57"></a>ContentCategory
 An <a href="#1F9AC8FE-3862-48d6-A3DC-E429B08D2B26"><font color="#0000ff"><u>ClassOfClassOfEntity</u></font></a> whose instances collect together all Representations that have similar content.
@@ -3519,6 +3573,18 @@ A <a href="#3D0FC30A-CF82-44f2-970E-BFD04EADBA74"><font color="#0000ff"><u>Trave
 ### <a id="3a9a1ba9-465f-4f6d-bd55-9f3f8ae40ae0"></a>FlightTicket
 A <a href="#0BC61540-2AFB-42e6-A845-79771EE0268D"><font color="#0000ff"><u>Ticket</u></font></a> that is used to travel by air
 
+### <a id="45b593fc-2335-48d1-98dd-d887d3d56d0d"></a>Flow
+A <a href="#47301D66-CBD5-4d10-9481-B66966A3F3A2"><font color="#0000ff"><u>State</u></font></a> that is the matter, energy or signal that crosses a surface or passes along path. Note 1: Flows can be connected together to form a <a href="#9144a435-2cf4-4e0d-9089-ffae1bd219c7"><font color="#0000ff"><u>Network</u></font></a>. Note 2: A Flow can be called a 'stream'.
+
+### <a id="423eedb0-f0a3-4eae-abd6-46b0f65b755b"></a>FlowAcrossSurface
+A <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flow</u></font></a> that is across a surface.
+
+### <a id="bf895c5a-c3a3-45ee-995b-fb89c13700c8"></a>FlowAlongPath
+A <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flow</u></font></a> that is along a path.
+
+### <a id="9ed957fa-fa66-4a37-9b76-acc9f82384c4"></a>FlowNode
+A <a href="#47301D66-CBD5-4d10-9481-B66966A3F3A2"><font color="#0000ff"><u>State</u></font></a> and a <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Node</u></font></a> that is at the end of one or more <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flows</u></font></a>. Note: Flows can merge or divide at a FlowNode.
+
 ### <a id="da626f73-5748-47db-813f-e1813577f41b"></a>FootballMatchTicket
 An EntertainmentTicket for a football match
 
@@ -3636,10 +3702,16 @@ The country in which the respective <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C
 ### <a id="0aaf6757-aac9-43c4-8b43-cb3358eadca4"></a>hasEmergencyContactAddress
 The address of an emergency contact as printed on the <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C1B"><font color="#0000ff"><u>IdentityDocument</u></font></a>
 
+### <a id="36ac7b89-d63c-466f-a363-856c0426da9a"></a>hasEnd
+The <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Node</u></font></a> at an end of a <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Link</u></font></a>.
+
 ### <a id="bc3185ce-53f4-45de-a6d4-dac8343b4d1c"></a>hasEthnicity
 The ethnic group that the respective <a href="#5D5C5B9B-5E90-4100-8353-8EE9F3D772E2"><font color="#0000ff"><u>Person</u></font></a> belongs to.
 
 The Metropolitan Police standard shall be used as the reference data standard.
+
+### <a id="c50acace-b654-4094-a0ab-252ffd2a3e7c"></a>hasFinish
+The <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Node</u></font></a> at the finish of a directed <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Link</u></font></a>.
 
 ### <a id="8914e7df-443b-4a3a-a945-aad11b82a86a"></a>hasGeneticGender
 The gender the <a href="#5D5C5B9B-5E90-4100-8353-8EE9F3D772E2"><font color="#0000ff"><u>Person</u></font></a> was born with (sex) and which would result from a DNA test.
@@ -3664,6 +3736,9 @@ A <a href="#DCE662F5-7BDB-457e-AE7E-2E5FE43DBA1A"><font color="#0000ff"><u>relat
 
 ### <a id="16480e86-9fe4-4b37-acfb-9e410f190664"></a>hasSourceReference
 A <a href="#D106A0A9-55C4-454f-9E20-35BA54114036"><font color="#0000ff"><u>isRepresentedAs</u></font></a> <a href="#DCE662F5-7BDB-457e-AE7E-2E5FE43DBA1A"><font color="#0000ff"><u>relationship</u></font></a> that asserts a <a href="#675A5C23-0746-43d0-96D0-AF0DF72CD697"><font color="#0000ff"><u>Representation</u></font></a> is the source (information provenance) for an <font color="#0000ff"><u>Thing</u></font>
+
+### <a id="12a26f97-0e20-433b-8dcb-68a6fd73db88"></a>hasStart
+The <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Node</u></font></a> at the start of a directed <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Link</u></font></a>.
 
 ### <a id="0451b5d4-99cb-47a7-bb93-df4df6625837"></a>hasStatedAddress
 The address of the owner/user as recorded on the respective <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C1B"><font color="#0000ff"><u>IdentityDocument</u></font></a> or PaymentArtefact.
@@ -3966,6 +4041,9 @@ An <a href="#BBC06281-340F-458f-A057-82193F32C9DD"><font color="#0000ff"><u>rdf:
 ### <a id="ea859d48-5ba4-40b3-a52d-1465d1765262"></a>isEndOf
 An <a href="#F7CBF87A-6ECC-4c9f-B698-FD3CF3F7980E"><font color="#0000ff"><u>isStateOf</u></font></a> that relates a <a href="#892345CD-9FA7-4982-978D-B6D3ABAE839C"><font color="#0000ff"><u>BoundingState</u></font></a> to the <a href="#97EDC90F-3B36-4da8-AE77-D5FDBDEA2B21"><font color="#0000ff"><u>Element</u></font></a> it marks the end of
 
+### <a id="07fe1419-1915-4f59-a776-4fb230da2e68"></a>isFinishBoundaryOf
+The <a href="#423EEDB0-F0A3-4EAE-ABD6-46B0F65B755B"><font color="#0000ff"><u>FlowAcrossSurface</u></font></a> that is the finish boundary of a <a href="#BF895C5A-C3A3-45EE-995B-FB89C13700C8"><font color="#0000ff"><u>FlowAlongPath</u></font></a>.
+
 ### <a id="fba54eef-91bf-4ba2-8b67-79c899963149"></a>isIdentifiedBy
 A <a href="#C3A36E36-0C73-4af7-88E3-81C9243CE456"><font color="#0000ff"><u>hasName</u></font></a> <a href="#DCE662F5-7BDB-457e-AE7E-2E5FE43DBA1A"><font color="#0000ff"><u>relationship</u></font></a> that asserts an <a href="#315E6AD3-F2DA-4f69-864F-DA2B95121E2E"><font color="#0000ff"><u>Identifier</u></font></a> identifies an <font color="#0000ff"><u>Thing</u></font>
 
@@ -3990,6 +4068,9 @@ ISO639-3 three-letter language code
 A ISO8601 datetime (as <a href="#57843280-4451-47eb-9616-B0843FE4E2C5"><font color="#0000ff"><u>xsd:dateTime</u></font></a>) that represents the ParticularPeriod. 
 
 This representation is also encoded in the URI of the period, this is an additional required <a href="#4A8E5877-32DF-428f-9A60-6AC3D083FFCA"><font color="#0000ff"><u>attribute</u></font></a> to enable querying by dateTime and SPARQL temporal operations. The literal string shall be encoded in UTC (Coordinated Universal Time) but unlike the URI, it must be punctuated. For example: "2007-01-18T15:30:00"
+
+### <a id="2cbab225-3894-45b8-a665-93d879698f91"></a>isParallelPartOf
+A whole <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Link</u></font></a> that has the same end <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Nodes</u></font></a> as the part, or that has end Nodes which have the end Nodes of the part as parts. Note: A <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flow</u></font></a> from end to end of the whole can, but need not, pass from end to end of the part.
 
 ### <a id="baea86d9-c90e-4f8d-96f5-a01bb0c49711"></a>isParticipantIn
 An <a href="#CD85D7F7-783B-4d06-B023-56DBBDDC02DC"><font color="#0000ff"><u>isPartOf</u></font></a> that relates an <a href="#C5AB420C-1AB6-479a-97E1-4F2FD37725CB"><font color="#0000ff"><u>EventParticipant</u></font></a> to the <a href="#B376370E-F5E8-4287-A3EC-AC35532919B1"><font color="#0000ff"><u>Event</u></font></a> it participates in.
@@ -4018,6 +4099,12 @@ Examples:
 
 ### <a id="d106a0a9-55c4-454f-9e20-35ba54114036"></a>isRepresentedAs
 A <a href="#DCE662F5-7BDB-457e-AE7E-2E5FE43DBA1A"><font color="#0000ff"><u>relationship</u></font></a> that asserts a <a href="#675A5C23-0746-43d0-96D0-AF0DF72CD697"><font color="#0000ff"><u>Representation</u></font></a> in someway depicts an <font color="#0000ff"><u>Thing</u></font>
+
+### <a id="a59229b9-3f0c-4b3a-adef-d94cdda3ce15"></a>isSeriesPartOf
+A whole <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Link</u></font></a> such that a <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flow</u></font></a> from end to end of the whole passes from end to end of the part. Note: A Link can be decomposed into series part Links which are connected by intermediate <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Nodes</u></font></a>.
+
+### <a id="55f8794e-25d7-49ae-92cb-b2494dc7d649"></a>isStartBoundaryOf
+The <a href="#423EEDB0-F0A3-4EAE-ABD6-46B0F65B755B"><font color="#0000ff"><u>FlowAcrossSurface</u></font></a> that is the start boundary of a <a href="#BF895C5A-C3A3-45EE-995B-FB89C13700C8"><font color="#0000ff"><u>FlowAlongPath</u></font></a>.
 
 ### <a id="d9e068b1-2a44-4523-b8fc-f9888212b35c"></a>isStartOf
 An <a href="#F7CBF87A-6ECC-4c9f-B698-FD3CF3F7980E"><font color="#0000ff"><u>isStateOf</u></font></a> that relates a <a href="#892345CD-9FA7-4982-978D-B6D3ABAE839C"><font color="#0000ff"><u>BoundingState</u></font></a> to the <a href="#97EDC90F-3B36-4da8-AE77-D5FDBDEA2B21"><font color="#0000ff"><u>Element</u></font></a> it marks the start of
@@ -4102,6 +4189,9 @@ A line in an Address. There may be any number of these.
 An OnlineArtefact that is video or audio streamed online in real time.
 
 Note: the begin and end dates for a <a href="#ECC6E85E-CB08-464d-81A4-BA3ECDCB784C"><font color="#0000ff"><u>LiveCast</u></font></a> instance mark its life online rather than the <a href="#5382F9B3-0A28-4245-8EEB-BF3CEFFD4058"><font color="#0000ff"><u>duration</u></font></a> of the actual recording. The recording itself should be tracked using an <a href="#DB70D7EE-5076-4eb2-950B-63C71A3C8859"><font color="#0000ff"><u>OnlineContentCreation</u></font></a> Event.
+
+### <a id="440da92b-a183-4cd4-9912-0e02ef15ff64"></a>Link
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that is, or enables, a <a href="#45B593FC-2335-48D1-98DD-D887D3D56D0D"><font color="#0000ff"><u>Flow</u></font></a> between the ends. Note 1: A Link can be bi-directional, or uni-directional with a start end and a finish end. Note 2: The ends of a Link can change during its life.
 
 ### <a id="e1a494ed-d493-44ab-8bf9-abc6889d4d9a"></a>Location
 An Entity that is a geographic place which specifies a point or an area on the Earth's surface or elsewhere.
@@ -4283,6 +4373,9 @@ A Relationship between two <a href="#5D5C5B9B-5E90-4100-8353-8EE9F3D772E2"><font
 
 Note: people can become nephews or nieces at different stages in their lives (e.g. as people marry) so PersonState should be used in cases where someone has not always been related in this way (i.e. not from birth)
 
+### <a id="9144a435-2cf4-4e0d-9089-ffae1bd219c7"></a>Network
+An <a href="#F4EDE167-6F5A-417d-9984-0221CCDF752C"><font color="#0000ff"><u>Element</u></font></a> that consists <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Links</u></font></a> and <a href="#2eeed67b-723d-480d-a610-dfcbb081cede"><font color="#0000ff"><u>Nodes</u></font></a>. Note 1: A Network can consists of roads, railways, pipelines, Flows of energy or matter, or transport services conveying people or goods. Note 2: A Network can change over time as Links or Nodes are added or removed.
+
 ### <a id="c544ccac-91c5-4e82-b5d9-7a1b8d48e771"></a>NetworkInterface
 An <a href="#115F2F9B-21F3-4903-8EAA-AB3AEFE97461"><font color="#0000ff"><u>Device</u></font></a> (usually part of another Device) that provides wired or wireless access to a network.
 
@@ -4296,6 +4389,9 @@ A PersonName that is an unofficial or casual name
 
 Note:
 An nickname will often be applied to a <a href="#47301D66-CBD5-4d10-9481-B66966A3F3A2"><font color="#0000ff"><u>State</u></font></a> of the Person, as these tend to be non-permanent names
+
+### <a id="2eeed67b-723d-480d-a610-dfcbb081cede"></a>Node
+A Node is what exists at the end of one or more <a href="#440da92b-a183-4cd4-9912-0e02ef15ff64"><font color="#0000ff"><u>Links</u></font></a>. Note 1: A Node is all or part of the <a href="#41b78dbf-188f-4d64-a7cb-948c99e20061"><font color="#0000ff"><u>Connector</u></font></a> at the end of a Link, and can be a <a href="#999CF6C3-AA65-4109-9FC4-5E5C8ECEC4A7"><font color="#0000ff"><u>Connection</u></font></a>. Note 2: A Node can be at the end of different Links during its life.
 
 ### <a id="672c510d-8836-4a41-8921-c732df430278"></a>NonDisclosureAgreement
 An <a href="#1B39630B-B00F-4def-9C65-48082C4AD2E0"><font color="#0000ff"><u>EndToEndAgreement</u></font></a> where parties agree not to disclose certain information

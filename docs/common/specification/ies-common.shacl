@@ -252,6 +252,10 @@ ies:CapabilityShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Capability .
 
+ies:CapacityShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Capacity .
+
 ies:CarTravelShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:CarTravel .
@@ -415,6 +419,30 @@ ies:ConferenceHostShape a sh:NodeShape ;
 ies:ConferenceParticipantShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:ConferenceParticipant .
+
+ies:ConnectionShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Connection .
+
+ies:ConnectionSideShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:ConnectionSide .
+
+ies:ConnectorShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Connector .
+
+ies:ContainedShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Contained .
+
+ies:ContainerShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Container .
+
+ies:ContainmentShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Containment .
 
 ies:ContentCategoryShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -744,6 +772,22 @@ ies:FlightTicketShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:FlightTicket .
 
+ies:FlowAcrossSurfaceShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:FlowAcrossSurface .
+
+ies:FlowAlongPathShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:FlowAlongPath .
+
+ies:FlowNodeShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:FlowNode .
+
+ies:FlowShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Flow .
+
 ies:FootballMatchTicketShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:FootballMatchTicket .
@@ -1032,6 +1076,10 @@ ies:LineOfAddressShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:LineOfAddress .
 
+ies:LinkShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Link .
+
 ies:LiveCastShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:LiveCast .
@@ -1188,9 +1236,17 @@ ies:NetworkInterfaceShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:NetworkInterface .
 
+ies:NetworkShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Network .
+
 ies:NicknameShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetClass ies:Nickname .
+
+ies:NodeShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:targetClass ies:Node .
 
 ies:NonDisclosureAgreementShape a sh:NodeShape ;
     sh:severity sh:Warning ;
@@ -2529,6 +2585,16 @@ ies:hasAuthorRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasAuthor .
 
+ies:hasCapacityDomainShape a sh:NodeShape ;
+    sh:class ies:Element ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasCapacity .
+
+ies:hasCapacityRangeShape a sh:NodeShape ;
+    sh:class ies:Capacity ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasCapacity .
+
 ies:hasCharacteristicDomainShape a sh:NodeShape ;
     sh:class ies:Element ;
     sh:severity sh:Warning ;
@@ -2559,6 +2625,16 @@ ies:hasEmergencyContactAddressRangeShape a sh:NodeShape ;
     sh:class ies:Address ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasEmergencyContactAddress .
+
+ies:hasEndDomainShape a sh:NodeShape ;
+    sh:class ies:Link ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:hasEnd .
+
+ies:hasEndRangeShape a sh:NodeShape ;
+    sh:class ies:Node ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:hasEnd .
 
 ies:hasEthnicityDomainShape a sh:NodeShape ;
     sh:class ies:Person ;
@@ -2966,6 +3042,16 @@ ies:isEndOfDomainShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetSubjectsOf ies:isEndOf .
 
+ies:isFinishBoundaryOfDomainShape a sh:NodeShape ;
+    sh:class ies:FlowAlongPath ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:isFinishBoundaryOf .
+
+ies:isFinishBoundaryOfRangeShape a sh:NodeShape ;
+    sh:class ies:FlowAcrossSurface ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:isFinishBoundaryOf .
+
 ies:isIdentifiedByDomainShape a sh:NodeShape ;
     sh:class ies:Thing ;
     sh:severity sh:Warning ;
@@ -2985,6 +3071,16 @@ ies:isLegalTenderInRangeShape a sh:NodeShape ;
     sh:class ies:Country ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:isLegalTenderIn .
+
+ies:isParallelPartOfDomainShape a sh:NodeShape ;
+    sh:class ies:Link ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:isParallelPartOf .
+
+ies:isParallelPartOfRangeShape a sh:NodeShape ;
+    sh:class ies:Link ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:isParallelPartOf .
 
 ies:isPartOfDomainShape a sh:NodeShape ;
     sh:class ies:Element ;
@@ -3035,6 +3131,26 @@ ies:isRepresentedAsRangeShape a sh:NodeShape ;
     sh:class ies:Representation ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:isRepresentedAs .
+
+ies:isSeriesPartOfDomainShape a sh:NodeShape ;
+    sh:class ies:Link ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:isSeriesPartOf .
+
+ies:isSeriesPartOfRangeShape a sh:NodeShape ;
+    sh:class ies:Link ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:isSeriesPartOf .
+
+ies:isStartBoundaryOfDomainShape a sh:NodeShape ;
+    sh:class ies:FlowAlongPath ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:isStartBoundaryOf .
+
+ies:isStartBoundaryOfRangeShape a sh:NodeShape ;
+    sh:class ies:FlowAcrossSurface ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:isStartBoundaryOf .
 
 ies:isStartOfDomainShape a sh:NodeShape ;
     sh:class ies:BoundingState ;
