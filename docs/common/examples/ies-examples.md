@@ -30,7 +30,7 @@ e.g. yellow indicated Entity. If the node has its IES colour as the fill-colour,
 class. If its IES colour is that of the border, it represents an instance. In some examples we provide a
 descriptive label for the instance using blue, underlined text.
 
-![IES Notation](../assets/images/diagrams/rendered/ies-notation.png)
+![IES Notation](../diagrams/rendered/ies-notation.png)
 
 ## 1. A Meeting
 
@@ -40,7 +40,7 @@ In this example we have a meeting involving two persons. When entities like a pe
 
 ### Diagram
 
-![Meeting Diagram](../assets/images/diagrams/rendered/example-meeting.png)
+![Meeting Diagram](../diagrams/rendered/example-meeting.png)
 
 **Key:**
 - P: `ies:Person`
@@ -105,7 +105,7 @@ In this example we have two observations of an aircraft moving through the air. 
 
 ### Diagram
 
-![Aircraft Observations Diagram](../assets/images/diagrams/rendered/example-observations-of-a-moving-aircraft.png)
+![Aircraft Observations Diagram](../diagrams/rendered/example-observations-of-a-moving-aircraft.png)
 
 **Key:**
 - Ac: `ies:Aircraft`
@@ -146,7 +146,7 @@ UPRNs (Unique Delivery Point References) are unique identifiers for addressable 
 
 ### Diagram
 
-![Address Representations Diagram](../assets/images/diagrams/rendered/example-address.png)
+![Address Representations Diagram](../diagrams/rendered/example-address.png)
 
 **Key:**
 - Ad: `ies:Address`
@@ -207,7 +207,7 @@ This example demonstrates how IES can be used to express how parts can move from
 
 ### Diagram
 
-![SIM Card Swap Diagram](../assets/images/diagrams/rendered/example-sim-card-swap.png)
+![SIM Card Swap Diagram](../diagrams/rendered/example-sim-card-swap.png)
 
 **Key:**
 - MH: `ies:MobileHandset`
@@ -272,7 +272,7 @@ This example demonstrates the assessment pattern. Here we have two investigators
 
 ### Diagram
 
-![Assessments Diagram](../assets/images/diagrams/rendered/example-assessment.png)
+![Assessments Diagram](../diagrams/rendered/example-assessment.png)
 
 **Key:**
 - P: `ies:Person`
@@ -371,7 +371,7 @@ Notice how we had to create an extension to `ies:Post` for the class of CEO. The
 
 ### Diagram
 
-![Posts Diagram](../assets/images/diagrams/rendered/example-organisation-posts.png)
+![Posts Diagram](../diagrams/rendered/example-organisation-posts.png)
 
 **Key:**
 - P: `ies:Person`
@@ -405,7 +405,7 @@ This example shows how the sending and receiving of a text message is modelled i
 
 ### Diagram
 
-![SMS Message Diagram](../assets/images/diagrams/rendered/example-sms-message.png)
+![SMS Message Diagram](../diagrams/rendered/example-sms-message.png)
 
 **Key:**
 - P: `ies:Person`
@@ -463,7 +463,7 @@ Note that as telephone numbers can be swapped between devices, these identifiers
 
 ### Diagram
 
-![Voice Call Diagram](../assets/images/diagrams/rendered/example-voice-call.png)
+![Voice Call Diagram](../diagrams/rendered/example-voice-call.png)
 
 **Key:**
 - P: `ies:Person`
@@ -557,7 +557,7 @@ This example models the movement of a ship along the English Channel. This uses 
 
 ### Diagram
 
-![Movement Diagram](../assets/images/diagrams/rendered/example-movement.png)
+![Movement Diagram](../diagrams/rendered/example-movement.png)
 
 **Key:**
 - Mv: `ies:Movement`
@@ -608,7 +608,7 @@ This pattern is widely applicable: road networks, utility networks (water, elect
 
 ### Diagram
 
-![Networks Diagram](../assets/images/diagrams/rendered/example-network.png)
+![Networks Diagram](../diagrams/rendered/example-network.png)
 
 **Key:**
 - N: `ies:Network`
@@ -688,7 +688,7 @@ Networks change through time and space: new Links may be added, existing Links m
 
 ### Diagram
 
-![Network Evolution Diagram](../assets/images/diagrams/rendered/example-network-evolution.png)
+![Network Evolution Diagram](../diagrams/rendered/example-network-evolution.png)
 
 **Key:**
 - N: `ies:Network`
@@ -829,7 +829,7 @@ A Network provides a simplified, topological view that complements more detailed
 
 ### Diagram
 
-![Network View of Road Junction Diagram](../assets/images/diagrams/rendered/example-network-junction.png)
+![Network View of Road Junction Diagram](../diagrams/rendered/example-network-junction.png)
 
 **Key:**
 - N: `ies:Network`

@@ -24,7 +24,7 @@ The standard is designed to be extensible, and is based on a number of re-usable
 
 ## Usage: Data Exchange
 
-![Data Exchange](../assets/images/diagrams/rendered/usage-data-exchange.png)
+![Data Exchange](../diagrams/rendered/usage-data-exchange.png)
 
 *I/F = shorthand for "interface"*
 
@@ -34,7 +34,7 @@ Systems continue to use their own internal data structures, but map to/from the 
 
 ## Usage: Synchronisation
 
-![Usage: Synchronisation](../assets/images/diagrams/rendered/usage-synchronisation.png)
+![Usage: Synchronisation](../diagrams/rendered/usage-synchronisation.png)
 
 In a microservices architecture where there is extensive replication of data across
 services (bounded context principle), an event log is used to synchronise the
@@ -50,7 +50,7 @@ keeping data synchronised across a wide range of applications and services. Apac
 
 ## Usage: Storage
 
-![Usage: Storage](../assets/images/diagrams/rendered/usage-storage.png)
+![Usage: Storage](../diagrams/rendered/usage-storage.png)
 
 Although IES was not designed with storage in mind, there has been some interest in
 using it in that way, especially for applications which bring data together from
@@ -66,7 +66,7 @@ data is constructed – e.g. A likes B, B is-a Banana, A is-a Fruit-Fly
 ---
 
 ## Architecture
-![IES Architecture](../assets/images/diagrams/rendered/ies-architecture.png)
+![IES Architecture](../diagrams/rendered/ies-architecture.png)
 
 RDF tools and databases usually provide all the standard serialisation formats (e.g.
 RDF-JSON, JSON-LD, RDF-XML, etc.) so implementers are encouraged to work with these
@@ -91,7 +91,7 @@ For example, IES specifies that there are people (`Person`) and there are locati
 
 ## Model Overview
 
-![Model Overview](../assets/images/diagrams/rendered/model-overview.png)
+![Model Overview](../diagrams/rendered/model-overview.png)
 
 ---
 
@@ -104,7 +104,7 @@ You can also change small parts without breaking the rest of the model…
 
 …I think that’s enough metaphor stretching for one day…
 
-![Lego vs Airfix](../assets/images/diagrams/rendered/lego-not-airfix.png)
+![Lego vs Airfix](../diagrams/rendered/lego-not-airfix.png)
 
 \*Airfix is a UK model kit company – similar to Revell , Heller or Tamiya.
 
@@ -115,7 +115,7 @@ You can also change small parts without breaking the rest of the model…
 The model is authored using the OMG’s ODM profile for UML. This allows us to export
 the model as RDF Schema, a Word document and a website all from one Sparx EA model.
 
-![Model Notation](../assets/images/diagrams/rendered/model-notation.png)
+![Model Notation](../diagrams/rendered/model-notation.png)
 
 The ODM stereotypes (shown in chevrons <<*stereotype*>>) signify the underlying RDF Schema type
 – e.g Entity is an `rdfs:Class`. We also chose to keep the colour coding that had
@@ -143,7 +143,7 @@ It follows a structure of subject-predicate-object:
 | Coventry    | partOf     | UK           |
 | Birmingham  | partOf     | UK           |
 
-![RDF Triples](../assets/images/diagrams/rendered/rdf-triples.png)
+![RDF Triples](../diagrams/rendered/rdf-triples.png)
 
 Skip this, if you already know about RDF.
 Some things to note.
@@ -194,7 +194,7 @@ serialise RDF, including XML and JSON.
 - There are classes (`rdfs:Class`), relationship definitions (`rdf:Property`), subtype
 relationships (`rdfs:subClassOf`) and type-instance relationships (`rdf:type`)
 
-![RDF Schema](../assets/images/diagrams/rendered/rdf-schema.png)
+![RDF Schema](../diagrams/rendered/rdf-schema.png)
 
 ---
 
@@ -203,11 +203,11 @@ relationships (`rdfs:subClassOf`) and type-instance relationships (`rdf:type`)
 - `rdfs:Class` – a concept of interest – e.g. Person, Location, etc.
 - `rdfs:subClassOf` – a relationship between two `rdfs:Classes` that show one is a subclass of the other:
 
-![Classes and Subclasses](../assets/images/diagrams/rendered/rdf-classes-and-subclasses.png)
+![Classes and Subclasses](../diagrams/rendered/rdf-classes-and-subclasses.png)
 
 The subClassOf relationship between classes is like concentric classes in a Venn diagram. The members of each class are instances of exchanged IES data (e.g. Africa, North Pole, etc.)
 
-![Classes and Subclasses Venn](../assets/images/diagrams/rendered/rdf-classes-and-subclasses-venn.png)
+![Classes and Subclasses Venn](../diagrams/rendered/rdf-classes-and-subclasses-venn.png)
 
 ---
 
@@ -215,7 +215,7 @@ The subClassOf relationship between classes is like concentric classes in a Venn
 
 In developing the IES, it was felt that a simple, graphical notation for examples was required. RDF is a graph structure, so a nodes and links notation was the obvious choice. All IES nodes will be typed, and this can tend to clutter up the diagram, so we settled on a notation where the type of the node is indicated by an abbreviation in the node. The colour coding from the model is carried through to the instance diagram – e.g. yellow outline = Entity.
 
-![Instance Notation](../assets/images/diagrams/rendered/instance-notation.png)
+![Instance Notation](../diagrams/rendered/instance-notation.png)
 
 **Namespaces**
 
@@ -269,7 +269,7 @@ data:callee     ies:isPartOf            data:call .
 
 ## IES Model - Top of the Shop
 
-![Top of the Shop](../assets/images/diagrams/rendered/model-top-of-the-shop.png)
+![Top of the Shop](../diagrams/rendered/model-top-of-the-shop.png)
 
 ExchangedItem is the broadest concept in IES (i.e. everything is an ExchangedItem) – these can have attributes and relationships. Elements are ExchangedItems that have physical extent (entities, events, states, etc.). As they are physical, there can be whole-part relationships (ies:isPartOf) between them. The ClassOfElement concept allows representation of non-physical concepts (i.e. classes of things).
 
@@ -279,7 +279,7 @@ ExchangedItem is the broadest concept in IES (i.e. everything is an ExchangedIte
 
 IES is a 4D model. Any instance of an IES Element will be something that occupies space and time. The 4D approach allows us to say things about temporal chunks (states) of these Elements. The approach goes further though – extent is the criterion for identity – if two things occupy precisely the same space at the same time, they are the SAME THING. Understanding this is the key to understanding IES.
 
-![Space and Time](../assets/images/diagrams/rendered/space-and-time.png)
+![Space and Time](../diagrams/rendered/space-and-time.png)
 
 In the example above, Fred appears to have three different masses. However, each mass is associated with a different state of Fred – i.e. a different point in his life. We’ve also introduced yet another notation here – the space-time diagram.
 
@@ -296,7 +296,7 @@ These are used a lot throughout this slide-deck so it’s worth going over the n
 
 Time is on horizontal axis. To represent periods of time, there will be vertical elements on the diagram (i.e. all of space for a period of time)
 
-![Space-Time Diagram Notation](../assets/images/diagrams/rendered/spacetime-diagram-notation.png)
+![Space-Time Diagram Notation](../diagrams/rendered/spacetime-diagram-notation.png)
 
 ---
 
@@ -304,7 +304,7 @@ Time is on horizontal axis. To represent periods of time, there will be vertical
 
 Elements are things that you can kick. More formally, they are things that occupy space and time. The space and time they occupy is known as their "four-dimensional extent".
 
-![Elements](../assets/images/diagrams/rendered/model-elements.png)
+![Elements](../diagrams/rendered/model-elements.png)
 
 ---
 
@@ -312,7 +312,7 @@ Elements are things that you can kick. More formally, they are things that occup
 
 Using the instance notation from before, looking at just one of the states of Fred:
 
-![Fred's State](../assets/images/diagrams/rendered/elements-back-to-fred.png)
+![Fred's State](../diagrams/rendered/elements-back-to-fred.png)
 
 There’s quite a lot going on here, so let’s break it down a bit.
 - We have a state of Fred (PS).
@@ -328,7 +328,7 @@ So, using just the States pattern, we’ve been able to say where and when the m
 
 We can use the same pattern over and over again – including to say where and when Fred was born…
 
-![Fred's Birth State](../assets/images/diagrams/rendered/fred-birth-state.png)
+![Fred's Birth State](../diagrams/rendered/fred-birth-state.png)
 
 ---
 
@@ -337,17 +337,17 @@ We can use the same pattern over and over again – including to say where and w
 Each of the states is in a ParticularPeriod – each of an hour duration. This allows us to be vague about times – i.e. something happened somewhere in a ParticularPeriod. There are examples to follow where we’re more
 specific.
 
-![4D Fred](../assets/images/diagrams/rendered/4d-fred.png)
+![4D Fred](../diagrams/rendered/4d-fred.png)
 
 ---
 
 ## Doing Stuff
 
-![Team Meeting](../assets/images/diagrams/rendered/doing-stuff.png)
+![Team Meeting](../diagrams/rendered/doing-stuff.png)
 
 The IES model has Events – i.e. activities. As the IES is pedantic about space and time, it's important to define Events that way too. In IES, the extent of a given Event is the sum of all its participations – i.e. the collections of states of things that were participating:
 
-![Team Meeting](../assets/images/diagrams/rendered/doing-stuff.png)
+![Team Meeting](../diagrams/rendered/doing-stuff.png)
 
 In the example above, each participant arrived and left at different times. Their states are their participations in the meeting, therefore the states are part of the meeting.
 
@@ -357,17 +357,17 @@ In the example above, each participant arrived and left at different times. Thei
 
 `EventParticipants` are States that participate in Events
 
-![Event Participant](../assets/images/diagrams/rendered/event-participant-uml.png)
+![Event Participant](../diagrams/rendered/event-participant-uml.png)
 
-![Event Participant](../assets/images/diagrams/rendered/event-participant-instances.png)
+![Event Participant](../diagrams/rendered/event-participant-instances.png)
 
 In this example, we’ve used subclasses of `EventParticipant` to show who was the meeting chair. The meeting location has also been added. As with the previous example (Fred’s weigh-ins) we could also add times (`ParticularPeriod`) for each participation, and indeed for the meeting itself.
 
-![Event Participant UML](../assets/images/diagrams/rendered/event-participant-uml.png)
+![Event Participant UML](../diagrams/rendered/event-participant-uml.png)
 
 Using this model, we can record things about a particular team meeting and its participants.
 
-![Event Participant UML](../assets/images/diagrams/rendered/event-participant-instances.png)
+![Event Participant UML](../diagrams/rendered/event-participant-instances.png)
 
 ---
 
@@ -375,7 +375,7 @@ Using this model, we can record things about a particular team meeting and its p
 
 In previous examples we’ve shown how `Elements` can be in `ParticularPeriods`. That’s great when we we’re dealing with imprecise time, but if we want to show precise starts and ends, we need to use the state model again - in this case, `BoundingState`:
 
-![Bounding State](../assets/images/diagrams/rendered/bounding-state.png)
+![Bounding State](../diagrams/rendered/bounding-state.png)
 
 A `BoundingState` is a State which marks the temporal beginning or end of an Element. In the example above, the begin state is in the period 10:00 (the minute between 10:00 and 10:01) and the end is in 11:00. We could be more precise by adding seconds, fractions of seconds, etc. to the period.
 
@@ -385,7 +385,7 @@ A `BoundingState` is a State which marks the temporal beginning or end of an Ele
 
 A `BoundingState` marks the beginning and end of `Elements` (in this case an `EventParticipant`)
 
-![Bounding State](../assets/images/diagrams/rendered/bounding-state-spacetime.png)
+![Bounding State](../diagrams/rendered/bounding-state-spacetime.png)
 
 In the example above, there is state of Bob (an `EventParticipant`) where he’s in the team meeting. Because we want to identify the start and end of the state, we book-end it with two `BoundingStates`. Each of those `BoundingStates` is in a `ParticularPeriod` (each a minute long) – i.e. the `EventParticipant` started some time during that minute.
 
@@ -399,11 +399,11 @@ The `BoundingState` spacetime diagram is made up from basic building blocks.
 
 | Meaning | Example                                                                                                         |
 |---------|-----------------------------------------------------------------------------------------------------------------|
-| Started and finished within a given period | ![Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-1.png)                              |
-| Started, don’t know when, still going | ![Started, Don't Know When, Still Going](../assets/images/diagrams/rendered/spacetime-blocks-2.png)             |
-| Started, finished, don’t know when | ![Started, Finished, Don't Know When](../assets/images/diagrams/rendered/spacetime-blocks-3.png)                |
-| Started, finished, we know when it started, but not when it finished | ![Started, Finished, Know When Started](../assets/images/diagrams/rendered/spacetime-blocks-4.png)              |
-| Started, finished, we know when it started and finished | ![Started, Finished, Know When Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-5.png) |
+| Started and finished within a given period | ![Started and Finished](../diagrams/rendered/spacetime-blocks-1.png)                              |
+| Started, don’t know when, still going | ![Started, Don't Know When, Still Going](../diagrams/rendered/spacetime-blocks-2.png)             |
+| Started, finished, don’t know when | ![Started, Finished, Don't Know When](../diagrams/rendered/spacetime-blocks-3.png)                |
+| Started, finished, we know when it started, but not when it finished | ![Started, Finished, Know When Started](../diagrams/rendered/spacetime-blocks-4.png)              |
+| Started, finished, we know when it started and finished | ![Started, Finished, Know When Started and Finished](../diagrams/rendered/spacetime-blocks-5.png) |
 
 All of this is simple construction (mereology) applied to space and time. You can use these simple building blocks to build very complex temporal representations, but all of them founded on a simple, re-usable logic.
 
@@ -415,7 +415,7 @@ Periods of time are Elements in a 4D ontology. They can be treated like any othe
 
 IES also allows a duration to specified even when the precise start and end are not known - e.g. we can specify a meeting lasted an hour and took place on a particular day, but we don't know what time it began and ended.
 
-![Time Elements](../assets/images/diagrams/rendered/time-elements.png)
+![Time Elements](../diagrams/rendered/time-elements.png)
 
 **Note:** to prevent duplicate periods being created, the uri of each period should reflect the ISO8601 datetime (encoded to % out the disallowed URI characters). So for example, the uri for January 2008 would be `http://iso8601.iso.org#2008-01`. For `ParticularPeriod`, this is fairly simple. For `PeriodOfTime`, the ISO8601 encoding for the period should be used.
 
@@ -432,7 +432,7 @@ IES also allows a duration to specified even when the precise start and end are 
 
 As well as saying when things happen, start and finish, we also want to be able to say *where* they are. In the Fred example, we had a `Facility` (Acme Health Centre) as one of the locations:
 
-![Locations](../assets/images/diagrams/rendered/locations-spacetime.png)
+![Locations](../diagrams/rendered/locations-spacetime.png)
 
 Locations can be countries, regions, facilities, or arbitrary land/sea parcels. Since IES v4.4.0, `ies:Location` formally aligns with the OGC GeoSPARQL standard as a subclass of `geo:Feature`, allowing geometries to be specified using standard formats including GeoJSON, WKT, GML, and KML with proper coordinate reference systems.
 
@@ -470,7 +470,7 @@ IES is very formal in how it relates the two concepts. In the example below, we
 have several copies of War and Peace. They all have in common that they are copies
 of War and Peace, hence War and Peace is a class of which they are all members:
 
-![Information about War and Peace](../assets/images/diagrams/rendered/war-and-peace.png)
+![Information about War and Peace](../diagrams/rendered/war-and-peace.png)
 
 ---
 
@@ -478,7 +478,7 @@ of War and Peace, hence War and Peace is a class of which they are all members:
 
 Often, the information we care about is a representation of something in the real world. Robert Peel, a biography is a book. It is not the man himself. Similarly, there may be several copies of the book, and they’re all about Robert Peel. They were all written by Douglas Hurd too.
 
-![Representation of Robert Peel](../assets/images/diagrams/rendered/representation-robert-peel.png)
+![Representation of Robert Peel](../diagrams/rendered/representation-robert-peel.png)
 
 In space-time, Robert Peel existed long before any of the books (b1,b2,b3) which were published in 2007, and long before their author.
 
@@ -492,7 +492,7 @@ Relationships are transitive if *A* being related to *B* and *B* being related *
 - If *Y* is after *X* and *Z* is after *Y* then *Z* must also be after *X*.
 - If *Q* is a subclass of *P* and *R* is a subclass of *Q* then *R* must be a subclass of *P*
 
-![Transitivity](../assets/images/diagrams/rendered/transitivity.png)
+![Transitivity](../diagrams/rendered/transitivity.png)
 
 ---
 
@@ -500,7 +500,7 @@ Relationships are transitive if *A* being related to *B* and *B* being related *
 
 To be able to talk about classes of documents and individual documents, we need to be able to “push” the type levels up. So far in this training, we’ve just been looking at `Elements` – things with spatio-temporal extent. These are the baseline for BORO ontologies, but it also allows for powertypes. Consider the (non-IES) trivial example below:
 
-![Power Types](../assets/images/diagrams/rendered/powertypes-example-1.png)
+![Power Types](../diagrams/rendered/powertypes-example-1.png)
 
 In this example, Colonel Blimp is an instance of
 (`rdf:type`) the class Colonel. Colonel is an instance of
@@ -509,7 +509,7 @@ though. `rdf:type` is therefore not transitive (see above on transitiviy).
 
 We do the same thing for documents:
 
-![Documents and Power Types](../assets/images/diagrams/rendered/powertypes-example-2.png)
+![Documents and Power Types](../diagrams/rendered/powertypes-example-2.png)
 
 **Note**: The mechanism used for stepping up the type levels in IES is the
 `ies:powertype` relationship. It relates a Class to another class whose
@@ -524,11 +524,11 @@ up [“powerset” on Wikipedia](https://en.wikipedia.org/wiki/Power_set) and th
 
 There are three main types of representation – `Name`, `Identifier` and `WorkOfDocumentation`. Each can be used to represent any `ExchangedItem`.
 
-![Representation](../assets/images/diagrams/rendered/representation-uml.png)
+![Representation](../diagrams/rendered/representation-uml.png)
 
 In the example below, Fred is called "Fred Smith" (all his life), but there is also a state of him where he had a national identity number. There are a number of subclasses of `Name` and `Identifier` used throughout IES.
 
-![Representation of Fred](../assets/images/diagrams/rendered/names-and-identifiers-example.png)
+![Representation of Fred](../diagrams/rendered/names-and-identifiers-example.png)
 
 ---
 
@@ -536,11 +536,11 @@ In the example below, Fred is called "Fred Smith" (all his life), but there is a
 
 IES allows for multiple names and identifiers to be assigned to any given ExchangedItem. Use of states allows us to be specific about when those names and identifiers were valid. But…we also need to know about their origin – i.e. the organisation and/or system that uses them. This is done with Naming Schemes:
 
-![Naming Schemes](../assets/images/diagrams/rendered/naming-schemes-uml.png)
+![Naming Schemes](../diagrams/rendered/naming-schemes-uml.png)
 
 In the example below, Fred's ID is a National Insurance Number (naming scheme) and that scheme is owned by the DWP.
 
-![Naming Schemes Example](../assets/images/diagrams/rendered/naming-scheme-example.png)
+![Naming Schemes Example](../diagrams/rendered/naming-scheme-example.png)
 
 **Note**: the DWP, and even the naming scheme itself also have names.
 
@@ -548,7 +548,7 @@ In the example below, Fred's ID is a National Insurance Number (naming scheme) a
 
 ## Hierarchies of Naming Schemes
 
-![Naming Scheme Hierarchy](../assets/images/diagrams/rendered/naming-schemes-hierarchies.png)
+![Naming Scheme Hierarchy](../diagrams/rendered/naming-schemes-hierarchies.png)
 
 The naming schemes are classes and the names are instances of those classes. So…the naming schemes can be composed using subClassOf relationships… which are transitive. This means that the name in our example is also a DWP name and an HMG name.
 
@@ -562,7 +562,7 @@ The naming schemes are classes and the names are instances of those classes. So�
 - Naming schemes can be associated with systems and/or organisations that use/own them
 - Naming schemes can be organised into hierarchies
 
-![Magritte's Pipe Image](../assets/images/diagrams/rendered/naming-schemes-not-a-pipe.png)
+![Magritte's Pipe Image](../diagrams/rendered/naming-schemes-not-a-pipe.png)
 
 ---
 
@@ -582,7 +582,7 @@ Like the major blocks in Lego&trade;, you can produce a reasonable model of anyt
 
 Patients have names and NHS IDs. They go in and out of treatment, and stay in hospital beds in Wards.
 
-![Fred's Hospital States](../assets/images/diagrams/rendered/example-fred-in-hospital.png)
+![Fred's Hospital States](../diagrams/rendered/example-fred-in-hospital.png)
 
 Fred arrives at 9:00 on 4/1 and is put in bed 101. He then goes into theatre at
 19:00 and returns to bed 101 at 21:00. He is discharged at 11:00 the next day.
@@ -593,7 +593,7 @@ Fred arrives at 9:00 on 4/1 and is put in bed 101. He then goes into theatre at
 
 The theatre and Ward are located in (part of) the Hospital. The bed is located in the Ward.
 
-![Hospital Structure](../assets/images/diagrams/rendered/example-hospital-structure.png)
+![Hospital Structure](../diagrams/rendered/example-hospital-structure.png)
 
 Two things to note. Firstly, beds can move, but for simplicity here we just say the bed has
 always been located in `Ward1`. Secondly, we used a model extension here. IES doesn’t define any
@@ -605,7 +605,7 @@ more detail than parts of facilities, so we extend it to include `data:HospitalB
 
 This bit covers Fred’s movement around the hospital.
 
-![Fred's Hospital States](../assets/images/diagrams/rendered/example-fred-hospital-states.png)
+![Fred's Hospital States](../diagrams/rendered/example-fred-hospital-states.png)
 
 Three states (one is an EventParticipant), and each has start and end BoundingStates. The
 BoundingStates are in Particular Periods, and the PersonStates are in Locations.
@@ -616,7 +616,7 @@ BoundingStates are in Particular Periods, and the PersonStates are in Locations.
 
 Notice we've added in the name and NHS number.
 
-![Complete Hospital Example](../assets/images/diagrams/rendered/example-complete-hospital.png)
+![Complete Hospital Example](../diagrams/rendered/example-complete-hospital.png)
 
 ### … and as RDF Triples Serialized as N3
 

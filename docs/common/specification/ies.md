@@ -138,7 +138,7 @@ Basic background reading on how to use RDF is the book "Semantic Web for the Wor
 - `rdfs:subPropertyOf` (related properties to their subproperties) is shown with a thick dark blue line
 - Sometimes, a pattern defined at a high-level is referred to using a `UML:dependency`. This has no formal semantics other than to indicate to the implementer that the pattern should be used in this case.
 
-![IES High-Level Overview](../assets/images/diagrams/rendered/ies-spec-overview.png)
+![IES High-Level Overview](../diagrams/rendered/ies-spec-overview.png)
 
 * [Entity](#f4ede167-6f5a-417d-9984-0221ccdf752c)
 * [Event](#b376370e-f5e8-4287-a3ec-ac35532919b1)
@@ -169,7 +169,7 @@ The IES is based on six key items which are subtypes of `Thing`:
 - `PeriodOfTime`: a specific period of time (past, present or future).
 - `relationship`: relates `Things`.
 
-![IES Overview](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_E169A2F5_85CB_41a7_A8B5_5BFAC5330AB5.png)
+![IES Overview](../diagrams/rendered/ies-specification-diagrams/EAID_E169A2F5_85CB_41a7_A8B5_5BFAC5330AB5.png)
 
 ### IES elements in this diagram:
 
@@ -196,7 +196,7 @@ In the example below, `Fred` has always been `Barry`'s sibling and will continue
 
 **Note**: in the example below, `Fred` still works for `Acme`. But if `Fred` had left `Acme`, and we didn't know when, the end `BoundingState` should be created to show the `Employed` state had ended, even though there is no associated `PeriodOfTime`.
 
-![Relationships Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_164BAFC4_0C40_4900_8A83_2B62248BF22D.png)
+![Relationships Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_164BAFC4_0C40_4900_8A83_2B62248BF22D.png)
 
 ### IES elements in this diagram:
 
@@ -238,7 +238,7 @@ In the first example below, we show that `Fred` began working for `Acme` in 2011
 Technically, a `PeriodOfTime` is all of space, for a specific (or recurring) period (see the second example below; a
 space-time diagram which has three particular days, and a recurring one minute period, every day).
 
-![Period of Time Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_AC49DE36_990B_4c27_BA39_7C78A474C589.png)
+![Period of Time Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_AC49DE36_990B_4c27_BA39_7C78A474C589.png)
 
 ### IES elements in this diagram:
 
@@ -269,7 +269,7 @@ Because IES is a 4D ontology, space and time (in fact spacetime) are handled in 
 \**Space is a relative thing - you may move around relative to other things, but the whole-life you is a single Entity
 instance. There are states of the that whole-life Entity that are part of different Locations though.*
 
-![Where and When Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_37882C3A_2915_4112_8EB2_ABB1C071165C.png)
+![Where and When Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_37882C3A_2915_4112_8EB2_ABB1C071165C.png)
 
 ### IES elements in this diagram:
 
@@ -296,7 +296,7 @@ There are some special cases of `BoundingStates` such as `BirthState`, `Departur
 The use of `BoundingStates` in combination with the `after` relationship allow complex temporal logic to be expressed
 using very simple constructs - e.g. `Elements` starting before others, ending before others, etc.
 
-![Start and End Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_926F5679_25C6_47a6_AAB0_65F3A7406B99.png)
+![Start and End Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_926F5679_25C6_47a6_AAB0_65F3A7406B99.png)
 
 ### IES elements in this diagram:
 
@@ -328,7 +328,7 @@ For more complex temporal logic, such as an `Event` starting before another one,
 between `BoundingStates`. In the example below, the Sweden vs England match started after the Russia V Croatia
 match.
 
-![Event Linkages Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_0EBD3547_89A5_45c0_ACA6_BC125D0E885E.png)
+![Event Linkages Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_0EBD3547_89A5_45c0_ACA6_BC125D0E885E.png)
 
 ### IES elements in this diagram:
 
@@ -356,7 +356,7 @@ IES also has a subtype of `EventParticipant` called `ActiveEventParticipant`. Su
 
 The Role construct for states is inherited by `EventParticipant` allowing more specific roles to be defined for the `EventParticipant`.
 
-![Event Participation Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1EE6C0C5_B494_4395_9C59_AEDC7B7971D9.png)
+![Event Participation Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_1EE6C0C5_B494_4395_9C59_AEDC7B7971D9.png)
 
 ### IES elements in this diagram:
 
@@ -394,7 +394,7 @@ This is particularly useful with locations. If we want to say a `Vehicle` is usu
 At first glance, this may seem contrary to the BORO mantra about always identifying the spatio-temporal extent of `Elements`. However, what this does allow us to identify an extent that we know exists, but we don't know the details. Like other `States`, we can identify the start and end times, e.g. saying a car is usually parked in a particular location
 between one date and another.
 
-![Sometimes Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C8ABE75C_87AF_4b36_9D4A_456CF2657B39.png)
+![Sometimes Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_C8ABE75C_87AF_4b36_9D4A_456CF2657B39.png)
 
 ### IES elements in this diagram:
 
@@ -420,7 +420,7 @@ IES allows new types (classes, categories, sets, whatever you want to call them)
 
 Hierarchies of `ClassOfElement` can be built using the `rdfs:subClassOf` relationship. Instances of the `ClassOfElement` can be asserted using `rdf:type`. See the example below.
 
-![Types Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_55486513_19EB_4a97_AADB_62317E9EA00F.png)
+![Types Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_55486513_19EB_4a97_AADB_62317E9EA00F.png)
 
 ### IES elements in this diagram:
 
@@ -452,7 +452,7 @@ IES distinguished between things in the real world and our representations of th
 Sometimes, it is important to establish arbitrary categories of `Representation` - such as "financial accounts", "pictures
 of kittens" or "educational films". `ContentCategory` is used to collect together all `Representations` of similar content.
 
-![Representation and Content Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_393BD76E_39F3_4bd0_9BBA_7E1AC7C63F0A.png)
+![Representation and Content Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_393BD76E_39F3_4bd0_9BBA_7E1AC7C63F0A.png)
 
 ### IES elements in this diagram:
 
@@ -489,7 +489,7 @@ the Ministry Of Defence, etc.
 
 `Representations` specialise into `WorksOfDocumentation` (see `Document` diagram in `Entities` section), `Names`, and `Identifiers`. `Names` and `Identifiers` belong to `NamingSchemes` - this allows us to give context when an `Element` has more than one `Name` or `Identifier`. `NamingSchemes` may be implemented in `Systems` and used by `Organisations`. This replaces the idea of `EnterpriseIdentity` and `SystemIdentity` in IES3.
 
-![Identifiers Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_A72D9272_DF55_4e58_9174_3F9F168438A0.png)
+![Identifiers Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_A72D9272_DF55_4e58_9174_3F9F168438A0.png)
 
 ### IES elements in this diagram:
 
@@ -531,7 +531,7 @@ The key points about this model are that the `Measure` is separate from its `Rep
 
 This model is new in IES 4.1 - previously, there was no consistent way to do this, but mostly it relied on attributes.
 
-![Characteristics and Measures Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_80403A46_2297_4e05_8C9C_1F6EF5596779.png)
+![Characteristics and Measures Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_80403A46_2297_4e05_8C9C_1F6EF5596779.png)
 
 ### IES elements in this diagram:
 
@@ -579,7 +579,7 @@ A `Disposition` is about an `Element`'s capability or tendency to do something o
 
 Dispositions are managed in IES using `DispositionalClass` - something that was also in the international IDEAS ontology where capability was a key concept they had to model. `DispositionalClasses` collect together all `Elements` that share the same disposition (e.g. all aircraft capable of Mach 2).
 
-![Disposition Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C9919009_48A5_4db1_8123_90396A6F3AD0.png)
+![Disposition Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_C9919009_48A5_4db1_8123_90396A6F3AD0.png)
 
 ### IES elements in this diagram:
 
@@ -609,7 +609,7 @@ Sometimes it is useful to call out the enduring part of an `Element` e.g. the ty
 
 In IES, we instantiate this enduring, replaceable part as both a `ReplaceablePart` and the class of `Element` that is intended to be installed into it. For example, the replaceable tyre part of a car is instantiated as both a `ReplaceablePart` and a tyre.
 
-![Replaceable Parts Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6C923E0C_455B_46bb_B498_2A47AA1A8DE3.png)
+![Replaceable Parts Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_6C923E0C_455B_46bb_B498_2A47AA1A8DE3.png)
 
 ### IES elements in this diagram:
 
@@ -634,7 +634,7 @@ parked cars, `Parked`. This gives us a specific subset of cars parked at Acacia 
 
 There are physically things in the world that are difficult to call out as separate individuals due to their high divisibility. For example, water in a swimming pool, sand on a beach or the walls and floors of a building. Stuff allows us to talk about these highly divisible or generally uncountable things.
 
-![Finite Count Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_5B7A4E68_4F12_48d2_AE62_D359E4CBA907.png)
+![Finite Count Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_5B7A4E68_4F12_48d2_AE62_D359E4CBA907.png)
 
 ### IES elements in this diagram:
 
@@ -663,7 +663,7 @@ A key distinction is made between the `Network` infrastructure itself and the `F
 
 The pattern also includes `Connection` and `Containment` concepts. A `Connection` enables one or more flows between elements, with `Connectors` being the parts of elements designed to participate in `Connections`. `Containment` models the relationship where one element confines, protects, or enables the handling of another.
 
-![Networks and Flows Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_70CF0200-A718-4BB9-8966-85F226057209.png)
+![Networks and Flows Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_70CF0200-A718-4BB9-8966-85F226057209.png)
 
 ### IES elements in this diagram:
 
@@ -700,7 +700,7 @@ The pattern also includes `Connection` and `Containment` concepts. A `Connection
 `Attributes` are not as widely used in IES as in IES3 where they were used for measures, identifiers and names. In IES
 they are only used for categorical statements, e.g. the purpose of a mission, the amount of currency, etc.
 
-![Attributes Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1A40117E_E6F6_4ae0_A438_8583E896BE00.png)
+![Attributes Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_1A40117E_E6F6_4ae0_A438_8583E896BE00.png)
 
 ### IES elements in this diagram:
 
@@ -724,7 +724,7 @@ The IES3 Source Reference capability is maintained in IES, but leverages the `Re
 
 **Note**: As IES is modelled in RDF Schema, the data will be RDF (encoded as TTL, JSON, XML, etc.). Referring to relationships (i.e. triples) in RDF involves using the RDF reification pattern, so if sourceReferenceFor is to relate to an attribute or relationship then RDF reification is the approach that shall be used.
 
-![Source References Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_60CD4A4C_652B_40c9_A65B_321A73329D6E.png)
+![Source References Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_60CD4A4C_652B_40c9_A65B_321A73329D6E.png)
 
 ### IES elements in this diagram:
 
@@ -762,7 +762,7 @@ IES3.
 
 It is sometimes important to specify the origins (organisation, system, etc.) of certain information. This is achieved using the `originator` and `originatingSystem` which link `rdf:Resources` (i.e. anything) to their origin. These can be applied to `GroupsOfItems` also, but care must be taken not to put the same `Thing` in different `GroupOfItem` instances that have `originator` or `originatingSystem` properties linked to them. If the source of a relationship (triple) has to be specified, the `originator` and `originatingSystem` properties can be applied to `rdf:Statement` (see RDF documentation on reification).
 
-![Payloads and Groups Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_17F25B76_6D6D_4d6e_8BC8_F97C1B2DCC0B.png)
+![Payloads and Groups Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_17F25B76_6D6D_4d6e_8BC8_F97C1B2DCC0B.png)
 
 ### IES elements in this diagram:
 
@@ -800,7 +800,7 @@ the Dublin Code metadata standard is to be used.
 The fact that IES has its own document referencing capability and Dublin Core may seem a little confusing. The
 example below attempts to clear this.
 
-![Metadata Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C58F08D6_9661_4b21_8576_B7620B7D84E3.png)
+![Metadata Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_C58F08D6_9661_4b21_8576_B7620B7D84E3.png)
 
 ---
 
@@ -810,7 +810,7 @@ example below attempts to clear this.
 
 This part of IES deals with specific amounts of a given currency.
 
-![Amount of Money Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_E9EC7882_A905_4bc5_ACF7_6AC9C28E8596.png)
+![Amount of Money Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_E9EC7882_A905_4bc5_ACF7_6AC9C28E8596.png)
 
 #### IES elements in this diagram:
 
@@ -832,7 +832,7 @@ This part of IES deals with specific amounts of a given currency.
 
 `Assets` are `Entities` that are either man-made or whose extent is defined in such a way as to specify ownership, e.g. a parcel of real estate.
 
-![Assets Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_DC826580_C2BF_482e_ABF2_B90684A4CB74.png)
+![Assets Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_DC826580_C2BF_482e_ABF2_B90684A4CB74.png)
 
 #### IES elements in this diagram:
 
@@ -869,7 +869,7 @@ This part of IES deals with specific amounts of a given currency.
 
 `CommunicationsAccounts` are new for IES (v4). In most online and telecoms scenarios, the account, who holds it, and who provides it are more important than the device or handset (which IES 4 majored on). `CommunicationsAccount` inherits much from the generic `Account` class, then adds a relationship to `CommunicationsIdentifier`.
 
-![Communications Account Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_A4475333_349B_4d3a_81FA_B899DC1961D1.png)
+![Communications Account Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_A4475333_349B_4d3a_81FA_B899DC1961D1.png)
 
 #### IES elements in this diagram:
 
@@ -914,7 +914,7 @@ This part of IES deals with specific amounts of a given currency.
 
 `Devices` are `Assets` that have been designed to perform one or more functions. IES then further sub-divides `Device` into `System` and `CommunicationsDevice`. A `CommunicationsDevice` is a self-contained device that acts as an endpoint for communication. A `System` is a collection of interacting `Devices` that together provide one or more functions. `System` components are generally removable / replacable - see `ReplaceablePart`.
 
-![Communications Device Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_9E7698FD_A154_4fb7_8054_A04D67EB71F1.png)
+![Communications Device Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_9E7698FD_A154_4fb7_8054_A04D67EB71F1.png)
 
 #### IES elements in this diagram:
 
@@ -954,7 +954,7 @@ This part of IES deals with specific amounts of a given currency.
 
 `CommunicationsIdentifiers` identify `Devices` (actually `DeviceState`, as the identifier may change over time). The identifiers are usually managed in a `CommunicationsAccount`, and again, we use the `State` rather than the "whole Life" (i.e. maximal `State`). `CommunicationsAccount` as `CommunicationsIdentifiers` can move from account to account.
 
-![Communications Identifier Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_3B36B41F_8E34_4a09_8586_5A8DF2FC3574.png)
+![Communications Identifier Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_3B36B41F_8E34_4a09_8586_5A8DF2FC3574.png)
 
 #### IES elements in this diagram:
 
@@ -986,7 +986,7 @@ This part of IES deals with specific amounts of a given currency.
 
 A `CommunicationsIdentifierRange` is a `CommunicationsIdentifier` that specifies a group of identifiers for `Devices`.
 
-![Communications Identifier Range Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1810A643_CCD5_474b_AF1B_CE748179B427.png)
+![Communications Identifier Range Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_1810A643_CCD5_474b_AF1B_CE748179B427.png)
 
 #### IES elements in this diagram:
 
@@ -1015,7 +1015,7 @@ A `CommunicationsIdentifierRange` is a `CommunicationsIdentifier` that specifies
 A DataObject is a Representationt that may contain internal structure that can be exploited using bespoke tools
 and/or applications. DataObjects might be geoobjects, video files, audio files, etc.
 
-![Data Object Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1F0FFC2A_9636_4070_BF77_E7503E68B9E1.png)
+![Data Object Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_1F0FFC2A_9636_4070_BF77_E7503E68B9E1.png)
 
 #### IES elements in this diagram:
 
@@ -1046,7 +1046,7 @@ In IES 3 there was just "Document", but it wasn't clear if this referred to a sp
 
 This has been rectified in IES and "Document" has been replaced by `WorkOfDocumentation` (the general case) and `IndividualDocument` (a particular instance of a document). In the majority of cases, `WorkOfDocumentation` will be used, but where we care about a particular instance (e.g. forensics, evidence, historical interest, etc.) then `IndividualDocument` should be used. The `IndividualDocument` can be related to the `WorkOfDocumentation` it is an instance of using the `aCopyOf` property.
 
-![Document Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_7A96DA48_8EEF_46d2_9362_C506781AF268.png)
+![Document Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_7A96DA48_8EEF_46d2_9362_C506781AF268.png)
 
 #### IES elements in this diagram:
 
@@ -1092,7 +1092,7 @@ This has been rectified in IES and "Document" has been replaced by `WorkOfDocume
 
 `Accounts` are ways to collect together transactions and other related Events. A `FinancialAccount` is an `Account` that is used to manage financial transactions.
 
-![Financial Account Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_29646663_65CC_41b5_A127_F8C3D6DD4FF5.png)
+![Financial Account Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_29646663_65CC_41b5_A127_F8C3D6DD4FF5.png)
 
 #### IES elements in this diagram:
 
@@ -1129,7 +1129,7 @@ This has been rectified in IES and "Document" has been replaced by `WorkOfDocume
 
 `IdentityDocuments` are `IndividualDocuments` that can be used to authenticate the identity of their bearers.
 
-![Identity Document Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_563B8C72_68EA_439b_88AF_424BF75DAA54.png)
+![Identity Document Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_563B8C72_68EA_439b_88AF_424BF75DAA54.png)
 
 #### IES elements in this diagram:
 
@@ -1186,7 +1186,7 @@ This has been rectified in IES and "Document" has been replaced by `WorkOfDocume
 
 The model is intended to be used hierarchically - e.g. an `Address` should be part of (`inLocation`) a `RegionOfCountry` which should be part of (`inLocation`) a `Country`, etc.
 
-![Location Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_12F41073_A280_42a2_A83B_A299C85B78F4.png)
+![Location Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_12F41073_A280_42a2_A83B_A299C85B78F4.png)
 
 #### IES elements in this diagram:
 
@@ -1247,7 +1247,7 @@ The model is intended to be used hierarchically - e.g. an `Address` should be pa
 
 This diagram covers the `Online` aspects of IES.
 
-![Online Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_8BE1A4EF_AD1D_4e9f_8681_AB9C658DA4D6.png)
+![Online Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_8BE1A4EF_AD1D_4e9f_8681_AB9C658DA4D6.png)
 
 #### IES elements in this diagram:
 
@@ -1302,7 +1302,7 @@ This diagram covers the `Online` aspects of IES.
 
 This diagram covers the `Organisation` aspects of IES.
 
-![Organisation Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_AD64CF62_6430_44f1_8943_DF7C22C31DFB.png)
+![Organisation Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_AD64CF62_6430_44f1_8943_DF7C22C31DFB.png)
 
 #### IES elements in this diagram:
 
@@ -1353,7 +1353,7 @@ This diagram covers the `Organisation` aspects of IES.
 
 `Roles` are also defined. These are `ClassOfStates` that are used to categorise a given state in terms of it role.
 
-![Posts and Roles Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_58BAB7ED_90B7_4ec5_82E5_02208AA0D521.png)
+![Posts and Roles Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_58BAB7ED_90B7_4ec5_82E5_02208AA0D521.png)
 
 #### IES elements in this diagram:
 
@@ -1375,7 +1375,7 @@ This diagram covers the `Organisation` aspects of IES.
 
 `PaymentArtefacts` are used in transactions, and also sometimes to identify people.
 
-![PaymentArtefact Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_282BC043_9277_4814_B98F_DFE588356C73.png)
+![PaymentArtefact Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_282BC043_9277_4814_B98F_DFE588356C73.png)
 
 #### IES elements in this diagram:
 
@@ -1415,7 +1415,7 @@ This diagram covers people, and people pretending to be other people (aliases). 
 
 Two special states are identified - birth and death which are `BoundingStates` for the whole life `Person` and can be used to identify the `Location` and date of birth.
 
-![Person Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_D2CDD899_3080_4887_897F_63EA08B5E949.png)
+![Person Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_D2CDD899_3080_4887_897F_63EA08B5E949.png)
 
 #### IES elements in this diagram:
 
@@ -1464,7 +1464,7 @@ Two special states are identified - birth and death which are `BoundingStates` f
 
 `Tickets` are `IndividualDocuments` that authorise access to `Events`, e.g. travel and entertainment.
 
-![Ticket Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_A98C6576_D0D5_42cf_AF90_89CC2B1F47F3.png)
+![Ticket Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_A98C6576_D0D5_42cf_AF90_89CC2B1F47F3.png)
 
 #### IES elements in this diagram:
 
@@ -1507,7 +1507,7 @@ Two special states are identified - birth and death which are `BoundingStates` f
 
 A means of transportation – e.g. car, aircraft, ship.
 
-![Vehicle Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6D8B1DC4_4361_4edb_818F_AC96863555AD.png)
+![Vehicle Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_6D8B1DC4_4361_4edb_818F_AC96863555AD.png)
 
 #### IES elements in this diagram:
 
@@ -1535,7 +1535,7 @@ A means of transportation – e.g. car, aircraft, ship.
 ---
 
 ### <a id="d97110d9-791e-4e88-a92b-5139286e5f05"></a>All Entities
-![All Entities Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_D97110D9_791E_4e88_A92B_5139286E5F05.png)
+![All Entities Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_D97110D9_791E_4e88_A92B_5139286E5F05.png)
 
 #### IES elements in this diagram:
 
@@ -1585,7 +1585,7 @@ There are two key types of `EventParticipant` - `Actor` and `ActedUpon`. `Actor`
 `Locations` of `Events` are handled with more precision in IES. The `happensIn` relationship can be used to assert the encompassing `Location` for the whole `Event`, e.g. an arrest that takes place in Trafalgar Square. However, some
 `Locations` merely participate in the `Event`, e.g. departure and destination ports, weapon and target locations in attacks, etc. For this reason, `happensIn` should only be used when the `Event` takes place entirely within the envelope of the `Location`. This precision is necessary for interpreting `Events` in geo systems, timeline visualisations, etc.
 
-![Events Dear Boy, Events Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_4C6AEF32_6360_4671_82E3_019DF67D2496.png)
+![Events Dear Boy, Events Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_4C6AEF32_6360_4671_82E3_019DF67D2496.png)
 
 #### IES elements in this diagram:
 
@@ -1614,7 +1614,7 @@ This model also introduces (new to IES 4.1.0) the idea of a `PossibleWorld` (as 
 
 In the example shown, there are three scenarios. In scenario 1, Fred is assessed to have carried out the hacking alone. In 2, Barry did it alone. In 3, they both did it. Vladimir has assessed the scenarios with HIGH MEDIUM and LOW confidence.
 
-![Assessment Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_5DF03A2C_F6DF_4433_82D5_7E5C14B6045C.png)
+![Assessment Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_5DF03A2C_F6DF_4433_82D5_7E5C14B6045C.png)
 
 #### IES elements in this diagram:
 
@@ -1650,7 +1650,7 @@ The request and grant events are linked to the `AuthorisedEventClass` (or classe
 `requestedActivityType` relationship. It is usual for authorisations (esp. warrants) to be time-bounded. Hence, any
 `AuthorisedEventClass` will usually also be an instance of a `TimeBoundedClass`.
 
-![Authorisation Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_DF5AAB67_46EB_40a8_B96E_8F3B5382D145.png)
+![Authorisation Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_DF5AAB67_46EB_40a8_B96E_8F3B5382D145.png)
 
 #### IES elements in this diagram: 
 
@@ -1682,7 +1682,7 @@ The `Observation` pattern specialises the `EventParticipation` pattern. There is
 
 The use of the `EventParticipation` pattern allows for the locations of `Observer` and `Observed` to be different.
 
-![Observation Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6D55C5E7_D9D9_454a_97C7_B682D9334D78.png)
+![Observation Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_6D55C5E7_D9D9_454a_97C7_B682D9334D78.png)
 
 #### IES elements in this diagram:
 
@@ -1705,7 +1705,7 @@ The use of the `EventParticipation` pattern allows for the locations of `Observe
 
 In IES, `Agreements` are handled using a pattern of `AgreementStages` that form part of an `EndToEndAgreement`.
 
-![Agreement Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C8EE24EF_889D_4e8f_96DE_CCBE47D4BE4F.png)
+![Agreement Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_C8EE24EF_889D_4e8f_96DE_CCBE47D4BE4F.png)
 
 #### IES elements in this diagram:
 
@@ -1743,7 +1743,7 @@ In IES, `Agreements` are handled using a pattern of `AgreementStages` that form 
 
 IES3 listed disagreements and war in the event tables. IES has maintained these two concepts, making `War` a specialisation of `Disagreement`. There are two accompanying `EventParticipations` (`inDisagreement` and `atWar`) also.
 
-![Disagreement and War Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6EEF4705_72CE_4979_90FF_1966940B7C35.png)
+![Disagreement and War Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_6EEF4705_72CE_4979_90FF_1966940B7C35.png)
 
 #### IES elements in this diagram:
 
@@ -1775,7 +1775,7 @@ IES3 listed disagreements and war in the event tables. IES has maintained these 
 
 The `BusinessEvent` model is really about `Events` that affect accounts - opening them, closing them and updating them. It also covers money transfers between `FinancialAccounts`.
 
-![Business Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_2C2171E3_E7A6_4702_AD72_1E02B11AFAA7.png)
+![Business Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_2C2171E3_E7A6_4702_AD72_1E02B11AFAA7.png)
 
 #### IES elements in this diagram:
 
@@ -1809,7 +1809,7 @@ The `BusinessEvent` model is really about `Events` that affect accounts - openin
 The attendance model in IES introduces some new concepts form IES3 - `Meeting` and `CheckIn`. These events
 weren't explicitly called out in IES3 - being colocated doesn't necessarily mean people are meeting.
 
-![Attendance Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6780105E_2091_491e_AEBF_C68E03B0074E.png)
+![Attendance Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_6780105E_2091_491e_AEBF_C68E03B0074E.png)
 
 #### IES elements in this diagram:
 
@@ -1843,7 +1843,7 @@ The `CommunicationEvent` consists of two or more `PartyInCommunication` events -
 
 In the example shown, Fred calls Brenda (we know they were both on the call). We also know which phone Fred used, but we don't know for Brenda, so all we can do is assume she has a US phone account that had a particular number.
 
-![Communication Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_D25935BF_2B8F_4315_A858_1FC4DC691DF3.png)
+![Communication Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_D25935BF_2B8F_4315_A858_1FC4DC691DF3.png)
 
 #### IES elements in this diagram:
 
@@ -1895,7 +1895,7 @@ In the example shown, Fred calls Brenda (we know they were both on the call). We
 
 Some of the roles originally in IES3 have been simplified in IES (see table at the bottom of the diagram).
 
-![Lifecycle Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_8DB48415_57E7_47d8_A6EE_97AD59CCA8B9.png)
+![Lifecycle Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_8DB48415_57E7_47d8_A6EE_97AD59CCA8B9.png)
 
 #### IES elements in this diagram:
 
@@ -1929,7 +1929,7 @@ Some of the roles originally in IES3 have been simplified in IES (see table at t
 
 `OnlineEvents` are activities such as logging in, notifications, etc.
 
-![OnlineEvent Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_70DAFAB2_F28A_4822_A211_00731AD90D62.png)
+![OnlineEvent Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_70DAFAB2_F28A_4822_A211_00731AD90D62.png)
 
 #### IES elements in this diagram:
 
@@ -1973,7 +1973,7 @@ Some of the roles originally in IES3 have been simplified in IES (see table at t
 
 `CriminalActivity` covers any `Event` that involves breaking the law.
 
-![Criminal Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_852CA74F_2858_4145_908D_5DCEB1AA0589.png)
+![Criminal Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_852CA74F_2858_4145_908D_5DCEB1AA0589.png)
 
 #### IES elements in this diagram:
 
@@ -2001,7 +2001,7 @@ Some of the roles originally in IES3 have been simplified in IES (see table at t
 
 In IES3, law enforcement came under `OperationalEvent`, but has been separated out for IES.
 
-![Law Enforcement Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_460B1D00_10CB_4f93_A518_F2A96AF54CF7.png)
+![Law Enforcement Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_460B1D00_10CB_4f93_A518_F2A96AF54CF7.png)
 
 #### IES elements in this diagram:
 
@@ -2034,7 +2034,7 @@ In IES3, law enforcement came under `OperationalEvent`, but has been separated o
 
 `OperationalEvents` are conducted against targets (`SubjectOfOperation`). They specialise into `IntelligenceOperations` and `MilitaryEvents`.
 
-![Operational Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_45F6DECC_1D67_4037_83DE_0047C8815EF5.png)
+![Operational Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_45F6DECC_1D67_4037_83DE_0047C8815EF5.png)
 
 #### IES elements in this diagram:
 
@@ -2071,7 +2071,7 @@ In IES3, law enforcement came under `OperationalEvent`, but has been separated o
 
 `PoliticalEvents` are `Events` that take place in local or national government, or in intergovernmental interactions.
 
-![Political Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_F919DBEC_CE53_478f_8EEA_FB151D7B1102.png)
+![Political Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_F919DBEC_CE53_478f_8EEA_FB151D7B1102.png)
 
 #### IES elements in this diagram:
 
@@ -2114,7 +2114,7 @@ In IES3, law enforcement came under `OperationalEvent`, but has been separated o
 
 `TradeEvents` cover the whole sales lifecycle from RFQ to delivery. Individual `TradeEvents` can be grouped into an `EndToEndTransaction`
 
-![Trade Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_B84B31E9_62DD_4a6b_89F3_459896232F75.png)
+![Trade Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_B84B31E9_62DD_4a6b_89F3_459896232F75.png)
 
 #### IES elements in this diagram:
 
@@ -2177,7 +2177,7 @@ All the above can have `Departure` and `Arrival` states, and those states can be
 
 Overall, much like the rest of IES, this model has been designed to work with as much or as little detail as is available. The (moderately complex) example below shows Fred's `Journey` to Los Angeles. The first leg is by car to Heathrow Airport, then by plane to LAX. We don't know what happened to him after his arrival in LAX.
 
-![Movement Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_41F61D94_0E76_4f81_A005_AE93346DB054.png)
+![Movement Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_41F61D94_0E76_4f81_A005_AE93346DB054.png)
 
 #### IES elements in this diagram:
 
@@ -2239,7 +2239,7 @@ appropriate other entities.
 
 `TravelBooking` is currently an `Entity` though there is some debate as to whether it really should be an `Event`.
 
-![Travel Booking Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_0641B013_5267_4314_84C8_1856EBA51A47.png)
+![Travel Booking Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_0641B013_5267_4314_84C8_1856EBA51A47.png)
 
 #### IES elements in this diagram:
 
@@ -2270,7 +2270,7 @@ appropriate other entities.
 
 The diagram below shows all the immediate subtypes of `Event`.
 
-![All Events Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_D488BDAE_AAEA_4c4a_B866_ED79D154D547.png)
+![All Events Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_D488BDAE_AAEA_4c4a_B866_ED79D154D547.png)
 
 #### IES elements in this diagram:
 
@@ -2306,7 +2306,7 @@ The diagram below shows all the immediate subtypes of `Event`.
 
 Most of the familial relationships from IES3 end up being relationships in IES - in fact the blood relations end up being between whole-life `Person` entities as the relationship lasts for life. The one exception is `Marriage` which has been modelled as an `EndToEndActivity` due to its temporal nature and the fact that the "relationship" is bidirectional.
 
-![Familial Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_C6937856_2424_4e96_BFE1_8CA3611869D1.png)
+![Familial Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_C6937856_2424_4e96_BFE1_8CA3611869D1.png)
 
 #### IES elements in this diagram:
 
@@ -2339,7 +2339,7 @@ The interestedIn relationship links a `ResponsibleActorState` to something they 
 
 General concepts are often the things of interest (e.g. football, finance, animal husbandry, etc.), but there may be `Entities` that are also of interest (e.g. a financier being interested in Vodafone plc).
 
-![Interest Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_59F513B8_3ECE_4bac_8BD0_908306396A8F.png)
+![Interest Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_59F513B8_3ECE_4bac_8BD0_908306396A8F.png)
 
 #### IES elements in this diagram:
 
@@ -2369,7 +2369,7 @@ General concepts are often the things of interest (e.g. football, finance, anima
 
 All of the `LifecycleEvent` relationships from IES3 end up being `EventParticipants` in IES.
 
-![Lifecycle Relationships Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_9E3102FC_46DC_4363_B0B4_D0EA7275D05D.png)
+![Lifecycle Relationships Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_9E3102FC_46DC_4363_B0B4_D0EA7275D05D.png)
 
 #### IES elements in this diagram:
 
@@ -2391,7 +2391,7 @@ All of the `LifecycleEvent` relationships from IES3 end up being `EventParticipa
 
 All of the Mutual Understanding relationships from IES3 end up being EventParticipants in IES.
 
-![Mutual Understanding Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_9D1812FF_691F_4847_B79C_9136091D93E0.png)
+![Mutual Understanding Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_9D1812FF_691F_4847_B79C_9136091D93E0.png)
 
 #### IES elements in this diagram:
 
@@ -2413,7 +2413,7 @@ All of the Mutual Understanding relationships from IES3 end up being EventPartic
 ---
 
 ### <a id="461d38a7-e51f-4e68-ab15-ca7b0e27b1f6"></a>Operational Part 1
-![Operational Part 1 Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_461D38A7_E51F_4e68_AB15_CA7B0E27B1F6.png)
+![Operational Part 1 Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_461D38A7_E51F_4e68_AB15_CA7B0E27B1F6.png)
 
 #### IES elements in this diagram:
 
@@ -2442,7 +2442,7 @@ All of the Mutual Understanding relationships from IES3 end up being EventPartic
 * [authorisesAccessTo](#a2da918d-843c-43c9-a974-4795601e9d65)
 
 ### <a id="bad148fb-d906-45c4-9a2c-d79819f47655"></a>Operational Part 2
-![Operational Part 2 Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_BAD148FB_D906_45c4_9A2C_D79819F47655.png)
+![Operational Part 2 Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_BAD148FB_D906_45c4_9A2C_D79819F47655.png)
 
 #### IES elements in this diagram:
 
@@ -2468,7 +2468,7 @@ All of the Mutual Understanding relationships from IES3 end up being EventPartic
 ---
 
 ### <a id="dc8f8219-960a-4207-b9af-98b9486529a8"></a>Professional
-![Professional Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_DC8F8219_960A_4207_B9AF_98B9486529A8.png)
+![Professional Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_DC8F8219_960A_4207_B9AF_98B9486529A8.png)
 
 #### IES elements in this diagram:
 
@@ -2494,7 +2494,7 @@ All of the Mutual Understanding relationships from IES3 end up being EventPartic
 
 The nearest an ontologist gets to Tinder&trade;.
 
-![Social Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_E92F9ED3_BB84_4e2f_B9FB_5B787D917BD0.png)
+![Social Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_E92F9ED3_BB84_4e2f_B9FB_5B787D917BD0.png)
 
 #### IES elements in this diagram:
 
@@ -2540,7 +2540,7 @@ these are used.
 - "Similar to" is now handled by creating a `SimilarEntities` class and using `similarEntity` to link the `Entity` instances to the class. This allows for more than two similar entities to be modelled.
 - "Part of" is now `isPartOf` and is used in a similar way as to IES3, but has specialised subtypes that are used for putting things in locations, periods of time, etc.
 
-![Structural Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_BED9B9A0_547E_49d5_AB9D_2BD0A634A3EA.png)
+![Structural Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_BED9B9A0_547E_49d5_AB9D_2BD0A634A3EA.png)
 
 #### IES elements in this diagram:
 
@@ -2577,7 +2577,7 @@ As with the Structural Relationships, Topological Relationships are handled diff
   relationship
 - For "is within", use the more general `inLocation` relationship
 
-![Topological Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_20BF4E8F_9683_4bf4_B59C_F7F2AB2FB8F3.png)
+![Topological Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_20BF4E8F_9683_4bf4_B59C_F7F2AB2FB8F3.png)
 
 #### IES elements in this diagram:
 
@@ -2597,7 +2597,7 @@ As with the Structural Relationships, Topological Relationships are handled diff
 ---
 
 ### <a id="de627d02-c0d9-462a-9cb7-1c496714a13d"></a>All Relationships
-![All Relationships Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_DE627D02_C0D9_462a_9CB7_1C496714A13D.png)
+![All Relationships Diagram](../diagrams/rendered/ies-specification-diagrams/EAID_DE627D02_C0D9_462a_9CB7_1C496714A13D.png)
 
 #### IES elements in this diagram:
 

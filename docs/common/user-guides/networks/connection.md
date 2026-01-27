@@ -18,15 +18,15 @@ A **Connection** requires that the connected **Elements** touch or overlap, or r
 
 Three types of **Connection** are shown schematically in Figure 1, Figure 2 and Figure 3.
 
-![Connection as overlap](../../assets/images/diagrams/rendered/networks/connection_as_overlap.jpg)
+![Connection as overlap](../../diagrams/rendered/networks/connection_as_overlap.jpg)
 
 *Figure 1 -- Connection as overlap*
 
-![Connection as common boundary](../../assets/images/diagrams/rendered/networks/connection_as_common_boundary.jpg)
+![Connection as common boundary](../../diagrams/rendered/networks/connection_as_common_boundary.jpg)
 
 *Figure 2 -- Connection as common boundary*
 
-![Connection with intermediate Elements](../../assets/images/diagrams/rendered/networks/connection_via_connection_material.jpg)
+![Connection with intermediate Elements](../../diagrams/rendered/networks/connection_via_connection_material.jpg)
 
 *Figure 3 -- Connection with intermediate Elements*
 
@@ -38,13 +38,13 @@ A **Connector** is a part of an **Element** that is, or is intended to be, all o
 
 The cases shown in Figure 1 and Figure 2 are recorded in IES as shown in Figure 4.
 
-![Record of connection with overlap](../../assets/images/diagrams/rendered/networks/record_of_connection_with_overlap.jpg)
+![Record of connection with overlap](../../diagrams/rendered/networks/record_of_connection_with_overlap.jpg)
 
 *Figure 4 - Record of connection with overlap*
 
 The case shown in Figure 3 is recorded in IES as shown in Figure 5.
 
-![Record of connection with intermediate Elements](../../assets/images/diagrams/rendered/networks/record_of_connection_with_intermediate_elements.jpg)
+![Record of connection with intermediate Elements](../../diagrams/rendered/networks/record_of_connection_with_intermediate_elements.jpg)
 
 *Figure 5 - Record of connection with intermediate Elements*
 
@@ -59,31 +59,31 @@ On 2025-03-17, the **Connectors** are two **ConnectionSides** in a **Connection*
 
 The classifications of the **Connection**, the two instances of **Connector**, and of the two **ConnectionSide** roles that that **Connectors** play in the **Connection**, are shown in Figure 6.
 
-![Laptop to mouse USB connection](../../assets/images/diagrams/rendered/networks/record_of_a_laptop_to_mouse_connection.jpg)
+![Laptop to mouse USB connection](../../diagrams/rendered/networks/record_of_a_laptop_to_mouse_connection.jpg)
 
 *Figure 6 - Laptop to mouse USB connection*
 
 Consider the bolted flange **Connection** between pipe A end 2 and pipe B end 1 shown in Figure 7.
 
-![Bolted flange connection](../../assets/images/diagrams/rendered/networks/bolted_flange_connection.jpg)
+![Bolted flange connection](../../diagrams/rendered/networks/bolted_flange_connection.jpg)
 
 *Figure 7 -- Bolted flange connection*
 
 The **Connection** consists of the flanges at the ends of the pipes, the bolts and the gasket. Pipe A does not touch or overlap with pipe B. This is the approach to **Connection** shown in Figure 3, where there are intermediate **Elements**. A record of the bolted flange connection using IES is shown in Figure 8.
 
-![Record of a bolted flange connection](../../assets/images/diagrams/rendered/networks/record_of_a_bolted_flange_connection.jpg)
+![Record of a bolted flange connection](../../diagrams/rendered/networks/record_of_a_bolted_flange_connection.jpg)
 
 *Figure 8 - Record of a bolted flange connection*
 
 Consider the welded **Connection** between pipe A end 2 and pipe B end 1 shown in Figure 9.
 
-![Welded connection](../../assets/images/diagrams/rendered/networks/welded_connection.jpg)
+![Welded connection](../../diagrams/rendered/networks/welded_connection.jpg)
 
 *Figure 9 -- Welded connection*
 
 This **Connection** can be considered as an assembly as in Figure 7, where in this case the assembly consists of the bevelled ends pipe A end 2 and pipe B end 1, and the weld material. A record of the welded connection using IES is shown in Figure 10.
 
-![Record of a welded connection](../../assets/images/diagrams/rendered/networks/record_of_a_welded_connection.jpg)
+![Record of a welded connection](../../diagrams/rendered/networks/record_of_a_welded_connection.jpg)
 
 *Figure 10 - Record of a welded connection*
 
@@ -96,13 +96,13 @@ These are **Connections** with common boundaries as shown in Figure 2.
 
 Consider the discharge **Connection** into a tank shown in Figure 11
 
-![Discharge into tank connection](../../assets/images/diagrams/rendered/networks/discharge_into_tank.jpg)
+![Discharge into tank connection](../../diagrams/rendered/networks/discharge_into_tank.jpg)
 
 *Figure 11 - Discharge into tank connection*
 
 The empty space can be recorded if required. This is shown in Figure 12.
 
-![Record of discharge into tank connection](../../assets/images/diagrams/rendered/networks/record_of_discharge_into_tank_connection.jpg)
+![Record of discharge into tank connection](../../diagrams/rendered/networks/record_of_discharge_into_tank_connection.jpg)
 
 *Figure 12 - Record of discharge into tank connection*
 
@@ -114,7 +114,7 @@ Where the connected elements have two ends, and can be connected at the ends, **
 
 A **Node** can be recorded, where the details of the **Connectors** not known or not important. This is shown in Figure 13.
 
-![Node in a pipe network](../../assets/images/diagrams/rendered/networks/node_in_pipe_network.jpg)
+![Node in a pipe network](../../diagrams/rendered/networks/node_in_pipe_network.jpg)
 
 *Figure 13 -- Node in a pipe network*
 
@@ -124,7 +124,7 @@ Piping branch B-1 is connected to piping branch B-2 at pipe **Node** T-101. **No
 
 A road network can be divided into road polygons as shown in Figure 14.
 
-![Road network as road polygons](../../assets/images/diagrams/rendered/networks/road_polygons.jpg)
+![Road network as road polygons](../../diagrams/rendered/networks/road_polygons.jpg)
 
 *Figure 14 -- Road network as road polygons*
 
@@ -132,7 +132,7 @@ The road polygons are shown in light brown, with darker brown boundaries. Road p
 
 Because a section of road can be regarded as a connected element with two ends, a **Connection** can be recorded as a **Node**, as shown in Figure 15.
 
-![Road network as Nodes and Links](../../assets/images/diagrams/rendered/networks/road_nodes_and_links.jpg)
+![Road network as Nodes and Links](../../diagrams/rendered/networks/road_nodes_and_links.jpg)
 
 *Figure 15 -- Road network as Nodes and Links*
 
@@ -148,7 +148,7 @@ A table of cross references is maintained between road **Links** and road polygo
 
 A record of the connection between two road polygons, as shown in Figure 14, is shown in Figure 16.
 
-![Record of a connection between road polygons](../../assets/images/diagrams/rendered/networks/Record_of_connection_between_road_polygons.jpg)
+![Record of a connection between road polygons](../../diagrams/rendered/networks/Record_of_connection_between_road_polygons.jpg)
 
 *Figure 16 -- Record of a connection between road polygons*
 
@@ -158,7 +158,7 @@ NOTE The **isBoundaryOf** relationship shown in Figure 16 is not defined in the 
 
 A record of the road links which are connected at **Node** N-7 in Figure 15 is shown in Figure 17.
 
-![Record of road links between nodes](../../assets/images/diagrams/rendered/networks/Record_of_road_links_between_nodes.jpg)
+![Record of road links between nodes](../../diagrams/rendered/networks/Record_of_road_links_between_nodes.jpg)
 
 *Figure 17 -- Record of road links between nodes*
 

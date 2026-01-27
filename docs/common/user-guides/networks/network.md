@@ -12,7 +12,7 @@ A **Node** is what exists at the end of a **Link**. A **Node** can be at the end
 
 The IES support for **Network** is shown as Figure 1.
 
-![Network in IES](../../assets/images/diagrams/rendered/networks/Network_in_IES.jpg)
+![Network in IES](../../diagrams/rendered/networks/Network_in_IES.jpg)
 
 *Figure 1 - Network in IES*
 
@@ -22,13 +22,13 @@ NOTE 2 The relationships **hasStartEnd** and **hasFinishEnd** are used where a *
 
 UK highways is a **Network**. A small part of the highway **Network** is shown in Figure 2.
 
-![Part of a highway Network](../../assets/images/diagrams/rendered/networks/Part_of_a_highways_network.jpg)
+![Part of a highway Network](../../diagrams/rendered/networks/Part_of_a_highways_network.jpg)
 
 *Figure 2 - Part of a highway Network*
 
 A record of the Links L-1, L-2 and L-3, which have ends at N-7, is shown in Figure 3.
 
-![Record of part of a highway Network](../../assets/images/diagrams/rendered/networks/Record_of_part_of_a_highways_network.jpg)
+![Record of part of a highway Network](../../diagrams/rendered/networks/Record_of_part_of_a_highways_network.jpg)
 
 *Figure 3 - Record of part of a highway Network*
 
@@ -38,7 +38,7 @@ In Figure 3, it is assumed that a Highway Network is necessarily a **Network**, 
 
 The **Links** that make up a **Network** can change with time. Consider **Network** X which changes each year as shown Figure 4.
 
-![Changes to a Network](../../assets/images/diagrams/rendered/networks/Evolution_of_network.jpg)
+![Changes to a Network](../../diagrams/rendered/networks/Evolution_of_network.jpg)
 
 *Figure 4 -- Changes to a Network*
 
@@ -50,7 +50,7 @@ The changes to the network are as follows:
 
 A record of the changes to the network using IES is shown in Figure 5.
 
-![Record of changes to a network](../../assets/images/diagrams/rendered/networks/Record_of_evolution_of_network.jpg)
+![Record of changes to a network](../../diagrams/rendered/networks/Record_of_evolution_of_network.jpg)
 
 *Figure 5 - Record of changes to a network*
 
@@ -66,7 +66,7 @@ A **Link** can be decomposed in two ways:
 
 Consider **Network** X which can be described at different levels of detail as shown in Figure 6.
 
-![Levels of detail of a Network](../../assets/images/diagrams/rendered/networks/Levels_of_detail_for_a_network.jpg)
+![Levels of detail of a Network](../../diagrams/rendered/networks/Levels_of_detail_for_a_network.jpg)
 
 *Figure 6 -- Levels of detail of a Network*
 
@@ -88,7 +88,7 @@ The semantics of the increasing detail between level 3 and level 4 is complicate
 
 Two different **Networks** can be connected. The connection can be at a **Node**, or via a **Link**, and recorded with different levels of detail, as shown in Figure 7.
 
-![Connection between networks](../../assets/images/diagrams/rendered/networks/Border_between_networks.jpg)
+![Connection between networks](../../diagrams/rendered/networks/Border_between_networks.jpg)
 
 *Figure 7 - Connection between networks*
 
@@ -146,7 +146,7 @@ A **Network** provides a high-level view which does not show the details of how 
 
 Consider the road junction shown in Figure 9.
 
-![Road junction](../../assets/images/diagrams/rendered/networks/Road_junction.jpg)
+![Road junction](../../diagrams/rendered/networks/Road_junction.jpg)
 
 *Figure 9 - Road junction*
 
@@ -158,19 +158,19 @@ This view relies upon a record of the three **Connections**:
 
 The record is shown as UML in Figure 10.
 
-![Record of road junction connections](../../assets/images/diagrams/rendered/networks/Record_of_road_junction_connections.jpg)
+![Record of road junction connections](../../diagrams/rendered/networks/Record_of_road_junction_connections.jpg)
 
 *Figure 10 - Record of road junction connections*
 
 In Figure 10, each Connection is classified. A **Network** view of the same road junction is shown in Figure 11.
 
-![Network view of a road junction](../../assets/images/diagrams/rendered/networks/Network_view_of_a_road_junction.jpg)
+![Network view of a road junction](../../diagrams/rendered/networks/Network_view_of_a_road_junction.jpg)
 
 *Figure 11 - Network view of a road junction*
 
 Figure 11 does not record the **Connections**, but merely shows that **Flows** are possible along the A3055 and between B3399 and the A3055. A record of the **Network** view is shown in Figure 12.
 
-![Record of a network view of a road junction](../../assets/images/diagrams/rendered/networks/Record_of_a_network_view_of_a_road_junction.jpg)
+![Record of a network view of a road junction](../../diagrams/rendered/networks/Record_of_a_network_view_of_a_road_junction.jpg)
 
 *Figure 12 - Record of a network view of a road junction*
 
@@ -198,7 +198,7 @@ A **Network** has multiple levels of detail. A **Node** can have other **Nodes**
 
 A graph can be a representation of a **Network** for a particular state at a particular level of detail. A graph is can be an interface between a record of a Network and a routing application, as shown in Figure 13.
 
-![Network, graph and routing application](../../assets/images/diagrams/rendered/networks/network_graph_and_application.jpg)
+![Network, graph and routing application](../../diagrams/rendered/networks/network_graph_and_application.jpg)
 
 *Figure 13 - Network, graph and routing application*
 
@@ -206,19 +206,19 @@ A graph can be a representation of a **Network** for a particular state at a par
 
 Many of the highways data sources are graphs with some additional data. In these cases, extracting a graph to support routing applications is straightforward. IES is more difficult because it supports different levels of detail. A single level of detail has to be extracted to support routing. The is shown by the example in Figure 14.
 
-![Two levels of detail](../../assets/images/diagrams/rendered/networks/two_levels_of_detail.jpg)
+![Two levels of detail](../../diagrams/rendered/networks/two_levels_of_detail.jpg)
 
 *Figure 14 - Two levels of detail*
 
 In Figure 14, link A is decomposed into two links A-1 and A-2 for a purpose unrelated to routing, such as highway maintenance. A record of the links according to IES is shown in Figure 15.
 
-![Record of levels of detail](../../assets/images/diagrams/rendered/networks/record_of_levels_of_detail.jpg)
+![Record of levels of detail](../../diagrams/rendered/networks/record_of_levels_of_detail.jpg)
 
 *Figure 15 - Record of levels of detail*
 
 If a graph is extracted, relying only upon the **hasEnd** relationships between **Links** and **Nodes**, then the graph shown in Figure 16 will be obtained.
 
-![Incorrect graph](../../assets/images/diagrams/rendered/networks/incorrect_graph.jpg)
+![Incorrect graph](../../diagrams/rendered/networks/incorrect_graph.jpg)
 
 *Figure 16 - Incorrect graph*
 
@@ -230,6 +230,6 @@ Possibly a sufficiently clever algorithm can process whole part relationships, a
 
 The triples to be used for routing can be held as a separate data base. A record of the division of **Links** into parts, or of the amalgamation of **Links**, for purposes other than routing can be held elsewhere, as shown in Figure 17.
 
-![Separate routing data](../../assets/images/diagrams/rendered/networks/separate_routing_data.jpg)
+![Separate routing data](../../diagrams/rendered/networks/separate_routing_data.jpg)
 
 *Figure 17 - Separate routing data*

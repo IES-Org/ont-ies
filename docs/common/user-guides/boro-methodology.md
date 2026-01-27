@@ -30,7 +30,7 @@ The cornerstone of BORO is its "**criteria for identity**"—how we determine wh
 
 This is beautifully simple and unambiguous:
 
-![BORO Identity by Extent](../assets/images/diagrams/rendered/4d-fred.png)
+![BORO Identity by Extent](../diagrams/rendered/4d-fred.png)
 
 Fred's spatio-temporal extent encompasses all of Fred across his entire lifetime. 1984-Fred and 2014-Fred are **states** of the same Fred because they're parts of the same spatio-temporal extent.
 
@@ -89,7 +89,7 @@ For **physical things** (Elements in IES):
 | **Time (1D)** | Temporal duration | Fred exists from 1984 to present          |
 | **Combined (4D)** | Spatio-temporal volume | Fred's complete life across all locations |
 
-![BORO Identity by Extent](../assets/images/diagrams/rendered/4d-fred.png)
+![BORO Identity by Extent](../diagrams/rendered/4d-fred.png)
 
 !!! example "Fred Through Time"
 

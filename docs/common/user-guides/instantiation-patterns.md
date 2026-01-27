@@ -30,7 +30,7 @@ These instantiation patterns will be articulated using the mappings of the JSON 
 
 This is the most common and naturally intuitive pattern of instantiating a thing with IES. Commonly used for most IES Elements. Here is an example of instantiating an `ies:Person` and an associated `ies:PersonState` (a temporal slice of a person).
 
-![Element instances](../assets/images/diagrams/rendered/element-instances.png)
+![Element instances](../diagrams/rendered/element-instances.png)
 
 ### Example
 
@@ -48,7 +48,7 @@ Ideally, we should first build out such categories or taxonomies into our local 
 
 ### Example
 
-![Element instances](../assets/images/diagrams/rendered/element-instances-2.png)
+![Element instances](../diagrams/rendered/element-instances-2.png)
 
 ```turtle
 data:person_1 a ies:Person .
@@ -74,7 +74,7 @@ The thing that is shared between two things with the same name is the string lit
 
 ### Example
 
-![Name instances](../assets/images/diagrams/rendered/name-instances.png)
+![Name instances](../diagrams/rendered/name-instances.png)
 
 ```turtle
 data:person_1 a ies:Person .
@@ -109,7 +109,7 @@ BORO ontologies such as IES allow the instantiation of classes that are themselv
 
 ### Example
 
-![Class instances](../assets/images/diagrams/rendered/class-instances.png)
+![Class instances](../diagrams/rendered/class-instances.png)
 
 ```turtle
 data:person_1 a ies:Person .

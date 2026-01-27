@@ -8,7 +8,7 @@ This document discusses the relationship between the current relationship **inLo
 
 Consider batch of fluid B-101 in tank T-101 on 2026-06-26. The space-time diagram for the batch of fluid being in the tank is shown in Figure 1.
 
-![Batch of fluid in tank -- space-time diagram](../../assets/images/diagrams/rendered/networks/batch_fluid_spacetime.jpg)
+![Batch of fluid in tank -- space-time diagram](../../diagrams/rendered/networks/batch_fluid_spacetime.jpg)
 
 *Figure 1 -- Batch of fluid in tank -- space-time diagram*
 
@@ -16,7 +16,7 @@ Consider batch of fluid B-101 in tank T-101 on 2026-06-26. The space-time diagra
 
 During 2026-06-26, the batch B-101 is located in the interior of tank T-101. The instances are shown in Figure 2.
 
-![Batch of fluid in tank -- location instances](../../assets/images/diagrams/rendered/networks/batch_fluid_location.jpg)
+![Batch of fluid in tank -- location instances](../../diagrams/rendered/networks/batch_fluid_location.jpg)
 
 *Figure 2 -- Batch of fluid in tank -- location instances*
 
@@ -42,7 +42,7 @@ The corresponding TURTLE is as follows:
 
 During 2026-06-26, the batch B-101 is contained by tank T-101. The instances are shown in Figure 3.
 
-![Batch of fluid in tank -- containment instances](../../assets/images/diagrams/rendered/networks/batch_fluid_containment.jpg)
+![Batch of fluid in tank -- containment instances](../../diagrams/rendered/networks/batch_fluid_containment.jpg)
 
 *Figure 3 -- Batch of fluid in tank -- containment instances*
 

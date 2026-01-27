@@ -18,10 +18,18 @@ Composite releases are tagged in Git using the format: `ies-release-{yyyy.mm}`
 
 ## Release History
 
+### Release Candidates
+
+- **IES Common v5.1.0-rc2** — January 2026
+  - Release candidate for IES Common v5.1.0
+  - Git tag: `common/v5.1.0-rc2`
+  - Includes: Capacity pattern, Network patterns, updated documentation
+  - [Changelog](docs/common/CHANGELOG.md)
+
 ### Planned
 
-- **ies-release-2025.xx** — First composite release (TBC)
-  - IES Common v5.0.0
+- **ies-release-2026.xx** — First composite release (TBC)
+  - IES Common v5.1.0
   - Additional modules as they become available
 
 ---
@@ -47,7 +55,7 @@ Each module follows [Semantic Versioning](https://semver.org/):
 ### Git Tags
 
 - **Module releases**: `{module-id}/v{version}` (e.g., `common/v5.0.0`)
-- **Release candidates**: `{module-id}/v{version}-rcN` (e.g., `common/v5.0.0-rc1`)
+- **Release candidates**: `{module-id}/v{version}-rcN` (e.g., `common/v5.1.0-rc2`)
 - **Composite releases**: `ies-release-{yyyy.mm}` (e.g., `ies-release-2025.06`)
 
 ### Maintenance Branches
@@ -59,4 +67,4 @@ When critical fixes need to be backported to older major versions, maintenance b
 
 ---
 
-*© Crown Copyright 2020-2025*
+*© Crown Copyright 2020-2026*

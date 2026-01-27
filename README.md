@@ -33,6 +33,7 @@ ont-ies/
 │       ├── specification/    # Ontology files and spec docs
 │       ├── user-guides/      # Conceptual guides and tutorials
 │       ├── examples/         # Worked examples and sample data
+│       ├── diagrams/         # Module-specific diagrams
 │       ├── module.yml        # Module metadata
 │       └── CHANGELOG.md      # Module version history
 ├── registry.yml              # Machine-readable module index
@@ -50,7 +51,7 @@ Future domain modules will be added under `docs/` following the same pattern:
 
 | Module | Version | Status | Documentation |
 |--------|---------|--------|---------------|
-| **IES Common** | 5.0.0 | Release Candidate | [docs/common/](docs/common/) |
+| **IES Common** | 5.1.0-rc2 | Release Candidate | [docs/common/](docs/common/) |
 
 ---
 
@@ -65,7 +66,7 @@ Each module is versioned independently using [Semantic Versioning](https://semve
 ### Git Tags
 
 - **Module releases:** `{module-id}/v{version}` (e.g., `common/v5.0.0`)
-- **Release candidates:** `{module-id}/v{version}-rcN` (e.g., `common/v5.0.0-rc1`)
+- **Release candidates:** `{module-id}/v{version}-rcN` (e.g., `common/v5.1.0-rc2`)
 - **Composite releases:** `ies-release-{yyyy.mm}` (e.g., `ies-release-2025.06`)
 
 ---
@@ -116,7 +117,7 @@ This repository contains both source code and documentation, each released under
 
 By contributing to this repository, you agree that your contributions will be licensed under these terms.  
 
-© Crown copyright (2020–2025)  
+© Crown copyright (2020–2026)  
 
 ---  
 

@@ -38,7 +38,7 @@ Let's say there is a need to extend IES to introduce two new types of Ship: a `P
 
 Then, in our local ontology namespace, we add these new classes using the `rdfs:subClassOf` relation as illustrated below. These new classes will therefore inherit all attributes and relationships already associated with `ies:Ship`.
 
-![Extending Ship UML Diagram](../assets/images/diagrams/rendered/extending-ship.png)
+![Extending Ship UML Diagram](../diagrams/rendered/extending-ship.png)
 
 ```turtle
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -55,7 +55,7 @@ Now that we have our new extensions, we can use them in our data. We follow the 
 
 **However**, in addition, we also make this instance a type of the nearest class in IES. This caters for consumers which may not have access to our local ontology, so at the very least they can understand what sort of IES thing our instance is meant to be.
 
-![Using Extended Ship UML Diagram](../assets/images/diagrams/rendered/extended-ship-use.png)
+![Using Extended Ship UML Diagram](../diagrams/rendered/extended-ship-use.png)
 
 #### Why Dual Typing?
 
@@ -78,7 +78,7 @@ As with extending classes and for the same reasons, you **MUST** also articulate
 
 #### Example: Extending Relationships
 
-![Extending ParentOf UML Diagram](../assets/images/diagrams/rendered/extending-parentof.png)
+![Extending ParentOf UML Diagram](../diagrams/rendered/extending-parentof.png)
 
 ```turtle
 ont:motherOf rdfs:subPropertyOf ies:parentOf .
@@ -111,7 +111,7 @@ This ensures that, at the very least, consumers of data that use extensions can 
 
 The diagram below shows those concepts (within the grey boundary) which **cannot be extended**:
 
-![Extension Boundary Diagram](../assets/images/diagrams/rendered/extension-permissable-boundary.png)
+![Extension Boundary Diagram](../diagrams/rendered/extension-permissable-boundary.png)
 
 The non-extensible concepts are:
 
@@ -178,7 +178,7 @@ Earlier on in this pack, we went through a simple extension example where we add
 
 One solution is to develop a class hierarchy that is "nested" (shown in the diagram below). However, this introduces a lot of duplication. The compounding of the types in the subclasses will cause headaches when you want to query for specific facets* of a ship—e.g. we only want fossil-fuelled powered ships returned by our query.
 
-![Complex extensions: the wrong way](../assets/images/diagrams/rendered/complex-extensions-wrong-way.png)
+![Complex extensions: the wrong way](../diagrams/rendered/complex-extensions-wrong-way.png)
 
 !!! info "Faceted Classification"
     *A faceted classification system uses a set of semantically cohesive categories that are combined as needed to create an expression of a concept.
@@ -212,7 +212,7 @@ A faceted approach can be developed in IES using **powersets**. We create classe
 
 This approach helps create a flatter, easier-to-maintain structure that is easier to query. Moreover, this removes the need for compounding types.
 
-![Complex extensions: the right way](../assets/images/diagrams/rendered/complex-extensions-right-way.png)
+![Complex extensions: the right way](../diagrams/rendered/complex-extensions-right-way.png)
 
 #### Setting Up the Powerset Hierarchy
 
@@ -258,7 +258,7 @@ Introducing new powersets as we did with the hierarchy extending from `ies:Class
 - **ALL** subtypes of `ies:Vehicle` are members of `ont:ClassOfVehicle`; and
 - **ALL** subtypes of `ies:Ship` are members of `ont:ClassOfShip`
 
-![Complex extensions - additional plumbing](../assets/images/diagrams/rendered/complex-extensions-additional-plumbing.png)
+![Complex extensions - additional plumbing](../diagrams/rendered/complex-extensions-additional-plumbing.png)
 
 ```turtle
 ies:Vehicle ies:powertype ont:ClassOfVehicle .
@@ -274,7 +274,7 @@ To be able to talk about classes that are themselves members of other classes, w
 
 #### Example: Ranks
 
-![rdf:type is not transitive](../assets/images/diagrams/rendered/powertypes-1.png)
+![rdf:type is not transitive](../diagrams/rendered/powertypes-1.png)
 
 In this example:
 - Colonel Blimp is an instance of (`rdf:type`) the class Colonel
@@ -284,7 +284,7 @@ In this example:
 
 #### Example: Documents
 
-![Powertype example](../assets/images/diagrams/rendered/powertypes-2.png)
+![Powertype example](../diagrams/rendered/powertypes-2.png)
 
 The mechanism used for stepping up the type levels in IES is the `ies:powertype` relationship. It relates a Class to another class whose members are all possible subtypes of that Class. 
 
@@ -294,7 +294,7 @@ This is a bit of logical plumbing in IES and may not be of interest to all users
 
 Because of the faceted approach we have taken, our ship instances will now have **two types** as shown here with the Titanic. And, as is required to cater for those without access to our ontology extensions, a **third type** is needed to state the nearest IES equivalent.
 
-![Complex extensions - local classes](../assets/images/diagrams/rendered/complex-extensions-new-classes.png)
+![Complex extensions - local classes](../diagrams/rendered/complex-extensions-new-classes.png)
 
 ```turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -330,7 +330,7 @@ data:robot_1_state_1 a ies:DeviceState .
 data:robot_1_state_1 ies:isStateOf data:robot_1.
 ```
 
-![Specific guidance](../assets/images/diagrams/rendered/extending-robot.png)
+![Specific guidance](../diagrams/rendered/extending-robot.png)
 
 ---
 
