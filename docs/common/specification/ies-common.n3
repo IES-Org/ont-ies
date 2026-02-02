@@ -427,13 +427,12 @@ ies:Capability a rdfs:Class ;
 
 ies:Capacity a rdfs:Class ;
     rdfs:label "Capacity"@en-GB ;
-    dcterms:identifier "{85DE1904-A59F-41B6-A6C2-CB850C73C60D}" ;
-    rdfs:comment """
-    `ClassOfState` where all the members are classes that share the same `Capacity` that enables them (or is necessary
-    at least in part) to perform some function as a participant in an `Event`.
+    dcterms:identifier "{existing-UUID}" ;
+    rdfs:comment """A ClassOfState representing what an Entity can do (in some possible world).
 
-    Example: Aircraft with the Capacity to fly at Mach 2
-    """ ;
+Note: Typing a ClassOfState as Capacity is optional. The ies:hasCapacity and ies:eachHasCapacity
+properties accept any ClassOfState as their range. Typing as Capacity simply provides semantic
+clarity that this ClassOfState represents a capacity."""@en-GB ;
     rdfs:subClassOf ies:ClassOfState .
 
 ies:CarTravel a rdfs:Class ;
@@ -733,6 +732,7 @@ ies:ConferenceParticipant a rdfs:Class ;
     rdfs:subClassOf ies:PartyInCommunication .
 
 ies:Connection a rdfs:Class ;
+    rdfs:label "Connection" ;
     dcterms:identifier "{999CF6C3-AA65-4109-9FC4-5E5C8ECEC4A7}" ;
     rdfs:comment """An Element that enables one or more Flows between two or more other Elements.
 
@@ -740,6 +740,7 @@ Note: A Flow can be of a fluid, such as water or natural gas; of energy, such as
     rdfs:subClassOf ies:Element .
 
 ies:ConnectionSide a rdfs:Class ;
+    rdfs:label "Connection Side" ;
     dcterms:identifier "{CC20F8F7-EBFC-4897-AD94-568E8B3F9E99}" ;
     rdfs:comment """An Element that is a part of a Connection and part of an Element that is the source or destination of a flow through the Connection.
 
@@ -747,6 +748,7 @@ Note: A ConnectionSide can be all or part of a Connector.""" ;
     rdfs:subClassOf ies:Element .
 
 ies:Connector a rdfs:Class ;
+    rdfs:label "Connector" ;
     dcterms:identifier "{41B78DBF-188F-4D64-A7CB-948C99E20061}" ;
     rdfs:comment """An Element that is, or is intended to, enable a Connection by being part of another Element.
 
@@ -756,11 +758,15 @@ Note 2: A Connector can be part of another Element without also being part of a 
     rdfs:subClassOf ies:Element .
 
 ies:Contained a rdfs:Class ;
+    rdfs:label "Contained" ;
     dcterms:identifier "{B9C215E3-C8B3-4D6A-90B0-B650F2965F07}" ;
-    rdfs:comment "An Element that is a part of a Containment and that is confined, protected, or handled." ;
+    rdfs:comment """
+    An Element that is a part of a Containment and that is confined, protected, or handled.
+    """ ;
     rdfs:subClassOf ies:Element .
 
 ies:Container a rdfs:Class ;
+    rdfs:label "Container" ;
     dcterms:identifier "{D38509CD-1D01-465C-8468-2F55295633CD}" ;
     rdfs:comment """An Element that is, or is intended to, confining, protecting or enabling the handling of one or more Contained elements.
 
@@ -768,6 +774,7 @@ Note: A Container can exist without having a Contained element.""" ;
     rdfs:subClassOf ies:Element .
 
 ies:Containment a rdfs:Class ;
+    rdfs:label "Containment" ;
     dcterms:identifier "{4C4B80F3-AC42-4C15-A15C-987E0BFBE404}" ;
     rdfs:comment "An Element that confines, protects, or enables the handling of one or more Contents." ;
     rdfs:subClassOf ies:Element .
@@ -1336,6 +1343,7 @@ ies:FlightTicket a rdfs:Class ;
     rdfs:subClassOf ies:TravelTicket .
 
 ies:Flow a rdfs:Class ;
+    rdfs:label "Flow" ;
     dcterms:identifier "{45B593FC-2335-48D1-98DD-D887D3D56D0D}" ;
     rdfs:comment """A State that is the matter, energy or signal that crosses a surface or passes along path.
 
@@ -1865,8 +1873,9 @@ ies:LineOfAddress a rdfs:Class ;
     rdfs:subClassOf ies:GeoIdentity .
 
 ies:Link a rdfs:Class ;
+    rdfs:label "Link" ;
     dcterms:identifier "{440DA92B-A183-4CD4-9912-0E02EF15FF64}" ;
-    rdfs:comment """An Element that is, or enables, a Flow between the ends.
+    rdfs:comment """An Element that is, or enables, a Flow between the ends of the link.
 
 Note 1: A Link can be bi-directional, or uni-directional with a start end and a finish end.
 
@@ -2158,8 +2167,9 @@ ies:Negotiator a rdfs:Class ;
     rdfs:subClassOf ies:ActiveEventParticipant .
 
 ies:Network a rdfs:Class ;
+    rdfs:label "Network" ;
     dcterms:identifier "{9144A435-2CF4-4E0D-9089-FFAE1BD219C7}" ;
-    rdfs:comment """An Element that consists Links and Nodes.
+    rdfs:comment """An Element that consists of Links and Nodes.
 
 Note 1: A Network can consists of roads, railways, pipelines, Flows of energy or matter, or transport services conveying people or goods.
 
@@ -2185,6 +2195,7 @@ An nickname will often be applied to a State of the Person, as these tend to be 
     rdfs:subClassOf ies:PersonName .
 
 ies:Node a rdfs:Class ;
+    rdfs:label "Node" ;
     dcterms:identifier "{2EEED67B-723D-480D-A610-DFCBB081CEDE}" ;
     rdfs:comment """A Node is what exists at the end of one or more Links.
 
@@ -3746,8 +3757,8 @@ ies: a owl:Ontology ;
     dcterms:title "IES Common Ontology"@en-GB ;
     dcterms:type "IES Common Ontology"@en-GB ;
     vann:preferredNamespacePrefix "ies" ;
-    vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies#" ;
-    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.0.0> ;
+    vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies/common/" ;
+    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.1.0-rc1> ;
     owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.1.0-rc2> ;
     owl:versionInfo "5.1.0-rc2" .
 
@@ -4058,6 +4069,18 @@ ies:documentedBy a owl:ObjectProperty ;
     rdfs:range ies:WorkOfDocumentation ;
     rdfs:subPropertyOf ies:isRepresentedAs .
 
+ies:eachHasCapacity a owl:ObjectProperty ;
+    rdfs:label "each Has Capacity"@en-GB ;
+    dcterms:identifier "{F4C6B093-874D-4e4f-9A7C-6B3E1D8C2A91}" ;
+    rdfs:comment """A relationship that asserts all members of a ClassOfState can have (be members of) another ClassOfState (Capacity).
+
+This is the class-level equivalent of hasCapacity. For example, "Eurofighter in operational condition" (a ClassOfState) eachHasCapacity "Performer of Mach 2 flight" (another ClassOfState) means that every member of the first class can, in some possible world, be a member of the second class.
+
+See also: hasCapacity for the instance-level equivalent."""@en-GB ;
+    rdfs:domain ies:ClassOfState ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
+
 ies:employedBy a owl:ObjectProperty ;
     rdfs:label "employed By"@en-GB ;
     dcterms:identifier "{74721DF1-18D6-4c1b-93CC-71C888C6D405}" ;
@@ -4212,12 +4235,16 @@ ies:hasAuthor a owl:ObjectProperty ;
 ies:hasCapacity a owl:ObjectProperty ;
     rdfs:label "has Capacity"@en-GB ;
     dcterms:identifier "{862E873D-B64A-41AD-9D3D-27F108FA159F}" ;
-    rdfs:comment """
-    A relationship that asserts that an Element can have a particular instance of a Capacity.
-    """ ;
-    rdfs:domain ies:Element ;
-    rdfs:range ies:Capacity ;
-    rdfs:subPropertyOf ies:canHaveStateOfClass .
+    rdfs:comment """A relationship that asserts a State can have (be a member of) a particular ClassOfState (Capacity).
+
+This expresses modal possibility: the State, in some possible world, can be a member of the specified ClassOfState. For example, "Fred Bloggs in 2026" (a PersonState) can be a member of "Term as Captain of Medway Queen" (a ClassOfState subclass of InPost).
+
+This is distinct from actually being a member of that ClassOfState - actual membership is expressed via rdf:type. A State may have a Capacity that is never actualised.
+
+See also: eachHasCapacity for the class-level equivalent."""@en-GB ;
+    rdfs:domain ies:State ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
 
 ies:hasCharacteristic a owl:ObjectProperty ;
     rdfs:label "has Characteristic"@en-GB ;
@@ -4257,6 +4284,7 @@ The Metropolitan Police standard shall be used as the reference data standard.""
         rdf:type .
 
 ies:hasFinish a owl:ObjectProperty ;
+    rdfs:label "has Finish" ;
     dcterms:identifier "{C50ACACE-B654-4094-A0AB-252FFD2A3E7C}" ;
     rdfs:comment "The Node at the finish of a directed Link." ;
     rdfs:subPropertyOf ies:hasEnd .
@@ -4318,6 +4346,7 @@ ies:hasSourceReference a owl:ObjectProperty ;
     rdfs:subPropertyOf ies:isRepresentedAs .
 
 ies:hasStart a owl:ObjectProperty ;
+    rdfs:label "has Start" ;
     dcterms:identifier "{12A26F97-0E20-433B-8DCB-68A6FD73DB88}" ;
     rdfs:comment "The Node at the start of a directed Link." ;
     rdfs:subPropertyOf ies:hasEnd .
@@ -4674,6 +4703,7 @@ ies:isLegalTenderIn a owl:ObjectProperty ;
     rdfs:subPropertyOf ies:relationship .
 
 ies:isParallelPartOf a owl:ObjectProperty ;
+    rdfs:label "is Parallel Part Of" ;
     dcterms:identifier "{2CBAB225-3894-45B8-A665-93D879698F91}" ;
     rdfs:comment """A whole Link that has the same end Nodes as the part, or that has end Nodes which have the end Nodes of the part as parts.
 
@@ -4715,6 +4745,7 @@ Examples:
     rdfs:subPropertyOf ies:relationship .
 
 ies:isSeriesPartOf a owl:ObjectProperty ;
+    rdfs:label "is Series Part Of" ;
     dcterms:identifier "{A59229B9-3F0C-4B3A-ADEF-D94CDDA3CE15}" ;
     rdfs:comment """A whole Link such that a Flow from end to end of the whole passes from end to end of the part.
 
@@ -5586,6 +5617,7 @@ ies:hasAccessTo a owl:ObjectProperty ;
     rdfs:subPropertyOf ies:relationship .
 
 ies:hasEnd a owl:ObjectProperty ;
+    rdfs:label "has End" ;
     dcterms:identifier "{36AC7B89-D63C-466F-A363-856C0426DA9A}" ;
     rdfs:comment "The Node at an end of a Link." ;
     rdfs:domain ies:Link ;

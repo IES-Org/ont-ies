@@ -1,6 +1,9 @@
-# Capacity Pattern Example: Class-Level Capacities with eachHasCapacity
-# This example demonstrates using eachHasCapacity to assert that all instances
-# of a class have a particular Capacity, versus hasCapacity for specific instances.
+# Capacity Pattern Example: Class-Level Capacities (REVISED for Enhancement)
+# This example demonstrates the IES Capacity pattern at the class level,
+# following the capacity-enhancement.md pattern where eachHasCapacity has
+# domain ies:ClassOfState (not ies:ClassOfElement).
+#
+# This shows how to express "All Eurofighters in operational condition can fly at Mach 2"
 
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
@@ -10,58 +13,139 @@
 @prefix data:    <http://example.com/data#> .
 
 # ============================================================================
-# Domain-Specific Capacity Taxonomy
+# Domain-Specific Class Hierarchy and Capacities
 # ============================================================================
 
-ex:HouseEmergencyVehicles a ies:Capacity ;
-    rdfs:label "House Emergency Vehicles"@en-gb ;
-    rdfs:comment "The capacity to house and deploy emergency vehicles."@en-gb .
+# ClassOfState: Eurofighter in Operational Condition
+# This is a ClassOfState - a class whose members are States
+ex:EurofighterInOperationalCondition a ies:ClassOfState ;
+    rdfs:label "Eurofighter in Operational Condition"@en-gb ;
+    rdfs:comment """A ClassOfState where members are States of Eurofighter aircraft
+when they are in operational condition."""@en-gb ;
+    rdfs:subClassOf ies:VehicleState ;
+    # Class-level capacity: ALL members of this class can fly at Mach 2
+    ies:eachHasCapacity ex:PerformerOfMach2Flight .
 
-ex:ProvideFirstAid a ies:Capacity ;
-    rdfs:label "Provide First Aid"@en-gb ;
-    rdfs:comment "The capacity to provide first aid treatment."@en-gb .
-
-ex:ShelterDisplacedPersons a ies:Capacity ;
-    rdfs:label "Shelter Displaced Persons"@en-gb ;
-    rdfs:comment "The capacity to provide emergency shelter for displaced persons."@en-gb .
-
-# ============================================================================
-# Class-Level Capacity: All Fire Stations can house emergency vehicles
-# Using eachHasCapacity to assert this for ALL instances of the class
-# ============================================================================
-
-ex:FireStation rdfs:subClassOf ies:Location ;
-    rdfs:label "Fire Station"@en-gb ;
-    rdfs:comment "A facility for housing firefighting equipment and personnel."@en-gb ;
-    ies:eachHasCapacity ex:HouseEmergencyVehicles ;
-    ies:eachHasCapacity ex:ProvideFirstAid .
+# Another ClassOfState representing the capacity
+ex:PerformerOfMach2Flight a ies:Capacity ;
+    rdfs:label "Performer of Mach 2 Flight"@en-gb ;
+    rdfs:comment "The capacity to perform flight at Mach 2 or greater."@en-gb ;
+    rdfs:subClassOf ies:EventParticipant .
 
 # ============================================================================
-# Specific Instances: Individual fire stations inherit class-level capacities
-# but can also have additional instance-specific capacities
+# Instance-Level Example: A Specific Eurofighter
 # ============================================================================
 
-data:PortsmouthCentralFireStation a ex:FireStation ;
-    rdfs:label "Portsmouth Central Fire Station"@en-gb ;
-    rdfs:comment "Main fire station serving Portsmouth city centre."@en-gb .
-    # Note: This instance automatically has HouseEmergencyVehicles and ProvideFirstAid
-    # capacities via eachHasCapacity on ex:FireStation
-
-data:SouthseaFireStation a ex:FireStation ;
-    rdfs:label "Southsea Fire Station"@en-gb ;
-    rdfs:comment "Fire station serving the Southsea area."@en-gb ;
-    ies:hasCapacity ex:ShelterDisplacedPersons .
-    # This specific station has an ADDITIONAL capacity to shelter displaced persons
-    # (perhaps it has extra space or has been designated for this purpose)
+# The whole-life Entity: Fighter XYZ-123
+data:FighterXYZ123 a ies:Vehicle ;
+    rdfs:label "Fighter XYZ-123"@en-gb ;
+    rdfs:comment "A specific Eurofighter aircraft"@en-gb .
 
 # ============================================================================
-# Contrast: A community hall with only instance-level capacities
-# This Location does NOT have class-level capacities
+# A State of Fighter XYZ-123 in Operational Condition (2024)
+# This State inherits the class-level capacity via eachHasCapacity
 # ============================================================================
 
-data:SandownCommunityHall a ies:Location ;
-    rdfs:label "Sandown Community Hall"@en-gb ;
-    rdfs:comment "Community sports and events venue in Sandown."@en-gb ;
-    ies:hasCapacity ex:ShelterDisplacedPersons .
-    # This specific building has been assessed as having shelter capacity
-    # but NOT all Locations have this - it's instance-specific
+data:FighterXYZ123InOpsCondition2024 a ies:VehicleState, ex:EurofighterInOperationalCondition ;
+    rdfs:label "Fighter XYZ-123 in operational condition (2024)"@en-gb ;
+    rdfs:comment """A State of Fighter XYZ-123 during 2024 when it was in operational condition.
+
+Because this State is a member of ex:EurofighterInOperationalCondition, it inherits
+the class-level capacity to perform Mach 2 flight via the eachHasCapacity relationship."""@en-gb ;
+    ies:isStateOf data:FighterXYZ123 ;
+    ies:inPeriod data:Period2024 .
+
+data:Period2024 a ies:ParticularPeriod ;
+    rdfs:label "2024"@en-gb ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:gYear .
+
+# ============================================================================
+# Alternative Pattern: Instance-Specific Capacity
+# You can also attach capacities to specific States directly
+# ============================================================================
+
+# Another State of the same fighter, with instance-specific capacity
+data:FighterXYZ123During2025 a ies:VehicleState ;
+    rdfs:label "Fighter XYZ-123 in 2025"@en-gb ;
+    rdfs:comment """A State of Fighter XYZ-123 during 2025.
+
+This State has an instance-specific capacity attached directly via hasCapacity."""@en-gb ;
+    ies:isStateOf data:FighterXYZ123 ;
+    ies:inPeriod data:Period2025 ;
+    # Instance-level capacity: THIS specific State can perform Mach 2 flight
+    ies:hasCapacity ex:PerformerOfMach2Flight .
+
+data:Period2025 a ies:ParticularPeriod ;
+    rdfs:label "2025"@en-gb ;
+    ies:iso8601PeriodRepresentation "2025"^^xsd:gYear .
+
+# ============================================================================
+# Actualising the Capacity: The Fighter Actually Flies at Mach 2
+# ============================================================================
+
+# An Event: A specific Mach 2 flight
+data:Mach2Flight20240717 a ies:Movement ;
+    rdfs:label "Mach 2 flight on 2024-07-17"@en-gb ;
+    rdfs:comment "A specific flight where Fighter XYZ-123 actually flew at Mach 2"@en-gb .
+
+data:FlightStart a ies:BoundingState ;
+    rdfs:label "Start of Mach 2 flight"@en-gb ;
+    ies:isStartOf data:Mach2Flight20240717 ;
+    ies:inPeriod data:Period20240717T0900 .
+
+data:FlightEnd a ies:BoundingState ;
+    rdfs:label "End of Mach 2 flight"@en-gb ;
+    ies:isEndOf data:Mach2Flight20240717 ;
+    ies:inPeriod data:Period20240717T0930 .
+
+data:Period20240717T0900 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T09:00:00Z"^^xsd:string .
+
+data:Period20240717T0930 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T09:30:00Z"^^xsd:string .
+
+# A State of the fighter actually performing Mach 2 flight
+# This State is both an EventParticipant AND a member of the Capacity class
+# This actualises the capacity that the fighter had
+data:FighterXYZ123AtMach2 a ies:EventParticipant, ex:PerformerOfMach2Flight ;
+    rdfs:label "Fighter XYZ-123 performing Mach 2 flight"@en-gb ;
+    rdfs:comment """The fighter actually performing a Mach 2 flight - actualising its capacity.
+
+Note that this State is a member of ex:PerformerOfMach2Flight (via rdf:type),
+which means the capacity has been actualised. The capacity itself was expressed
+via hasCapacity or eachHasCapacity on other States."""@en-gb ;
+    ies:isParticipationOf data:FighterXYZ123 ;
+    ies:isParticipantIn data:Mach2Flight20240717 .
+
+# ============================================================================
+# Example: Person with Capacity for Leadership Role
+# Demonstrates the pattern with InPost
+# ============================================================================
+
+# A Person
+data:FredBloggs a ies:Person ;
+    rdfs:label "Fred Bloggs"@en-gb .
+
+# ClassOfState: Term as Captain of Medway Queen
+ex:TermAsCaptainOfMedwayQueen a ies:ClassOfState ;
+    rdfs:label "Term as Captain of Medway Queen"@en-gb ;
+    rdfs:comment "A term of office as captain of the paddle steamer Medway Queen."@en-gb ;
+    rdfs:subClassOf ies:InPost .
+
+# A State of Fred in 2026 with the capacity to become captain
+data:FredBloggsIn2026 a ies:PersonState ;
+    rdfs:label "Fred Bloggs in 2026"@en-gb ;
+    rdfs:comment """A State of Fred Bloggs during 2026, when he has the qualifications
+and opportunity to become captain of the Medway Queen."""@en-gb ;
+    ies:isStateOf data:FredBloggs ;
+    ies:inPeriod data:Period2026 ;
+    # Fred in 2026 has the capacity to be captain
+    ies:hasCapacity ex:TermAsCaptainOfMedwayQueen .
+
+data:Period2026 a ies:ParticularPeriod ;
+    rdfs:label "2026"@en-gb ;
+    ies:iso8601PeriodRepresentation "2026"^^xsd:gYear .
+
+# If Fred actually becomes captain, that would be modelled as a different State
+# which is both a member of ex:TermAsCaptainOfMedwayQueen AND an InPost
+# (This actualises the capacity)

@@ -1,25 +1,3 @@
-# MIT License
-#
-# Crown Copyright (c) 2025
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
@@ -29,6 +7,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sf: <http://www.opengis.net/ont/sf#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+@PREFIX vann: <http://purl.org/vocab/vann/> .
 
 <http://informationexchangestandard.org/ont/ies/common/>
     a owl:Ontology ;
@@ -44,7 +23,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:rights "Crown Copyright 2020-2026"@en-GB ;
     dcterms:title "IES Common Ontology"@en-GB ;
     dcterms:type "IES Common Ontology"@en-GB ;
-    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.0.0> ;
+    owl:priorVersion <http://informationexchangestandard.org/ont/ies/5.1.0-rc1> ;
     owl:versionIRI <http://informationexchangestandard.org/ont/ies/5.1.0-rc2> ;
     owl:versionInfo "5.1.0-rc2" ;
     vann:preferredNamespacePrefix "ies" ;
@@ -525,9 +504,13 @@ ies:Capability
 
 ies:Capacity
     a rdfs:Class ;
-    dcterms:identifier "{85DE1904-A59F-41B6-A6C2-CB850C73C60D}" ;
-    rdfs:comment "\n    `ClassOfState` where all the members are classes that share the same `Capacity` that enables them (or is necessary\n    at least in part) to perform some function as a participant in an `Event`.\n\n    Example: Aircraft with the Capacity to fly at Mach 2\n    " ;
+    dcterms:identifier "{existing-UUID}" ;
     rdfs:label "Capacity"@en-GB ;
+    rdfs:comment """A ClassOfState representing what an Entity can do (in some possible world).
+
+Note: Typing a ClassOfState as Capacity is optional. The ies:hasCapacity and ies:eachHasCapacity
+properties accept any ClassOfState as their range. Typing as Capacity simply provides semantic
+clarity that this ClassOfState represents a capacity."""@en-GB ;
     rdfs:subClassOf ies:ClassOfState .
 
 ies:CarTravel
@@ -4165,10 +4148,15 @@ ies:documentedBy
 
 ies:eachHasCapacity
     a owl:ObjectProperty ;
-    rdfs:comment "\n    A relationship that asserts that all instances of an Element can have a particular instance of a Capacity.\n    " ;
-    rdfs:domain ies:ClassOfElement ;
-    rdfs:label "each Has Capacity"^^xsd:string ;
-    rdfs:range ies:Capacity ;
+    dcterms:identifier "{F4C6B093-874D-4e4f-9A7C-6B3E1D8C2A91}" ;
+    rdfs:comment """A relationship that asserts all members of a ClassOfState can have (be members of) another ClassOfState (Capacity).
+
+This is the class-level equivalent of hasCapacity. For example, "Eurofighter in operational condition" (a ClassOfState) eachHasCapacity "Performer of Mach 2 flight" (another ClassOfState) means that every member of the first class can, in some possible world, be a member of the second class.
+
+See also: hasCapacity for the instance-level equivalent."""@en-GB ;
+    rdfs:domain ies:ClassOfState ;
+    rdfs:label "each Has Capacity"@en-GB ;
+    rdfs:range ies:ClassOfState ;
     rdfs:subPropertyOf ies:relationship .
 
 ies:employedBy
@@ -4303,10 +4291,16 @@ ies:hasAuthor
 ies:hasCapacity
     a owl:ObjectProperty ;
     dcterms:identifier "{862E873D-B64A-41AD-9D3D-27F108FA159F}" ;
-    rdfs:comment "\n    A relationship that asserts that an Element can have a particular instance of a Capacity.\n    " ;
-    rdfs:domain ies:Element ;
+    rdfs:comment """A relationship that asserts a State can have (be a member of) a particular ClassOfState (Capacity).
+
+This expresses modal possibility: the State, in some possible world, can be a member of the specified ClassOfState. For example, "Fred Bloggs in 2026" (a PersonState) can be a member of "Term as Captain of Medway Queen" (a ClassOfState subclass of InPost).
+
+This is distinct from actually being a member of that ClassOfState - actual membership is expressed via rdf:type. A State may have a Capacity that is never actualised.
+
+See also: eachHasCapacity for the class-level equivalent."""@en-GB ;
+    rdfs:domain ies:State ;
     rdfs:label "has Capacity"@en-GB ;
-    rdfs:range ies:Capacity ;
+    rdfs:range ies:ClassOfState ;
     rdfs:subPropertyOf ies:relationship .
 
 ies:hasCharacteristic

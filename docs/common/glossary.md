@@ -23,6 +23,9 @@ A `State` that marks the beginning or end of another `State` or `Event`. For exa
 
 ## C
 
+### Capacity
+A `ClassOfState` representing what a `State` of an Entity *can* do in some possible world (modal possibility). A Capacity expresses potential rather than actuality—a State can have a Capacity without ever actualising it. For example, a State of "Fighter XYZ-123 in operational condition" can have the Capacity "Performer of Mach 2 flight" even if that aircraft has never actually flown at Mach 2. Having a Capacity (`hasCapacity`) is distinct from actualising it (`rdf:type`). See also [Capacity user guide](user-guides/capacity.md).
+
 ### Characteristic
 A qualitative property of an `Element`. Unlike `Measures`, characteristics are not quantifiable on a numeric scale. Examples include colour, disposition, or accent.
 
@@ -68,7 +71,7 @@ A `Characteristic` describing an `Element`'s capability or tendency to do someth
 ## E
 
 ### eachHasCapacity
-A relationship that asserts that all instances of an Element can have a particular instance of a State. Use `eachHasCapacity` for class-level capability assertions (e.g., "all fire stations can house emergency vehicles") versus `hasCapacity` for instance-level assertions. See [Capacity](user-guides/capacity.md).
+A relationship that asserts all members of a `ClassOfState` can have (be members of) a particular `ClassOfState` (Capacity). This is the class-level equivalent of `hasCapacity`. For example, "Every Eurofighter in operational condition can fly at Mach 2" uses `eachHasCapacity` to assert this capability at the class level, whereas `hasCapacity` would be used for a specific aircraft State. Domain: `ies:ClassOfState`. Range: `ies:ClassOfState`. See [Capacity](user-guides/capacity.md).
 
 ### Element
 Anything with spatio-temporal extent—things that occupy space and time. The fundamental class in IES from which `Entity`, `State`, `Event`, and `PeriodOfTime` all descend. Informally: "things you can kick."
@@ -112,6 +115,13 @@ An ontological approach that treats time the same way as space. Things exist as 
 
 ---
 
+## H
+
+### hasCapacity
+A relationship that asserts a `State` can have (be a member of) a particular `ClassOfState` (Capacity). This expresses modal possibility: the State, in some possible world, can be a member of the specified ClassOfState. This is distinct from actually being a member (`rdf:type`). For example, "Sandown Hall during 2024 has the capacity to shelter displaced persons" means that State *can* be a member of the "Shelter displaced persons" ClassOfState, whether or not it ever actualises that capacity. Domain: `ies:State`. Range: `ies:ClassOfState`. See also [Capacity user guide](user-guides/capacity.md).
+
+---
+
 ## I
 
 ### IDEAS (International Defence Enterprise Architecture Standard)
@@ -151,7 +161,7 @@ A `Representation` of a `Measure`'s value, optionally with an associated `UnitOf
 ## N
 
 ### Name
-A `Representation` used to refer to a `Thing`. Unlike identifiers, names need not be unique. Names belong to `NamingSchemes` which provide context about their origin and usage.
+A `Representation` that identifies or refers to a `Thing` within a specific linguistic or cultural context. Unlike `Identifiers`, names are not necessarily unique—many people can share the same name.
 
 ### Naming Scheme
 A classification system for `Names` and `Identifiers`, often associated with a particular `Organisation` or `System`. For example, "National Insurance Number" is a naming scheme owned by the UK Department for Work and Pensions.
@@ -284,9 +294,10 @@ For more detailed explanations of these concepts, see:
 - [What is an Ontology?](user-guides/what-is-an-ontology.md) - Fundamental ontology concepts
 - [4D Ontology Approach](user-guides/4d-ontology.md) - Understanding the four-dimensional approach
 - [BORO Methodology](user-guides/boro-methodology.md) - The BORO method and extent-based identity
+- [Capacity](user-guides/capacity.md) - Guide to the Capacity pattern
 - [Networks Overview](user-guides/networks/index.md) - Guide to network-related concepts
 - [IES Specification](specification/) - Complete technical specification
 
 ---
 
-*© Crown Copyright 2020-2025*
+*© Crown Copyright 2020-2026*

@@ -2425,6 +2425,16 @@ ies:documentedByRangeShape a sh:NodeShape ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:documentedBy .
 
+ies:eachHasCapacityDomainShape a sh:NodeShape ;
+    sh:class ies:ClassOfState ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf ies:eachHasCapacity .
+
+ies:eachHasCapacityRangeShape a sh:NodeShape ;
+    sh:class ies:ClassOfState ;
+    sh:severity sh:Warning ;
+    sh:targetObjectsOf ies:eachHasCapacity .
+
 ies:employedByDomainShape a sh:NodeShape ;
     sh:class ies:PersonState ;
     sh:severity sh:Warning ;
@@ -2586,12 +2596,12 @@ ies:hasAuthorRangeShape a sh:NodeShape ;
     sh:targetObjectsOf ies:hasAuthor .
 
 ies:hasCapacityDomainShape a sh:NodeShape ;
-    sh:class ies:Element ;
+    sh:class ies:State ;
     sh:severity sh:Warning ;
     sh:targetSubjectsOf ies:hasCapacity .
 
 ies:hasCapacityRangeShape a sh:NodeShape ;
-    sh:class ies:Capacity ;
+    sh:class ies:ClassOfState ;
     sh:severity sh:Warning ;
     sh:targetObjectsOf ies:hasCapacity .
 
