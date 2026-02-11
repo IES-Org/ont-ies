@@ -1,0 +1,44 @@
+# IES Common Module Metadata
+# This file provides machine-readable metadata for the IES Common ontology module
+
+id: common
+name: IES Common
+version: "5.0.0"
+status: release candidate
+namespace: "http://informationexchange.org/ont/ies/common/"
+description: >
+  The foundational IES ontology providing core classes and properties
+  for 4D extensional modelling of entities, states, and events.
+  IES Common defines the fundamental building blocks used by all
+  domain-specific IES modules.
+
+# Module dependencies (IES Common has none as it is the foundation)
+dependencies: []
+
+# Maintainer information
+maintainer:
+  organisation: UK Department for Business and Trade
+  contact: https://www.informationexchangestandard.org/contact
+
+# Licence information
+licence:
+  code: MIT
+  documentation: OGL-UK-3.0
+
+# Documentation paths (relative to module root)
+documentation:
+  specification: specification/
+  user_guides: user-guides/
+  examples: examples/
+  changelog: CHANGELOG.md
+
+# Ontology file locations (relative to module root)
+ontology_files:
+  turtle: specification/ies-common.ttl
+  rdf_xml: specification/ies-common.rdf
+  json_ld: specification/ies-common.json
+  n3: specification/ies-common.n3
+  shacl: specification/ies-common.shacl
+
+# Last updated date
+last_updated: "2025-11-29"

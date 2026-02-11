@@ -1,6 +1,8 @@
 # Information Exchange Standard (IES)  
-**Repository:** `Information Exchange Standard (IES)`  
-**Description:** `The home of the UK Government’s Information Exchange Standard, enabling consistent and open data exchange across domains.`  
+
+**Repository:** `ont-ies`  
+**Description:** The home of the UK Government's Information Exchange Standard, enabling consistent and open data exchange across domains.  
+
 <!--  
 SPDX-License-Identifier: See individual files for license.  
 - Source code: MIT  
@@ -16,6 +18,57 @@ The standard is designed to be modular and extensible, with support for evolving
 This repository is the official home of IES and includes documentation, example data, and ontology models to support adoption and use.  
 
 ---  
+
+## Repository Structure
+
+This repository is organised to support multiple IES ontology modules:
+
+```
+ont-ies/
+├── docs/
+│   ├── index.md              # Documentation landing page
+│   ├── glossary.md           # Shared glossary
+│   ├── assets/               # Shared images, diagrams, stylesheets
+│   └── common/               # IES Common module
+│       ├── specification/    # Ontology files and spec docs
+│       ├── user-guides/      # Conceptual guides and tutorials
+│       ├── examples/         # Worked examples and sample data
+│       ├── module.yml        # Module metadata
+│       └── CHANGELOG.md      # Module version history
+├── registry.yml              # Machine-readable module index
+├── RELEASES.md               # Composite release documentation
+└── [standard repo files]     # LICENSE, CONTRIBUTING, etc.
+```
+
+Future domain modules will be added under `docs/` following the same pattern:
+- `docs/environment/building/` — IES Building module
+- `docs/sdnp/{module}/` — SDNP domain modules
+
+---
+
+## Published Modules
+
+| Module | Version | Status | Documentation |
+|--------|---------|--------|---------------|
+| **IES Common** | 5.0.0 | Release Candidate | [docs/common/](docs/common/) |
+
+---
+
+## Versioning
+
+Each module is versioned independently using [Semantic Versioning](https://semver.org/):
+
+- **MAJOR** — Incompatible changes (removing terms, changing IRIs)
+- **MINOR** — Backwards-compatible additions (new terms, properties)
+- **PATCH** — Backwards-compatible fixes (labels, annotations, documentation)
+
+### Git Tags
+
+- **Module releases:** `{module-id}/v{version}` (e.g., `common/v5.0.0`)
+- **Release candidates:** `{module-id}/v{version}-rcN` (e.g., `common/v5.0.0-rc1`)
+- **Composite releases:** `ies-release-{yyyy.mm}` (e.g., `ies-release-2025.06`)
+
+---
 
 ## Governance and Custodianship  
 
@@ -35,17 +88,14 @@ The development of this work is supported by private sector suppliers and techni
 
 ---  
 
-## Repository Contents  
+## Quick Links
 
-This repository includes:  
-
-- [specification/](docs/specification/) – The main specification documents for the Information Exchange Standard Common ontology
-- [docs/assets/](docs/assets/) – Assets used in the documentation, including logos, images, and diagrams
-- [docs/examples/](docs/examples/) – Example usage patterns and data snippets demonstrating IES concepts
-- [docs/user-guides/](docs/user-guides/) – User guides and tutorials for implementing and using the Information Exchange Standard Common Ontology
-- [docs/Glossary.md](docs/Glossary.md) – Glossary of terms used in the IES documentation
-
-Further information is available on the [IES website](https://www.informationexchangestandard.org)
+- **Documentation:** [docs/index.md](docs/index.md)
+- **IES Common Specification:** [docs/common/specification/](docs/common/specification/)
+- **User Guides:** [docs/common/user-guides/](docs/common/user-guides/)
+- **Examples:** [docs/common/examples/](docs/common/examples/)
+- **Module Registry:** [registry.yml](registry.yml)
+- **IES Website:** [informationexchangestandard.org](https://www.informationexchangestandard.org)
 
 ---  
 
@@ -82,4 +132,4 @@ Please see:
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for expected behaviour and reporting concerns  
 - [MAINTAINERS.md](./MAINTAINERS.md) for maintainer contact information  
 
----  
+---
