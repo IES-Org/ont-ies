@@ -22,6 +22,7 @@ The examples in this section are designed to help you understand how to apply IE
 Comprehensive examples with diagrams and step-by-step explanations:
 
 #### [IES Examples Documentation](ies-examples.md)
+
 Detailed worked examples covering:
 
 1. [**A Meeting**](ies-examples.md#a-meeting) - Event participation and timing
@@ -43,9 +44,11 @@ Each example includes UML diagrams, RDF triples, and detailed explanations of th
 Ready-to-use RDF/Turtle files that you can load into your triple store:
 
 #### [Sample Data Repository](sample-data/index.md)
+
 Complete collection of `.ttl` files demonstrating:
 
 **Core Patterns:**
+
 - Assessment patterns with confidence levels
 - Characteristics and measures
 - Event participation
@@ -55,6 +58,7 @@ Complete collection of `.ttl` files demonstrating:
 - Types and classification
 
 **Complex Patterns:**
+
 - Communications (calls, messages)
 - Event linkages and composition
 - Geospatial data with GeoSPARQL
@@ -106,6 +110,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 5. Adapt patterns to your domain
 
 **Recommended examples:**
+
 - Event participation patterns
 - Identifiers and naming
 - Relationships and states
@@ -122,6 +127,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 4. Consider extension points for domain-specific needs
 
 **Recommended examples:**
+
 - Assessments and Subject of Interest (intelligence patterns)
 - Posts of Organisations (organisational structure)
 - Movement (complex multi-part events)
@@ -138,6 +144,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 4. Use sample data as transformation templates
 
 **Recommended examples:**
+
 - Representations of an Address (multiple representations)
 - Types and classification (taxonomies)
 - SIM Card Swap (state changes)
@@ -154,6 +161,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 4. Understand temporal and participatory patterns
 
 **Recommended examples:**
+
 - A Meeting (simple event pattern)
 - Voice Call (communication pattern)
 - Hospital patient journey (realistic scenario)
@@ -167,6 +175,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling things that change over time, have duration, or occur at specific times
 
 **Key examples:**
+
 - Events with bounding states (start/end)
 - Period of time representations
 - Discontinuous states ("sometimes")
@@ -181,6 +190,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling entities involved in events or activities
 
 **Key examples:**
+
 - Meeting with attendees
 - Voice call with caller/callee
 - Surgery with patient and surgeons
@@ -195,6 +205,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling properties or conditions that hold for specific temporal extents
 
 **Key examples:**
+
 - Person in hospital ward
 - Person as subject of interest
 - Device in use
@@ -209,6 +220,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling connections between entities
 
 **Key examples:**
+
 - Organisational relationships (works for, reports to)
 - Spatial relationships (located in, part of)
 - Social relationships (family, friends)
@@ -223,6 +235,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling names, identifiers, and different representations of things
 
 **Key examples:**
+
 - Multiple names for the same person
 - Different identifier schemes
 - Address representations
@@ -237,6 +250,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling subjective judgements, confidence levels, and analytical assessments
 
 **Key examples:**
+
 - Intelligence assessments with confidence
 - Risk evaluations
 - Scenario analysis
@@ -251,6 +265,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Creating type hierarchies and categorising entities
 
 **Key examples:**
+
 - PowerType relationships
 - Class hierarchies
 - Type-level properties
@@ -265,6 +280,7 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 **When to use:** Modelling geographic locations and coordinates
 
 **Key examples:**
+
 - Latitude/longitude coordinates
 - Location relationships
 - Movement between locations
@@ -368,14 +384,4 @@ If you need assistance understanding or adapting these examples:
 
 ---
 
-## Version Information
-
-**Examples Version:** Based on IES 5.0.0 
-**Last Updated:** November 2025  
-**Status:** Active development
-
-Examples are updated regularly as IES evolves. Check the [CHANGELOG](https://github.com/IES-Org/ies-common/blob/main/CHANGELOG.md) for updates.
-
----
-
-*© Crown Copyright 2020-2025 | Licensed under the MIT Licence*
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

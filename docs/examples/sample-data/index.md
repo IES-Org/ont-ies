@@ -4,6 +4,38 @@ This section provides practical RDF/Turtle (`.ttl`) examples demonstrating how t
 
 ---
 
+## Table of Contents
+
+- [About These Examples](#about-these-examples)
+- [Available Samples](#available-samples)
+  - [Core Patterns](#core-patterns)
+    - [Assessment](#assessment)
+    - [Characteristics and Measures](#characteristics-and-measures)
+    - [Event Participation](#event-participation)
+    - [Events](#events)
+    - [Identifiers](#identifiers)
+    - [Relationships](#relationships)
+    - [Types and Classification](#types-and-classification)
+  - [Complex Patterns](#complex-patterns)
+    - [Communications](#communications)
+    - [Event Linkages](#event-linkages)
+    - [Geospatial](#geospatial)
+    - [Hospital Example](#hospital-example)
+    - [Movement](#movement)
+    - [Period of Time](#period-of-time)
+    - [Sometimes (Discontinuous States)](#sometimes-discontinuous-states)
+    - [When and Where](#when-and-where)
+- [Using These Samples](#using-these-samples)
+  - [Loading into an RDF Triple Store](#loading-into-an-rdf-triple-store)
+  - [Querying the Samples](#querying-the-samples)
+  - [Validating Against IES Common](#validating-against-ies-common)
+- [Extending These Examples](#extending-these-examples)
+- [Download All Samples](#download-all-samples)
+- [Additional Resources](#additional-resources)
+- [Contributing Examples](#contributing-examples)
+
+---
+
 ## About These Examples
 
 All sample files use the **Turtle** (Terse RDF Triple Language) serialisation format and demonstrate proper use of:
@@ -22,11 +54,13 @@ All sample files use the **Turtle** (Terse RDF Triple Language) serialisation fo
 ### Core Patterns
 
 #### Assessment
+
 **File:** `assessment.ttl`
 
 Demonstrates the IES assessment pattern for modelling subjective judgements and confidence levels about possible scenarios.
 
 **Key concepts:**
+
 - `ies:PossibleWorld` - Alternative scenarios
 - `ies:AssessToBeTrue` - Assessment events
 - `ies:Assessor` - Analyst making assessments
@@ -37,11 +71,13 @@ Demonstrates the IES assessment pattern for modelling subjective judgements and 
 ---
 
 #### Characteristics and Measures
+
 **File:** `characteristics-and-measures.ttl`
 
 Shows how to model quantitative and qualitative properties of entities with different units of measure.
 
 **Key concepts:**
+
 - `ies:Mass` - Quantitative measurement
 - `ies:Measure` - Base measurement class
 - `ies:MeasureValue` - Values with units
@@ -52,11 +88,13 @@ Shows how to model quantitative and qualitative properties of entities with diff
 ---
 
 #### Event Participation
+
 **File:** `event-participation.ttl`
 
 Illustrates how entities participate in events through EventParticipant states.
 
 **Key concepts:**
+
 - `ies:Event` - Activities or incidents
 - `ies:EventParticipant` - Participation states
 - `ies:isParticipantIn` / `ies:isParticipationOf` - Participation relationships
@@ -66,11 +104,13 @@ Illustrates how entities participate in events through EventParticipant states.
 ---
 
 #### Events
+
 **File:** `events.ttl`
 
 Basic event modelling showing temporal bounds and relationships.
 
 **Key concepts:**
+
 - `ies:Event` - Time-bounded activities
 - `ies:BoundingState` - Start and end markers
 - `ies:PeriodOfTime` - Temporal extents
@@ -80,11 +120,13 @@ Basic event modelling showing temporal bounds and relationships.
 ---
 
 #### Identifiers
+
 **File:** `identifiers.ttl`
 
 Demonstrates how to assign names and identifiers to entities using naming schemes.
 
 **Key concepts:**
+
 - `ies:Identifier` - Unique identifiers
 - `ies:Name` - Human-readable names
 - `ies:NamingScheme` - Classification of identifiers
@@ -95,11 +137,13 @@ Demonstrates how to assign names and identifiers to entities using naming scheme
 ---
 
 #### Relationships
+
 **File:** `relationships.ttl`
 
 Shows how to model relationships between entities, including temporal constraints.
 
 **Key concepts:**
+
 - `ies:relationship` - Top-level relationship property
 - Specialised relationships (works for, located in, etc.)
 - Temporal relationships using States
@@ -109,11 +153,13 @@ Shows how to model relationships between entities, including temporal constraint
 ---
 
 #### Types and Classification
+
 **File:** `types.ttl`
 
 Demonstrates the use of `ClassOfElement` and powertype relationships for creating type hierarchies.
 
 **Key concepts:**
+
 - `ies:ClassOfElement` - Classes and categories
 - `ies:powertype` - Type-level relationships
 - `rdfs:subClassOf` - Class hierarchies
@@ -126,11 +172,13 @@ Demonstrates the use of `ClassOfElement` and powertype relationships for creatin
 ### Complex Patterns
 
 #### Communications
+
 **File:** `communications.ttl`
 
 Models communication events (calls, messages) with participants in sender and receiver roles.
 
 **Key concepts:**
+
 - `ies:VoiceCall` / `ies:Message` - Communication types
 - `ies:Caller` / `ies:Callee` - Participant roles
 - Bi-directional communication patterns
@@ -140,11 +188,13 @@ Models communication events (calls, messages) with participants in sender and re
 ---
 
 #### Event Linkages
+
 **File:** `event-linkages.ttl`
 
 Shows how events can be composed of or linked to other events.
 
 **Key concepts:**
+
 - `ies:isPartOf` - Part-whole relationships for events
 - Event composition
 - Sub-events and super-events
@@ -154,11 +204,13 @@ Shows how events can be composed of or linked to other events.
 ---
 
 #### Geospatial
+
 **File:** `geosparql.ttl`
 
 Demonstrates geographic location using GeoSPARQL patterns.
 
 **Key concepts:**
+
 - `ies:GeoPoint` - Geographic points
 - `ies:Latitude` / `ies:Longitude` - Coordinate identifiers
 - Location-based queries
@@ -168,11 +220,13 @@ Demonstrates geographic location using GeoSPARQL patterns.
 ---
 
 #### Hospital Example
+
 **File:** `hospital.ttl`
 
 Comprehensive worked example of a patient's journey through hospital treatment.
 
 **Key concepts:**
+
 - `ies:PersonState` - States of the patient
 - `ies:BoundingState` - Admission, discharge, treatment times
 - `ies:Location` - Hospital facilities (wards, theatres)
@@ -185,11 +239,13 @@ Comprehensive worked example of a patient's journey through hospital treatment.
 ---
 
 #### Movement
+
 **File:** `movement.ttl`
 
 Models a person's journey involving multiple legs with different transport modes.
 
 **Key concepts:**
+
 - `ies:Journey` - End-to-end movement
 - `ies:CarTravel` / `ies:Flight` - Transport modes
 - `ies:Departure` / `ies:Arrival` - Bounding states
@@ -200,11 +256,13 @@ Models a person's journey involving multiple legs with different transport modes
 ---
 
 #### Period of Time
+
 **File:** `period-of-time.ttl`
 
 Shows different ways to represent and use periods of time.
 
 **Key concepts:**
+
 - `ies:PeriodOfTime` - Temporal extents
 - `ies:ParticularPeriod` - Specific time points
 - ISO 8601 datetime encoding
@@ -214,11 +272,13 @@ Shows different ways to represent and use periods of time.
 ---
 
 #### Sometimes (Discontinuous States)
+
 **File:** `sometimes.ttl`
 
 Demonstrates discontinuous states for modelling recurring or intermittent situations.
 
 **Key concepts:**
+
 - `ies:DiscontinuousState` - Non-contiguous temporal states
 - "Usually" or "sometimes" patterns
 - Temporal aggregation
@@ -228,11 +288,13 @@ Demonstrates discontinuous states for modelling recurring or intermittent situat
 ---
 
 #### When and Where
+
 **File:** `when-and-where.ttl`
 
 Combines temporal and spatial aspects for comprehensive spatio-temporal modelling.
 
 **Key concepts:**
+
 - `ies:inPeriod` - Temporal location
 - `ies:inLocation` - Spatial location
 - Combined spatio-temporal extent
@@ -246,6 +308,7 @@ Combines temporal and spatial aspects for comprehensive spatio-temporal modellin
 ### Loading into an RDF Triple Store
 
 **Apache Jena Fuseki:**
+
 ```bash
 # Load a single sample
 s-put http://localhost:3030/samples/data default hospital.ttl
@@ -257,12 +320,14 @@ done
 ```
 
 **GraphDB:**
+
 ```bash
 # Import via GraphDB Workbench UI
 # Or use RDF4J API programmatically
 ```
 
 **Stardog:**
+
 ```bash
 # Add sample data to database
 stardog data add samples hospital.ttl movement.ttl communications.ttl
@@ -271,6 +336,7 @@ stardog data add samples hospital.ttl movement.ttl communications.ttl
 ### Querying the Samples
 
 **SPARQL Example - Find all people in the samples:**
+
 ```sparql
 PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
 PREFIX data: <http://informationexchangestandard.org/testdata#>
@@ -284,6 +350,7 @@ WHERE {
 ```
 
 **SPARQL Example - Find events with participants:**
+
 ```sparql
 PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
 
@@ -335,6 +402,7 @@ These samples can serve as templates for your own IES data:
 All sample files are available in the project repository:
 
 **Repository structure:**
+
 ```
 /
 ├── assessment.ttl
@@ -376,4 +444,4 @@ If you have developed IES examples that demonstrate useful patterns or solve com
 
 ---
 
-*© Crown Copyright 2020-2025 | Licensed under the MIT Licence*
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

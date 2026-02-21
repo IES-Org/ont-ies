@@ -1,12 +1,21 @@
 # Introduction to 4D Ontology
-One of the biggest changes from previous versions of IES is the use of the BORO Methodology. BORO is a modelling approach for developing ontologies that are particularly good at describing how things change and move over time - perfect for investigations, operations and intelligence sharing. The BORO approach has previously been used in the Oil and Gas industry for data sharing, resulting in the ISO15926 standard. It has also been used in defence before, under the 5EYES IDEAS Group where the upper ontology that was developed went on to be used in DoDAF, MODAF, NAF and the OMG's UPDM standard.
+
+One of the biggest changes from previous versions of IES is the use of the BORO Methodology. BORO is a modelling approach for developing ontologies that are particularly good at describing how things change and move over time - perfect for investigations, operations and intelligence sharing. The BORO approach has previously been used in the Oil and Gas industry for data sharing, resulting in the ISO15926 standard. It has also been used in defence before, under the 5EYES IDEAS Group where the upper ontology that was developed went on to be used in DoDAF, MODAF, NAF, and the OMG's UPDM standard.
+
+## Table of Contents
+
+2. [What is an Ontology?](#what-is-an-ontology)
+3. [What an Ontology isn’t](#what-an-ontology-isnt)
+4. [References](#references)
 
 ## What is an Ontology?
+
 An ontology is a formal model of stuff we are interested in. It defines physical things, types of things, and relationships between them. To be taken seriously as an ontology, certain features have to be in place. A proper ontology must have some underpinning in formal logic and/or set theory – this basically means the fundamental building blocks of the ontology are based on sound mathematical and logical principles. Most serious ontologies also have consistent ways to deal with common concepts such as time, location, properties, etc. Finally, if the ontology is to be developed by more than one person, some sort of repeatable methodology is required. Defining all these things from first principles is a lot of work, so most ontologies re-use an existing “upper ontology”.
 
 So, in summary, an ontology is an extensible model of the things we’re interested in. Formal ontologies provide a set of fundamental components which can be extended to particular domains, and connected together using standard patterns of business logic so as to provide accurate, useful models of those domains of interest. For IES, we have chosen an existing upper ontology with 5EYES pedigree (IDEAS) that we can extend for our purposes, and we’ve chosen an existing and proven methodology (BORO).
 
 ## What an Ontology isn’t
+
 An ontology has some features in common with data models and taxonomies, but it is important to describe how these differ. A data model defines the structure of some data storage system – e.g. a database or data file. Data models are often developed in three stages; conceptual, logical and physical. The conceptual data model is intended to be an implementation-neutral specification of the core concepts and the relationships between them. The logical data model adds some rigour to the model, but will generally still be reasonably implementation-neutral. The physical data model takes the requirement specified in the logical model and attempts to map it to the storage mechanism of the implementation. An ontology is somewhat like a conceptual model, but one where the logical rigour of the logical data model is enforced by the modelling approach (i.e. it does away with the conceptual/logical split). Furthermore, an ontology is not confined to just types of information. The rigid divide between data model and data that drives traditional information systems development does not exist in an ontology – everything is data. This allows models to adapt and grow with minimal impact on implementation.
 
 In common with a taxonomy, an ontology generally has a hierarchy of classes – types of things. The difference between the two is really one of rigour and purpose. A taxonomy (for information management purposes) is generally structured to enable the classification of information. This classification work is done in order to aid discovery of that information, and so the taxonomy’s structure is dictated by the requirement to make information easier to find. An ontology’s purpose is to provide an accurate model of the business, so tends to take a more neutral and pedantic approach to classification. The example below is from the UK Defence Taxonomy:
@@ -19,6 +28,17 @@ An ontology is intended to be both computer and human interpretable – i.e. it 
 
 ![ukdt2](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt2.png)
 
-Although the broader-narrower relationship between the words holds true, the relationships between the things in the real world to which those words refer1 is somewhat more varied:
+Although the broader-narrower relationship between the words holds true, the relationships between the things in the real world to which those words refer is somewhat more varied:
 
 ![ukdt3](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt3.png)
+
+## References
+
+- [ISO 15926](https://15926.org/)
+- [BORO Methodology](https://boroprogram.org/boro-methodology-origins-and-evolution/)
+- [IDEAS Group (5EYES)](https://www.groupdiscussionideas.com/the-five-eyes/)
+- [DoDAF: Department of Defense Architecture Framework](https://dodcio.defense.gov/DoDAF/)
+- [MODAF: Ministry of Defence Architecture Framework](https://www.gov.uk/guidance/mod-architecture-framework)
+- [NAF: NATO Architecture Framework](https://www.nato.int/cps/en/natohq/topics_157575.htm)
+- [UPDM: Unified Profile for DoDAF/MODAF](https://www.omg.org/updm/)
+- [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))

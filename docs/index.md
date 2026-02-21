@@ -47,22 +47,26 @@ The IES was developed to enable collaboration across the UK Government by provid
 
 ## Documentation Structure
 
-<a name="user-guides"></a>
+`<a name="user-guides"></a>`
+
 ### 📚 User Guides
 
 Comprehensive guides covering IES fundamentals, the 4D ontology approach, instantiation patterns, extension mechanisms, and the BORO methodology ([Go to User Guides](user-guides/index.md)).
 
-<a name="specification"></a>
+`<a name="specification"></a>`
+
 ### 📋 Specification
 
 Complete technical specification including class hierarchies, property definitions, UML diagrams, and the authoritative `ies-common.ttl` ontology file ([Go to Specification](specification/index.md)).
 
-<a name="examples"></a>
+`<a name="examples"></a>`
+
 ### 💡 Examples
 
 Practical worked examples demonstrating IES patterns in action, showing how to model real-world scenarios using the ontology ([Go to Examples](examples/index.md)).
 
-<a name="glossary"></a>
+`<a name="glossary"></a>`
+
 ### 📖 Glossary
 
 Definitions of key terms, concepts, and technical vocabulary used throughout the IES ontology and documentation ([Go to Glossary](glossary.md)).
@@ -162,7 +166,7 @@ Whilst changing the name to reflect wider applicability has been considered, it 
 ## Version Information
 
 **Current Version:** 5.0.0
-**Licence:** MIT Licence (Crown Copyright 2020-2025)
+**Licence:** MIT Licence (Crown Copyright 2020-2026)
 **Publisher:** UK Department for Business and Trade
 **Language:** British English (en-GB)
 
@@ -187,4 +191,4 @@ IES is an evolving standard that responds to user feedback and real-world usage 
 
 ---
 
-*© Crown Copyright 2020-2025 | Licensed under the MIT Licence*
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*
