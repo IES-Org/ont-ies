@@ -10,7 +10,7 @@ who have supported the development of this repository.
 
 ## Organisational contributions
 
-Over time, the following organisations have provided technical expertise, development support, and domain knowledgethat have contributed to the evolution of this project:
+Over time, the following organisations have provided technical expertise, development support, and domain knowledge that have contributed to the evolution of this project:
 
 - Belay Ltd
 - Semantic Partners Ltd

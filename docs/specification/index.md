@@ -16,7 +16,9 @@ This section contains the complete specification of the Information Exchange Sta
   - [Design Principles](#design-principles)
 - [Legal disclaimer for &#34;entity&#34; and &#34;event&#34;](#legal-disclaimer-for-entity-and-event)
 - [Related Documentation](#related-documentation)
+
 ---
+
 ## IES Model Diagrams
 
 The [IES Model Specification](ies.md) document provides comprehensive visual documentation including:

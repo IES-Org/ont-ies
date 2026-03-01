@@ -9,10 +9,10 @@ The **Information Exchange Standard (IES) Common** is a standardised ontology fo
 - [About IES](#about-ies)
 - [Key Features](#key-features)
 - [Documentation Structure](#documentation-structure)
-  - [📚 User Guides](#user-guides)
-  - [📋 Specification](#specification)
-  - [💡 Examples](#examples)
-  - [📖 Glossary](#glossary)
+  - [User Guides](#user-guides)
+  - [Specification](#specification)
+  - [Examples](#examples)
+  - [Glossary](#glossary)
 - [Quick Start Paths](#quick-start-paths)
   - [For Implementers](#for-implementers)
   - [For Information Architects](#for-information-architects)
@@ -47,27 +47,23 @@ The IES was developed to enable collaboration across the UK Government by provid
 
 ## Documentation Structure
 
-`<a name="user-guides"></a>`
 
-### 📚 User Guides
+### User Guides
 
 Comprehensive guides covering IES fundamentals, the 4D ontology approach, instantiation patterns, extension mechanisms, and the BORO methodology ([Go to User Guides](user-guides/index.md)).
 
-`<a name="specification"></a>`
 
-### 📋 Specification
+### Specification
 
 Complete technical specification including class hierarchies, property definitions, UML diagrams, and the authoritative `ies-common.ttl` ontology file ([Go to Specification](specification/index.md)).
 
-`<a name="examples"></a>`
 
-### 💡 Examples
+### Examples
 
 Practical worked examples demonstrating IES patterns in action, showing how to model real-world scenarios using the ontology ([Go to Examples](examples/index.md)).
 
-`<a name="glossary"></a>`
 
-### 📖 Glossary
+### Glossary
 
 Definitions of key terms, concepts, and technical vocabulary used throughout the IES ontology and documentation ([Go to Glossary](glossary.md)).
 
