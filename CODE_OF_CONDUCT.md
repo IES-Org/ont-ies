@@ -41,7 +41,7 @@ The following behaviour will not be tolerated:
 
 If you believe someone is violating this Code of Conduct, please report it by following these steps:
 
-1. **For general issues** – Raise a concern with the repository maintainers by emailing **[IES@businessandtrade.gov.uk]**.
+1. **For general issues** – Raise a concern with the repository maintainers by emailing [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20Request%20-%20%3C%3CTitle%3E%3E&body=Description%20(clear%20description%20of%20the%20request)%3A%0D%0A%3C%3CDescription%20of%20your%20enquiry%20or%20issue%3E%3E).
 2. **For security-related concerns** – Follow the responsible disclosure process outlined in [SECURITY.md](SECURITY.md).
 3. **For incidents requiring escalation** – The custodians of the Information Exchange Standard reserve the right to take appropriate action, including restricting access to contributors who violate this policy.
 

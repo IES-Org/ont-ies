@@ -32,7 +32,7 @@ The Information Exchange Standard does not accept public code contributions, but
 | --------- | ------------ | ------------------ | ---------------------------- |
 | Dave Dyke | Agilit Ltd   | Lead Maintainer    | https://github.com/aigora-de |
 | Dave Dyke | Agilit Ltd   | Security Contact   | https://github.com/aigora-de |
-| Dave Dyke | Agilit Ltd]  | Documentation Lead | https://github.com/aigora-de |
+| Dave Dyke | Agilit Ltd  | Documentation Lead | https://github.com/aigora-de |
 
 For general issues, please **open a GitHub issue** rather than contacting maintainers directly.
 
@@ -43,14 +43,14 @@ For general issues, please **open a GitHub issue** rather than contacting mainta
 If you need to escalate an issue that has not been addressed within a reasonable time:
 
 1. **Security vulnerabilities** – Follow the responsible disclosure process in [SECURITY.md](SECURITY.md).
-2. **Governance and policy queries** – Contact DBT at [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk).
+2. **Governance and policy queries** – Contact DBT at [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20GitHub%20Request%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20your%20request%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue%20or%20query.%0D%0A-%20Relevant%20context%20or%20background.%0D%0A-%20Any%20supporting%20documentation%20or%20links.%0D%0A%0D%0A%3C%3CDetails%20of%20your%20request%20or%20concern%3E%3E).
 3. **Urgent operational issues** – Contact the **Lead Maintainer** listed above.
 
 ---
 
 ## Updating this File
 
-Maintainer details may change over time. If you are an authorised maintainer and need to update this file, please request changes through the IES GitHub administrators via [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk).
+Maintainer details may change over time. If you are an authorised maintainer and need to update this file, please request changes through the IES GitHub administrators via [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20GitHub%20Request%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20your%20request%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue%20or%20query.%0D%0A-%20Relevant%20context%20or%20background.%0D%0A-%20Any%20supporting%20documentation%20or%20links.%0D%0A%0D%0A%3C%3CDetails%20of%20your%20request%20or%20concern%3E%3E).
 
 ---
 

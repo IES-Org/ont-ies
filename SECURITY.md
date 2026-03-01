@@ -27,7 +27,7 @@ If you believe you have found a security vulnerability in this repository, **ple
 
 ### **How to Report a Security Issue**
 
-1. **Do not open a public issue on GitHub.** Instead, report security concerns via email to [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk).
+1. **Do not open a public issue on GitHub.** Instead, report security concerns via email to [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20Security%20Concern%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20the%20vulnerability%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue.%0D%0A-%20Steps%20to%20reproduce%20the%20vulnerability.%0D%0A-%20Potential%20impact%20or%20risk%20level.%0D%0A-%20Any%20suggested%20mitigation%20strategies.%0D%0A%0D%0A%3C%3CDetails%20of%20the%20vulnerability%20or%20concern%3E%3E).
 2. **Provide detailed information about the vulnerability**, including:
    - A clear description of the issue.
    - Steps to reproduce the vulnerability.
