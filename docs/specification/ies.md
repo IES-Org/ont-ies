@@ -406,7 +406,7 @@ between one date and another.
 
 ## `<a id="55486513-19eb-4a97-aadb-62317e9ea00f"></a>`Types
 
-IES allows new types (classes, categories, sets, whatever you want to call them) to be exchanged in the data payload. To do this, we "push up" a type level using the `powertype` relationship which formally specifies that one class is the set of all possible subsets of the other (see wikipedia entries for [powerset](https://en.wikipedia.org/wiki/Power_set) and [Cantor&#39;s theorem](https://en.wikipedia.org/wiki/Cantor%27s_theorem)).
+IES allows new types (classes, categories, sets, whatever you want to call them) to be exchanged in the data payload. To do this, we "push up" a type level using the `powertype` relationship which formally specifies that one class is the set of all possible subsets of the other (see wikipedia entries for [powerset](https://en.wikipedia.org/wiki/Power_set) and [Cantor's theorem](https://en.wikipedia.org/wiki/Cantor%27s_theorem)).
 
 `ClassOfEntity` is explicitly specialised for use in representation and identifiers, but otherwise `ClassOfEntity` and `ClassOfEvent` replace the old `GeneralConcept` `Entity` in IES3.
 
@@ -4505,7 +4505,7 @@ A CommunicationsIdentifier that is used to identify network interface controller
 Various forms of the MAC address can be used:
 (a) six groups of two hexadecimal digits, separated by hyphens (-) or colons (:), in transmission order
 (b) three groups of four hexadecimal digits separated by dots (.) again in transmission order.
-2. The `<a href="#E0036B31-8D73-4268-8959-6E9A5EE55BB2"><font color="#0000ff">``<u>`make `</u></font>``</a>` &amp; `<a href="#98BDD06F-1BD7-42b8-B338-20A198BCF90A"><font color="#0000ff">``<u>`model `</u></font>``</a>` of the network interface is encoded within the MAC address.
+2. The `<a href="#E0036B31-8D73-4268-8959-6E9A5EE55BB2"><font color="#0000ff">``<u>`make `</u></font>``</a>` & `<a href="#98BDD06F-1BD7-42b8-B338-20A198BCF90A"><font color="#0000ff">``<u>`model `</u></font>``</a>` of the network interface is encoded within the MAC address.
 
 ### `<a id="727175d4-0998-49a0-baee-6b8f1f1fd8d4"></a>`maintains
 

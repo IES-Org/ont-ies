@@ -36,7 +36,7 @@ The standard is designed to be extensible, and is based on a number of re-usable
 - [Instance Notation](#instance-notation)
 - [RDF Serialisation Example](#rdf-serialisation-example)
 - [Core Model Structure](#core-model-structure)
-- [Space &amp; Time](#space--time)
+- [Space & Time](#space--time)
 - [Space-Time Diagrams](#space-time-diagrams)
 - [IES Model – Elements](#ies-model--elements)
 - [Elements - Back to Fred](#elements---back-to-fred)
@@ -63,7 +63,7 @@ The standard is designed to be extensible, and is based on a number of re-usable
 - [Worked Example - Fred in Hospital](#worked-example---fred-in-hospital)
   - [Introduction](#introduction)
   - [Hospital Structure](#hospital-structure)
-  - [Fred&#39;s States](#freds-states)
+  - [Fred's States](#freds-states)
   - [Complete Example](#complete-example)
 
 ## Usage: Data Exchange
