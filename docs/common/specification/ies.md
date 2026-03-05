@@ -9,7 +9,7 @@ description: Comprehensive visual documentation of IES concepts, relationships, 
 
 # The Information Exchange Standard (IES) Model Specification
 
-![IES Logo](../assets/images/logos/IES-logo-dark.png)
+![IES Logo](../../assets/images/logos/IES-logo-dark.png)
 
 ## Abstract
 
@@ -595,9 +595,11 @@ Dispositions are managed in IES using `DispositionalClass` - something that was 
 * [ClassOfEvent](#4ea194c6-bbf9-45ab-85de-5802d8c3a531)
 * [ClassOfState](#0358ddab-d22c-4ee5-8f9a-cf18f3e432bd)
 * [Capability](#91d62f08-ed05-4558-9321-368712a34a30)
-* [isDisposedTo](#b093f8da-ae08-4819-8e1c-f119ef212566)
 * [Tendency](#2b451601-ec1d-4bd4-a782-6e0b7e0d416d)
+* [isDisposedTo](#b093f8da-ae08-4819-8e1c-f119ef212566)
 * [allHaveDisposition](#6f8504e0-e03c-43fa-aa81-c3341ca551e3)
+* [hasDisposition](#d1c8e5b7-9a0c-4f2b-9e3c-1a0e5c8d6f1a)
+* [eachHasDisposition](#d9e5c8b7-1a0c-4f2b-9e3c-1a0e5c8d6f1a)
 
 ---
 
@@ -3430,6 +3432,9 @@ An <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C1B"><font color="#0000ff"><u>Iden
 ### <a id="7852a5e5-8684-49f2-82ae-3368032163b1"></a>Duration
 The Measure of an Element's temporal extent
 
+### <a id="862e873d-b64a-41ad-9d3d-27f108fa159f"></a>eachHasDisposition
+A relationship that asserts all members of a <a href="#0358DDAB-D22C-4ee5-8F9A-CF18F3E432BD"><font color="#0000ff"><u>ClassOfState</u></font></a> can have (be members of) another <a href="#0358DDAB-D22C-4ee5-8F9A-CF18F3E432BD"><font color="#0000ff"><u>ClassOfState</u></font></a>.
+
 ### <a id="a4502460-54b7-446b-a9aa-003b49f9682b"></a>Easting
 The GeoIdentity that is a representation of the eastward componrnent of cartesian point on a map - i.e. on a 2D projection of the globe such as a mercator projection.
 
@@ -3698,6 +3703,9 @@ An <a href="#BBC06281-340F-458f-A057-82193F32C9DD"><font color="#0000ff"><u>rdf:
 
 ### <a id="e7500475-8c4f-47a3-8aab-c5679621fae8"></a>hasCountryOfIssue
 The country in which the respective <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C1B"><font color="#0000ff"><u>IdentityDocument</u></font></a> or <a href="#9882D901-1B22-4b89-81D1-031F840A20D0"><font color="#0000ff"><u>PaymentArtefact</u></font></a> was issued.
+
+### <a id="862e873d-b64a-41ad-9d3d-27f108fa159f"></a>hasDisposition
+A relationship that asserts a <a href="47301D66-CBD5-4d10-9481-B66966A3F3A2"><font color="#0000ff"><u>State</u></font></a> can have (be a member of) a particular <a href="#0358DDAB-D22C-4ee5-8F9A-CF18F3E432BD"><font color="#0000ff"><u>ClassOfState</u></font></a>.
 
 ### <a id="0aaf6757-aac9-43c4-8b43-cb3358eadca4"></a>hasEmergencyContactAddress
 The address of an emergency contact as printed on the <a href="#BDF4EBD9-7F41-4d90-91A7-571177330C1B"><font color="#0000ff"><u>IdentityDocument</u></font></a>

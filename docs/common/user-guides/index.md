@@ -1,6 +1,6 @@
 # User Guides
 
-Welcome to the IES Common User Guides. This section provides comprehensive guidance for understanding, implementing, and extending the Information Exchange Standard (IES).
+Welcome to the IES Common User Guides. This section provides guidance for understanding, implementing, and extending the Information Exchange Standard (IES).
 
 ---
 
@@ -33,6 +33,7 @@ Put your knowledge into practice:
 
 - **[Instantiation Patterns](instantiation-patterns.md)** - Learn standard patterns for creating IES data
 - **[Extending IES](extending-ies.md)** - Discover how to extend IES for your specific needs
+- **[Disposition](disposition.md)** - Model what Elements can do (potential vs. actuality)
 
 ### 4. Network Concepts
 Learn how to model interconnected systems:
@@ -128,6 +129,17 @@ Guidance on how to extend IES for domain-specific or organisation-specific needs
 
 ---
 
+### [Disposition](disposition.md)
+Guide to modelling what Elements can do using the Disposition pattern, which expresses potential capabilities that may or may not be actualised.
+
+**Topics covered:**
+
+- The hasDisposition and eachHasDisposition relationships
+- Relationship to existing patterns (DispositionalClass, Capability)
+- Distinguishing potential from actuality
+
+---
+
 ### Network Concepts
 
 The network documentation provides guidance on modelling interconnected systems such as road networks, utility networks, and other infrastructure.
@@ -196,58 +208,6 @@ Discussion of the relationship between the existing `inLocation` relationship an
 
 ---
 
-## Audience-Specific Pathways
-
-### For Implementers
-Building systems that consume or produce IES data:
-
-1. [Introduction to IES](introduction.md)
-2. [4D Ontology Approach](4d-ontology.md) - focus on practical implications
-3. [Instantiation Patterns](instantiation-patterns.md)
-4. [Network Concepts](networks/network.md) - if working with network data
-5. Review [Examples](../examples/index.md)
-
-### For Information Architects
-Designing information exchanges or mapping schemas:
-
-1. [What is an Ontology?](what-is-an-ontology.md)
-2. [Introduction to IES](introduction.md)
-3. [4D Ontology Approach](4d-ontology.md)
-4. [BORO Methodology](boro-methodology.md)
-5. [Network Concepts](networks/network.md) - for infrastructure domains
-6. [Extending IES](extending-ies.md)
-
-### For Data Modellers
-Mapping existing schemas to/from IES:
-
-1. [Introduction to IES](introduction.md)
-2. [What is an Ontology?](what-is-an-ontology.md)
-3. [Instantiation Patterns](instantiation-patterns.md)
-4. [Connection](networks/connection.md) - for relationship mapping
-5. [Extending IES](extending-ies.md)
-
-### For Ontology Engineers
-Working on IES itself or advanced extensions:
-
-1. [BORO Methodology](boro-methodology.md)
-2. [4D Ontology Approach](4d-ontology.md)
-3. [Network Concepts](networks/network.md) - understanding the network extension
-4. [Location and Containment](networks/location-and-containment.md) - semantic distinctions
-5. [Extending IES](extending-ies.md)
-6. Review [Specification](../specification/index.md)
-
-### For Infrastructure Domain Specialists
-Working with road, rail, utility, or other network-based domains:
-
-1. [Introduction to IES](introduction.md)
-2. [4D Ontology Approach](4d-ontology.md)
-3. [Network Concepts](networks/network.md)
-4. [Connection](networks/connection.md)
-5. [Flow](networks/flow.md)
-6. [Containment](networks/containment.md)
-
----
-
 ## Additional Resources
 
 ### Related Documentation
@@ -303,7 +263,7 @@ Please [open an issue](https://github.com/IES-Org/ies-common/issues) on our GitH
 ## Version Information
 
 **Documentation Version:** 5.1.0  
-**Last Updated:** 06 January 2026  
+**Last Updated:** 07 January 2026  
 **Applies to:** IES Common 5.x releases
 
 ---

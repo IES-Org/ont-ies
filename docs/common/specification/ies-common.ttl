@@ -502,17 +502,6 @@ ies:Capability
     rdfs:label "Capability"@en-GB ;
     rdfs:subClassOf ies:DispositionalClass .
 
-ies:Capacity
-    a rdfs:Class ;
-    dcterms:identifier "{existing-UUID}" ;
-    rdfs:label "Capacity"@en-GB ;
-    rdfs:comment """A ClassOfState representing what an Entity can do (in some possible world).
-
-Note: Typing a ClassOfState as Capacity is optional. The ies:hasCapacity and ies:eachHasCapacity
-properties accept any ClassOfState as their range. Typing as Capacity simply provides semantic
-clarity that this ClassOfState represents a capacity."""@en-GB ;
-    rdfs:subClassOf ies:ClassOfState .
-
 ies:CarTravel
     a rdfs:Class ;
     dcterms:identifier "{F5E2BCD3-4529-42f2-9ED9-95801B42ED3F}" ;
@@ -4146,16 +4135,47 @@ ies:documentedBy
     rdfs:range ies:WorkOfDocumentation ;
     rdfs:subPropertyOf ies:isRepresentedAs .
 
-ies:eachHasCapacity
+ies:eachHasDisposition
     a owl:ObjectProperty ;
     dcterms:identifier "{F4C6B093-874D-4e4f-9A7C-6B3E1D8C2A91}" ;
-    rdfs:comment """A relationship that asserts all members of a ClassOfState can have (be members of) another ClassOfState (Capacity).
+    rdfs:comment """
+    A relationship that asserts all members of a ClassOfState can have (be members of) another ClassOfState.
+    This is the class-level equivalent of `hasDisposition`.
+    For example, "Eurofighter in operational condition" (a ClassOfState) `eachHasDisposition` "Performer of Mach 2 flight"
+    (another ClassOfState) means that every member of the first class can be a member of the second class.
 
-This is the class-level equivalent of hasCapacity. For example, "Eurofighter in operational condition" (a ClassOfState) eachHasCapacity "Performer of Mach 2 flight" (another ClassOfState) means that every member of the first class can, in some possible world, be a member of the second class.
-
-See also: hasCapacity for the instance-level equivalent."""@en-GB ;
+    See also: `hasDisposition` for the instance-level equivalent.
+    """@en-GB ;
     rdfs:domain ies:ClassOfState ;
-    rdfs:label "each Has Capacity"@en-GB ;
+    rdfs:label "each Has Disposition"@en-GB ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
+
+ies:eachRequires
+    a owl:ObjectProperty ;
+    dcterms:identifier "{22117AB4-5F04-4E95-A2B1-D8E9B5064F1A}" ;
+    rdfs:comment """
+    Asserts that every member of the domain ClassOfState
+        requires the temporal co-occurrence of at least one member of the
+        range ClassOfState. This is the class-level cross-entity dependency
+        assertion.
+    """@en-GB ;
+    rdfs:domain ies:ClassOfState ;
+    rdfs:label "each Requires"@en-GB ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
+
+ies:eachRequiresPart
+    a owl:ObjectProperty ;
+    dcterms:identifier "{D9E14D76-6790-4D3F-A719-5560F9947560}" ;
+    rdfs:comment """
+    Asserts that a particular State requires, as a
+        mereological part, at least one member of the specified ClassOfState.
+        This is the individual-level whole-part dependency
+        assertion.
+    """@en-GB ;
+    rdfs:domain ies:ClassOfState ;
+    rdfs:label "each Requires Part"@en-GB ;
     rdfs:range ies:ClassOfState ;
     rdfs:subPropertyOf ies:relationship .
 
@@ -4288,18 +4308,20 @@ ies:hasAuthor
     rdfs:range ies:ResponsibleActor ;
     rdfs:subPropertyOf ies:relationship .
 
-ies:hasCapacity
+ies:hasDisposition
     a owl:ObjectProperty ;
     dcterms:identifier "{862E873D-B64A-41AD-9D3D-27F108FA159F}" ;
-    rdfs:comment """A relationship that asserts a State can have (be a member of) a particular ClassOfState (Capacity).
+    rdfs:comment """
+    A relationship that asserts a State can have (be a member of) a particular ClassOfState.
+    This expresses modal possibility: the State can be a member of the specified ClassOfState.
+    For example, "Fred Bloggs in 2026" (a PersonState) can be a member of "Term as Captain of Medway Queen" (a ClassOfState subclass of InPost).
+    This is distinct from actually being a member of that ClassOfState - actual membership is expressed via rdf:type.
+    A State may have a Disposition that is never actualised.
 
-This expresses modal possibility: the State, in some possible world, can be a member of the specified ClassOfState. For example, "Fred Bloggs in 2026" (a PersonState) can be a member of "Term as Captain of Medway Queen" (a ClassOfState subclass of InPost).
-
-This is distinct from actually being a member of that ClassOfState - actual membership is expressed via rdf:type. A State may have a Capacity that is never actualised.
-
-See also: eachHasCapacity for the class-level equivalent."""@en-GB ;
+    See also: eachHasDisposition for the class-level equivalent.
+    """@en-GB ;
     rdfs:domain ies:State ;
-    rdfs:label "has Capacity"@en-GB ;
+    rdfs:label "has Disposition"@en-GB ;
     rdfs:range ies:ClassOfState ;
     rdfs:subPropertyOf ies:relationship .
 
@@ -5116,6 +5138,32 @@ ies:relationship
     rdfs:domain ies:Thing ;
     rdfs:label "relationship"@en-GB ;
     rdfs:range ies:Thing .
+
+ies:requires a owl:ObjectProperty ;
+    rdfs:label "requires"@en-GB ;
+    rdfs:comment """
+    Asserts that for a particular State to exercise a
+        disposition, it requires the temporal co-occurrence of at least one
+        member of the specified ClassOfState. This is the individual-level
+        cross-entity dependency assertion.
+    """@en-GB ;
+    rdfs:domain ies:State ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
+
+ies:requiresPart
+    a owl:ObjectProperty ;
+    dcterms:identifier "{160A6FD8-999D-444B-8804-B7479641FB24}" ;
+    rdfs:comment """
+    Asserts that a particular State requires, as a
+        mereological part, at least one member of the specified ClassOfState.
+        This is the individual-level whole-part dependency
+        assertion.
+    """@en-GB ;
+    rdfs:domain ies:State ;
+    rdfs:label "requires Part"@en-GB ;
+    rdfs:range ies:ClassOfState ;
+    rdfs:subPropertyOf ies:relationship .
 
 ies:residesIn
     a owl:ObjectProperty ;
