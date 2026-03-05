@@ -1,0 +1,63 @@
+# Disposition Pattern Example: Class-Level Disposition
+#
+# Demonstrates ies:eachHasDisposition - asserting that every member of a
+# ClassOfState has a particular disposition.
+#
+# Scenario: Early mission planning. The planning team has determined that
+# all Eurofighters in operational condition can fly at Mach 2. At this
+# stage no specific aircraft has been allocated; the assertion is made
+# at the class level.
+#
+# Key properties demonstrated:
+#   ies:eachHasDisposition - domain: ies:ClassOfState, range: ies:ClassOfState
+#
+# Note: eachHasDisposition is a sub-property of ies:relationship only.
+# It does NOT entail rdfs:subClassOf, so ex:EurofighterInOperationalCondition
+# remains structurally separate from ex:FlyAtMach2.
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:  <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:   <http://example.org/mil#> .
+
+# =============================================================================
+# Domain vocabulary
+# =============================================================================
+
+# The disposition target - what "flying at Mach 2" means as a class of States.
+# Typed as ies:Capability (a sub-class of ies:DispositionalClass).
+# rdfs:subClassOf ies:VehicleState indicates that members of this class are
+# States of vehicles.
+ex:FlyAtMach2 a ies:Capability ;
+    rdfs:label "Fly at Mach 2"@en-GB ;
+    rdfs:comment "The disposition to perform flight at Mach 2 or greater."@en-GB ;
+    rdfs:subClassOf ies:VehicleState .
+
+# A ClassOfState representing Eurofighter aircraft in operational condition.
+# The eachHasDisposition assertion below says: every member of this class
+# (i.e. every State that is a Eurofighter in operational condition) has the
+# disposition to fly at Mach 2.
+ex:EurofighterInOperationalCondition a ies:ClassOfState ;
+    rdfs:label "Eurofighter in operational condition"@en-GB ;
+    rdfs:comment """A class whose members are States of Eurofighter aircraft
+when in operational condition. The eachHasDisposition assertion records
+that every such State has the disposition to fly at Mach 2."""@en-GB ;
+    rdfs:subClassOf ies:VehicleState ;
+    ies:eachHasDisposition ex:FlyAtMach2 .
+
+# =============================================================================
+# An anonymous planning asset class (§3.1 non-specific asset requirement)
+# =============================================================================
+
+# The planner needs an asset that can fly at Mach 2 but has not yet
+# committed to a specific platform. A named class is a convenience - the
+# Capability ex:FlyAtMach2 already implicitly defines the set of entities
+# disposed to it.
+ex:Mach2CapableAsset a ies:ClassOfState ;
+    rdfs:label "Mach 2 capable asset"@en-GB ;
+    rdfs:comment """A planning-level class representing any asset with the
+disposition to fly at Mach 2, created before a specific platform is
+selected."""@en-GB ;
+    rdfs:subClassOf ies:VehicleState ;
+    ies:eachHasDisposition ex:FlyAtMach2 .
