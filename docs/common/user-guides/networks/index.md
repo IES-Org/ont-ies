@@ -2,7 +2,7 @@
 
 This section provides guidance on modelling interconnected systems using the IES Common ontology. Whether you're working with road networks, utility infrastructure, supply chains, or any other domain involving connected elements and flows, these guides will help you understand and apply the relevant IES patterns.
 
-These guides cover the core concepts of networks, connections, flows, and containment, providing practical examples and best practices for implementation and complement the [examples](docs/examples/).
+These guides cover the core concepts of networks, connections, flows, and containment, providing practical examples and best practices for implementation and complement the [examples](../../examples/).
 
 ---
 
