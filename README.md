@@ -1,13 +1,16 @@
 # Information Exchange Standard (IES)
 
-**Repository:** `Information Exchange Standard (IES)`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `The home of the UK Government’s Information Exchange Standard, enabling consistent and open data exchange across domains.`
 
-<!--  
-SPDX-License-Identifier: See individual files for license.  
-- Source code: MIT  
-- Documentation: OGL-UK-3.0  
--->
+## Table of Contents
+
+- [Overview](#overview)
+- [Governance and Custodianship](#governance-and-custodianship)
+- [Repository Contents](#repository-contents)
+- [Project History](#project-history)
+- [Licensing](#licensing)
+- [Contributions and Feedback](#contributions-and-feedback)
 
 ## Overview
 

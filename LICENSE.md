@@ -1,9 +1,7 @@
 # License
 
-**Repository:** `Information Exchange Standard (IES)`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `Defines the licensing terms for the source code in this repository.`
-
-<!-- SPDX-License-Identifier: MIT -->
 
 ## Copyright
 

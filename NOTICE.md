@@ -1,9 +1,7 @@
 # NOTICE
 
-**Repository:** `[repository-name]`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `Attribution and legal notices related to the use of this repository, including acknowledgments of external contributions.`
-
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 This repository contains software and documentation developed as part of the
 Information Exchange Standard (IES), a UK Government initiative.
@@ -18,9 +16,7 @@ This repository contains **both source code and documentation**, each covered by
 - **Code**: Licensed under the **[MIT License](LICENSE.md)**
 - **Documentation**: Licensed under the **[Open Government Licence v3.0 (OGL-UK-3.0)](OGL_LICENSE.md)**
 
-See `LICENSE.md` and `OGL_LICENSE.md` for full terms.
+See [`LICENSE.md`](LICENSE.md) and [`OGL_LICENSE.md`](OGL_LICENSE.md) for full terms.
 
 This project incorporates contributions from various organisations and individuals.
 For a list of acknowledgments, see [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
-
-For full licensing terms, see `LICENSE.md` and `OGL_LICENSE.md`.

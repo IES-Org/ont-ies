@@ -1,9 +1,7 @@
 # Contribution Guidelines
 
-**Repository:** `Information Exchange Standard (IES)`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `Guidelines for issue reporting, documentation suggestions, and the IES controlled contribution model.`
-
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 Thank you for your interest in this repository.
 The Information Exchange Standard (IES) is developed and maintained as a cross-government initiative with contributions from various UK government organisations and technical support from approved suppliers and subject matter specialists.
@@ -74,8 +72,8 @@ This repository contains released versions of IES only and development is manage
 
 By submitting feedback, documentation suggestions, or issue reports, you acknowledge that any resulting contributions will be licensed under the same terms as this repository:
 
-- Code (if applicable) is licensed under the **MIT License**.
-- Documentation is licensed under the **Open Government Licence v3.0 (OGL v3.0)**.
+- Code (if applicable) is licensed under the [**MIT License**](https://mit-license.org/).
+- Documentation is licensed under the [**Open Government Licence v3.0 (OGL v3.0)**](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
 All contributions are considered Crown copyright.
 

@@ -1,9 +1,7 @@
 # Maintainers
 
-**Repository:** `Information Exchange Standard (IES)`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `Lists maintainers responsible for reviewing issues, security, and documentation updates.`
-
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Introduction
 

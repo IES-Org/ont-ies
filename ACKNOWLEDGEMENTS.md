@@ -1,9 +1,7 @@
 # Acknowledgements
 
-**Repository:** `Information Exchange Standard (IES)`
+**Repository:** `Information Exchange Standard (IES)`  
 **Description:** `Recognises suppliers, partner organisations, and other contributors to the repository’s development.`
-
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 The Information Exchange Standard (IES) initiative would like to acknowledge the contributions of various organisations and individuals
 who have supported the development of this repository.
