@@ -1,77 +1,82 @@
-# Security Policy  
+# Security Policy
+
 **Repository:** `Information Exchange Standard (IES)`  
-**Description:** `Details the responsible disclosure process for security vulnerabilities.`  
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->  
+**Description:** `Details the responsible disclosure process for security vulnerabilities.`
 
-## Responsible Disclosure  
+## Responsible Disclosure
 
-The Information Exchange Standard (IES) initiative follows a **Coordinated Vulnerability Disclosure (CVD)** process to ensure security risks are addressed responsibly.  
+The Information Exchange Standard (IES) initiative follows a **Coordinated Vulnerability Disclosure (CVD)** process to ensure security risks are addressed responsibly.
 
-By reporting security vulnerabilities through the responsible channels, you agree to:  
-- Not disclose details of the vulnerability publicly until IES maintainers have had a reasonable opportunity to fix it.  
-- Provide IES maintainers with adequate time to assess and mitigate the risk.  
-- Act in good faith and follow ethical security research principles.  
+By reporting security vulnerabilities through the responsible channels, you agree to:
 
-The IES initiative reserves the right to take necessary action against unauthorised or harmful security testing activities.  
+- Not disclose details of the vulnerability publicly until IES maintainers have had a reasonable opportunity to fix it.
+- Provide IES maintainers with adequate time to assess and mitigate the risk.
+- Act in good faith and follow ethical security research principles.
 
----  
+The IES initiative reserves the right to take necessary action against unauthorised or harmful security testing activities.
 
-## Reporting Security Issues  
+---
 
-IES takes security seriously and encourages responsible reporting of vulnerabilities.  
+## Reporting Security Issues
 
-If you believe you have found a security vulnerability in this repository, **please do not report it publicly**. Instead, follow the steps below to disclose the issue responsibly.  
+IES takes security seriously and encourages responsible reporting of vulnerabilities.
 
-### **How to Report a Security Issue**  
+If you believe you have found a security vulnerability in this repository, **please do not report it publicly**. Instead, follow the steps below to disclose the issue responsibly.
 
-1. **Do not open a public issue on GitHub.** Instead, report security concerns via email to **[IES@businessandtrade.gov.uk]**.  
-2. **Provide detailed information about the vulnerability**, including:  
-   - A clear description of the issue.  
-   - Steps to reproduce the vulnerability.  
-   - Potential impact or risk level.  
-   - Any suggested mitigation strategies.  
-3. **Allow time for assessment and response.** IES maintainers will review the report and respond within **10 working days** to acknowledge receipt.  
-4. **Cooperate with IES maintainers to validate and address the issue.**  
+### **How to Report a Security Issue**
 
-Once a resolution has been identified, IES may choose to:  
-- **Release a patch** as part of the next scheduled update.  
-- **Issue a security advisory** if the issue is critical.  
-- **Provide acknowledgments** where appropriate (subject to IES disclosure policy).  
+1. **Do not open a public issue on GitHub.** Instead, report security concerns via email to [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20Security%20Concern%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20the%20vulnerability%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue.%0D%0A-%20Steps%20to%20reproduce%20the%20vulnerability.%0D%0A-%20Potential%20impact%20or%20risk%20level.%0D%0A-%20Any%20suggested%20mitigation%20strategies.%0D%0A%0D%0A%3C%3CDetails%20of%20the%20vulnerability%20or%20concern%3E%3E).
+2. **Provide detailed information about the vulnerability**, including:
+   - A clear description of the issue.
+   - Steps to reproduce the vulnerability.
+   - Potential impact or risk level.
+   - Any suggested mitigation strategies.
+3. **Allow time for assessment and response.** IES maintainers will review the report and respond within **10 working days** to acknowledge receipt.
+4. **Cooperate with IES maintainers to validate and address the issue.**
 
----  
+Once a resolution has been identified, IES may choose to:
 
-## Scope  
+- **Release a patch** as part of the next scheduled update.
+- **Issue a security advisory** if the issue is critical.
+- **Provide acknowledgments** where appropriate (subject to IES disclosure policy).
 
-This security policy applies to:  
-- All IES repositories released as open source  
-- Code, configuration files, and documentation maintained by IES  
-- **Third-party dependencies** included within IES repositories  
+---
 
-If you identify a vulnerability in a third-party component that IES relies on (e.g., outdated libraries or known security flaws in dependencies), we encourage you to report it.  
+## Scope
 
-**Out of scope:**  
-- Issues related to third-party services or software **not used within IES repositories**  
-- Vulnerabilities in user environments unrelated to this repository  
-- Unsolicited security testing or penetration testing without explicit permission  
+This security policy applies to:
 
----  
+- All IES repositories released as open source
+- Code, configuration files, and documentation maintained by IES
+- **Third-party dependencies** included within IES repositories
 
-## Security Best Practices  
+If you identify a vulnerability in a third-party component that IES relies on (e.g., outdated libraries or known security flaws in dependencies), we encourage you to report it.
 
-To help maintain security across IES repositories, the following practices are observed:  
-- Dependencies are **scanned and updated regularly** (e.g., using automated tools like Dependabot)  
-- Sensitive credentials **must not be included** in public repositories  
-- Security patches are applied in a timely manner, with priority given to critical vulnerabilities  
+**Out of scope:**
 
-For more details, refer to our internal **Secure Development Guidelines** (where available).  
+- Issues related to third-party services or software **not used within IES repositories**
+- Vulnerabilities in user environments unrelated to this repository
+- Unsolicited security testing or penetration testing without explicit permission
 
----  
+---
 
-© Crown Copyright 2025  
+## Security Best Practices
 
-Maintained as part of the Information Exchange Standard initiative. 
- 
-This repository is under the custodianship of the Department for Business and Trade (UK), acting on behalf of a cross-government group of stakeholders.  
-Licensed under the Open Government Licence v3.0.  
+To help maintain security across IES repositories, the following practices are observed:
 
-For full licensing terms, see [OGL_LICENSE.md](./OGL_LICENSE.md).  
+- Dependencies are **scanned and updated regularly** (e.g., using automated tools like Dependabot)
+- Sensitive credentials **must not be included** in public repositories
+- Security patches are applied in a timely manner, with priority given to critical vulnerabilities
+
+For more details, refer to our internal **Secure Development Guidelines** (where available).
+
+---
+
+© Crown Copyright 2026
+
+Maintained as part of the Information Exchange Standard initiative.
+
+This repository is under the custodianship of the Department for Business and Trade (UK), acting on behalf of a cross-government group of stakeholders.
+Licensed under the Open Government Licence v3.0.
+
+For full licensing terms, see [OGL_LICENSE.md](./OGL_LICENSE.md).

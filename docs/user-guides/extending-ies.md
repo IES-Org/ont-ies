@@ -1,14 +1,55 @@
 # Extending IES
 
-**Applicable to all minor versions of IES**
+This document provides guidance on how to extend IES for specific local needs and is applicable to all minor versions of IES.
 
-Version: 202403v1.0 (derived from "Extending IES4 202403v1.0 O.pdf")
+## Table of Contents
+
+- [Extending IES](#extending-ies)
+- [Introduction](#introduction)
+  - [RDF Schema Relationships for Extensions](#rdf-schema-relationships-for-extensions)
+- [Simple Extensions](#simple-extensions)
+  - [Defining New Local Classes](#defining-new-local-classes)
+  - [Using New Local Classes](#using-new-local-classes)
+    - [Why Dual Typing?](#why-dual-typing)
+  - [Defining New Attributes and Relationships](#defining-new-attributes-and-relationships)
+    - [Example: Extending Relationships](#example-extending-relationships)
+    - [Example: Extending Attributes](#example-extending-attributes)
+- [Permissible Extension Boundary](#permissible-extension-boundary)
+- [Finding the Right Level to Extend From](#finding-the-right-level-to-extend-from)
+  - [Question 1: What kind of IES thing is it?](#question-1-what-kind-of-ies-thing-is-it)
+  - [Question 2: Which IES pattern is it most like?](#question-2-which-ies-pattern-is-it-most-like)
+  - [Question 3: Which names and definitions encapsulate my concept?](#question-3-which-names-and-definitions-encapsulate-my-concept)
+  - [Question 4: Do the relationships and attributes also apply to my concept?](#question-4-do-the-relationships-and-attributes-also-apply-to-my-concept)
+- [Complex Extensions](#complex-extensions)
+  - [The Wrong Way: Nested Hierarchies](#the-wrong-way-nested-hierarchies)
+    - [Problems with Nested Hierarchies](#problems-with-nested-hierarchies)
+    - [Example of what NOT to do:](#example-of-what-not-to-do)
+  - [The Right Way: Faceted Classification using Powersets](#the-right-way-faceted-classification-using-powersets)
+    - [Setting Up the Powerset Hierarchy](#setting-up-the-powerset-hierarchy)
+    - [Defining Atomic Ship Types](#defining-atomic-ship-types)
+    - [Benefits of the Faceted Approach](#benefits-of-the-faceted-approach)
+  - [Additional &#34;Plumbing&#34;: Powertype Declarations](#additional-plumbing-powertype-declarations)
+    - [When Powertype Declarations Are Needed](#when-powertype-declarations-are-needed)
+  - [Reminder: Powertype Relationship](#reminder-powertype-relationship)
+    - [Example: Ranks](#example-ranks)
+    - [Example: Documents](#example-documents)
+  - [Using New Local Classes with Faceted Types](#using-new-local-classes-with-faceted-types)
+- [Specific guidance for extending Entities](#specific-guidance-for-extending-entities)
+- [Extension Naming Convention](#extension-naming-convention)
+  - [All Extensions](#all-extensions)
+  - [Extensions to Elements](#extensions-to-elements)
+  - [Extensions to ClassOfElements](#extensions-to-classofelements)
+  - [Extensions to Relationships or Attributes](#extensions-to-relationships-or-attributes)
+- [Best Practices Summary](#best-practices-summary)
+- [Document Information](#document-information)
+
+---
 
 ## Introduction
 
-This document provides guidance on how to extend IES for specific local needs.
+Extending IES requires a structured approach and this document provides guidance on how to extend IES for specific local needs.
 
-You cannot simply add an orphaned concept into such a formal ontology. The concept must extend an existing concept in IES. We do this by finding the closest, similar concept. This is normally a more generalised concept of the one you seek to add. It is from this concept that we make our extension. 
+You cannot simply add an orphaned concept into such a formal ontology. The concept must extend an existing concept in IES. We do this by finding the closest, similar concept. This is normally a more generalised concept of the one you seek to add. It is from this concept that we make our extension.
 
 **Examples:**
 
@@ -51,7 +92,7 @@ ont:CargoShip rdfs:subClassOf ies:Ship .
 
 ### Using New Local Classes
 
-Now that we have our new extensions, we can use them in our data. We follow the normal approach to instantiation using `rdf:type` (or the shorthand "`a`"), i.e. we make the instance a type of one of our local classes. 
+Now that we have our new extensions, we can use them in our data. We follow the normal approach to instantiation using `rdf:type` (or the shorthand "`a`"), i.e. we make the instance a type of one of our local classes.
 
 **However**, in addition, we also make this instance a type of the nearest class in IES. This caters for consumers which may not have access to our local ontology, so at the very least they can understand what sort of IES thing our instance is meant to be.
 
@@ -59,7 +100,7 @@ Now that we have our new extensions, we can use them in our data. We follow the 
 
 #### Why Dual Typing?
 
-For example, as a consumer, you may have a query for getting all instances of `ies:Ship`. If you were then given data that only typed things as either `ont:PassengerShip` or `ont:CargoShip`, your query would miss those ship instances. 
+For example, as a consumer, you may have a query for getting all instances of `ies:Ship`. If you were then given data that only typed things as either `ont:PassengerShip` or `ont:CargoShip`, your query would miss those ship instances.
 
 By also providing the type of the nearest IES class, we allow for such queries to continue to work—i.e. we don't miss any ships and only miss the extra subtype detail. This provides a form of **backward compatibility**, giving consumers flexibility to update their queries in their own time without the fear of them missing out on the information they care about.
 
@@ -70,9 +111,9 @@ data:Titanic a ies:Ship .
 
 ### Defining New Attributes and Relationships
 
-The same approach as already specified applies here at first: find the closest attribute or relationship in IES. However, the extension is created using `rdfs:subPropertyOf` rather than `rdfs:subClassOf`. 
+The same approach as already specified applies here at first: find the closest attribute or relationship in IES. However, the extension is created using `rdfs:subPropertyOf` rather than `rdfs:subClassOf`.
 
-Sometimes you might need to articulate the `rdfs:domain` (for attributes and relationships) and `rdfs:range` (only for relationships) of the extension if you want to narrow down its association to specific classes. 
+Sometimes you might need to articulate the `rdfs:domain` (for attributes and relationships) and `rdfs:range` (only for relationships) of the extension if you want to narrow down its association to specific classes.
 
 As with extending classes and for the same reasons, you **MUST** also articulate the nearest equivalent in IES. See the examples below.
 
@@ -105,9 +146,9 @@ data:assessment_1 ies:confidence "GREEN"^^xsd:string .
 
 ## Permissible Extension Boundary
 
-IES has a small number of concepts at the top of its hierarchy. **It is not permissible to extend the broader concepts found above this level** (e.g. `ExchangeItem` and `Element`). 
+IES has a small number of concepts at the top of its hierarchy. **It is not permissible to extend the broader concepts found above this level** (e.g. `ExchangeItem` and `Element`).
 
-This ensures that, at the very least, consumers of data that use extensions can at least understand what key concepts are being exchanged. 
+This ensures that, at the very least, consumers of data that use extensions can at least understand what key concepts are being exchanged.
 
 The diagram below shows those concepts (within the grey boundary) which **cannot be extended**:
 
@@ -143,9 +184,9 @@ In the examples presented thus far, it has been evident where to make an extensi
 
 ### Question 1: What kind of IES thing is it?
 
-Does it have spatio-temporal extent? I.e. is it an `Element`? Or is it a set/class? Is it more a representation, identifier, or measure? 
+Does it have spatio-temporal extent? I.e. is it an `Element`? Or is it a set/class? Is it more a representation, identifier, or measure?
 
-If it's an element, which of the high-level types of element is it? Is it a single entity or does it involve multiple entities (i.e. an event)? 
+If it's an element, which of the high-level types of element is it? Is it a single entity or does it involve multiple entities (i.e. an event)?
 
 If your concept doesn't apply to any of the above, then a relationship or attribute could be considered.* However, these are last-resort options and should only really be considered if there is an existing relationship or attribute that is very close to the extension you seek.
 
@@ -158,9 +199,9 @@ The IES standard presents the model through a series of diagrams which represent
 
 ### Question 3: Which names and definitions encapsulate my concept?
 
-Use the definitions of IES classes, relationships, and attributes to guide you. The definition should really cover as close to 100% of what your concept talks about, even if it's covered in a vague sense. 
+Use the definitions of IES classes, relationships, and attributes to guide you. The definition should really cover as close to 100% of what your concept talks about, even if it's covered in a vague sense.
 
-If there is something in the definition that clearly doesn't apply to your new concept, then it is most likely not suitable. Discounting what it's **not** is a useful approach. 
+If there is something in the definition that clearly doesn't apply to your new concept, then it is most likely not suitable. Discounting what it's **not** is a useful approach.
 
 Sometimes you might also want to consider things from a set theory point of view. Consider your concept as a set and ask: will all the members of my new set also be found within the proposed super set?
 
@@ -277,6 +318,7 @@ To be able to talk about classes that are themselves members of other classes, w
 ![rdf:type is not transitive](../assets/images/diagrams/rendered/powertypes-1.png)
 
 In this example:
+
 - Colonel Blimp is an instance of (`rdf:type`) the class Colonel
 - Colonel is an instance of the class Rank
 - Colonel Blimp is **not** an instance of Rank though
@@ -286,7 +328,7 @@ In this example:
 
 ![Powertype example](../assets/images/diagrams/rendered/powertypes-2.png)
 
-The mechanism used for stepping up the type levels in IES is the `ies:powertype` relationship. It relates a Class to another class whose members are all possible subtypes of that Class. 
+The mechanism used for stepping up the type levels in IES is the `ies:powertype` relationship. It relates a Class to another class whose members are all possible subtypes of that Class.
 
 This is a bit of logical plumbing in IES and may not be of interest to all users. If you are interested in this topic, start by looking up "powerset" on Wikipedia and then look at Cantor's theorem.
 
@@ -308,6 +350,7 @@ data:Titanic a ies:Ship .
 ```
 
 The Titanic is:
+
 1. A passenger ship (functional use facet)
 2. A fossil-fuelled powered ship (power source facet)
 3. A ship (base IES class for backward compatibility)
@@ -383,8 +426,8 @@ Below is a set of mandatory (**MUST** and **MUST NOT**) rules and recommended (*
 **Recommended rules:**
 
 - **SHOULD** (either of these might appear more natural in a particular circumstance):
-    - Provide some connective text that reads as a sentence between the domain and range for a relationship, or the domain and the literal for an attribute; **or**
-    - Be named in terms of the role it plays with respect to the domain
+  - Provide some connective text that reads as a sentence between the domain and range for a relationship, or the domain and the literal for an attribute; **or**
+  - Be named in terms of the role it plays with respect to the domain
 
 ---
 
@@ -393,29 +436,12 @@ Below is a set of mandatory (**MUST** and **MUST NOT**) rules and recommended (*
 When extending IES, follow these best practices:
 
 1. **Always extend from the closest matching IES concept** – Search the ontology thoroughly before creating extensions
-
 2. **Provide dual typing for backward compatibility** – Always type instances with both your local class and the nearest IES class
-
 3. **Use faceted classification for complex extensions** – Avoid nested hierarchies; use powersets instead
-
 4. **Follow naming conventions** – Use PascalCase for classes, camelCase for properties
-
 5. **Document your extensions** – Maintain clear definitions for all local classes and properties
-
 6. **Respect the extension boundary** – Do not extend top-level concepts like `Thing`, `Element`, or `ExchangeItem`
-
 7. **Declare powertype relationships when needed** – Explicitly state powertype relationships when introducing new classification hierarchies
-
 8. **Test queryability** – Ensure your extension structure supports the queries your consumers need to run
 
----
-
-## Document Information
-
-- **Version:** 202403v1.0
-- **Status:** stable
-- **Applicable to:** All minor versions of IES4 and 5
-- **Related Documents:**
-    - Information Exchange Standard r4.3.1
-    - IES Examples 202403
-    - Instantiation Patterns in IES4 202402v1.0
+*© Crown Copyright 2020-2026*

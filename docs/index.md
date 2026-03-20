@@ -4,9 +4,34 @@ The **Information Exchange Standard (IES) Common** is a standardised ontology fo
 
 ---
 
+## Table of Contents
+
+- [About IES](#about-ies)
+- [Key Features](#key-features)
+- [Documentation Structure](#documentation-structure)
+  - [User Guides](#user-guides)
+  - [Specification](#specification)
+  - [Examples](#examples)
+  - [Glossary](#glossary)
+- [Quick Start Paths](#quick-start-paths)
+  - [For Implementers](#for-implementers)
+  - [For Information Architects](#for-information-architects)
+  - [For Extenders](#for-extenders)
+- [Background](#background)
+- [Scope and Inclusion Criteria](#scope-and-inclusion-criteria)
+- [Design Philosophy](#design-philosophy)
+  - [Minimal Constraints](#minimal-constraints)
+  - [Parsimony](#parsimony)
+  - [Extensibility](#extensibility)
+- [Implementation](#implementation)
+- [A Note on Naming](#a-note-on-naming)
+- [Version Information](#version-information)
+- [Getting Started](#getting-started)
+- [Support and Feedback](#support-and-feedback)
+
 ## About IES
 
-The IES was developed to enable collaboration across UK Government by providing a common vocabulary for data and information exchange between knowledge stores. Rather than creating numerous bespoke bilateral interfaces, organisations can convert information to and from the IES common format, dramatically reducing complexity and maintenance costs.
+The IES was developed to enable collaboration across the UK Government by providing a common vocabulary for data and information exchange between knowledge stores. Rather than creating numerous bespoke bilateral interfaces, organisations can convert information to and from the IES common format, dramatically reducing complexity and maintenance costs.
 
 ### Key Features
 
@@ -22,44 +47,40 @@ The IES was developed to enable collaboration across UK Government by providing 
 
 ## Documentation Structure
 
-<div class="ies-doc-nav">
-<a href="user-guides/" class="ies-doc-nav-card">
-<h3>📚 User Guides</h3>
-<p>Comprehensive guides covering IES fundamentals, the 4D ontology approach, instantiation patterns, extension mechanisms, and the BORO methodology.</p>
-</a>
 
-<a href="specification/" class="ies-doc-nav-card">
-<h3>📋 Specification</h3>
-<p>Complete technical specification including class hierarchies, property definitions, UML diagrams, and the authoritative ies-common.ttl ontology file.</p>
-</a>
+### User Guides
 
-<a href="examples/" class="ies-doc-nav-card">
-<h3>💡 Examples</h3>
-<p>Practical worked examples demonstrating IES patterns in action, showing how to model real-world scenarios using the ontology.</p>
-</a>
+Comprehensive guides covering IES fundamentals, the 4D ontology approach, instantiation patterns, extension mechanisms, and the BORO methodology ([Go to User Guides](user-guides/index.md)).
 
-<a href="faq/" class="ies-doc-nav-card">
-<h3>❓ FAQ</h3>
-<p>Answers to frequently asked questions about IES concepts, implementation, extension, and usage patterns.</p>
-</a>
 
-<a href="glossary/" class="ies-doc-nav-card">
-<h3>📖 Glossary</h3>
-<p>Definitions of key terms, concepts, and technical vocabulary used throughout the IES ontology and documentation.</p>
-</a>
-</div>
+### Specification
+
+Complete technical specification including class hierarchies, property definitions, UML diagrams, and the authoritative `ies-common.ttl` ontology file ([Go to Specification](specification/index.md)).
+
+
+### Examples
+
+Practical worked examples demonstrating IES patterns in action, showing how to model real-world scenarios using the ontology ([Go to Examples](examples/index.md)).
+
+
+### Glossary
+
+Definitions of key terms, concepts, and technical vocabulary used throughout the IES ontology and documentation ([Go to Glossary](glossary.md)).
 
 ---
 
 ## Quick Start Paths
 
 ### For Implementers
+
 Start with the [Introduction to IES](user-guides/introduction.md) to understand the purpose and philosophy, then explore [Instantiation Patterns](user-guides/instantiation-patterns.md) to learn how to create IES-compliant data.
 
 ### For Information Architects
+
 Begin with [What is an Ontology?](user-guides/what-is-an-ontology.md) and [The 4D Ontology Approach](user-guides/4d-ontology.md) to understand the theoretical foundations, then review the [Specification](specification/) for detailed class and property definitions.
 
 ### For Extenders
+
 Review [Extending IES](user-guides/extending-ies.md) to understand extension mechanisms and best practices, then examine the [Examples](examples/) for practical patterns.
 
 ---
@@ -68,9 +89,9 @@ Review [Extending IES](user-guides/extending-ies.md) to understand extension mec
 
 Across UK Government there are many separate knowledge stores, including multiple stores within each organisation. Many contain similar information about the real world but use different terminologies, formats and schemas. This creates significant challenges:
 
-* Analysts need comprehensive access to information distributed across these stores without having to broker between different formats
-* Organisations need to exchange information without developing numerous bespoke bilateral interchange mechanisms
-* Systems need to integrate without costly and disruptive changes to individual knowledge stores
+* Analysts need comprehensive access to information distributed across these stores, without having to broker between different formats;
+* Organisations need to exchange information without developing numerous bespoke bilateral interchange mechanisms;
+* Systems need to integrate without costly and disruptive changes to individual knowledge stores.
 
 The IES addresses these challenges by providing a common vocabulary. Information from each store is converted to and from the common vocabulary when it travels, so users and systems only need to understand the relationship between their internal model and IES.
 
@@ -98,7 +119,7 @@ The IES model is intentionally loosely constrained. Domains and ranges for relat
 
 **The goal** is to allow any sending party to express the information they want whilst still providing a framework. Receiving parties should expect to receive such data.
 
-**The expectation** is that the model will become more constrained over time as users provide feedback and IES adapts to different usage patterns.
+**The expectation** is that the model will become more constrained over time, as users provide feedback and IES adapts to different usage patterns.
 
 ### Parsimony
 
@@ -141,8 +162,8 @@ Whilst changing the name to reflect wider applicability has been considered, it 
 ## Version Information
 
 **Current Version:** 5.0.0
-**Licence:** MIT Licence (Crown Copyright 2020-2025)  
-**Publisher:** UK Department for Business and Trade  
+**Licence:** MIT Licence (Crown Copyright 2020-2026)
+**Publisher:** UK Department for Business and Trade
 **Language:** British English (en-GB)
 
 ---
@@ -166,4 +187,4 @@ IES is an evolving standard that responds to user feedback and real-world usage 
 
 ---
 
-*© Crown Copyright 2020-2025 | Licensed under the MIT Licence*
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

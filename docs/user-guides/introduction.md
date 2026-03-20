@@ -1,10 +1,6 @@
 # Introduction to IES
 
-**Based on version 5.0.0**
-
 ---
-
-## What and Why
 
 The UK Government "Information Exchange Standard" is a specification of how to exchange data between interested parties. The scope of the standard has been deliberately left open, but has initially been focussed on information pertinent to defence, policing and national security.
 
@@ -13,6 +9,7 @@ The standard was developed in recognition of the number of point-to-point interf
 The standard is designed to be extensible, and is based on a number of re-usable patterns of business. The IES borrows heavily from an existing defence standard (the IDEAS specification) developed between a number of national defence departments in the mid 2000s to enable sharing of enterprise architecture data. IDEAS in turn was based on the BORO methodology and the ISO15926 standard. IES follows the UK Government preferred data exchange approach, using W3C RDF Standard to serialise the data. Use of RDF provides standard formats in JSON and XML, as well as a number of open-source tools for working with the data.
 
 **Acronyms:**
+
 - RDF = Resource Definition Framework (data representation standard)
 - W3C = World Wide Web Consortium (standards body, responsible for http, XML, RDF, etc.)
 - BORO = Business Objects Re-engineering Ontology (a data modelling method)
@@ -21,6 +18,53 @@ The standard is designed to be extensible, and is based on a number of re-usable
 - JSON = JavaScript Object Notation (data serialisation standard)
 
 ---
+
+## Table of Contents
+
+- [Usage: Data Exchange](#usage-data-exchange)
+- [Usage: Synchronisation](#usage-synchronisation)
+- [Usage: Storage](#usage-storage)
+- [Architecture](#architecture)
+- [Data Model Approach](#data-model-approach)
+- [Model Overview](#model-overview)
+- [Compositional Modelling Approach](#compositional-modelling-approach)
+- [Model Notation](#model-notation)
+- [RDF Overview](#rdf-overview)
+- [RDF URIs](#rdf-uris)
+- [RDF Schema](#rdf-schema)
+- [More on Classes and Subclasses](#more-on-classes-and-subclasses)
+- [Instance Notation](#instance-notation)
+- [RDF Serialisation Example](#rdf-serialisation-example)
+- [Core Model Structure](#core-model-structure)
+- [Space & Time](#space--time)
+- [Space-Time Diagrams](#space-time-diagrams)
+- [IES Model – Elements](#ies-model--elements)
+- [Elements - Back to Fred](#elements---back-to-fred)
+- [Applying the Pattern](#applying-the-pattern)
+- [Temporal State Composition](#temporal-state-composition)
+- [Event Modelling](#event-modelling)
+- [Event Participant](#event-participant)
+- [Temporal Precision](#temporal-precision)
+- [Bounding State](#bounding-state)
+- [Temporal State Representations](#temporal-state-representations)
+- [IES Time Elements](#ies-time-elements)
+  - [Locations](#locations)
+  - [Quick Recap](#quick-recap)
+- [Names and Identifiers](#names-and-identifiers)
+  - [Information](#information)
+  - [Representation](#representation)
+  - [Transitivity](#transitivity)
+  - [Power types](#power-types)
+  - [Representations Types](#representations-types)
+  - [Naming schemes](#naming-schemes)
+  - [Hierarchies of Naming Schemes](#hierarchies-of-naming-schemes)
+  - [Quick recap - representation](#quick-recap---representation)
+- [Summary of Core Patterns](#summary-of-core-patterns)
+- [Worked Example - Fred in Hospital](#worked-example---fred-in-hospital)
+  - [Introduction](#introduction)
+  - [Hospital Structure](#hospital-structure)
+  - [Fred's States](#freds-states)
+  - [Complete Example](#complete-example)
 
 ## Usage: Data Exchange
 
@@ -36,15 +80,9 @@ Systems continue to use their own internal data structures, but map to/from the 
 
 ![Usage: Synchronisation](../assets/images/diagrams/rendered/usage-synchronisation.png)
 
-In a microservices architecture where there is extensive replication of data across
-services (bounded context principle), an event log is used to synchronise the
-services. Changes in data are written to the log, and picked up by services that
-subscribe to them. Use of data standards for the messages on the logs is essential
-to prevent unmanageable data variety.
+In a microservices architecture where there is extensive replication of data across services (bounded context principle), an event log is used to synchronise the services. Changes in data are written to the log, and picked up by services that subscribe to them. Use of data standards for the messages on the logs is essential to prevent unmanageable data variety.
 
-A distributed commit log holds a sequence of data events (create, modify, delete) in strict temporal order. It allows
-applications and microservices to subscribe to a stream of events, triggering data events in their own databases and so
-keeping data synchronised across a wide range of applications and services. Apache Kafka is probably the most widely used.
+A distributed commit log holds a sequence of data events (create, modify, delete) in strict temporal order. It allows applications and microservices to subscribe to a stream of events, triggering data events in their own databases and so keeping data synchronised across a wide range of applications and services. Apache Kafka is probably the most widely used.
 
 ---
 
@@ -52,28 +90,17 @@ keeping data synchronised across a wide range of applications and services. Apac
 
 ![Usage: Storage](../assets/images/diagrams/rendered/usage-storage.png)
 
-Although IES was not designed with storage in mind, there has been some interest in
-using it in that way, especially for applications which bring data together from
-many sources – i.e. the sink for a number of IES feeds. As IES is an RDF-based
-standard, the obvious database choice is a triplestore, but some teams have also
-been looking at implementing just the core IES concepts in document stores such as
-MongoDB.
+Although IES was not designed with storage in mind, there has been some interest in using it in that way, especially for applications which bring data together from many sources – i.e. the sink for a number of IES feeds. As IES is an RDF-based standard, the obvious database choice is a triplestore, but some teams have also been looking at implementing just the core IES concepts in document stores such as MongoDB.
 
-Triplestores are graph databases that natively store data as sets of triples or “statements”. These are in the
-form of subject-predicate-object. As the triples refer to common subjects and objects, a network (or graph) of
-data is constructed – e.g. A likes B, B is-a Banana, A is-a Fruit-Fly
+Triplestores are graph databases that natively store data as sets of triples or “statements”. These are in the form of subject-predicate-object. As the triples refer to common subjects and objects, a network (or graph) of data is constructed – e.g. A likes B, B is-a Banana, A is-a Fruit-Fly
 
 ---
 
 ## Architecture
+
 ![IES Architecture](../assets/images/diagrams/rendered/ies-architecture.png)
 
-RDF tools and databases usually provide all the standard serialisation formats (e.g.
-RDF-JSON, JSON-LD, RDF-XML, etc.) so implementers are encouraged to work with these
-tools rather than writing their own serialisers/de-serialisers. Working at the
-logical RDF level rather than the physical format is easier and will result in
-better quality exchanges of data.
-
+RDF tools and databases usually provide all the standard serialisation formats (e.g. RDF-JSON, JSON-LD, RDF-XML, etc.) so implementers are encouraged to work with these tools rather than writing their own serialisers/de-serialisers. Working at the logical RDF level rather than the physical format is easier and will result in better quality exchanges of data.
 
 ---
 
@@ -83,9 +110,9 @@ The IES uses the W3C's RDF architecture so it doesn't have to worry about implem
 
 For example, IES specifies that there are people (`Person`) and there are locations (`Location`). It also says that people can have names, and that they can be in locations\*. This is all done using a diagram notation called UML**
 
-\*Temporally – IES is smart enough to know that things can move
+\*Temporally – IES accounts for the fact that things can move.
 
-**Strictly speaking, it's using the ODM profile for UML … more on that later.
+**Strictly speaking, the ODM profile for UML is used (see [Model Notation](#model-notation) section).
 
 ---
 
@@ -95,16 +122,11 @@ For example, IES specifies that there are people (`Person`) and there are locati
 
 ---
 
-## Lego&trade;  not Airfix&trade;\*
+## Compositional Modelling Approach
 
-IES is not like a traditional data model. It is made up of a few re-usable components that you
-put together in different ways to make your model. It’s like Lego - the model might not
-exactly as you expected, but the parts move, and you can always change and extend it easily.
-You can also change small parts without breaking the rest of the model…
+IES differs from traditional data models in its compositional structure. The ontology consists of a limited set of reusable components that can be combined in various configurations to construct domain-specific models. This modular design enables flexibility: models can be modified incrementally without requiring comprehensive restructuring.
 
-…I think that’s enough metaphor stretching for one day…
-
-![Lego vs Airfix](../assets/images/diagrams/rendered/lego-not-airfix.png)
+The comparison illustrated below demonstrates two modelling approaches: fixed-structure kits (such as Airfix) analogous to traditional schemas, versus modular building blocks (such as Lego) representing IES patterns. In IES, individual components can be added, removed, or modified independently whilst maintaining the integrity of the overall model.![Lego vs Airfix](../assets/images/diagrams/rendered/lego-not-airfix.png)
 
 \*Airfix is a UK model kit company – similar to Revell , Heller or Tamiya.
 
@@ -112,14 +134,11 @@ You can also change small parts without breaking the rest of the model…
 
 ## Model Notation
 
-The model is authored using the OMG’s ODM profile for UML. This allows us to export
-the model as RDF Schema, a Word document and a website all from one Sparx EA model.
+The model is authored using the OMG’s ODM profile for UML. This allows us to export the model as RDF Schema, a Word document and a website all from one Sparx EA model.
 
 ![Model Notation](../assets/images/diagrams/rendered/model-notation.png)
 
-The ODM stereotypes (shown in chevrons <<*stereotype*>>) signify the underlying RDF Schema type
-– e.g Entity is an `rdfs:Class`. We also chose to keep the colour coding that had
-been used in previous IES version – e.g. yellow for entities, pink for events, etc.
+The ODM stereotypes (shown in chevrons <<*stereotype*>>) signify the underlying RDF Schema type – e.g Entity is an `rdfs:Class`. The colour coding that had been used in previous IES version was maintained – e.g. yellow for entities, pink for events, etc.
 
 - OMG = Object Management Group (standards body)
 - UML = Unified Modelling Language (published by OMG)
@@ -127,48 +146,47 @@ been used in previous IES version – e.g. yellow for entities, pink for events,
 
 ---
 
-## Digression - RDF
+## RDF Overview
 
-RDF is a standard format for graph data – i.e. data that is highly
-connected. The standard is published by the W3C, and is the UK Government
-preferred data standard.
-It follows a structure of subject-predicate-object:
+RDF is a standard format for graph data – i.e. data that is highly connected. The standard is published by the W3C, and is the UK Government
+preferred data standard. It follows a structure of subject-predicate-object:
 
-| Subject     | Predicate  | Object       |
-|-------------|------------|--------------|
-| Fred        | worksFor   | Acme         |
-| Fred        | hasName    | "Fred Smith” |
-| Acme        | inLocation | Birmingham   |
-| Fred        | livesIn    | Coventry     |
-| Coventry    | partOf     | UK           |
-| Birmingham  | partOf     | UK           |
+| Subject    | Predicate  | Object        |
+| ---------- | ---------- | ------------- |
+| Fred       | worksFor   | Acme          |
+| Fred       | hasName    | "Fred Smith” |
+| Acme       | inLocation | Birmingham    |
+| Fred       | livesIn    | Coventry      |
+| Coventry   | partOf     | UK            |
+| Birmingham | partOf     | UK            |
 
 ![RDF Triples](../assets/images/diagrams/rendered/rdf-triples.png)
 
-Skip this, if you already know about RDF.
-Some things to note.
+Readers familiar with RDF may proceed to the next section.
+Key points:
+
 1) This is a simplified example
-2) it’s not IES compliant
+2) It’s not IES compliant
 3) The object can be a literal – in this case “Fred Smith”
-4) The nodes need to be URIs (see next slide)
+4) The nodes need to be URIs (see next section)
 
 ---
 
-## Digression - RDF URIs
+## RDF URIs
 
 - Nodes in an RDF graph have URIs (i.e. http://blah...)
 - The edges (links) are typed by URIs too
 
-| Subject                                 | Predicate | Object |
-|-----------------------------------------|-----------|--------|
-| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#worksFor> | <http://informationexchangestandard.org/example#Acme> . |
-| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#hasName> | “Fred Smith” . |
-| <http://informationexchangestandard.org/example#Acme>       | <http://informationexchangestandard.org/myOntology#inLocation> | <http://informationexchangestandard.org/example#Birmingham> . |
-| <http://informationexchangestandard.org/example#Fred>       | <http://informationexchangestandard.org/myOntology#livesIn> | <http://informationexchangestandard.org/example#Coventry> . |
-| <http://informationexchangestandard.org/example#Coventry>   | <http://informationexchangestandard.org/myOntology#partOf> | <http://informationexchangestandard.org/example#UK> . |
-| <http://informationexchangestandard.org/example#Birmingham> | <http://informationexchangestandard.org/myOntology#partOf> | <http://informationexchangestandard.org/example#UK> . |
+| Subject                                                                                                             | Predicate                                                                                                                 | Object                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [http://informationexchangestandard.org/example#Fred](http://informationexchangestandard.org/example#Fred)             | [http://informationexchangestandard.org/myOntology#worksFor](http://informationexchangestandard.org/myOntology#worksFor)     | [http://informationexchangestandard.org/example#Acme](http://informationexchangestandard.org/example#Acme) .             |
+| [http://informationexchangestandard.org/example#Fred](http://informationexchangestandard.org/example#Fred)             | [http://informationexchangestandard.org/myOntology#hasName](http://informationexchangestandard.org/myOntology#hasName)       | “Fred Smith” .                                                                                                      |
+| [http://informationexchangestandard.org/example#Acme](http://informationexchangestandard.org/example#Acme)             | [http://informationexchangestandard.org/myOntology#inLocation](http://informationexchangestandard.org/myOntology#inLocation) | [http://informationexchangestandard.org/example#Birmingham](http://informationexchangestandard.org/example#Birmingham) . |
+| [http://informationexchangestandard.org/example#Fred](http://informationexchangestandard.org/example#Fred)             | [http://informationexchangestandard.org/myOntology#livesIn](http://informationexchangestandard.org/myOntology#livesIn)       | [http://informationexchangestandard.org/example#Coventry](http://informationexchangestandard.org/example#Coventry) .     |
+| [http://informationexchangestandard.org/example#Coventry](http://informationexchangestandard.org/example#Coventry)     | [http://informationexchangestandard.org/myOntology#partOf](http://informationexchangestandard.org/myOntology#partOf)         | [http://informationexchangestandard.org/example#UK](http://informationexchangestandard.org/example#UK) .                 |
+| [http://informationexchangestandard.org/example#Birmingham](http://informationexchangestandard.org/example#Birmingham) | [http://informationexchangestandard.org/myOntology#partOf](http://informationexchangestandard.org/myOntology#partOf)         | [http://informationexchangestandard.org/example#UK](http://informationexchangestandard.org/example#UK) .                 |
 
-We can make this a bit easier to read using namespaces:
+Namespace prefixes improves readability:
 
 ```turtle
 @prefix ont: <http://informationexchangestandard.org/myOntology#> .
@@ -182,17 +200,16 @@ data:Coventry ont:partOf data:UK .
 data:Birmingham ont:partOf data:UK .
 ```
 
-The two examples above are valid RDF based on the N-Triples serialisation format. There are other standard ways to
-serialise RDF, including XML and JSON.
+The two examples above are valid RDF based on the N-Triples serialisation format. There are other standard ways to serialise RDF, including XML and JSON.
 
 ---
 
-## Digression - RDF Schema
+## RDF Schema
 
-- You can also define data schemas for RDF data using RDF-Schema (`rdfs`).
+- Data schemas can be defined for RDF data using RDF-Schema (`rdfs`).
 - RDF Schema is also defined using RDF.
 - There are classes (`rdfs:Class`), relationship definitions (`rdf:Property`), subtype
-relationships (`rdfs:subClassOf`) and type-instance relationships (`rdf:type`)
+  relationships (`rdfs:subClassOf`) and type-instance relationships (`rdf:type`)
 
 ![RDF Schema](../assets/images/diagrams/rendered/rdf-schema.png)
 
@@ -213,34 +230,34 @@ The subClassOf relationship between classes is like concentric classes in a Venn
 
 ## Instance Notation
 
-In developing the IES, it was felt that a simple, graphical notation for examples was required. RDF is a graph structure, so a nodes and links notation was the obvious choice. All IES nodes will be typed, and this can tend to clutter up the diagram, so we settled on a notation where the type of the node is indicated by an abbreviation in the node. The colour coding from the model is carried through to the instance diagram – e.g. yellow outline = Entity.
+In developing the IES, a simple graphical notation for examples was required. RDF is a graph structure, so a nodes and links notation was the obvious choice. All IES nodes will be typed, and this can tend to clutter up the diagram, so the notation adopted indicates the type of each node using an abbreviation within the node. The colour coding from the model is carried through to the instance diagram – e.g. yellow outline = Entity.
 
 ![Instance Notation](../assets/images/diagrams/rendered/instance-notation.png)
 
 **Namespaces**
 
-|                |      |
-|----------------|------|
-| @prefix rdf:   | <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . |
-| @prefix rdfs:  | <http://www.w3.org/2000/01/rdf-schema#> . |
-| @prefix ies:   | <http://informationexchangestandard.org/ont/ies/common/> . |
-| @prefix data: | <http://informationexchangestandard.org/testdata#> . |
+|               |                                                                                                                 |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| @prefix rdf:  | [http://www.w3.org/1999/02/22-rdf-syntax-ns#](http://www.w3.org/1999/02/22-rdf-syntax-ns#) .                       |
+| @prefix rdfs: | [http://www.w3.org/2000/01/rdf-schema#](http://www.w3.org/2000/01/rdf-schema#) .                                   |
+| @prefix ies:  | [http://informationexchangestandard.org/ont/ies/common/](http://informationexchangestandard.org/ont/ies/common/) . |
+| @prefix data: | [http://informationexchangestandard.org/testdata#](http://informationexchangestandard.org/testdata#) .             |
 
 **KEY:**
 
-| | |
-|----|------------------|
-| Ce | ies:Caller |
-| Cr | ies:Callee |
-| P  | ies:Person |
+|     |                           |
+| --- | ------------------------- |
+| Ce  | ies:Caller                |
+| Cr  | ies:Callee                |
+| P   | ies:Person                |
 | PiC | ies:PersonInCommunication |
-| VC | ies:VoiceCall |
+| VC  | ies:VoiceCall             |
 
 ---
 
-## Because you love to see RDF…
+## RDF Serialisation Example
 
-…here’s the example from the previous slide in glorious RDF…
+The example from the previous section serialised as RDF:
 
 ```turtle
 @prefix         rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -267,9 +284,9 @@ data:callee     ies:isPartOf            data:call .
 
 ---
 
-## IES Model - Top of the Shop
+## IES - Core Model Structure
 
-![Top of the Shop](../assets/images/diagrams/rendered/model-top-of-the-shop.png)
+![Core Model Structure](../assets/images/diagrams/rendered/model-top-of-the-shop.png)
 
 ExchangedItem is the broadest concept in IES (i.e. everything is an ExchangedItem) – these can have attributes and relationships. Elements are ExchangedItems that have physical extent (entities, events, states, etc.). As they are physical, there can be whole-part relationships (ies:isPartOf) between them. The ClassOfElement concept allows representation of non-physical concepts (i.e. classes of things).
 
@@ -281,7 +298,7 @@ IES is a 4D model. Any instance of an IES Element will be something that occupie
 
 ![Space and Time](../assets/images/diagrams/rendered/space-and-time.png)
 
-In the example above, Fred appears to have three different masses. However, each mass is associated with a different state of Fred – i.e. a different point in his life. We’ve also introduced yet another notation here – the space-time diagram.
+In the example above, Fred appears to have three different masses. However, each mass is associated with a different state of Fred – i.e. a different point in his life. Another notation  was introduced here – the space-time diagram.
 
 *For more background on the 4D approach (formally, this is b-series four-dimensionalism), refer to:
 “How Things Persist”, Katherine Hawley
@@ -292,7 +309,7 @@ In the example above, Fred appears to have three different masses. However, each
 
 ## Space-Time Diagrams
 
-These are used a lot throughout this slide-deck so it’s worth going over the notation. Space (3D) is shown on the vertical axis – this is largely indicative rather than attempting to be precise. So, larger spatial items will be wider than smaller ones. Things that move in space over time will be diagonal, etc. Things that don’t move (relative to earth) will be horizontal.
+These are used a lot throughout this documentation so it’s worth going over the notation. Space (3D) is shown on the vertical axis – this is largely indicative rather than attempting to be precise. So, larger spatial items will be wider than smaller ones. Things that move in space over time will be diagonal, etc. Things that don’t move (relative to earth) will be horizontal.
 
 Time is on horizontal axis. To represent periods of time, there will be vertical elements on the diagram (i.e. all of space for a period of time)
 
@@ -302,7 +319,7 @@ Time is on horizontal axis. To represent periods of time, there will be vertical
 
 ## IES Model – Elements
 
-Elements are things that you can kick. More formally, they are things that occupy space and time. The space and time they occupy is known as their "four-dimensional extent".
+Elements are entities with spatio-temporal extent. More formally, they are things that occupy space and time. The space and time they occupy is known as their "four-dimensional extent".
 
 ![Elements](../assets/images/diagrams/rendered/model-elements.png)
 
@@ -314,19 +331,20 @@ Using the instance notation from before, looking at just one of the states of Fr
 
 ![Fred's State](../assets/images/diagrams/rendered/elements-back-to-fred.png)
 
-There’s quite a lot going on here, so let’s break it down a bit.
-- We have a state of Fred (PS).
-- The mass (Ma) is linked to the State using the hasCharacteristic relationship. We then state the value of the mass (ViK), and assign the numeric value (25)
-- We can say where the State was – in this case in a Facility (F) the Acme Health Centre
-- We can also say where the State was – in this case we only know it happened in between 11:00 and 11:59 on 1992-03-06 as that’s the level of precision we’ve used in the ISO8601 date time. IES allows for a very precise times and dates too, but this is just a simple example
+The example demonstrates several key components:
 
-So, using just the States pattern, we’ve been able to say where and when the mass measurement was taken as well as what the mass was.
+- The example includes a state of Fred (PS).
+- The mass (Ma) is linked to the State using the hasCharacteristic relationship. The value of the mass (ViK) is then stated, and the numeric value (25) is assigned to it.
+- The location of that particular State can be identified – in this case in a Facility (F) the Acme Health Centre.
+- The time of that particular State can also be identified  – in this case it happened between 11:00 and 11:59 on 1992-03-06 as that’s the level of precision used in the ISO8601 date time. IES allows for very precise times and dates too, but this is just a simple example.
+
+Thus, using just the States pattern, the location, time, and value of the mass measurement were identified.
 
 ---
 
-## And repeat…
+## Applying the Pattern
 
-We can use the same pattern over and over again – including to say where and when Fred was born…
+The same pattern can be used over and over again – including to say where and when Fred was born…
 
 ![Fred's Birth State](../assets/images/diagrams/rendered/fred-birth-state.png)
 
@@ -341,9 +359,7 @@ specific.
 
 ---
 
-## Doing Stuff
-
-![Team Meeting](../assets/images/diagrams/rendered/doing-stuff.png)
+## Event Modelling
 
 The IES model has Events – i.e. activities. As the IES is pedantic about space and time, it's important to define Events that way too. In IES, the extent of a given Event is the sum of all its participations – i.e. the collections of states of things that were participating:
 
@@ -361,23 +377,23 @@ In the example above, each participant arrived and left at different times. Thei
 
 ![Event Participant](../assets/images/diagrams/rendered/event-participant-instances.png)
 
-In this example, we’ve used subclasses of `EventParticipant` to show who was the meeting chair. The meeting location has also been added. As with the previous example (Fred’s weigh-ins) we could also add times (`ParticularPeriod`) for each participation, and indeed for the meeting itself.
+In this example, we’ve used subclasses of `EventParticipant` to show who was the meeting chair. The meeting location has also been added. As with the previous example (Fred’s weigh-ins) times could also be added (`ParticularPeriod`) for each participation, and indeed for the meeting itself.
 
 ![Event Participant UML](../assets/images/diagrams/rendered/event-participant-uml.png)
 
-Using this model, we can record things about a particular team meeting and its participants.
+Using this model, things can be recorded about a particular team meeting and its participants.
 
 ![Event Participant UML](../assets/images/diagrams/rendered/event-participant-instances.png)
 
 ---
 
-## About Bloody Time
+## Temporal Precision
 
-In previous examples we’ve shown how `Elements` can be in `ParticularPeriods`. That’s great when we we’re dealing with imprecise time, but if we want to show precise starts and ends, we need to use the state model again - in this case, `BoundingState`:
+Previous examples demonstrated how `Elements` can be in `ParticularPeriods`. This approach works well when dealing with imprecise time, but for representing precise starts and ends, the state model is required again - in this case, `BoundingState`:
 
 ![Bounding State](../assets/images/diagrams/rendered/bounding-state.png)
 
-A `BoundingState` is a State which marks the temporal beginning or end of an Element. In the example above, the begin state is in the period 10:00 (the minute between 10:00 and 10:01) and the end is in 11:00. We could be more precise by adding seconds, fractions of seconds, etc. to the period.
+A `BoundingState` is a State which marks the temporal beginning or end of an Element. In the example above, the begin state is in the period 10:00 (the minute between 10:00 and 10:01) and the end is in 11:00. More precision can be achieved by adding seconds, fractions of seconds, etc. to the period.
 
 ---
 
@@ -387,25 +403,25 @@ A `BoundingState` marks the beginning and end of `Elements` (in this case an `Ev
 
 ![Bounding State](../assets/images/diagrams/rendered/bounding-state-spacetime.png)
 
-In the example above, there is state of Bob (an `EventParticipant`) where he’s in the team meeting. Because we want to identify the start and end of the state, we book-end it with two `BoundingStates`. Each of those `BoundingStates` is in a `ParticularPeriod` (each a minute long) – i.e. the `EventParticipant` started some time during that minute.
+In the example above, there is a state of Bob (an `EventParticipant`) where he’s in the team meeting. To identify the start and end of the state, it is bounded with two `BoundingStates`. Each of those `BoundingStates` is in a `ParticularPeriod` (each a minute long) – i.e. the `EventParticipant` started some time during that minute.
 
-**Note**: we could have just put the meeting in the period 2019-04-04T10 (the hour from 10 to 11) but that doesn’t tell us when it started or finished, only that it started and finished in that hour period. The use of `BoundingStates` enables us to add more precision. We can even do things like say when it started, but be vague about when it finished.
+**Note**: The meeting could be placed in the period 2019-04-04T10 (the hour from 10 to 11) but that doesn’t tell us when it started or finished, only that it started and finished in that hour period. The use of `BoundingStates` enables us to add more precision. Furthermore, the start time could be specified precisely, whilst leaving the end time imprecise.
 
 ---
 
-## I've Started so I'll Finish
+## Temporal State Representations
 
 The `BoundingState` spacetime diagram is made up from basic building blocks.
 
-| Meaning | Example                                                                                                         |
-|---------|-----------------------------------------------------------------------------------------------------------------|
-| Started and finished within a given period | ![Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-1.png)                              |
-| Started, don’t know when, still going | ![Started, Don't Know When, Still Going](../assets/images/diagrams/rendered/spacetime-blocks-2.png)             |
-| Started, finished, don’t know when | ![Started, Finished, Don't Know When](../assets/images/diagrams/rendered/spacetime-blocks-3.png)                |
-| Started, finished, we know when it started, but not when it finished | ![Started, Finished, Know When Started](../assets/images/diagrams/rendered/spacetime-blocks-4.png)              |
-| Started, finished, we know when it started and finished | ![Started, Finished, Know When Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-5.png) |
+| Meaning                                               | Example                                                                                                       |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Started and finished within a given period            | ![Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-1.png)                              |
+| Started, don’t know when, still going                | ![Started, Don't Know When, Still Going](../assets/images/diagrams/rendered/spacetime-blocks-2.png)             |
+| Started, finished, don’t know when                   | ![Started, Finished, Don't Know When](../assets/images/diagrams/rendered/spacetime-blocks-3.png)                |
+| Started, finished, start time known, end time unknown | ![Started, Finished, Know When Started](../assets/images/diagrams/rendered/spacetime-blocks-4.png)              |
+| Started, finished, start time and end time known      | ![Started, Finished, Know When Started and Finished](../assets/images/diagrams/rendered/spacetime-blocks-5.png) |
 
-All of this is simple construction (mereology) applied to space and time. You can use these simple building blocks to build very complex temporal representations, but all of them founded on a simple, re-usable logic.
+All of this is simple construction (mereology) applied to space and time. These simple building blocks can be used to build very complex temporal representations, but all of them are founded on a simple, re-usable logic.
 
 ---
 
@@ -413,13 +429,14 @@ All of this is simple construction (mereology) applied to space and time. You ca
 
 Periods of time are Elements in a 4D ontology. They can be treated like any other element, e.g. assembled with `isPartOf` relationships. This is the big advantage to a 4D ontology - time is treated the same way as space, which allows complex temporal logic information to be expressed using very simple constructs.
 
-IES also allows a duration to specified even when the precise start and end are not known - e.g. we can specify a meeting lasted an hour and took place on a particular day, but we don't know what time it began and ended.
+IES also allows a duration to be specified even when the precise start and end are not known, e.g. a meeting lasted an hour and took place on a particular day, but the precise start and end times are unknown.
 
 ![Time Elements](../assets/images/diagrams/rendered/time-elements.png)
 
 **Note:** to prevent duplicate periods being created, the uri of each period should reflect the ISO8601 datetime (encoded to % out the disallowed URI characters). So for example, the uri for January 2008 would be `http://iso8601.iso.org#2008-01`. For `ParticularPeriod`, this is fairly simple. For `PeriodOfTime`, the ISO8601 encoding for the period should be used.
 
 ### Key Relationships:
+
 - `inPeriod` – links `Elements` to `PeriodOfTime`
 - `startsIn` – datatype property for start datetime
 - `endsIn` – datatype property for end datetime
@@ -430,7 +447,7 @@ IES also allows a duration to specified even when the precise start and end are 
 
 ## Locations
 
-As well as saying when things happen, start and finish, we also want to be able to say *where* they are. In the Fred example, we had a `Facility` (Acme Health Centre) as one of the locations:
+As well as saying when things happen, start and finish, the user should be able to say *where* they are. In the Fred example, there was a `Facility` (Acme Health Centre) as one of the locations:
 
 ![Locations](../assets/images/diagrams/rendered/locations-spacetime.png)
 
@@ -444,30 +461,20 @@ Combining the 4D modelling approach (states) with this spatial model gives us po
 
 ## Quick Recap
 
-- You can say stuff about things at certain times using
-states
-- You can say where something was using states and locations
-- You can say what was involved in Events using states
-(`EventParticipations`)
-- You can be vague or specific about the durations of things
+Following the documentation thus far, IES building blocks enable the user to:
 
-All of this is done using the same, simple constructs that
-can be connected up to build quite complex pictures of how
-things change and move over time
+- Give details about things at certain times using states
+- Say where something was using states and locations
+- Say what was involved in Events using states (`EventParticipations`)
+- Be vague or specific about the durations of things
+
+All of this is done using the same, simple constructs that can be connected up to build quite complex pictures of how things change and move over time
 
 # Names and Identifiers
 
 ## Information
 
-When it comes to information – text, numbers, images, video, etc. we hit quite a
-difficult area to model. The same image can exist in numerous places, and in
-numerous formats (digital, printed, etc.) The same goes for text – it’s important
-to distinguish between War and Peace and my copy of War and Peace. In most cases we
-don’t care about individual copies, but sometimes (e.g. in police evidence
-collection, cyber investigations, etc.) we really do care what happened to
-individual pieces of information.
-IES is very formal in how it relates the two concepts. In the example below, we
-have several copies of War and Peace. They all have in common that they are copies
+When it comes to information – text, numbers, images, video, etc. information modelling presents particular challenges. The same image can exist in numerous places, and in numerous formats (digital, printed, etc.) The same goes for text – it’s important to distinguish between War and Peace and my copy of War and Peace. In most cases individual copies do not matter, but sometimes (e.g. in police evidence collection, cyber investigations, etc.) what happened to individual pieces of information is important. IES is very formal in how it relates the two concepts. In the example below, there are several copies of War and Peace. They all have in common that they are copies
 of War and Peace, hence War and Peace is a class of which they are all members:
 
 ![Information about War and Peace](../assets/images/diagrams/rendered/war-and-peace.png)
@@ -476,7 +483,7 @@ of War and Peace, hence War and Peace is a class of which they are all members:
 
 ## Representation
 
-Often, the information we care about is a representation of something in the real world. Robert Peel, a biography is a book. It is not the man himself. Similarly, there may be several copies of the book, and they’re all about Robert Peel. They were all written by Douglas Hurd too.
+Often, the information of interest is a representation of something in the real world. Robert Peel, a biography is a book. It is not the man himself. Similarly, there may be several copies of the book, and they’re all about Robert Peel. They were all written by Douglas Hurd too.
 
 ![Representation of Robert Peel](../assets/images/diagrams/rendered/representation-robert-peel.png)
 
@@ -484,7 +491,7 @@ In space-time, Robert Peel existed long before any of the books (b1,b2,b3) which
 
 ---
 
-## Digression - Transitivity
+## Transitivity
 
 Relationships are transitive if *A* being related to *B* and *B* being related *C* also means that *A* is related to *C*. Key examples of this in IES are `ies:isPartOf`, `ies:after` and `rdfs:subClassOf`.
 
@@ -496,31 +503,23 @@ Relationships are transitive if *A* being related to *B* and *B* being related *
 
 ---
 
-## Digression - power types
+## Power types
 
-To be able to talk about classes of documents and individual documents, we need to be able to “push” the type levels up. So far in this training, we’ve just been looking at `Elements` – things with spatio-temporal extent. These are the baseline for BORO ontologies, but it also allows for powertypes. Consider the (non-IES) trivial example below:
+To be able to talk about classes of documents and individual documents, the type levels up should be “pushed” up. So far in this documentation, the focus has been on `Elements` – things with spatio-temporal extent. These are the baseline for BORO ontologies, but it also allows for powertypes. Consider the (non-IES) trivial example below:
 
 ![Power Types](../assets/images/diagrams/rendered/powertypes-example-1.png)
 
-In this example, Colonel Blimp is an instance of
-(`rdf:type`) the class Colonel. Colonel is an instance of
-the class Rank. Colonel Blimp is not an instance of Rank
-though. `rdf:type` is therefore not transitive (see above on transitiviy).
+In this example, Colonel Blimp is an instance of (`rdf:type`) the class Colonel. Colonel is an instance of the class Rank. Colonel Blimp is not an instance of Rank though. `rdf:type` is therefore not transitive (see above on transitiviy).
 
-We do the same thing for documents:
+The same thing can be achieved for documents:
 
 ![Documents and Power Types](../assets/images/diagrams/rendered/powertypes-example-2.png)
 
-**Note**: The mechanism used for stepping up the type levels in IES is the
-`ies:powertype` relationship. It relates a Class to another class whose
-members are all possible subtypes of that Class. This is a bit of
-logical plumbing in IES and may not be of interest to all users. If
-you are geek enough to be interested in this stuff, start by looking
-up [“powerset” on Wikipedia](https://en.wikipedia.org/wiki/Power_set) and then look at [Cantor’s theorem](https://en.wikipedia.org/wiki/Cantor%27s_theorem).
+**Note**: The mechanism used for stepping up the type levels in IES is the `ies:powertype` relationship. It relates a Class to another class whose members are all possible subtypes of that Class. This is a bit of logical plumbing in IES and may not be of interest to all users. For readers interested in the formal logical foundations, start by looking up [“powerset” on Wikipedia](https://en.wikipedia.org/wiki/Power_set), followed by [Cantor’s theorem](https://en.wikipedia.org/wiki/Cantor%27s_theorem).
 
 ---
 
-## Back to representations
+## Representations Types
 
 There are three main types of representation – `Name`, `Identifier` and `WorkOfDocumentation`. Each can be used to represent any `ExchangedItem`.
 
@@ -534,7 +533,7 @@ In the example below, Fred is called "Fred Smith" (all his life), but there is a
 
 ## Naming schemes
 
-IES allows for multiple names and identifiers to be assigned to any given ExchangedItem. Use of states allows us to be specific about when those names and identifiers were valid. But…we also need to know about their origin – i.e. the organisation and/or system that uses them. This is done with Naming Schemes:
+IES allows for multiple names and identifiers to be assigned to any given ExchangedItem. Use of states allows us to be specific about when those names and identifiers were valid. However, their origin must also be known – i.e. the organisation and/or system that uses them. This is done with Naming Schemes:
 
 ![Naming Schemes](../assets/images/diagrams/rendered/naming-schemes-uml.png)
 
@@ -562,17 +561,15 @@ The naming schemes are classes and the names are instances of those classes. So�
 - Naming schemes can be associated with systems and/or organisations that use/own them
 - Naming schemes can be organised into hierarchies
 
-![Magritte's Pipe Image](../assets/images/diagrams/rendered/naming-schemes-not-a-pipe.png)
-
 ---
 
-## Big Recap – It's like Lego&trade;
+## Summary of Core Patterns
 
-It's worth pointing out at this point that you already know about the major building blocks for IES. You can identify things, talk about how they change over time, and specify what their type is. You can describe how things interact, where they are / were, and when it all happened to a degree of accuracy that you choose whilst still being specific about how accurate you were.
+At this stage, the major building blocks for IES have been covered: things can be identified, their changes over time described, and their types specified. Interactions can be described, locations indicated, and temporal information provided to a chosen degree of accuracy whilst maintaining specificity about that accuracy.
 
-All this is done using very simple, repeatable patterns that are also additive – i.e. you usually don't have to break your existing data to add more information / detail. Those simple patterns probably cover 80% of the data you'll ever deal with.
+All this is done using very simple, repeatable patterns that are also additive – i.e. the existing data doesn't need to be broken any further to add more information / detail. Those simple patterns probably cover 80% of the typical data requirements.
 
-Like the major blocks in Lego&trade;, you can produce a reasonable model of anything you want using just these components. The rest of IES is about the more specialist blocks that allow you to deal with the details.
+Like the major blocks in Lego&trade;, one can produce a reasonable model of anything that is requred using just these components. The rest of IES is about the more specialist blocks that allows the user to deal with the details.
 
 ---
 
@@ -584,8 +581,7 @@ Patients have names and NHS IDs. They go in and out of treatment, and stay in ho
 
 ![Fred's Hospital States](../assets/images/diagrams/rendered/example-fred-in-hospital.png)
 
-Fred arrives at 9:00 on 4/1 and is put in bed 101. He then goes into theatre at
-19:00 and returns to bed 101 at 21:00. He is discharged at 11:00 the next day.
+Fred arrives at 9:00 on 4/1 and is put in bed 101. He then goes into theatre at 19:00 and returns to bed 101 at 21:00. He is discharged at 11:00 the next day.
 
 ---
 
@@ -595,20 +591,17 @@ The theatre and Ward are located in (part of) the Hospital. The bed is located i
 
 ![Hospital Structure](../assets/images/diagrams/rendered/example-hospital-structure.png)
 
-Two things to note. Firstly, beds can move, but for simplicity here we just say the bed has
-always been located in `Ward1`. Secondly, we used a model extension here. IES doesn’t define any
-more detail than parts of facilities, so we extend it to include `data:HospitalBed`.
+Two aspects should be noted. First, beds can move, but for simplicity the bed is modelled as always located in `Ward1`. Second, a model extension is used here. IES does not define facility components beyond `PartOfFacility`, therefore the model is extended to include `data:HospitalBed`.
 
 ---
 
 ## Fred's States
 
-This bit covers Fred’s movement around the hospital.
+This section shows Fred’s movement around the hospital.
 
 ![Fred's Hospital States](../assets/images/diagrams/rendered/example-fred-hospital-states.png)
 
-Three states (one is an EventParticipant), and each has start and end BoundingStates. The
-BoundingStates are in Particular Periods, and the PersonStates are in Locations.
+Three states (one is an EventParticipant), and each has start and end BoundingStates. The BoundingStates are in Particular Periods, and the PersonStates are in Locations.
 
 ---
 
@@ -618,7 +611,7 @@ Notice we've added in the name and NHS number.
 
 ![Complete Hospital Example](../assets/images/diagrams/rendered/example-complete-hospital.png)
 
-### … and as RDF Triples Serialized as N3
+### Complete Example Serialized as N3
 
 ```turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -681,7 +674,7 @@ data:s1 ies:inLocation data:bed101 .
 data:s2 ies:inLocation data:bed101 .
 ```
 
-### ... and as JSON-LD
+### Complete Example Serialized as JSON-LD
 
 ```json
 {
@@ -826,4 +819,6 @@ data:s2 ies:inLocation data:bed101 .
 
 **Note**: JSON-LD sacrifices readability in order to provide a hierarchical structure. Note use of @reverse in the @context section – this allows some predicates to be reversed so the graph can be shaped into a JSON hierarchy for presentation as REST payloads, but re-assembled into a graph for RDF purposes.
 
-**End of Document**
+---
+
+© Crown Copyright 2020-2026 | Licensed under the MIT Licence

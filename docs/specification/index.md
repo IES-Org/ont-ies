@@ -1,19 +1,27 @@
----
-title: IES Specification
-description: Detailed specification of the Information Exchange Standard Common Ontology
----
-
-*Version: 5.0.0*  
-*Last Updated: 2025-11-29*  
-*© Crown Copyright 2020-2025*
-
 # IES Specification
+
+![IES Logo](https://file+wsl-002elocalhost.vscode-resource.vscode-cdn.net/Ubuntu-22.04/home/yapy/git/ont-ies/docs/assets/images/logos/IES-logo-dark.png)
 
 This section contains the complete specification of the Information Exchange Standard (IES) Common ontology, including all class and property definitions, diagrams, and explanatory material.
 
+---
+
+## Table of Contents
+
+- [IES Model Diagrams](#ies-model-diagrams)
+- [Authoritative Source](#authoritative-source)
+- [Overview](#overview)
+  - [Core Philosophy](#core-philosophy)
+  - [Key Concepts](#key-concepts)
+  - [Design Principles](#design-principles)
+- [Legal disclaimer for &#34;entity&#34; and &#34;event&#34;](#legal-disclaimer-for-entity-and-event)
+- [Related Documentation](#related-documentation)
+
+---
+
 ## IES Model Diagrams
 
-The [IES Model Diagrams](ies.md) document provides comprehensive visual documentation including:
+The [IES Model Specification](ies.md) document provides comprehensive visual documentation including:
 
 - **Introduction Diagrams**: Notation, overview
 - **Entity Diagrams**: People, organisations, locations, devices, accounts
@@ -26,6 +34,7 @@ The [IES Model Diagrams](ies.md) document provides comprehensive visual document
 ## Authoritative Source
 
 The authoritative machine-readable definition of IES is maintained in:
+
 - A UML model using the ODM RDF profile
 - **ies-common.ttl** - RDF/Turtle ontology file
 
@@ -51,7 +60,7 @@ The IES is built on six fundamental subtypes of `Thing`:
 
 - **Element**: Anything physical with extent in space and time
 - **Entity**: Tangible things like people, devices, locations
-- **ClassOfElement**: Classes or categories of elements  
+- **ClassOfElement**: Classes or categories of elements
 - **State**: Temporal states of entities
 - **Event**: Activities or incidents occurring at specific points in time
 - **PeriodOfTime**: Specific periods of time (past, present, or future)
@@ -60,6 +69,7 @@ The IES is built on six fundamental subtypes of `Thing`:
 ### Design Principles
 
 **Inclusion Criteria**: For information to be included in IES, three conditions must be met:
+
 1. At least one organisation wants to share the information
 2. At least one organisation wants to receive it
 3. Someone is able and willing to define it
@@ -67,6 +77,7 @@ The IES is built on six fundamental subtypes of `Thing`:
 **Extensibility**: IES includes agile extension mechanisms allowing users to exchange information beyond any specific version without necessitating time-consuming standard revisions.
 
 **Minimal Constraints**: IES is intentionally loosely constrained:
+
 - Domains and ranges for properties are indicative, not restrictive
 - Event participations don't formally constrain which entities can participate
 - Goal: Allow any sending party to express information
@@ -96,4 +107,4 @@ The terms entities and events are separately defined in the UK for the purposes 
 
 ---
 
-*© Crown Copyright 2020-2025*
+*© Crown Copyright 2020-2026*
