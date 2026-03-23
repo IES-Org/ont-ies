@@ -43,8 +43,6 @@ This document provides guidance on how to extend IES for specific local needs an
 - [Best Practices Summary](#best-practices-summary)
 - [Document Information](#document-information)
 
----
-
 ## Introduction
 
 Extending IES requires a structured approach and this document provides guidance on how to extend IES for specific local needs.
@@ -68,8 +66,6 @@ Throughout this document, we illustrate how to create extensions using a mix of 
 - `ies:` – referring to things in the IES ontology
 - `ont:` – referring to things in an example, local ontology
 - `data:` – referring to things in an example, instance dataset
-
----
 
 ## Simple Extensions
 
@@ -142,8 +138,6 @@ data:assessment_1 ies:confidence "GREEN"^^xsd:string .
 !!! note "Avoiding Ambiguity"
     The second triple stating the IES equivalent (`ies:confidence`) is not strictly required for this example due to inheritance. However, it is done in the IES standard to avoid ambiguity.
 
----
-
 ## Permissible Extension Boundary
 
 IES has a small number of concepts at the top of its hierarchy. **It is not permissible to extend the broader concepts found above this level** (e.g. `ExchangeItem` and `Element`).
@@ -168,8 +162,6 @@ All concepts **below** this boundary (shown in colour in the diagram) are extens
 - `PeriodOfTime` (orange)
 - `EventParticipant` (purple)
 - `PossibleWorld` (green)
-
----
 
 ## Finding the Right Level to Extend From
 
@@ -208,8 +200,6 @@ Sometimes you might also want to consider things from a set theory point of view
 ### Question 4: Do the relationships and attributes also apply to my concept?
 
 For class extensions, check if the relationships and attributes that hang off the proposed super class also apply to your new class.
-
----
 
 ## Complex Extensions
 
@@ -355,8 +345,6 @@ The Titanic is:
 2. A fossil-fuelled powered ship (power source facet)
 3. A ship (base IES class for backward compatibility)
 
----
-
 ## Specific guidance for extending Entities
 
 There is a bit of a “chicken-and-egg” situation that arises when considering extensions to an `Entity`. Concrete types of `Entity` (such as `Person`, `Organisation`, `Vehicle`) are effectively special types of their respective states (`PersonState`, `OrganisationState`, `VehicleState`). An `Entity` can be viewed as a maximal state, covering the entire duration of the existence of an `Entity`.
@@ -374,8 +362,6 @@ data:robot_1_state_1 ies:isStateOf data:robot_1.
 ```
 
 ![Specific guidance](../assets/images/diagrams/rendered/extending-robot.png)
-
----
 
 ## Extension Naming Convention
 
@@ -429,8 +415,6 @@ Below is a set of mandatory (**MUST** and **MUST NOT**) rules and recommended (*
   - Provide some connective text that reads as a sentence between the domain and range for a relationship, or the domain and the literal for an attribute; **or**
   - Be named in terms of the role it plays with respect to the domain
 
----
-
 ## Best Practices Summary
 
 When extending IES, follow these best practices:
@@ -443,5 +427,7 @@ When extending IES, follow these best practices:
 6. **Respect the extension boundary** – Do not extend top-level concepts like `Thing`, `Element`, or `ExchangeItem`
 7. **Declare powertype relationships when needed** – Explicitly state powertype relationships when introducing new classification hierarchies
 8. **Test queryability** – Ensure your extension structure supports the queries your consumers need to run
+
+---
 
 *© Crown Copyright 2020-2026*

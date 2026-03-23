@@ -2,8 +2,6 @@
 
 This section provides practical RDF/Turtle (`.ttl`) examples demonstrating how to use IES patterns for common scenarios. Each sample file is a complete, valid IES instance data set that you can load into an RDF triple store or use as a template for your own data.
 
----
-
 ## Table of Contents
 
 - [About These Examples](#about-these-examples)
@@ -34,8 +32,6 @@ This section provides practical RDF/Turtle (`.ttl`) examples demonstrating how t
 - [Additional Resources](#additional-resources)
 - [Contributing Examples](#contributing-examples)
 
----
-
 ## About These Examples
 
 All sample files use the **Turtle** (Terse RDF Triple Language) serialisation format and demonstrate proper use of:
@@ -46,8 +42,6 @@ All sample files use the **Turtle** (Terse RDF Triple Language) serialisation fo
 - Temporal modelling with States
 - Event participation
 - Identifiers and names
-
----
 
 ## Available Samples
 
@@ -68,8 +62,6 @@ Demonstrates the IES assessment pattern for modelling subjective judgements and 
 
 **Use cases:** Intelligence analysis, risk assessment, scenario planning
 
----
-
 #### Characteristics and Measures
 
 **File:** `characteristics-and-measures.ttl`
@@ -85,8 +77,6 @@ Shows how to model quantitative and qualitative properties of entities with diff
 
 **Use cases:** Physical measurements, entity properties, scientific data
 
----
-
 #### Event Participation
 
 **File:** `event-participation.ttl`
@@ -101,8 +91,6 @@ Illustrates how entities participate in events through EventParticipant states.
 
 **Use cases:** Meetings, transactions, activities involving multiple parties
 
----
-
 #### Events
 
 **File:** `events.ttl`
@@ -116,8 +104,6 @@ Basic event modelling showing temporal bounds and relationships.
 - `ies:PeriodOfTime` - Temporal extents
 
 **Use cases:** Scheduling, historical events, process tracking
-
----
 
 #### Identifiers
 
@@ -134,8 +120,6 @@ Demonstrates how to assign names and identifiers to entities using naming scheme
 
 **Use cases:** Database IDs, national identifiers, reference numbers
 
----
-
 #### Relationships
 
 **File:** `relationships.ttl`
@@ -149,8 +133,6 @@ Shows how to model relationships between entities, including temporal constraint
 - Temporal relationships using States
 
 **Use cases:** Organisational structures, associations, dependencies
-
----
 
 #### Types and Classification
 
@@ -166,8 +148,6 @@ Demonstrates the use of `ClassOfElement` and powertype relationships for creatin
 - `rdf:type` - Instance-of relationships
 
 **Use cases:** Taxonomies, categorisation, type systems
-
----
 
 ### Complex Patterns
 
@@ -185,8 +165,6 @@ Models communication events (calls, messages) with participants in sender and re
 
 **Use cases:** Call records, messaging systems, communication logs
 
----
-
 #### Event Linkages
 
 **File:** `event-linkages.ttl`
@@ -201,8 +179,6 @@ Shows how events can be composed of or linked to other events.
 
 **Use cases:** Complex activities, workflows, project management
 
----
-
 #### Geospatial
 
 **File:** `geosparql.ttl`
@@ -216,8 +192,6 @@ Demonstrates geographic location using GeoSPARQL patterns.
 - Location-based queries
 
 **Use cases:** Mapping, tracking, spatial analysis
-
----
 
 #### Hospital Example
 
@@ -236,8 +210,6 @@ Comprehensive worked example of a patient's journey through hospital treatment.
 
 **Corresponds to:** [Introduction to IES - Hospital Example](../../user-guides/introduction.md#worked-example-fred-in-hospital)
 
----
-
 #### Movement
 
 **File:** `movement.ttl`
@@ -253,8 +225,6 @@ Models a person's journey involving multiple legs with different transport modes
 
 **Use cases:** Travel tracking, logistics, supply chain
 
----
-
 #### Period of Time
 
 **File:** `period-of-time.ttl`
@@ -268,8 +238,6 @@ Shows different ways to represent and use periods of time.
 - ISO 8601 datetime encoding
 
 **Use cases:** Scheduling, temporal reasoning, historical data
-
----
 
 #### Sometimes (Discontinuous States)
 
@@ -285,8 +253,6 @@ Demonstrates discontinuous states for modelling recurring or intermittent situat
 
 **Use cases:** Parking patterns, seasonal activities, intermittent behaviours
 
----
-
 #### When and Where
 
 **File:** `when-and-where.ttl`
@@ -300,8 +266,6 @@ Combines temporal and spatial aspects for comprehensive spatio-temporal modellin
 - Combined spatio-temporal extent
 
 **Use cases:** Event logging, audit trails, situational awareness
-
----
 
 ## Using These Samples
 
@@ -383,8 +347,6 @@ combined = ontology + instance
 # Or use SHACL for formal validation
 ```
 
----
-
 ## Extending These Examples
 
 These samples can serve as templates for your own IES data:
@@ -394,8 +356,6 @@ These samples can serve as templates for your own IES data:
 3. **Add domain-specific extensions** if needed (see [Extending IES](../../user-guides/extending-ies.md))
 4. **Validate** against the IES Common ontology
 5. **Load** into your RDF triple store or application
-
----
 
 ## Download All Samples
 
@@ -422,16 +382,12 @@ All sample files are available in the project repository:
 └── when-and-where.ttl
 ```
 
----
-
 ## Additional Resources
 
 - [IES Examples Documentation](../ies-examples.md) - Detailed explanations with diagrams
 - [User Guides](../../user-guides/) - How to create IES data
 - [Instantiation Patterns](../../user-guides/instantiation-patterns.md) - Standard patterns for creating instances
 - [IES Common Ontology](../../specification/ies-common.md) - Download the ontology
-
----
 
 ## Contributing Examples
 
@@ -441,7 +397,5 @@ If you have developed IES examples that demonstrate useful patterns or solve com
 2. Add clear comments in the Turtle file
 3. Provide a brief description of the use case
 4. Submit via GitHub pull request
-
----
 
 *© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

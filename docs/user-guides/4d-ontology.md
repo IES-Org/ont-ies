@@ -42,3 +42,7 @@ Although the broader-narrower relationship between the words holds true, the rel
 - [NAF: NATO Architecture Framework](https://www.nato.int/cps/en/natohq/topics_157575.htm)
 - [UPDM: Unified Profile for DoDAF/MODAF](https://www.omg.org/updm/)
 - [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
+
+---
+
+*© Crown Copyright 2020-2026*

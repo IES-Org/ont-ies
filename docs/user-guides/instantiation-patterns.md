@@ -2,7 +2,23 @@
 
 *Based on version 5.0.0*
 
----
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Element Instances](#element-instances)
+  - [Example](#example)
+  - [Example](#example-1)
+  - [Further Guidance](#further-guidance)
+- [Name Instances](#name-instances)
+  - [Example](#example-2)
+  - [Theoretical Basis](#theoretical-basis)
+- [Class Instances](#class-instances)
+  - [Example](#example-3)
+  - [Important Notes](#important-notes)
+- [Summary of Patterns](#summary-of-patterns)
+  - [Pattern Selection Guide](#pattern-selection-guide)
+  - [Key Principles](#key-principles)
+- [Additional Resources](#additional-resources)
 
 ## Introduction
 
@@ -23,8 +39,6 @@ These instantiation patterns will be articulated using the mappings of the JSON 
 - **ies:** – referring to things in the IES ontology
 - **ont:** – referring to things in an example, local ontology
 - **data:** – referring to things in an example, instance dataset
-
----
 
 ## Element Instances
 
@@ -64,8 +78,6 @@ ont:CEO rdfs:subClassOf ies:Post .
 
 For more details on creating subclasses against the IES ontology, see [Extending IES](extending-ies.md).
 
----
-
 ## Name Instances
 
 Names are a special form of representation used for identifying things. Anything can be identified by many names (or its subclass, identifiers). An important nuance of names in IES is that when we instantiate a name, like here, the given name of Megan; that instance is not shared with other instances of people called Megan. Instead, each instance of a given name is a unique form of utterance for identifying a single thing.
@@ -96,12 +108,10 @@ data:given_name_2 ies:representationValue "Megan"^^xsd:string .
 
 ### Theoretical Basis
 
-This pattern for names is based on P.F. Strawson's theory of description and utterances, and Quine's *Roots of Reference*. 
+This pattern for names is based on P.F. Strawson's theory of description and utterances, and Quine's *Roots of Reference*.
 
 !!! note
     This pattern does not apply to the superclass of Name, Representation.
-
----
 
 ## Class Instances
 
@@ -128,18 +138,16 @@ ont:Brummie a ies:Accent .
 !!! warning "Common Mistake"
     A common mistake is to assume that the human-readable value for this class instances is to be found at the end of the `representationValue` attribute. This only applies for instances of representations. All other class instances should be treated as equivalent to extensions to the IES ontology. If you do need a human-readable string for such instances, use `rdfs:label`.
 
----
-
 ## Summary of Patterns
 
 ### Pattern Selection Guide
 
-| Pattern | Use When | Example |
-|---------|----------|---------|
-| **Element Instances (Basic)** | Creating standard IES Elements | Person, Organisation, Event |
-| **Element Instances (Extended)** | Need more specific types than IES provides | Specific vehicle model, job title |
-| **Name Instances** | Identifying things with names/identifiers | Given names, identifiers |
-| **Class Instances** | Instantiating characteristics, measures, or representations | Accents, colours, dispositions |
+| Pattern                                | Use When                                                    | Example                           |
+| -------------------------------------- | ----------------------------------------------------------- | --------------------------------- |
+| **Element Instances (Basic)**    | Creating standard IES Elements                              | Person, Organisation, Event       |
+| **Element Instances (Extended)** | Need more specific types than IES provides                  | Specific vehicle model, job title |
+| **Name Instances**               | Identifying things with names/identifiers                   | Given names, identifiers          |
+| **Class Instances**              | Instantiating characteristics, measures, or representations | Accents, colours, dispositions    |
 
 ### Key Principles
 
@@ -149,10 +157,12 @@ ont:Brummie a ies:Accent .
 4. **Extensions** can be created on-the-fly when needed, but ideally should be defined in advance in your local ontology
 5. **Human-readable values** are found via `representationValue` only for Representations; use `rdfs:label` for class instances
 
----
-
 ## Additional Resources
 
 - **Extending IES** - Guidance on creating subclasses and extending the ontology
 - **IES Examples** - Worked examples of these patterns in practice
 - **ies.ttl** - The authoritative IES ontology specification
+
+---
+
+*© Crown Copyright 2020-2026*

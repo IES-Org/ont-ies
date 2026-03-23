@@ -38,12 +38,10 @@ Traditional information systems often fail because of terminological confusion:
 - The **same name** is used by different parties to describe different things
 - Words have **ambiguous** or **context-dependent** meanings
 
->   **Warning**: The Root Cause
-    The creator of BORO places the blame for poor information systems squarely on this terminological problem. We're all wedded to our own vocabularies and views of the world.
+> **Warning**: The Root Cause
+> The creator of BORO places the blame for poor information systems squarely on this terminological problem. We're all wedded to our own vocabularies and views of the world.
 
 BORO takes a radically different approach: **ignore the names and focus on the actual things**.
-
----
 
 ## Identity by Extent
 
@@ -70,10 +68,8 @@ Example: **Equilateral triangles** and **equiangular triangles**
 - Therefore: same membership
 - Therefore: **same class** (with multiple names)
 
->   **Note**: One Thing, Multiple Names
-    In BORO, you create **one thing** (class or element) and attach **multiple names**, each with appropriate context. This eliminates duplication and ambiguity.
-
----
+> **Note**: One Thing, Multiple Names
+> In BORO, you create **one thing** (class or element) and attach **multiple names**, each with appropriate context. This eliminates duplication and ambiguity.
 
 ## BORO in Practice
 
@@ -86,18 +82,17 @@ Whilst BORO sounds simple in principle, using it is **anything but simple**:
 - Reaching consensus on extent requires careful analysis
 - Committee-based BORO analysis can be very challenging
 
->   **Note**: IES and BORO
-    **IES 4 is not a "pure" BORO ontology**. It has been **guided by the BORO approach** but retains many concepts and structures from previous IES versions to maintain continuity and practical usability.
+> **Note**: IES and BORO
+> **IES 5 is not a "pure" BORO ontology**. It has been **guided by the BORO approach** but retains many concepts and structures from previous IES versions to maintain continuity and practical usability.
 
 ### The Benefit Despite the Challenge
 
 Despite the difficulty, BORO provides:
+
 1. **Unambiguous identity**: No confusion about what's the same and what's different
 2. **Precise integration**: Different systems can reliably exchange information
 3. **Reduced duplication**: One thing with many names, not many things with confusing names
 4. **Implementation independence**: Identity doesn't depend on how data is stored
-
----
 
 ## Extent Types
 
@@ -116,6 +111,7 @@ For **physical things** (Elements in IES):
 ![BORO Identity by Extent](../assets/images/diagrams/rendered/4d-fred.png)
 
 **Example**: "Fred Through Time"
+
 ```
 Each "slice" is a State of Fred.
 The whole extent is Fred the Entity.
@@ -124,11 +120,10 @@ The whole extent is Fred the Entity.
 ### Set-Theoretic Extent
 
 For **classes** (ClassOfElement in IES):
+
 - Extent = the complete membership of the class
 - If two classes have identical members, they have identical extent
 - Therefore, they are the same class
-
----
 
 ## Key BORO Concepts in IES
 
@@ -139,6 +134,7 @@ In IES, an **Element** is:
 > Anything with a spatio-temporal extent—things that occupy space and time.
 
 This includes:
+
 - **Entities**: Whole-life things (e.g., Fred throughout his entire life)
 - **States**: Temporal slices of Entities (e.g., Fred on Monday)
 - **Events**: Happenings involving participants (e.g., Fred's birth, a meeting)
@@ -152,16 +148,15 @@ BORO leads naturally to treating time the same way as space:
 - Just as objects can overlap in space, they can overlap in time
 - Just as we can describe spatial relationships (`isPartOf`, `isLocatedAt`), we can describe temporal relationships
 
->   **Note**: The Power of 4D
-    This consistent treatment of space and time allows **complex temporal logic** to be expressed using **very simple constructs**.
-
----
+> **Note**: The Power of 4D
+> This consistent treatment of space and time allows **complex temporal logic** to be expressed using **very simple constructs**.
 
 ## Practical Implications
 
 ### For IES Users
 
 Understanding BORO means understanding that:
+
 1. **Identity is about extent**, not names
    - Don't create a new Entity just because someone uses a different name
    - Do create a new Entity if the spatio-temporal extent is different
@@ -175,12 +170,11 @@ Understanding BORO means understanding that:
 ### For IES Implementers
 
 BORO principles guide implementation:
+
 1. **URI management**: Use extent-based identifiers where possible
 2. **Deduplication**: Check spatio-temporal extent before creating new Elements
 3. **Integration**: Match things by extent, not labels
 4. **Versioning**: Use States to represent versions, not separate Entities
-
----
 
 ## BORO's Historical Success
 
@@ -204,27 +198,24 @@ BORO has proven successful in multiple domains:
 - Designed for defence, policing, national security
 - Expanding to other government domains
 
->   **Note**: Proven Track Record
-    BORO isn't theoretical—it has been battle-tested in complex, mission-critical systems across multiple domains and nations.
-
----
+> **Note**: Proven Track Record
+> BORO isn't theoretical—it has been battle-tested in complex, mission-critical systems across multiple domains and nations.
 
 ## The Challenge of Perfection
 
 ### IES's Pragmatic Approach
 
-> "IES 4 could not claim to be a full BORO ontology. Rather, it has been **guided by the BORO approach**, but still retains many of the concepts and structures from previous versions of IES."
+> "IES 5 could not claim to be a full BORO ontology. Rather, it has been **guided by the BORO approach**, but still retains many of the concepts and structures from previous versions of IES."
 
 This pragmatism reflects reality:
+
 - **Perfect BORO** requires unanimous agreement on every extent definition
 - **Committee-based ontology** development means compromise
 - **Evolution** from previous versions means continuity matters
 - **Usability** sometimes requires practical shortcuts
 
->   **Note**: Good Enough is Good
-    IES doesn't have to be a perfect BORO ontology to benefit from BORO's principles. Guided by BORO is sufficient for precise, reliable information exchange.
-
----
+> **Note**: Good Enough is Good
+> IES doesn't have to be a perfect BORO ontology to benefit from BORO's principles. Guided by BORO is sufficient for precise, reliable information exchange.
 
 ## Key Takeaways
 
@@ -235,6 +226,8 @@ This pragmatism reflects reality:
     4. **States are fundamental**: Temporal slices enable precise modelling of change
     5. **Proven methodology**: BORO has succeeded in multiple complex domains
 
+*Understanding BORO is key to understanding IES. Take time to internalise the extent-based approach to identity—it will make everything else much clearer.*
+
 ---
 
-*Understanding BORO is key to understanding IES. Take time to internalise the extent-based approach to identity—it will make everything else much clearer.*
+*© Crown Copyright 2020-2026*

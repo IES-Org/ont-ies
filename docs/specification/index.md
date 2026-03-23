@@ -4,8 +4,6 @@
 
 This section contains the complete specification of the Information Exchange Standard (IES) Common ontology, including all class and property definitions, diagrams, and explanatory material.
 
----
-
 ## Table of Contents
 
 - [IES Model Diagrams](#ies-model-diagrams)
@@ -17,8 +15,6 @@ This section contains the complete specification of the Information Exchange Sta
 - [Legal disclaimer for &#34;entity&#34; and &#34;event&#34;](#legal-disclaimer-for-entity-and-event)
 - [Related Documentation](#related-documentation)
 
----
-
 ## IES Model Diagrams
 
 The [IES Model Specification](ies.md) document provides comprehensive visual documentation including:
@@ -29,8 +25,6 @@ The [IES Model Specification](ies.md) document provides comprehensive visual doc
 - **Event Diagrams**: Business events, communication, lifecycle, criminal activity
 - **Relationship Diagrams**: Familial, professional, social, structural
 
----
-
 ## Authoritative Source
 
 The authoritative machine-readable definition of IES is maintained in:
@@ -39,8 +33,6 @@ The authoritative machine-readable definition of IES is maintained in:
 - **ies-common.ttl** - RDF/Turtle ontology file
 
 All documentation is derived from this source of truth.
-
----
 
 ## Overview
 
@@ -85,8 +77,6 @@ The IES is built on six fundamental subtypes of `Thing`:
 
 **Parsimony**: Ontology developers are parsimonious with new concepts, preferring to reuse extant patterns or extend from extant concepts.
 
----
-
 ## Legal disclaimer for "entity" and "event"
 
 Some of the users of IES may be subject to the Investigatory Powers Act 2016 ("IPA"). This section of the standard is intended to clarify some terms that are used in IES that should not be confused or conflated with terminology from the
@@ -95,8 +85,6 @@ IPA.
 For the purposes of the IES, the entity and event types that are supported within the standard are defined in the model. The meanings assigned to these terms operate solely and exclusively for the purposes of the IES in order to provide a standardised way of describing information to facilitate information sharing between organisations. Neither the IES, nor the categorisation of data pursuant to the IES, are otherwise relevant to each organisation's internal arrangements for categorising, handling or safeguarding data they hold.
 
 The terms entities and events are separately defined in the UK for the purposes of the Investigatory Powers Act 2016 ("IPA"). The IPA definitions are limited to the telecommunications context and are therefore a subset of the entity and event types that are supported within the IES. Any data obtained or retained by an organisation under the IPA must be categorised according to the IPA definitions, and the IPA safeguards must be applied in accordance with those definitions.
-
----
 
 ## Related Documentation
 

@@ -2,8 +2,6 @@
 
 Welcome to the IES Common User Guides. This section provides comprehensive guidance for understanding, implementing, and extending the Information Exchange Standard (IES).
 
----
-
 ## Table of Contents
 
 - [About These Guides](#about-these-guides)
@@ -29,13 +27,9 @@ Welcome to the IES Common User Guides. This section provides comprehensive guida
 - [Providing Feedback](#providing-feedback)
 - [Version Information](#version-information)
 
----
-
 ## About These Guides
 
 The User Guides cover foundational concepts through to advanced implementation patterns. The documentation addresses users at all levels of experience, from those new to ontologies to experienced information architects working with IES.
-
----
 
 ## Getting Started
 
@@ -62,8 +56,6 @@ Put your knowledge into practice:
 - **[Instantiation Patterns](instantiation-patterns.md)** - Learn standard patterns for creating IES data
 - **[Extending IES](extending-ies.md)** - Discover how to extend IES for your specific needs
 
----
-
 ## User Guide Index
 
 ### [Introduction to IES](introduction.md)
@@ -78,8 +70,6 @@ A comprehensive introduction to the Information Exchange Standard, covering its 
 - Core ontology concepts
 - Worked examples
 
----
-
 ### [What is an Ontology?](what-is-an-ontology.md)
 
 An accessible introduction to ontologies for those new to the concept, explaining what ontologies are, how they differ from other data models, and why they're useful for information exchange.
@@ -91,8 +81,6 @@ An accessible introduction to ontologies for those new to the concept, explainin
 - Ontologies vs. taxonomies
 - RDF and semantic web basics
 - Benefits for information sharing
-
----
 
 ### [4D Ontology Approach](4d-ontology.md)
 
@@ -106,8 +94,6 @@ Detailed explanation of the 4D extensional ontology approach that underpins IES,
 - The 4D vs. 3D modelling debate
 - Practical implications for data modelling
 
----
-
 ### [BORO Methodology](boro-methodology.md)
 
 Introduction to the Business Objects Reference Ontology (BORO) methodology, which provides the theoretical and practical foundations for IES.
@@ -119,8 +105,6 @@ Introduction to the Business Objects Reference Ontology (BORO) methodology, whic
 - Powerset patterns
 - Consistency with 4D ontology
 - Application to enterprise modelling
-
----
 
 ### [Instantiation Patterns](instantiation-patterns.md)
 
@@ -135,8 +119,6 @@ Comprehensive guide to standard patterns for creating IES-compliant instance dat
 - Representation patterns
 - Relationship patterns
 
----
-
 ### [Extending IES](extending-ies.md)
 
 Guidance on how to extend IES for domain-specific or organisation-specific needs whilst maintaining interoperability and semantic consistency.
@@ -149,8 +131,6 @@ Guidance on how to extend IES for domain-specific or organisation-specific needs
 - Powertype patterns for extensions
 - Dual typing for backward compatibility
 - Best practices and common pitfalls
-
----
 
 ## Audience-Specific Pathways
 
@@ -191,8 +171,6 @@ Working on IES itself or advanced extensions:
 3. [Extending IES](extending-ies.md)
 4. Review [Specification](../specification/index.md)
 
----
-
 ## Additional Resources
 
 ### Related Documentation
@@ -200,8 +178,6 @@ Working on IES itself or advanced extensions:
 - [Specification](../specification/index.md) - Complete technical specification
 - [Examples](../examples/index.md) - Worked examples and sample data
 - [Glossary](../glossary.md) - Terminology and definitions
-
----
 
 ## Document Conventions
 
@@ -231,8 +207,6 @@ data:example_1 a ies:Person .
 **Technical Terms:**
 Key terms are emphasised and defined in the [Glossary](../glossary.md).
 
----
-
 ## Providing Feedback
 
 IES is an evolving standard that improves through user feedback. If you:
@@ -243,7 +217,5 @@ IES is an evolving standard that improves through user feedback. If you:
 - Want to contribute examples
 
 Please [open an issue](https://github.com/IES-Org/ies-common/issues) on our GitHub repository or contact the IES team.
-
----
 
 *© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

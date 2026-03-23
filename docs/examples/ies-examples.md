@@ -16,8 +16,6 @@ This document provides a collection of worked examples demonstrating how to mode
 8. [Voice Call](#8-voice-call)
 9. [Movement](#9-movement)
 
----
-
 ## Notation
 
 Throughout the following examples we use a commonly used IES graphical notation. An example of such is
@@ -93,8 +91,6 @@ iso8601:20301007 a ies:ParticularPeriod;
     ies:iso8601PeriodRepresentation "2030-10-07"^^xsd:string .
 ```
 
----
-
 ## 2. Observations of a Moving Aircraft
 
 ### Overview
@@ -131,8 +127,6 @@ The aircraft is identified by its registration number "G-ABCD". Two separate obs
 - Altitude: 4000 metres
 
 Each observation is an event that has a participant state (Observed) which is itself part of the overall state of the aircraft. The aircraft's location and altitude characteristics are captured at each observation point.
-
----
 
 ## 3. Representations of an Address
 
@@ -194,8 +188,6 @@ data:10DowningStreetPC a ies:PostalCode;
 data:10DowningStreetUDPR a ont:UniqueDeliveryPointReference; 
     ies:representationValue "100023336956"^^xsd:string .
 ```
-
----
 
 ## 4. SIM Card Swap in a Mobile Handset
 
@@ -259,8 +251,6 @@ data:simcard_a_state_2 a ies:DeviceState;
     ies:isStateOf data:simcard_a;
     ies:isPartOf data:handset_1_state_2 .
 ```
-
----
 
 ## 5. Assessments and Subject of Interest
 
@@ -357,8 +347,6 @@ iso8601:20231007T1500 a ies:ParticularPeriod;
     ies:iso8601PeriodRepresentation "20231007T1500"^^xsd:string .
 ```
 
----
-
 ## 6. Posts of Organisations
 
 ### Overview
@@ -392,8 +380,6 @@ The example shows:
 The CEO class is defined as a subclass of `ies:Post`. An instance of CEO (`ceo_at_acme`) represents the specific CEO post at Acme Limited. Each person's time in post is represented by an `ies:InPost` state that is part of the post itself.
 
 This pattern elegantly handles role succession, showing how different people can occupy the same organisational post over time.
-
----
 
 ## 7. SMS Message
 
@@ -448,8 +434,6 @@ data:recipientEvent a ies:Recipient;
 data:messageEvent a ies:SMS;
     ies:messageContent "Hello"^^xsd:string .
 ```
-
----
 
 ## 8. Voice Call
 
@@ -545,8 +529,6 @@ data:callerEvent a ies:Caller;
 data:voicecallEvent a ies:VoiceCall .
 ```
 
----
-
 ## 9. Movement
 
 ### Overview
@@ -586,8 +568,6 @@ Each position represents a Moving state of the ship, which participates in the o
 
 This pattern allows for tracking of any moving entity through space and time, with as many observation points as needed.
 
----
-
 ## Pattern Summary
 
 These examples demonstrate several key IES patterns:
@@ -613,8 +593,6 @@ Models bi-directional communications (calls, messages) as composed events with s
 ### Representation and Identification Pattern
 Shows how entities are identified and represented through names, identifiers, and other representations.
 
----
-
 ## Using These Examples
 
 When implementing IES in your systems:
@@ -627,3 +605,7 @@ When implementing IES in your systems:
 6. **Document your extensions** clearly for other implementers
 
 These examples are based on IES version 4.2.0. Always refer to the current IES specification for the most up-to-date class definitions and properties.
+
+---
+
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

@@ -2,8 +2,6 @@
 
 An **ontology** is a formal model of things we're interested in. It defines physical things, types of things, and relationships between them. But what makes it an ontology rather than just a data model or taxonomy?
 
----
-
 ## Table of Contents
 
 - [The Formal Definition](#the-formal-definition)
@@ -13,7 +11,6 @@ An **ontology** is a formal model of things we're interested in. It defines phys
   - [3. Repeatable Methodology](#3-repeatable-methodology)
 - [IES&#39;s Approach](#iess-approach)
 - [What an Ontology is NOT](#what-an-ontology-is-not)
-
   - [Not Just a Data Model](#not-just-a-data-model)
   - [Not Just a Taxonomy](#not-just-a-taxonomy)
     - [Taxonomy Characteristics](#taxonomy-characteristics)
@@ -23,8 +20,6 @@ An **ontology** is a formal model of things we're interested in. It defines phys
 - [Why IES is an Ontology](#why-ies-is-an-ontology)
 - [Key Takeaways](#key-takeaways)
 - [Next Steps](#next-steps)
-
----
 
 ## The Formal Definition
 
@@ -50,8 +45,6 @@ If the ontology is to be developed by more than one person, a repeatable methodo
 !!! info "Building on Giants"
     Defining these features from first principles is substantial work, so most ontologies re-use an existing **upper ontology**—a foundational model that others can extend.
 
----
-
 ## IES's Approach
 
 For IES, we have:
@@ -62,9 +55,7 @@ For IES, we have:
 
 This combination provides IES with a solid, proven foundation that has been successfully used in the Security, Defence, and National Policing domain. The IES is now being extended to other domains such as 'Environment' (building energy performance, and multi-modal transportation)
 
-Whilst it all sounds very simple, using the BORO method is anything but simple. We are all rather wedded to our own terminologies and views of the world. Conducting a BORO analysis, especially as a committee, can be very challenging indeed. IES 4 could not claim to be a full BORO ontology for this reason. Rather,it has been guided by the BORO approach, but still retains many of the concepts and structures from previous versions of IES.
-
----
+Whilst it all sounds very simple, using the BORO method is anything but simple. We are all rather wedded to our own terminologies and views of the world. Conducting a BORO analysis, especially as a committee, can be very challenging indeed. IES 5 could not claim to be a full BORO ontology for this reason. Rather,it has been guided by the BORO approach, but still retains many of the concepts and structures from previous versions of IES.
 
 ## What an Ontology is NOT
 
@@ -109,14 +100,11 @@ Consider this excerpt from the UK Defence Taxonomy:
 
 ![Defence Estate Taxonomy](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt1.png)
 
-A taxonomy works with words, and the relationships between words. In this case, as we descend the tree, the words
-become narrower in terms of what they refer to. This works well as a filing system—we can systematically store and find information. However, it's not precise about the **nature** of these elements or their **real-world relationships**.
+A taxonomy works with words, and the relationships between words. In this case, as we descend the tree, the words become narrower in terms of what they refer to. This works well as a filing system—we can systematically store and find information. However, it's not precise about the **nature** of these elements or their **real-world relationships**.
 
 #### Ontology's Enhancement
 
-An ontology is intended to be both computer and human interpretable – i.e. it requires a little more semantic and
-logical rigour. The first enhancement required is to work out the nature of the elements in the taxonomy. Some of
-these elements are types of things, whilst others are physical things: An ontology adds semantic and logical rigour. Let's analyse the same content ontologically:
+An ontology is intended to be both computer and human interpretable – i.e. it requires a little more semantic and logical rigour. The first enhancement required is to work out the nature of the elements in the taxonomy. Some of these elements are types of things, whilst others are physical things: An ontology adds semantic and logical rigour. Let's analyse the same content ontologically:
 
 ![Defence Estate Ontology](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt2.png)
 
@@ -128,9 +116,7 @@ Aldershot and Catterick Garrisons are both instances of Garrisons. Barracks is a
 
 ![Defence Estate Ontology Venn](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt4.png)
 
-The classes are shown as ovals (sets) and the individual physical items as orange dots. The is-part-of relationship is
-also shown. Developing a good ontology is all about identifying this level of detail and using solid logical principles to
-model the patterns that emerge.
+The classes are shown as ovals (sets) and the individual physical items as orange dots. The is-part-of relationship is also shown. Developing a good ontology is all about identifying this level of detail and using solid logical principles to model the patterns that emerge.
 
 **Nature of elements:**
 
@@ -153,20 +139,16 @@ By being this specific, an ontology allows much more automated processing:
 
 These queries wouldn't be possible with less semantically rich "broader-narrower" relationships.
 
----
-
 ## The Building Blocks Metaphor
 
 !!! tip "Thinking About Flexibility"
     One way to understand the difference:
 
-    - **Data model** = Model aeroplane kit (can only be assembled one way; changing it requires serious re-engineering)
+    -**Data model** = Model aeroplane kit (can only be assembled one way; changing it requires serious re-engineering)
     - **Ontology** = Interlocking building bricks (can be assembled into anything; changes are easy)
     - **Taxonomy** = Guidebook to aeroplane components (helpful for finding parts, but not the thing itself)
 
 This flexibility is why ontologies are particularly valuable for information exchange—they don't assume a specific implementation or use case.
-
----
 
 ## Why IES is an Ontology
 
@@ -177,8 +159,6 @@ IES qualifies as an ontology because it has:
 3. **Implementation-agnostic**: Works with any RDF-compatible technology
 4. **Everything is data**: Classes can be defined and extended in data payloads
 
----
-
 ## Key Takeaways
 
 !!! success "What Makes IES an Ontology"
@@ -188,24 +168,22 @@ IES qualifies as an ontology because it has:
     4. **Implementation freedom**: Not tied to any specific storage technology
     5. **Extensible**: Everything is data, so the model can grow organically
 
----
-
 ## Next Steps
 
 The following topics may be explored now that an understanding of ontology has been established:
 
 - [**The BORO Method**](boro-methodology.md): How BORO's approach shapes IES
 
----
-
 ## References
 
 ###### The IES Philosophy
-> "An ontology is an extensible model of the things we're interested in. Formal ontologies provide a set of fundamental components which can be extended to particular domains, and connected together using standard patterns of business logic."
 
+> "An ontology is an extensible model of the things we're interested in. Formal ontologies provide a set of fundamental components which can be extended to particular domains, and connected together using standard patterns of business logic."
 
 ###### Note 1
 
 The term “Aldershot Garrison” refers to the actual Aldershot Garrison, but the words are not the thing itself. In linguistics, we can talk about broader and narrower terms. Those relationships between terms usually mirror some relation between the things being referred to, but the nature of those underlying relationships may be very different.
+
+---
 
 *© Crown Copyright 2020-2026*

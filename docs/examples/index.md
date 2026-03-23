@@ -2,8 +2,6 @@
 
 Welcome to the IES Examples section. This area provides practical, worked examples demonstrating how to use IES patterns to model real-world scenarios and create IES-compliant instance data.
 
----
-
 ## About These Examples
 
 The examples in this section are designed to help you understand how to apply IES concepts in practice. Each example includes:
@@ -12,8 +10,6 @@ The examples in this section are designed to help you understand how to apply IE
 - **RDF/Turtle code** demonstrating the implementation
 - **Explanatory text** clarifying the modelling choices
 - **Use case context** showing when to apply each pattern
-
----
 
 ## Example Categories
 
@@ -36,8 +32,6 @@ Detailed worked examples covering:
 9. [**Movement**](ies-examples.md#movement) - Journey modelling with multiple legs
 
 Each example includes UML diagrams, RDF triples, and detailed explanations of the modelling decisions.
-
----
 
 ### Sample Data Files
 
@@ -70,8 +64,6 @@ Complete collection of `.ttl` files demonstrating:
 
 All files are valid RDF/Turtle that can be loaded directly into any RDF triple store.
 
----
-
 ## How to Use These Examples
 
 ### For Learning
@@ -95,8 +87,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 3. **Validate structure** - Ensure your data follows the same structural patterns
 4. **Test queries** - Verify you can query your data the same way
 
----
-
 ## Learning Path by Role
 
 ### For Implementers
@@ -115,8 +105,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Identifiers and naming
 - Relationships and states
 
----
-
 ### For Information Architects
 
 **Goal:** Design information exchanges using IES patterns
@@ -131,8 +119,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Assessments and Subject of Interest (intelligence patterns)
 - Posts of Organisations (organisational structure)
 - Movement (complex multi-part events)
-
----
 
 ### For Data Modellers
 
@@ -149,8 +135,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Types and classification (taxonomies)
 - SIM Card Swap (state changes)
 
----
-
 ### For Analysts and Users
 
 **Goal:** Understand what IES data looks like and how to query it
@@ -165,8 +149,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - A Meeting (simple event pattern)
 - Voice Call (communication pattern)
 - Hospital patient journey (realistic scenario)
-
----
 
 ## Example Patterns Summary
 
@@ -183,8 +165,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 
 **See:** [Period of Time](sample-data/index.md#period-of-time), [Events](sample-data/index.md#events), [Sometimes](sample-data/index.md#sometimes-discontinuous-states)
 
----
-
 ### Participation Patterns
 
 **When to use:** Modelling entities involved in events or activities
@@ -197,8 +177,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Journey with traveller and vehicles
 
 **See:** [Event Participation](sample-data/index.md#event-participation), [A Meeting](ies-examples.md), [Voice Call](ies-examples.md)
-
----
 
 ### State Patterns
 
@@ -213,8 +191,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 
 **See:** [Hospital Example](sample-data/index.md#hospital-example), [SIM Card Swap](ies-examples.md)
 
----
-
 ### Relationship Patterns
 
 **When to use:** Modelling connections between entities
@@ -227,8 +203,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Structural relationships (component of, member of)
 
 **See:** [Relationships](sample-data/index.md#relationships), [Posts of Organisations](ies-examples.md)
-
----
 
 ### Representation Patterns
 
@@ -243,8 +217,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 
 **See:** [Identifiers](sample-data/index.md#identifiers), [Representations of an Address](ies-examples.md)
 
----
-
 ### Assessment Patterns
 
 **When to use:** Modelling subjective judgements, confidence levels, and analytical assessments
@@ -257,8 +229,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Subject of interest designation
 
 **See:** [Assessment](sample-data/index.md#assessment), [Assessments and Subject of Interest](ies-examples.md)
-
----
 
 ### Classification Patterns
 
@@ -273,8 +243,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 
 **See:** [Types and Classification](sample-data/index.md#types-and-classification)
 
----
-
 ### Geospatial Patterns
 
 **When to use:** Modelling geographic locations and coordinates
@@ -287,8 +255,6 @@ All files are valid RDF/Turtle that can be loaded directly into any RDF triple s
 - Spatial queries with GeoSPARQL
 
 **See:** [Geospatial](sample-data/index.md#geospatial), [Movement](sample-data/index.md#movement)
-
----
 
 ## Tools and Resources
 
@@ -327,8 +293,6 @@ Programmatic access to IES data:
 - **rdflib.js** (JavaScript) - RDF library for Node.js and browsers
 - **Oxigraph** (Rust) - Fast RDF store and query engine
 
----
-
 ## Related Documentation
 
 ### Essential Reading
@@ -342,8 +306,6 @@ Programmatic access to IES data:
 
 - **[Glossary](../glossary.md)** - Key terms defined
 - **[4D Ontology](../user-guides/4d-ontology.md)** - Understanding the temporal approach
-
----
 
 ## Contributing Examples
 
@@ -370,8 +332,6 @@ We particularly welcome examples that:
 - ✅ Show integration with other standards (e.g., PROV, SKOS)
 - ✅ Illustrate complex temporal or spatial reasoning
 - ✅ Provide real-world use case solutions
-
----
 
 ## Getting Help
 

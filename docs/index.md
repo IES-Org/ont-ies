@@ -2,8 +2,6 @@
 
 The **Information Exchange Standard (IES) Common** is a standardised ontology for enterprise-level information exchange. This documentation provides comprehensive guidance for understanding, implementing, and extending IES.
 
----
-
 ## Table of Contents
 
 - [About IES](#about-ies)
@@ -43,31 +41,23 @@ The IES was developed to enable collaboration across the UK Government by provid
 
 **RDF-Based** – Built on W3C RDF standards, providing multiple serialisation formats (Turtle, JSON-LD, RDF/XML) and extensive tool support.
 
----
-
 ## Documentation Structure
-
 
 ### User Guides
 
 Comprehensive guides covering IES fundamentals, the 4D ontology approach, instantiation patterns, extension mechanisms, and the BORO methodology ([Go to User Guides](user-guides/index.md)).
 
-
 ### Specification
 
 Complete technical specification including class hierarchies, property definitions, UML diagrams, and the authoritative `ies-common.ttl` ontology file ([Go to Specification](specification/index.md)).
-
 
 ### Examples
 
 Practical worked examples demonstrating IES patterns in action, showing how to model real-world scenarios using the ontology ([Go to Examples](examples/index.md)).
 
-
 ### Glossary
 
 Definitions of key terms, concepts, and technical vocabulary used throughout the IES ontology and documentation ([Go to Glossary](glossary.md)).
-
----
 
 ## Quick Start Paths
 
@@ -83,8 +73,6 @@ Begin with [What is an Ontology?](user-guides/what-is-an-ontology.md) and [The 4
 
 Review [Extending IES](user-guides/extending-ies.md) to understand extension mechanisms and best practices, then examine the [Examples](examples/) for practical patterns.
 
----
-
 ## Background
 
 Across UK Government there are many separate knowledge stores, including multiple stores within each organisation. Many contain similar information about the real world but use different terminologies, formats and schemas. This creates significant challenges:
@@ -94,8 +82,6 @@ Across UK Government there are many separate knowledge stores, including multipl
 * Systems need to integrate without costly and disruptive changes to individual knowledge stores.
 
 The IES addresses these challenges by providing a common vocabulary. Information from each store is converted to and from the common vocabulary when it travels, so users and systems only need to understand the relationship between their internal model and IES.
-
----
 
 ## Scope and Inclusion Criteria
 
@@ -108,8 +94,6 @@ The selection of information types included in IES is orientated towards those o
 3. Someone is able and willing to define it
 
 Users can exchange information beyond the scope of any specific version through IES's agile extension mechanisms.
-
----
 
 ## Design Philosophy
 
@@ -129,8 +113,6 @@ Ontology developers are parsimonious with new concepts, preferring to reuse exis
 
 IES uses W3C RDF Schema, allowing new classes and properties to be defined in data payloads. When extending IES, users should subtype from the most appropriate class and specialise properties from existing properties. This aids understanding by receiving parties, which are likely to only know about the core IES classes.
 
----
-
 ## Implementation
 
 From version 4.0.0, IES is specified as an RDF Schema. RDF is a standard published by the W3C and is the preferred data exchange format in UK Government.
@@ -144,8 +126,6 @@ From version 4.0.0, IES is specified as an RDF Schema. RDF is a standard publish
 
 The extensive ecosystem of open-source RDF software means this should not be a barrier to entry.
 
----
-
 ## A Note on Naming
 
 The Information Exchange Standard, as its name suggests, was originally devised as a specification for exchange of data and information amongst organisations that need to collaborate. This purpose gave rise to the name of the standard.
@@ -157,16 +137,12 @@ Whilst changing the name to reflect wider applicability has been considered, it 
 !!! warning "Important"
     Whilst IES may be used as a specification for data persistence, the standard itself does not provide any end-point implementation of such.
 
----
-
 ## Version Information
 
 **Current Version:** 5.0.0
 **Licence:** MIT Licence (Crown Copyright 2020-2026)
 **Publisher:** UK Department for Business and Trade
 **Language:** British English (en-GB)
-
----
 
 ## Getting Started
 
@@ -178,8 +154,6 @@ Ready to begin? Here are some recommended starting points:
 4. Explore the [Specification](specification/) for detailed technical information
 5. Study [Instantiation Patterns](user-guides/instantiation-patterns.md) to learn how to create IES data
 6. Review [Examples](examples/) to see IES in practice
-
----
 
 ## Support and Feedback
 
