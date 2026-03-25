@@ -144,7 +144,7 @@ These queries wouldn't be possible with less semantically rich "broader-narrower
 !!! tip "Thinking About Flexibility"
     One way to understand the difference:
 
-    -**Data model** = Model aeroplane kit (can only be assembled one way; changing it requires serious re-engineering)
+    - **Data model** = Model aeroplane kit (can only be assembled one way; changing it requires serious re-engineering)
     - **Ontology** = Interlocking building bricks (can be assembled into anything; changes are easy)
     - **Taxonomy** = Guidebook to aeroplane components (helpful for finding parts, but not the thing itself)
 
