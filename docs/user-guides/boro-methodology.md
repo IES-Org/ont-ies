@@ -83,7 +83,7 @@ Whilst BORO sounds simple in principle, using it is **anything but simple**:
 - Committee-based BORO analysis can be very challenging
 
 > **Note**: IES and BORO
-> **IES 5 is not a "pure" BORO ontology**. It has been **guided by the BORO approach** but retains many concepts and structures from previous IES versions to maintain continuity and practical usability.
+> **IES is not a "pure" BORO ontology**. It has been **guided by the BORO approach** but retains many concepts and structures from previous IES versions to maintain continuity and practical usability.
 
 ### The Benefit Despite the Challenge
 
@@ -205,7 +205,7 @@ BORO has proven successful in multiple domains:
 
 ### IES's Pragmatic Approach
 
-> "IES 5 could not claim to be a full BORO ontology. Rather, it has been **guided by the BORO approach**, but still retains many of the concepts and structures from previous versions of IES."
+> "IES could not claim to be a full BORO ontology. Rather, it has been **guided by the BORO approach**, but still retains many of the concepts and structures from previous versions of IES."
 
 This pragmatism reflects reality:
 

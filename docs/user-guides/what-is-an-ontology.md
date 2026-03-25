@@ -11,6 +11,7 @@ An **ontology** is a formal model of things we're interested in. It defines phys
   - [3. Repeatable Methodology](#3-repeatable-methodology)
 - [IES&#39;s Approach](#iess-approach)
 - [What an Ontology is NOT](#what-an-ontology-is-not)
+
   - [Not Just a Data Model](#not-just-a-data-model)
   - [Not Just a Taxonomy](#not-just-a-taxonomy)
     - [Taxonomy Characteristics](#taxonomy-characteristics)
@@ -54,8 +55,7 @@ For IES, we have:
 - **Formal foundation**: Set theory and 4D extensional logic
 
 This combination provides IES with a solid, proven foundation that has been successfully used in the Security, Defence, and National Policing domain. The IES is now being extended to other domains such as 'Environment' (building energy performance, and multi-modal transportation)
-
-Whilst it all sounds very simple, using the BORO method is anything but simple. We are all rather wedded to our own terminologies and views of the world. Conducting a BORO analysis, especially as a committee, can be very challenging indeed. IES 5 could not claim to be a full BORO ontology for this reason. Rather,it has been guided by the BORO approach, but still retains many of the concepts and structures from previous versions of IES.
+Whilst it all sounds very simple, using the BORO method is anything but simple. We are all rather wedded to our own terminologies and views of the world. Conducting a BORO analysis, especially as a committee, can be very challenging indeed. IES could not claim to be a full BORO ontology for this reason. Rather, it has been guided by the BORO approach, but still retains many of the concepts and structures from previous versions of IES.
 
 ## What an Ontology is NOT
 

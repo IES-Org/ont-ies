@@ -303,13 +303,11 @@ using very simple constructs - e.g. `Elements` starting before others, ending be
 
 ## `<a id="0ebd3547-89a5-45c0-aca6-bc125d0e885e"></a>`Event Linkages
 
-IES 3 introduced the concept of EventLinkage - associations between Events. As of v3.2 of IES, few of these `EventLinkages` had been specified and those that had were covered by relationships in v4 - `isPartOf` and `after`.
+IES 3 introduced the concept of EventLinkage - associations between Events. As of v3.2 of IES, few of these `EventLinkages` had been specified and those that had were covered by relationships in later versions - `isPartOf` and `after`.
 
 The example below shows two football matches that were part of the World Cup in 2018, and the fact that one happened (i.e. started and finished) before the other.
 
-For more complex temporal logic, such as an `Event` starting before another one, the `after` relationship can be used
-between `BoundingStates`. In the example below, the Sweden vs England match started after the Russia V Croatia
-match.
+For more complex temporal logic, such as an `Event` starting before another one, the `after` relationship can be used between `BoundingStates`. In the example below, the Sweden vs England match started after the Russia V Croatia match.
 
 ![Event Linkages Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_0EBD3547_89A5_45c0_ACA6_BC125D0E885E.png)
 
@@ -333,8 +331,7 @@ Participation in `Events` is modelled in a similar way to temporal relationships
 
 This allows us to have many participants (`Entities`) in an `Event`, and for each of their participations to have a different start and end times. So, in the example below, we can see that Barry left the meeting after 12 minutes and that Vlad was only there for 2 of the 3 hours.
 
-IES also has a subtype of `EventParticipant` called `ActiveEventParticipant`. Subtypes of this class are those participations where the participant is actively contributing to the event. Those participations that are not subtypes of
-`ActiveEventParticipant` are assumed to be passive.
+IES also has a subtype of `EventParticipant` called `ActiveEventParticipant`. Subtypes of this class are those participations where the participant is actively contributing to the event. Those participations that are not subtypes of `ActiveEventParticipant` are assumed to be passive.
 
 The Role construct for states is inherited by `EventParticipant` allowing more specific roles to be defined for the `EventParticipant`.
 
@@ -425,8 +422,7 @@ Hierarchies of `ClassOfElement` can be built using the `rdfs:subClassOf` relatio
 
 IES distinguished between things in the real world and our representations of them. In this case, a `Representation` is not a `PhysicalThing` (see `Document` for the distinction). `Representations` may be documents, videos, blog text, etc. The represents relationship links `Things` to their `Representations`.
 
-Sometimes, it is important to establish arbitrary categories of `Representation` - such as "financial accounts", "pictures
-of kittens" or "educational films". `ContentCategory` is used to collect together all `Representations` of similar content.
+Sometimes, it is important to establish arbitrary categories of `Representation` - such as "financial accounts", "pictures of kittens" or "educational films". `ContentCategory` is used to collect together all `Representations` of similar content.
 
 ![Representation and Content Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_393BD76E_39F3_4bd0_9BBA_7E1AC7C63F0A.png)
 
@@ -460,8 +456,7 @@ of kittens" or "educational films". `ContentCategory` is used to collect togethe
 
 ## `<a id="a72d9272-df55-4e58-9174-3f9f168438a0"></a>`Identifiers
 
-IES distinguishes between things in the real world and representations of those things. The representation pattern allows any `Thing` to have multiple representations, e.g. a book about the Ministry Of Defence, the DUNS number for
-the Ministry Of Defence, etc.
+IES distinguishes between things in the real world and representations of those things. The representation pattern allows any `Thing` to have multiple representations, e.g. a book about the Ministry Of Defence, the DUNS number for the Ministry Of Defence, etc.
 
 `Representations` specialise into `WorksOfDocumentation` (see `Document` diagram in `Entities` section), `Names`, and `Identifiers`. `Names` and `Identifiers` belong to `NamingSchemes` - this allows us to give context when an `Element` has more than one `Name` or `Identifier`. `NamingSchemes` may be implemented in `Systems` and used by `Organisations`. This replaces the idea of `EnterpriseIdentity` and `SystemIdentity` in IES3.
 
@@ -503,7 +498,7 @@ The key points about this model are that the `Measure` is separate from its `Rep
 
 `Characteristics` and `Measures` can be applied to an `Element`, or to a `ClassOfElement` in the case where all instances of the `ClassOfElement` share the same characteristic or measure, e.g. all London buses being red.
 
-This model is new in IES 4.1 - previously, there was no consistent way to do this, but mostly it relied on attributes.
+This model, as defined here, is available in IES - previously, there was no consistent way to do this, but mostly it relied on attributes.
 
 ![Characteristics and Measures Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_80403A46_2297_4e05_8C9C_1F6EF5596779.png)
 
@@ -594,11 +589,9 @@ In IES, we instantiate this enduring, replaceable part as both a `ReplaceablePar
 
 ## `<a id="5b7a4e68-4f12-48d2-ae62-d359e4cba907"></a>`Mass and Count
 
-There are times when we want to talk about sets of elements without having to instantiate every individual element as an instance. Instead, we want to just provide a count of the members of the set, e.g. the number of cars in the set parked at Acacia Avenue. Such sets are instances of `FiniteClassOfElement` where the count is provided using the
-attribute `finiteMembershipCount`.
+There are times when we want to talk about sets of elements without having to instantiate every individual element as an instance. Instead, we want to just provide a count of the members of the set, e.g. the number of cars in the set parked at Acacia Avenue. Such sets are instances of `FiniteClassOfElement` where the count is provided using the attribute `finiteMembershipCount`.
 
-In the illustrated example, to get the set of cars parked at Acacia Avenue, we create a `subClassOf` of the set of all
-parked cars, `Parked`. This gives us a specific subset of cars parked at Acacia Avenue at a time. This subclass is also an instance of `FiniteClassOfElement` allowing us to assign 57 as its `finiteMembershipCount`.
+In the illustrated example, to get the set of cars parked at Acacia Avenue, we create a `subClassOf` of the set of all parked cars, `Parked`. This gives us a specific subset of cars parked at Acacia Avenue at a time. This subclass is also an instance of `FiniteClassOfElement` allowing us to assign 57 as its `finiteMembershipCount`.
 
 There are physically things in the world that are difficult to call out as separate individuals due to their high divisibility. For example, water in a swimming pool, sand on a beach or the walls and floors of a building. Stuff allows us to talk about these highly divisible or generally uncountable things.
 
@@ -625,11 +618,9 @@ There are physically things in the world that are difficult to call out as separ
 
 `Attributes` can be applied to any `ExchangedItem` - `Entities`, `Events` and `ClassOfEntity`.
 
-`Attributes` are RDF properties (actually, OWL datatype properties), typed by any XML Schema simple datatype, e.g.
-`xsd:string`, `xsd:double`, `xsd:dateTime`, etc. (refer to W3C XML Schema specification for complete list).
+`Attributes` are RDF properties (actually, OWL datatype properties), typed by any XML Schema simple datatype, e.g. `xsd:string`, `xsd:double`, `xsd:dateTime`, etc. (refer to W3C XML Schema specification for complete list).
 
-`Attributes` are not as widely used in IES as in IES3 where they were used for measures, identifiers and names. In IES
-they are only used for categorical statements, e.g. the purpose of a mission, the amount of currency, etc.
+`Attributes` are not as widely used in IES as in IES3 where they were used for measures, identifiers and names. In IES they are only used for categorical statements, e.g. the purpose of a mission, the amount of currency, etc.
 
 ![Attributes Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_1A40117E_E6F6_4ae0_A438_8583E896BE00.png)
 
@@ -684,8 +675,7 @@ The IES3 Source Reference capability is maintained in IES, but leverages the `Re
 
 ## `<a id="17f25b76-6d6d-4d6e-8bc8-f97c1b2dcc0b"></a>`Payloads and Groups
 
-IES3 had the concept of an `ExchangePayload` object to which all the `Things` and `Groups` were attached. In reality, there was only ever one payload in a file, so in IES, whilst the `ExchangePayload` class is kept, it is simply an object in the RDF file to which meta-data about the whole file can be attached. The concept of `GroupOfItems` is retained from
-IES3.
+IES3 had the concept of an `ExchangePayload` object to which all the `Things` and `Groups` were attached. In reality, there was only ever one payload in a file, so in IES, whilst the `ExchangePayload` class is kept, it is simply an object in the RDF file to which meta-data about the whole file can be attached. The concept of `GroupOfItems` is retained from IES3.
 
 It is sometimes important to specify the origins (organisation, system, etc.) of certain information. This is achieved using the `originator` and `originatingSystem` which link `rdf:Resources` (i.e. anything) to their origin. These can be applied to `GroupsOfItems` also, but care must be taken not to put the same `Thing` in different `GroupOfItem` instances that have `originator` or `originatingSystem` properties linked to them. If the source of a relationship (triple) has to be specified, the `originator` and `originatingSystem` properties can be applied to `rdf:Statement` (see RDF documentation on reification).
 
@@ -781,7 +771,7 @@ This part of IES deals with specific amounts of a given currency.
 
 ### `<a id="a4475333-349b-4d3a-81fa-b899dc1961d1"></a>`Communications Account
 
-`CommunicationsAccounts` are new for IES (v4). In most online and telecoms scenarios, the account, who holds it, and who provides it are more important than the device or handset (which IES 4 majored on). `CommunicationsAccount` inherits much from the generic `Account` class, then adds a relationship to `CommunicationsIdentifier`.
+`CommunicationsAccounts` are a recent addition to IES. In most online and telecoms scenarios, the account, who holds it, and who provides it are more important than the device or handset (which earlier versions of IES emphasised). `CommunicationsAccount` inherits much from the generic `Account` class, then adds a relationship to `CommunicationsIdentifier`.
 
 ![Communications Account Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_A4475333_349B_4d3a_81FA_B899DC1961D1.png)
 
@@ -946,7 +936,7 @@ and/or applications. DataObjects might be geoobjects, video files, audio files, 
 
 ### `<a id="7a96da48-8eef-46d2-9362-c506781af268"></a>`Document
 
-In IES 3 there was just "Document", but it wasn't clear if this referred to a specific, individual copy of a document, or just the document in general (of which there may be many copies). For example, it wasn't clear if it was "my copy of War & Peace" or just "War and Peace".
+In previous versions of IES, there was just "Document", but it wasn't clear if this referred to a specific, individual copy of a document, or just the document in general (of which there may be many copies). For example, it wasn't clear if it was "my copy of War & Peace" or just "War and Peace".
 
 This has been rectified in IES and "Document" has been replaced by `WorkOfDocumentation` (the general case) and `IndividualDocument` (a particular instance of a document). In the majority of cases, `WorkOfDocumentation` will be used, but where we care about a particular instance (e.g. forensics, evidence, historical interest, etc.) then `IndividualDocument` should be used. The `IndividualDocument` can be related to the `WorkOfDocumentation` it is an instance of using the `aCopyOf` property.
 
@@ -1460,7 +1450,7 @@ A means of transportation – e.g. car, aircraft, ship.
 
 An `Event` is an activity or incident involving one or more participants (i.e. `Entities`). The participating Entities are related to the `Events` via an `EventParticipant` subtype. To relate the `EventParticipant` to the `Entity`, use the `isParticipationOf` relationship. To relate the `EventParticipation` to the `Event`, use the `isParticipantIn` relationship. Rather than create sub-properties of these relationships for each type of `EventParticipation`, a simplified notation (UML Dependency - dashed line with arrow-head) is used in the `Event` diagrams to indicate the appropriate `Events` and `Entities` for each type of `EventParticipation`.
 
-There are two key types of `EventParticipant` - `Actor` and `ActedUpon`. `Actor` relates a `Person` or `Organisation` to the `Event` they conduct. `ActedUpon` relates an `Entity` to the `Event` that has an effect upon them. These two `EventParticipants` generalise and replace a number of the participants specified in IES 3.x (see the specific `Event` subtypes for examples).
+There are two key types of `EventParticipant` - `Actor` and `ActedUpon`. `Actor` relates a `Person` or `Organisation` to the `Event` they conduct. `ActedUpon` relates an `Entity` to the `Event` that has an effect upon them. These two `EventParticipants` generalise and replace a number of the participants specified earlier versions (see the specific `Event` subtypes for examples).
 
 `Locations` of `Events` are handled with more precision in IES. The `happensIn` relationship can be used to assert the encompassing `Location` for the whole `Event`, e.g. an arrest that takes place in Trafalgar Square. However, some
 `Locations` merely participate in the `Event`, e.g. departure and destination ports, weapon and target locations in attacks, etc. For this reason, `happensIn` should only be used when the `Event` takes place entirely within the envelope of the `Location`. This precision is necessary for interpreting `Events` in geo systems, timeline visualisations, etc.
@@ -1488,7 +1478,7 @@ A high, medium, low rating must be provided for all assessments. Whilst it is re
 
 A further (e.g. more specific) confidence indicator may also be provided. IES does not mandate how that confidence is measured.
 
-This model also introduces (new to IES 4.1.0) the idea of a `PossibleWorld` (as used in ISO15926, IDEAS and Professor Matthew West's guide to high quality data models). A `PossibleWorld` is a scenario - something that may or may not have occurred, and encompasses a number of events and entities that would have existed in that world. The likelihood of a `PossibleWorld` is defined using `AssessToBeTrue`.
+This model also introduces (starting with IES 4.1.0) the idea of a `PossibleWorld` (as used in ISO15926, IDEAS and Professor Matthew West's guide to high quality data models). A `PossibleWorld` is a scenario - something that may or may not have occurred, and encompasses a number of events and entities that would have existed in that world. The likelihood of a `PossibleWorld` is defined using `AssessToBeTrue`.
 
 In the diagram below, there are three scenarios. In scenario 1, Fred is assessed to have carried out the hacking alone. In 2, Barry did it alone. In 3, they both did it. Vladimir has assessed the scenarios with HIGH MEDIUM and LOW confidence.
 
@@ -1672,8 +1662,7 @@ The `BusinessEvent` model is really about `Events` that affect accounts - openin
 
 ### `<a id="6780105e-2091-491e-aebf-c68e03b0074e"></a>`Attendance
 
-The attendance model in IES introduces some new concepts form IES3 - `Meeting` and `CheckIn`. These events
-weren't explicitly called out in IES3 - being colocated doesn't necessarily mean people are meeting.
+The attendance model in IES introduces some new concepts form IES3 - `Meeting` and `CheckIn`. These events weren't explicitly called out in IES3 - being colocated doesn't necessarily mean people are meeting.
 
 ![Attendance Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_6780105E_2091_491e_AEBF_C68E03B0074E.png)
 
@@ -2080,8 +2069,7 @@ This model accommodates varying levels of detail, consistent with the rest of IE
 
 The booking of planned travel arrangements.
 
-`TravelBookings` may include bookings for `Flights`, Ferry Crossings, Train Journeys (i.e `TravelServices`), and also Hotels, Hire Cars etc. when these have been modelled. These will be included on the booking as relationships to the
-appropriate other entities.
+`TravelBookings` may include bookings for `Flights`, Ferry Crossings, Train Journeys (i.e `TravelServices`), and also Hotels, Hire Cars etc. when these have been modelled. These will be included on the booking as relationships to the appropriate other entities.
 
 `TravelBooking` is currently an `Entity` though there is some debate as to whether it really should be an `Event`.
 
@@ -2361,8 +2349,7 @@ All of the Mutual Understanding relationships from IES3 end up being EventPartic
 
 ### `<a id="bed9b9a0-547e-49d5-ab9d-2bd0a634a3ea"></a>`Structural
 
-The way that structural relationships handled (as defined in IES3) has changed in IES 4. Care must be taken in how
-these are used.
+The way that structural relationships handled (as defined in IES3) has changed in the last specification. Care must be taken in how these are used.
 
 - `assessedToBeTheSameAs`: in a 4D (extensional) ontology if two things are the same, there should only be one instance. In most (IES3) cases, things that were deemed to be the same were often just two states of the same whole-life thing. In other cases, they were just two sets of identifiers for the same thing, used by different naming schemes. That said, in very rare circumstances (usually when data arrives from more than one place) two things genuinely are the same (same spatial and temporal extents). If possible, these should be merged into one, and their original identifiers kept. If not, and when all other approaches are not possible, then the `assessedToBeTheSameAs` relationship may be used. Use only when all other approaches are not possible.
 - Copy of (IES3) is simply two instances of the same class. So for documents, this would be two `IndividualDocument` instances from one `WorkOfDocumentation`, using the `aCopyOf` relationship.
@@ -2398,10 +2385,8 @@ these are used.
 
 As with the Structural Relationships, Topological Relationships are handled differently in IES due to the criteria of identity (space and time - if "two things" occupy precisely the same space for the same period of time, they are the same thing and only one instance should be created).
 
-- "Equal to" is a case in point. Here, there should be just one location with multiple identifiers. Note that the
-  examples in IES3 are not always exactly the same extent, so sometimes, these would be `isPartOf` relationships
-- "Crosses" is a case of two extents having shared parts, and is modelled using `Crossing` and the `crossingOf`
-  relationship
+- "Equal to" is a case in point. Here, there should be just one location with multiple identifiers. Note that the examples in IES3 are not always exactly the same extent, so sometimes, these would be `isPartOf` relationships
+- "Crosses" is a case of two extents having shared parts, and is modelled using `Crossing` and the `crossingOf` relationship
 - For "is within", use the more general `inLocation` relationship
 
 ![Topological Diagram](../assets/images/diagrams/rendered/ies-specification-diagrams/EAID_20BF4E8F_9683_4bf4_B59C_F7F2AB2FB8F3.png)
@@ -2634,7 +2619,7 @@ The Measure of the stoichiometric quantity of substance (usually measured in mol
 
 A Relationship between two `<a href="#5D5C5B9B-5E90-4100-8353-8EE9F3D772E2"><font color="#0000ff">``<u>`Person `</u></font>``</a>` Entities that indicates one is and ancestor of the other
 
-Note: was called "relative of" in IES 3.x, but was really only about ancestry, so is changed here.
+Note: this was previously called "relative of", but was really only about ancestry, so is changed here.
 
 ### `<a id="1326576a-6240-47b0-aed7-5f3fc4e3884d"></a>`andGroup
 
@@ -3301,7 +3286,7 @@ The `<a href="#1ECB4C6E-6A30-4dc5-A4AC-9A9DF5B6A54F"><font color="#0000ff">``<u>
 
 An `<a href="#C5AB420C-1AB6-479a-97E1-4F2FD37725CB"><font color="#0000ff">``<u>`EventParticipant `</u></font>``</a>` where a `<a href="#D09EDE21-E862-4ec1-BC0F-045CCE5454A9"><font color="#0000ff">``<u>`ResponsibleActor `</u></font>``</a>` makes an Announcement
 
-Note: this also covers GoverningParty from IES 3.2
+Note: this also covers GoverningParty, which was used in previous versions.
 
 ### `<a id="f428ada5-2349-4cd0-815f-8f768b08c6e6"></a>`Delivery
 
