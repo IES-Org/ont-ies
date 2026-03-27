@@ -1374,9 +1374,13 @@ ies:GeoIdentity a rdfs:Class ;
 ies:GeoJSON a rdfs:Class ;
     rdfs:label "Geo JSON"^^xsd:string ;
     dcterms:identifier "{417C1F4E-6A5D-4631-B275-8E982252791A}" ;
-    rdfs:comment """GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.
+    rdfs:comment """
+    GeoJSON is an open standard format designed for representing simple geographical features, along with their
+    non-spatial attributes. It is based on JSON, the JavaScript Object Notation.
 
-GeoJSON mandates use of WGS 84 coordinate system - see IETF RFC 7946""" ;
+    The coordinate reference system for all GeoJSON coordinates is a geographic CRS using the WGS 84 datum (longitude
+    and latitude in decimal degrees) – see IETF RFC 7946.
+    """ ;
     rdfs:subClassOf ies:GeoRepresentation,
         ies:JsonData .
 

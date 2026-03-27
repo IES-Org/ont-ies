@@ -3612,7 +3612,8 @@ In UK, this would be an NI number, in the US, it would be the social security nu
     <dcterms:identifier>{417C1F4E-6A5D-4631-B275-8E982252791A}</dcterms:identifier>
     <rdfs:comment>GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.
 
-GeoJSON mandates use of WGS 84 coordinate system - see IETF RFC 7946</rdfs:comment>
+    The coordinate reference system for all GeoJSON coordinates is a geographic CRS using the WGS 84 datum (longitude and latitude in decimal degrees) – see IETF RFC 7946.
+    </rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://informationexchangestandard.org/ont/ies/common/GeoRepresentation"/>
     <rdfs:subClassOf rdf:resource="http://informationexchangestandard.org/ont/ies/common/JsonData"/>
   </rdf:Description>

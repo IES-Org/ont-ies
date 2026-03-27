@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keep-change-log] and this project adheres to [Semantic Versioning][semver].
 
+## [5.0.2] - 2026-03-27 Patch release
+
+1. Fix GeoJSON comment.
+
+## [5.0.1] - 2026-03-27 Patch release
+
+1. Fix broken link in `CONTRIBUTING.md`
+
 ## [5.0.0] - 2025-11-29 Major release
 
 1. Changed namespace URI to http://informationexchange.org/ont/ies/common/
