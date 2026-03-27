@@ -1,0 +1,172 @@
+# Capacity Pattern Example: Emergency Shelter (REVISED for Enhancement)
+# This example demonstrates the IES Capacity pattern using an emergency planning scenario,
+# following the capacity-enhancement.md pattern where hasCapacity has domain ies:State.
+#
+# Key change: Capacities are now attached to States, not to whole-life Entities.
+
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:      <http://example.com/ontology#> .
+@prefix data:    <http://example.com/data#> .
+
+# ============================================================================
+# Domain-Specific Capacity Taxonomy
+# These are example Capacity instances for emergency planning scenarios.
+# Each application domain should define its own taxonomy.
+# ============================================================================
+
+ex:OperateAsRecreationalSpace a ies:Capacity ;
+    rdfs:label "Operate as Recreational Space"@en-gb ;
+    rdfs:comment "The capacity to operate as a recreational or leisure venue."@en-gb ;
+    rdfs:subClassOf ies:EventParticipant .
+
+ex:ShelterDisplacedPersons a ies:Capacity ;
+    rdfs:label "Shelter Displaced Persons"@en-gb ;
+    rdfs:comment "The capacity to provide emergency shelter for displaced persons."@en-gb ;
+    rdfs:subClassOf ies:EventParticipant .
+
+ex:AssessLocationsForEmergencyPlanning a ies:Capacity ;
+    rdfs:label "Assess Locations for Emergency Planning"@en-gb ;
+    rdfs:comment "The capacity to conduct emergency planning assessments."@en-gb ;
+    rdfs:subClassOf ies:EventParticipant .
+
+# ============================================================================
+# The Location
+# ============================================================================
+
+data:SandownCommunityHall a ies:Location ;
+    rdfs:label "Sandown Community Hall"@en-gb ;
+    rdfs:comment "Community sports and events venue in Sandown"@en-gb .
+
+# ============================================================================
+# Planning Period State: Hall During Assessment (2024)
+# This State has the capacities that were identified during planning
+# ============================================================================
+
+data:HallDuringPlanning a ies:LocationState ;
+    rdfs:label "Sandown Community Hall during planning period (2024)"@en-gb ;
+    rdfs:comment """A State of the community hall during the 2024 planning period,
+when it was assessed as having multiple capacities for emergency use."""@en-gb ;
+    ies:isStateOf data:SandownCommunityHall ;
+    ies:inPeriod data:Period2024 ;
+    # These are the capacities identified during assessment
+    ies:hasCapacity ex:OperateAsRecreationalSpace ;
+    ies:hasCapacity ex:ShelterDisplacedPersons .
+
+data:Period2024 a ies:ParticularPeriod ;
+    rdfs:label "2024"@en-gb ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:gYear .
+
+# ============================================================================
+# The Organisation That Assesses Emergency Suitability
+# ============================================================================
+
+data:AcmeLtd a ies:Organisation ;
+    rdfs:label "Acme Ltd"@en-gb ;
+    rdfs:comment "A company that carries out emergency planning assessments"@en-gb .
+
+# State of Acme during the planning period
+data:AcmeDuringPlanning a ies:OrganisationState ;
+    rdfs:label "Acme Ltd during 2024 planning work"@en-gb ;
+    ies:isStateOf data:AcmeLtd ;
+    ies:inPeriod data:Period2024 ;
+    ies:hasCapacity ex:AssessLocationsForEmergencyPlanning .
+
+# ============================================================================
+# The Emergency Planning Assessment
+# ============================================================================
+
+data:EmergencyPlanningAssessment a ies:Assessment ;
+    rdfs:label "Emergency Planning Assessment"@en-gb ;
+    rdfs:comment "An assessment of Sandown Community Hall for emergency use"@en-gb .
+
+data:AssessmentStart a ies:BoundingState ;
+    rdfs:label "Start of assessment"@en-gb ;
+    ies:isStartOf data:EmergencyPlanningAssessment ;
+    ies:inPeriod data:Period20240101 .
+
+data:AssessmentEnd a ies:BoundingState ;
+    rdfs:label "End of assessment"@en-gb ;
+    ies:isEndOf data:EmergencyPlanningAssessment ;
+    ies:inPeriod data:Period20240131 .
+
+data:Period20240101 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-01T12:00:00Z"^^xsd:string .
+
+data:Period20240131 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-31T12:00:00Z"^^xsd:string .
+
+# A State of Acme Ltd performing the assessment (actualising its capacity)
+data:AcmeAssessing a ies:Assessor, ex:AssessLocationsForEmergencyPlanning ;
+    rdfs:label "Acme Ltd assessing"@en-gb ;
+    rdfs:comment "Acme actually performing an assessment - actualising its capacity"@en-gb ;
+    ies:isParticipationOf data:AcmeLtd ;
+    ies:isParticipantIn data:EmergencyPlanningAssessment .
+
+# ============================================================================
+# Normal Operations: Recreational Space (2024)
+# The hall actualises its recreational capacity
+# ============================================================================
+
+data:RecreationalOperation a ies:Event ;
+    rdfs:label "Recreational Space Operation"@en-gb ;
+    rdfs:comment "Sandown Community Hall operating as a recreational space"@en-gb .
+
+data:RecreationalStart a ies:BoundingState ;
+    rdfs:label "Start of recreational operation"@en-gb ;
+    ies:isStartOf data:RecreationalOperation ;
+    ies:inPeriod data:Period20240101T1200 .
+
+data:RecreationalEnd a ies:BoundingState ;
+    rdfs:label "End of recreational operation"@en-gb ;
+    ies:isEndOf data:RecreationalOperation ;
+    ies:inPeriod data:Period20241231T1200 .
+
+data:Period20240101T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-01-01T12:00:00"^^xsd:string .
+
+data:Period20241231T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-12-31T12:00:00"^^xsd:string .
+
+# A State of the hall actually operating as a recreational centre
+# This State is both an EventParticipant AND a member of the Capacity class
+data:HallAsRecreationalSpace a ies:EventParticipant, ex:OperateAsRecreationalSpace ;
+    rdfs:label "Sandown Community Hall as recreational space"@en-gb ;
+    rdfs:comment "The hall actually operating as a recreational space - actualising its capacity"@en-gb ;
+    ies:isParticipationOf data:SandownCommunityHall ;
+    ies:isParticipantIn data:RecreationalOperation .
+
+# ============================================================================
+# Emergency Activation: Shelter (January 2025)
+# The hall actualises its shelter capacity
+# ============================================================================
+
+data:EmergencyShelterOperation a ies:Event ;
+    rdfs:label "Emergency Shelter Operation"@en-gb ;
+    rdfs:comment "Sandown Community Hall operating as an emergency shelter"@en-gb .
+
+data:ShelterStart a ies:BoundingState ;
+    rdfs:label "Start of emergency shelter operation"@en-gb ;
+    ies:isStartOf data:EmergencyShelterOperation ;
+    ies:inPeriod data:Period20250101T1200 .
+
+data:ShelterEnd a ies:BoundingState ;
+    rdfs:label "End of emergency shelter operation"@en-gb ;
+    ies:isEndOf data:EmergencyShelterOperation ;
+    ies:inPeriod data:Period20250131T1200 .
+
+data:Period20250101T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025-01-01T12:00:00"^^xsd:string .
+
+data:Period20250131T1200 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2025-01-31T12:00:00"^^xsd:string .
+
+# A State of the hall actually operating as an emergency shelter
+# This State is both an EventParticipant AND a member of the Capacity class
+data:HallAsShelter a ies:EventParticipant, ex:ShelterDisplacedPersons ;
+    rdfs:label "Sandown Community Hall as emergency shelter"@en-gb ;
+    rdfs:comment "The hall actually operating as an emergency shelter - actualising its capacity"@en-gb ;
+    ies:isParticipationOf data:SandownCommunityHall ;
+    ies:isParticipantIn data:EmergencyShelterOperation .

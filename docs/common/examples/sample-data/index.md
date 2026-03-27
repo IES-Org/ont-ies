@@ -36,6 +36,60 @@ Demonstrates the IES assessment pattern for modelling subjective judgements and 
 
 ---
 
+#### Capacity: Emergency Shelter
+**File:** `capacity-emergency-shelter.ttl`
+
+Demonstrates the IES Capacity pattern using an emergency planning scenario where a community hall has capacities for both recreational use and emergency shelter.
+
+**Key concepts:**
+- `ies:Capacity` - ClassOfState representing potential capabilities
+- `ies:hasCapacity` - Relationship asserting an Element can have a Capacity
+- `ies:EventParticipant` - State when a Capacity is actually being used
+- Domain-specific Capacity taxonomy (ex: namespace)
+- Assessment of emergency suitability
+
+**Use cases:** Emergency planning, asset management, resilience planning, contingency operations
+
+**Corresponds to:** [Capacity User Guide](../../user-guides/capacity.md)
+
+---
+
+#### Capacity: Water Distribution Point
+**File:** `capacity-water-distribution.ttl`
+
+Demonstrates a car park with multiple capacities: normal use as a car park, and emergency use as a water distribution point following a flood event.
+
+**Key concepts:**
+- `ies:Capacity` - Potential capabilities of a Location
+- `ies:hasCapacity` - Multiple capacities on a single Element
+- Transition from normal to emergency operations
+- Assessment linking to operational states
+
+**Use cases:** Emergency water supply, multi-use facilities, infrastructure resilience
+
+**Corresponds to:** [Capacity User Guide](../../user-guides/capacity.md)
+
+---
+
+---
+
+#### Capacity: Class-Level Capacities
+**File:** `capacity-class-level.ttl`
+
+Demonstrates the difference between `hasCapacity` (instance-level) and `eachHasCapacity` (class-level) for asserting Capacities.
+
+**Key concepts:**
+- `ies:eachHasCapacity` - Asserts that ALL instances of a class have a Capacity
+- `ies:hasCapacity` - Asserts that a SPECIFIC `Element` has a Capacity
+- Class-level vs instance-level capability assertions
+- Combining inherited and instance-specific Capacities
+
+**Use cases:** Defining standard capabilities for facility types, emergency service classifications, infrastructure categories
+
+**Corresponds to:** [Capacity User Guide](../../user-guides/capacity.md)
+
+---
+
 #### Characteristics and Measures
 **File:** `characteristics-and-measures.ttl`
 
@@ -180,7 +234,7 @@ Comprehensive worked example of a patient's journey through hospital treatment.
 
 **Use cases:** Healthcare tracking, patient records, facility management
 
-**Corresponds to:** [Introduction to IES - Hospital Example](../../user-guides/introduction.md#worked-example-fred-in-hospital)
+**Corresponds to:** [Introduction to IES - Hospital Example](../../user-guides/introduction.md#worked-example---fred-in-hospital)
 
 ---
 
@@ -196,6 +250,57 @@ Models a person's journey involving multiple legs with different transport modes
 - `ies:VehicleUsed` - Asset participation
 
 **Use cases:** Travel tracking, logistics, supply chain
+
+---
+
+#### Network
+**File:** `network.ttl`
+
+Demonstrates the basic IES Network pattern for modelling interconnected systems.
+
+**Key concepts:**
+- `ies:Network` - A collection (mereological sum) of Links and Nodes
+- `ies:Link` - An element enabling flow between its ends
+- `ies:Node` - What exists at the end of a Link
+- `ies:hasEnd` - Connects Links to Nodes
+- `ies:isPartOf` - Network membership
+
+**Use cases:** Highway networks, utility infrastructure, communication systems
+
+**Corresponds to:** [Networks Example](../ies-examples.md#10-networks)
+
+---
+
+#### Network Evolution
+**File:** `network-evolution.ttl`
+
+Shows how networks change over time using the IES 4D approach with States.
+
+**Key concepts:**
+- `ies:State` - Temporal parts of Networks, Links, and Nodes
+- `ies:isStateOf` - Links States to whole-life entities
+- `ies:isSeriesPartOf` - Sequential decomposition of Links
+- `ies:inPeriod` - Temporal extent of States
+
+**Use cases:** Infrastructure evolution, network planning, historical analysis
+
+**Corresponds to:** [Networks That Change Over Time](../ies-examples.md#101-networks-that-change-over-time)
+
+---
+
+#### Network Junction
+**File:** `network-junction.ttl`
+
+Models a road junction as a Network view, showing topological connectivity.
+
+**Key concepts:**
+- Extension classes for domain-specific types (TeeJunction, RoadSection)
+- Multiple Links meeting at a common Node
+- Road identifiers using `ies:isIdentifiedBy`
+
+**Use cases:** Road network modelling, routing algorithms, junction analysis
+
+**Corresponds to:** [Network View of a Road Junction](../ies-examples.md#102-network-view-of-a-road-junction)
 
 ---
 
@@ -295,6 +400,62 @@ WHERE {
 }
 ```
 
+**SPARQL Example - Find all Links meeting at a Node:**
+```sparql
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+PREFIX data: <http://informationexchangestandard.org/testdata#>
+
+SELECT ?link ?linkLabel ?node ?nodeLabel
+WHERE {
+    ?link ies:hasEnd ?node ;
+          rdfs:label ?linkLabel .
+    ?node rdfs:label ?nodeLabel .
+}
+```
+
+**SPARQL Example - Find Network composition at a specific time:**
+```sparql
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+PREFIX iso8601: <http://iso.org/iso8601#>
+
+SELECT ?element ?elementLabel
+WHERE {
+    ?networkState ies:isStateOf ?network ;
+                  ies:inPeriod iso8601:2024 .
+    ?elementState ies:isPartOf ?networkState ;
+                  ies:isStateOf ?element .
+    ?element rdfs:label ?elementLabel .
+}
+```
+
+**SPARQL Example - Find Entities with a specific Capacity:**
+```sparql
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+PREFIX ex: <http://example.com/ontology#>
+
+SELECT ?entity ?label
+WHERE {
+    ?entity ies:hasCapacity ex:ShelterDisplacedPersons ;
+            rdfs:label ?label .
+}
+```
+
+**SPARQL Example - Find when a Capacity was actually used:**
+```sparql
+PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+PREFIX ex: <http://example.com/ontology#>
+
+SELECT ?entity ?event ?startTime
+WHERE {
+    ?state a ex:ShelterDisplacedPersons ;
+           ies:isParticipationOf ?entity ;
+           ies:isParticipantIn ?event .
+    ?startBound ies:isStartOf ?event ;
+                ies:inPeriod ?period .
+    ?period ies:iso8601PeriodRepresentation ?startTime .
+}
+```
+
 ### Validating Against IES Common
 
 Ensure your instance data conforms to IES patterns:
@@ -338,6 +499,8 @@ All sample files are available in the project repository:
 ```
 /
 ├── assessment.ttl
+├── capacity-emergency-shelter.ttl
+├── capacity-water-distribution.ttl
 ├── characteristics-and-measures.ttl
 ├── communications.ttl
 ├── event-linkages.ttl
@@ -347,6 +510,9 @@ All sample files are available in the project repository:
 ├── hospital.ttl
 ├── identifiers.ttl
 ├── movement.ttl
+├── network.ttl
+├── network-evolution.ttl
+├── network-junction.ttl
 ├── period-of-time.ttl
 ├── relationships.ttl
 ├── sometimes.ttl
@@ -360,6 +526,7 @@ All sample files are available in the project repository:
 
 - [IES Examples Documentation](../ies-examples.md) - Detailed explanations with diagrams
 - [User Guides](../../user-guides/) - How to create IES data
+- [Capacity User Guide](../../user-guides/capacity.md) - Guide to the Capacity pattern
 - [Instantiation Patterns](../../user-guides/instantiation-patterns.md) - Standard patterns for creating instances
 - [IES Common Ontology](../../specification/ies-common.md) - Download the ontology
 
@@ -376,4 +543,4 @@ If you have developed IES examples that demonstrate useful patterns or solve com
 
 ---
 
-*© Crown Copyright 2020-2025 | Licensed under the MIT Licence*
+*© Crown Copyright 2020-2026 | Licensed under the MIT Licence*

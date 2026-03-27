@@ -3,9 +3,9 @@
 
 id: common
 name: IES Common
-version: "5.0.0"
+version: "5.1.0-rc2"
 status: release candidate
-namespace: "http://informationexchange.org/ont/ies/common/"
+namespace: "http://informationexchangestandard.org/ont/ies/common/"
 description: >
   The foundational IES ontology providing core classes and properties
   for 4D extensional modelling of entities, states, and events.
@@ -41,4 +41,4 @@ ontology_files:
   shacl: specification/ies-common.shacl
 
 # Last updated date
-last_updated: "2025-11-29"
+last_updated: "2026-01-27"

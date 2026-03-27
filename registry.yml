@@ -15,29 +15,29 @@ modules:
     name: IES Common
     domain: ~  # Foundational module, no specific domain
     path: docs/common
-    latest_version: "5.0.0"
+    latest_version: "5.1.0-rc2"
     status: release candidate
-    namespace: "http://informationexchange.org/ont/ies/common/"
+    namespace: "http://informationexchangestandard.org/ont/ies/common/"
     description: >
       The foundational IES ontology providing core classes and properties
       for 4D extensional modelling of entities, states, and events.
     dependencies: []
 
-# Planned modules (not yet published in this repository)
-# Uncomment and update as modules are added
-#
-#   building:
-#     name: IES Building
-#     domain: environment
-#     path: docs/environment/building
-#     latest_version: ~
-#     status: planned
-#     namespace: "http://informationexchange.org/ont/ies/environment/building/"
-#     description: >
-#       Ontology module for describing buildings, structures, and their
-#       spatial and functional characteristics.
-#     dependencies:
-#       - common
+  building:
+    name: IES Building
+    domain: environment
+    path: docs/environment/building
+    latest_version: "1.0.0-rc2"
+    status: development
+    namespace: "http://informationexchangestandard.org/ont/ies/environment/building/"
+    description: >
+      Ontology module for describing buildings, structures, and their
+      spatial and functional characteristics. Extends IES Common with
+      classes and properties for modelling building elements, spaces,
+      systems, and their relationships within the built environment.
+    dependencies:
+      - id: common
+        min_version: "5.0.0"
 
 # Composite releases document tested combinations of modules
 # These are tagged with format: ies-release-{yyyy.mm}

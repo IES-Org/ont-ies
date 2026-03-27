@@ -86,7 +86,7 @@ A **taxonomy** is a hierarchical classification system. Like ontologies, taxonom
 
 Consider this excerpt from the UK Defence Taxonomy:
 
-![Defence Estate Taxonomy](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt1.png)
+![Defence Estate Taxonomy](../diagrams/rendered/ies-specification-diagrams/ukdt1.png)
 
 A taxonomy works with words, and the relationships between words. In this case, as we descend the tree, the words
 become narrower in terms of what they refer to. This works well as a filing system—we can systematically store and find information. However, it's not precise about the **nature** of these elements or their **real-world relationships**.
@@ -98,12 +98,12 @@ logical rigour. The first enhancement required is to work out the nature of the 
 these elements are types of things, whilst others are physical things:
 An ontology adds semantic and logical rigour. Let's analyse the same content ontologically:
 
-![Defence Estate Ontology](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt2.png)
+![Defence Estate Ontology](../diagrams/rendered/ies-specification-diagrams/ukdt2.png)
 
 Although the broader-narrower relationship between the words holds true, the relationships between the things in the
 real world to which those words refer[^1] is somewhat more varied:
 
-![Defence Estate Ontology Relationships](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt3.png)
+![Defence Estate Ontology Relationships](../diagrams/rendered/ies-specification-diagrams/ukdt3.png)
 
 Aldershot and Catterick Garrisons are both instances of Garrisons. Barracks is a type of Barracks and Garrisons. Blenheim
 Barracks are part of Aldershot Garrison. By being this specific, an ontology allows much more automated processing
@@ -111,7 +111,7 @@ of information – e.g. counting the number of Garrisons, knowing that Blenheim 
 then computable, whereas that wouldn’t be possible with the less semantically rich broader-narrower relationships.
 Venn diagrams are sometimes a convenient way to show concepts in an ontology:
 
-![Defence Estate Ontology Venn](../assets/images/diagrams/rendered/ies-specification-diagrams/ukdt4.png)
+![Defence Estate Ontology Venn](../diagrams/rendered/ies-specification-diagrams/ukdt4.png)
 
 The classes are shown as ovals (sets) and the individual physical items as orange dots. The is-part-of relationship is
 also shown. Developing a good ontology is all about identifying this level of detail and using solid logical principles to

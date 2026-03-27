@@ -1,0 +1,127 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies: <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ont: <http://informationexchangestandard.org/testontology#> .
+@prefix data: <http://informationexchangestandard.org/testdata#> .
+
+# =============================================================================
+# Network Junction Example - Network View of a Road Junction
+# =============================================================================
+# This example demonstrates a Network view of a T-junction where the A3055
+# runs north-south and B3399 joins from the east. The Network pattern provides
+# a topological view suitable for routing and connectivity analysis.
+#
+# This simplified view complements the more detailed Connection pattern which
+# can capture physical extent, turn restrictions, and traffic flow directions.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Domain-specific extension classes
+# -----------------------------------------------------------------------------
+
+ont:HighwayNetwork rdfs:subClassOf ies:Network ;
+    rdfs:label "Highway Network"@en ;
+    rdfs:comment "A network of roads and road junctions."@en .
+
+ont:TeeJunction rdfs:subClassOf ies:Node ;
+    rdfs:label "Tee Junction"@en ;
+    rdfs:comment "A T-shaped road junction where one road joins another."@en .
+
+ont:RoadSection rdfs:subClassOf ies:Link ;
+    rdfs:label "Road Section"@en ;
+    rdfs:comment "A section of road between junctions."@en .
+
+# -----------------------------------------------------------------------------
+# The Network
+# -----------------------------------------------------------------------------
+
+data:IoWHighwayNetwork a ont:HighwayNetwork ;
+    rdfs:label "Isle of Wight Highway Network"@en ;
+    rdfs:comment "The road network on the Isle of Wight."@en .
+
+# -----------------------------------------------------------------------------
+# The Junction (Node)
+# -----------------------------------------------------------------------------
+# The T-junction is the point where three road sections meet.
+
+data:A3055_B3399_Junction a ont:TeeJunction ;
+    rdfs:label "A3055 to B3399 Junction"@en ;
+    rdfs:comment "T-junction where B3399 joins the A3055."@en ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+# -----------------------------------------------------------------------------
+# Road Sections (Links)
+# -----------------------------------------------------------------------------
+# Three road sections meet at the junction. Each has the junction as one end.
+
+data:A3055_North a ont:RoadSection ;
+    rdfs:label "A3055 north of B3399"@en ;
+    rdfs:comment "Section of A3055 running northward from the B3399 junction."@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+data:A3055_South a ont:RoadSection ;
+    rdfs:label "A3055 south of B3399"@en ;
+    rdfs:comment "Section of A3055 running southward from the B3399 junction."@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+data:B3399_East a ont:RoadSection ;
+    rdfs:label "B3399 east of A3055"@en ;
+    rdfs:comment "Section of B3399 running eastward from the A3055 junction."@en ;
+    ies:hasEnd data:A3055_B3399_Junction ;
+    ies:isPartOf data:IoWHighwayNetwork .
+
+# -----------------------------------------------------------------------------
+# Additional context: Road identifiers
+# -----------------------------------------------------------------------------
+# Road reference numbers can be captured as identifiers on the Links.
+
+data:A3055_North ies:isIdentifiedBy data:A3055_North_RoadNumber .
+data:A3055_North_RoadNumber a ies:Identifier ;
+    ies:representationValue "A3055"^^xsd:string .
+
+data:A3055_South ies:isIdentifiedBy data:A3055_South_RoadNumber .
+data:A3055_South_RoadNumber a ies:Identifier ;
+    ies:representationValue "A3055"^^xsd:string .
+
+data:B3399_East ies:isIdentifiedBy data:B3399_East_RoadNumber .
+data:B3399_East_RoadNumber a ies:Identifier ;
+    ies:representationValue "B3399"^^xsd:string .
+
+# =============================================================================
+# SPARQL Query Examples
+# =============================================================================
+#
+# Find all road sections that meet at a specific junction:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   SELECT ?roadSection ?label
+#   WHERE {
+#       ?roadSection ies:hasEnd data:A3055_B3399_Junction ;
+#                    rdfs:label ?label .
+#   }
+#
+# Find all junctions in a network:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   PREFIX ont: <http://informationexchangestandard.org/testontology#>
+#   SELECT ?junction ?label
+#   WHERE {
+#       ?junction a ont:TeeJunction ;
+#                 ies:isPartOf data:IoWHighwayNetwork ;
+#                 rdfs:label ?label .
+#   }
+#
+# Find roads by their reference number:
+#
+#   PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
+#   SELECT ?road ?label
+#   WHERE {
+#       ?road ies:isIdentifiedBy ?id .
+#       ?id ies:representationValue "A3055" .
+#       ?road rdfs:label ?label .
+#   }
+#
+# =============================================================================
