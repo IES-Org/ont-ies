@@ -1,13 +1,15 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX ies: <http://informationexchangestandard.org/ont/ies/common/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sf: <http://www.opengis.net/ont/sf#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-@PREFIX vann: <http://purl.org/vocab/vann/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix geof:    <http://www.opengis.net/def/function/geosparql/> .
+@prefix sf:      <http://www.opengis.net/ont/sf#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix ies:     <http://informationexchangestandard.org/ont/ies/common/> .
+
 
 <http://informationexchangestandard.org/ont/ies/common/>
     a owl:Ontology ;
