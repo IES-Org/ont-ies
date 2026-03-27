@@ -43,17 +43,17 @@ ies: a owl:Ontology ;
    dcterms:coverage "Classes, properties, and annotations for describing common concepts"@en-GB ;
    dcterms:type "IES Common Ontology"@en-GB ;
    dcterms:created "2020"^^xsd:gYear ;
-   dcterms:modified "2025-11-29"^^xsd:date ;
+   dcterms:modified "2025-03-27"^^xsd:date ;
    dcterms:publisher "UK Department for Business and Trade"@en-GB ;
    dcterms:language "en-GB" ;
    dcterms:license <https://spdx.org/licenses/MIT.html> ;
-   dcterms:rights "Crown Copyright 2020-2025"@en-GB ;
-   dcterms:dateCopyrighted "2025"^^xsd:gYear ;
+   dcterms:rights "Crown Copyright 2020-2026"@en-GB ;
+   dcterms:dateCopyrighted "2020"^^xsd:gYear ;
    vann:preferredNamespacePrefix "ies" ;
    vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies/common/" ;
-   owl:versionInfo "5.0.0" ;
-   owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.0/> ;
-   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.4.0/> .
+   owl:versionInfo "5.0.1" ;
+   owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.1/> ;
+   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/5.0.0/> .
 
 
 ies:Accent a rdfs:Class ;

@@ -19847,17 +19847,17 @@
     ],
     "http://www.w3.org/2002/07/owl#priorVersion": [
       {
-        "@id": "http://ies.data.gov.uk/ontology/ies/4.4.0/"
+        "@id": "http://ies.data.gov.uk/ontology/ies/5.0.0/"
       }
     ],
     "http://www.w3.org/2002/07/owl#versionIRI": [
       {
-        "@id": "http://informationexchangestandard.org/ont/ies/common/5.0.0/"
+        "@id": "http://informationexchangestandard.org/ont/ies/common/5.0.1/"
       }
     ],
     "http://www.w3.org/2002/07/owl#versionInfo": [
       {
-        "@value": "5.0.0"
+        "@value": "5.0.1"
       }
     ]
   },

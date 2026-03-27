@@ -3636,9 +3636,9 @@ ies: a owl:Ontology ;
     dcterms:type "IES Common Ontology"@en-GB ;
     vann:preferredNamespacePrefix "ies" ;
     vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies/common/" ;
-    owl:priorVersion <http://ies.data.gov.uk/ontology/ies/4.4.0/> ;
-    owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.0/> ;
-    owl:versionInfo "5.0.0" .
+    owl:priorVersion <http://ies.data.gov.uk/ontology/ies/5.0.0/> ;
+    owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.1/> ;
+    owl:versionInfo "5.0.1" .
 
 ies:aCopyOf a owl:ObjectProperty ;
     rdfs:label "a Copy Of"^^xsd:string ;
