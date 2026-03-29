@@ -1,0 +1,150 @@
+# Disposition Pattern Example: Conditional Disposition
+#
+# Demonstrates combining ies:eachHasDisposition and ies:hasDisposition
+# with a conditional ClassOfState - encoding the idea that a disposition
+# is available only when an Entity is in a particular State.
+#
+# Scenario: Mach 2 flight is permitted only when a Eurofighter is in
+# operational condition. A second aircraft (Fighter ABC-456) is present
+# but currently in a degraded state - it retains its whole-life
+# disposition but is not currently in the conditional class, so the
+# class-level assertion does not apply to it in its present State.
+#
+# Pattern:
+#   1. Define a conditional ClassOfState (ex:EurofighterInOperationalCondition)
+#      and attach eachHasDisposition to it. The disposition then applies to
+#      every State that is a member of that conditional class.
+#   2. An individual State typed as the conditional class inherits the
+#      class-level disposition and may also carry an explicit hasDisposition
+#      assertion (e.g. from a maintenance assessment).
+#   3. A degraded State is typed as a different ClassOfState; it does NOT
+#      inherit the class-level disposition, even though the whole-life
+#      Entity retains a whole-life hasDisposition assertion.
+#
+# Key properties demonstrated:
+#   ies:eachHasDisposition  - domain: ies:ClassOfState, range: ies:ClassOfState
+#   ies:hasDisposition      - domain: ies:State,        range: ies:ClassOfState
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:  <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:   <http://example.org/mil#> .
+@prefix data: <http://example.org/mil/data#> .
+
+# =============================================================================
+# Domain vocabulary
+# =============================================================================
+
+ex:FlyAtMach2 a ies:Capability ;
+    rdfs:label "Fly at Mach 2"@en-GB ;
+    rdfs:comment "The disposition to perform flight at Mach 2 or greater."@en-GB ;
+    rdfs:subClassOf ies:VehicleState .
+
+# The conditional ClassOfState. Only States typed as members of this class
+# inherit the eachHasDisposition assertion below.
+# Encoding the precondition as a ClassOfState (rather than bundling it into
+# the Capability label) keeps the Capability definition simple and the
+# precondition machine-readable.
+ex:EurofighterInOperationalCondition a ies:ClassOfState ;
+    rdfs:label "Eurofighter in operational condition"@en-GB ;
+    rdfs:comment """A class whose members are States of Eurofighter aircraft
+confirmed as being in operational condition. Attaching eachHasDisposition
+here (rather than to the Eurofighter class itself) encodes the precondition:
+only aircraft in operational condition have this disposition."""@en-GB ;
+    rdfs:subClassOf ies:VehicleState ;
+    ies:eachHasDisposition ex:FlyAtMach2 .
+
+# A separate ClassOfState for degraded aircraft - not in operational condition.
+# States typed as this class do NOT inherit the Mach 2 disposition.
+ex:EurofighterInDegradedCondition a ies:ClassOfState ;
+    rdfs:label "Eurofighter in degraded condition"@en-GB ;
+    rdfs:comment """A class whose members are States of Eurofighter aircraft
+whose operational readiness is degraded (e.g. an engine fault). Members of
+this class do not inherit the eachHasDisposition for Mach 2 flight."""@en-GB ;
+    rdfs:subClassOf ies:VehicleState .
+
+# =============================================================================
+# Fighter XYZ-123: in operational condition (2024)
+# =============================================================================
+
+data:FighterXYZ-123 a ies:Aircraft ;
+    rdfs:label "Fighter XYZ-123"@en-GB .
+
+# A temporal State of the aircraft, confirmed as operational after maintenance.
+# Typed as ex:EurofighterInOperationalCondition, so it:
+#   (a) inherits the class-level disposition via eachHasDisposition, AND
+#   (b) carries an explicit hasDisposition from the post-maintenance assessment.
+# Both assertions express the same modal relationship; an implementation may
+# rely on (a) alone or assert both for explicitness.
+data:FighterXYZ-123-Operational-2024 a ex:EurofighterInOperationalCondition ;
+    rdfs:label "Fighter XYZ-123 in operational condition (2024)"@en-GB ;
+    rdfs:comment """Post-maintenance State of Fighter XYZ-123. Typed as the
+conditional class, so it inherits the eachHasDisposition assertion.
+The additional hasDisposition records the result of the specific maintenance
+assessment."""@en-GB ;
+    ies:isStateOf data:FighterXYZ-123 ;
+    ies:inPeriod data:Period2024 ;
+    ies:hasDisposition ex:FlyAtMach2 .
+
+data:Period2024 a ies:ParticularPeriod ;
+    rdfs:label "2024"@en-GB ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:gYear .
+
+# =============================================================================
+# Fighter ABC-456: currently degraded (2024)
+# =============================================================================
+
+data:FighterABC-456 a ies:Aircraft ;
+    rdfs:label "Fighter ABC-456"@en-GB ;
+    rdfs:comment """A second Eurofighter. As a whole-life Entity instance,
+it is also a State (via the Entity-as-State pattern) and retains a whole-life
+hasDisposition for Mach 2 - but its current temporal State is degraded, so the
+class-level eachHasDisposition from ex:EurofighterInOperationalCondition does
+not apply to it in its present condition."""@en-GB ;
+    ies:hasDisposition ex:FlyAtMach2 .
+
+# Current State of ABC-456: degraded due to an engine fault.
+# Typed as ex:EurofighterInDegradedCondition - NOT as
+# ex:EurofighterInOperationalCondition, so the class-level disposition
+# for Mach 2 flight does NOT apply to this State.
+data:FighterABC-456-Degraded-2024 a ex:EurofighterInDegradedCondition ;
+    rdfs:label "Fighter ABC-456 in degraded condition (2024)"@en-GB ;
+    rdfs:comment """A State of Fighter ABC-456 during a period of engine fault.
+Not typed as ex:EurofighterInOperationalCondition, so the class-level
+eachHasDisposition for Mach 2 does not apply to this State, even though the
+whole-life Entity retains a hasDisposition assertion."""@en-GB ;
+    ies:isStateOf data:FighterABC-456 ;
+    ies:inPeriod data:Period2024 .
+
+# =============================================================================
+# Actualisation: Fighter XYZ-123 flies at Mach 2
+# =============================================================================
+
+data:Sortie20240717 a ies:Event ;
+    rdfs:label "Sortie 20240717"@en-GB .
+
+data:SortieStart a ies:BoundingState ;
+    ies:isStartOf data:Sortie20240717 ;
+    ies:inPeriod data:Period20240717T0900 .
+
+data:SortieEnd a ies:BoundingState ;
+    ies:isEndOf data:Sortie20240717 ;
+    ies:inPeriod data:Period20240717T1130 .
+
+data:Period20240717T0900 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T09:00:00Z"^^xsd:string .
+
+data:Period20240717T1130 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T11:30:00Z"^^xsd:string .
+
+# Actualisation: this State IS a member of ex:FlyAtMach2 (rdf:type),
+# not merely disposed to it (hasDisposition).
+data:FighterXYZ-123-Flying-20240717 a ex:FlyAtMach2 ;
+    rdfs:label "Fighter XYZ-123 flying at Mach 2 on 2024-07-17"@en-GB ;
+    rdfs:comment """Actualisation of the Mach 2 disposition. The State is typed
+as ex:FlyAtMach2 (actual class membership) rather than connected via
+hasDisposition (modal potential). Fighter ABC-456, whose current State lacks
+the disposition, does not participate in this sortie."""@en-GB ;
+    ies:isParticipationOf data:FighterXYZ-123 ;
+    ies:isParticipantIn data:Sortie20240717 .

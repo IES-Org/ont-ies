@@ -1,0 +1,113 @@
+# Disposition Pattern Example: Individual-Level Disposition
+#
+# Demonstrates ies:hasDisposition - asserting that a specific State instance
+# has a particular disposition.
+#
+# Scenario: Fighter XYZ-123 has completed a post-maintenance flight test
+# and has been assessed as capable of Mach 2 flight. Two patterns are shown:
+#
+#   (a) hasDisposition on the whole-life Entity instance - possible because
+#       ies:Aircraft is a sub-class of ies:VehicleState, which is a
+#       sub-class of ies:State, satisfying the domain of hasDisposition.
+#
+#   (b) hasDisposition on an explicit temporal State - preferred when the
+#       disposition holds only during a bounded period (e.g. after a
+#       maintenance check confirms operational condition).
+#
+# Key properties demonstrated:
+#   ies:hasDisposition - domain: ies:State, range: ies:ClassOfState
+#
+# Note: hasDisposition is a sub-property of ies:relationship only.
+# It does NOT entail rdf:type, so the aircraft is not inferred to BE a
+# member of ex:FlyAtMach2 - only that it CAN be.
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ies:  <http://informationexchangestandard.org/ont/ies/common/> .
+@prefix ex:   <http://example.org/mil#> .
+@prefix data: <http://example.org/mil/data#> .
+
+# =============================================================================
+# Domain vocabulary
+# =============================================================================
+
+ex:FlyAtMach2 a ies:Capability ;
+    rdfs:label "Fly at Mach 2"@en-GB ;
+    rdfs:comment "The disposition to perform flight at Mach 2 or greater."@en-GB ;
+    rdfs:subClassOf ies:VehicleState .
+
+# =============================================================================
+# Pattern (a): Disposition on the whole-life Entity
+# =============================================================================
+
+# The aircraft as a whole-life Entity. Because ies:Aircraft is a sub-class
+# of ies:VehicleState (which is a sub-class of ies:State), this instance
+# satisfies the domain of hasDisposition directly.
+# Use this pattern when the disposition applies throughout the aircraft's
+# existence and no temporal qualification is needed.
+data:FighterXYZ-123 a ies:Aircraft ;
+    rdfs:label "Fighter XYZ-123"@en-GB ;
+    rdfs:comment "A specific Eurofighter Typhoon airframe."@en-GB ;
+    ies:hasDisposition ex:FlyAtMach2 .
+
+# =============================================================================
+# Pattern (b): Disposition on an explicit temporal State
+# =============================================================================
+
+# A State of Fighter XYZ-123 following a post-maintenance check in 2024.
+# The disposition is scoped to this period - the aircraft was assessed as
+# being in operational condition during this State.
+data:FighterXYZ-123-Operational-2024 a ies:VehicleState ;
+    rdfs:label "Fighter XYZ-123 in operational condition (2024)"@en-GB ;
+    rdfs:comment """A State of Fighter XYZ-123 following post-maintenance
+assessment in 2024. The hasDisposition assertion records the result of
+that assessment: the aircraft, in this State, has the disposition to fly
+at Mach 2."""@en-GB ;
+    ies:isStateOf data:FighterXYZ-123 ;
+    ies:inPeriod data:Period2024 ;
+    ies:hasDisposition ex:FlyAtMach2 .
+
+data:Period2024 a ies:ParticularPeriod ;
+    rdfs:label "2024"@en-GB ;
+    ies:iso8601PeriodRepresentation "2024"^^xsd:gYear .
+
+# =============================================================================
+# Actualisation: Fighter XYZ-123 actually flies at Mach 2
+# =============================================================================
+
+# Having a disposition is distinct from using it. When the aircraft
+# actually flies at Mach 2, a State is created that IS a member of
+# ex:FlyAtMach2 (via rdf:type). This is the actualisation of the disposition.
+
+data:Sortie20240717 a ies:Event ;
+    rdfs:label "Sortie 20240717"@en-GB ;
+    rdfs:comment "A training sortie on 17 July 2024."@en-GB .
+
+data:SortieStart a ies:BoundingState ;
+    rdfs:label "Start of Sortie 20240717"@en-GB ;
+    ies:isStartOf data:Sortie20240717 ;
+    ies:inPeriod data:Period20240717T0900 .
+
+data:SortieEnd a ies:BoundingState ;
+    rdfs:label "End of Sortie 20240717"@en-GB ;
+    ies:isEndOf data:Sortie20240717 ;
+    ies:inPeriod data:Period20240717T1130 .
+
+data:Period20240717T0900 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T09:00:00Z"^^xsd:string .
+
+data:Period20240717T1130 a ies:ParticularPeriod ;
+    ies:iso8601PeriodRepresentation "2024-07-17T11:30:00Z"^^xsd:string .
+
+# A State of the aircraft during the sortie - this is the actualisation.
+# Note: typed as ex:FlyAtMach2 via rdf:type (actual membership of the class),
+# NOT via hasDisposition (which would only record the potential).
+data:FighterXYZ-123-Flying-20240717 a ex:FlyAtMach2 ;
+    rdfs:label "Fighter XYZ-123 flying at Mach 2 on 2024-07-17"@en-GB ;
+    rdfs:comment """Fighter XYZ-123 actualising its Mach 2 disposition during
+Sortie 20240717. This State is typed as ex:FlyAtMach2 (membership of the
+class), distinguishing actuality from the modal potential recorded via
+hasDisposition on data:FighterXYZ-123-Operational-2024."""@en-GB ;
+    ies:isParticipationOf data:FighterXYZ-123 ;
+    ies:isParticipantIn data:Sortie20240717 .
