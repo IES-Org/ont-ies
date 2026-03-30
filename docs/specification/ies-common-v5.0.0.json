@@ -5482,7 +5482,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.\n\nGeoJSON mandates use of WGS 84 coordinate system - see IETF RFC 7946"
+        "@value": "GeoJSON is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.\n\nThe coordinate reference system for all GeoJSON coordinates is a geographic CRS using the WGS 84 datum (longitude and latitude in decimal degrees) – see IETF RFC 7946."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [

@@ -3794,7 +3794,7 @@ A unique Identifier attributed to the respective Location
 
 `<a href="#417C1F4E-6A5D-4631-B275-8E982252791A"><font color="#0000ff">``<u>`GeoJSON `</u></font>``</a>` is an open standard `<a href="#EF2C13D4-7106-4799-BB72-7CD47714F257"><font color="#0000ff">``<u>`format `</u></font>``</a>` designed for representing simple geographical features, along with their non-spatial attributes. It is based on JSON, the JavaScript Object Notation.
 
-GeoJSON mandates use of WGS 84 coordinate system - see IETF RFC 7946
+The coordinate reference system for all GeoJSON coordinates is a geographic CRS using the WGS 84 datum (longitude and latitude in decimal degrees) – see IETF RFC 7946.
 
 ### `<a id="ea165884-8df6-4aa6-848c-c682f6969d9f"></a>`GeoObject
 
