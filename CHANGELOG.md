@@ -4,13 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keep-change-log] and this project adheres to [Semantic Versioning][semver].
 
-## [5.0.2] - 2026-03-27 Patch release
+## [5.0.3] - 2026-03-30 Patch Release
+1. Update boilerplate content
+2. Update `MAINTAINERS.md` file with current maintainers and contact information
 
-1. Fix GeoJSON comment.
+## [5.0.2] - 2026-03-31 Patch release
+1. Replaced example in user guides.
 
 ## [5.0.1] - 2026-03-27 Patch release
-
-1. Fix broken link in `CONTRIBUTING.md`
+1. Improve `GeoJSON` rdfs:comment with clearer reference to the standard.
 
 ## [5.0.0] - 2025-11-29 Major release
 

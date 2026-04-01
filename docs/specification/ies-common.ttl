@@ -1,24 +1,81 @@
-# MIT License
+# NDTP InnerSource License
 #
-# Crown Copyright (c) 2025
+# Repository: `private-ospo-resources`
+# Description: `Defines the licensing terms for the source code in this repository.`
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
+# Version
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# NDTP InnerSource License – Version 1.0
+# Issued by: National Digital Twin Programme (NDTP)
+# Effective Date: 9 July 2025
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# Copyright
+#
+# © Crown Copyright 2026.
+# This work has been developed by the **National Digital Twin Programme (NDTP)** and is legally attributed to the **Department for Business and Trade (UK)** as the governing entity.
+#
+# This repository is **not open source**.
+# Its contents are licensed under the terms of this **NDTP InnerSource License**, unless and until it is formally published under an approved open source licence by the NDTP Management Team.
+#
+# 1. Purpose
+#
+# This repository supports InnerSource development practices within the NDTP. It enables collaborative development by internal teams and authorised suppliers, in a controlled and non-public environment.
+#
+# 2. Licensing Status
+#
+# This work is **not licensed under an open source licence**.
+# It must not be published, distributed, sublicensed, or shared externally without the **explicit, written approval** of the NDTP Management Team.
+#
+# The NDTP InnerSource Licence permits internal collaboration only. No part of this repository may be used or disclosed beyond the authorised delivery context.
+#
+# 3. Intellectual Property
+#
+# All rights, including intellectual property rights in this code and associated materials, are owned by the NDTP.
+#
+# Where contributions are made by suppliers or delivery partners, those contributions are accepted on the basis that **full intellectual property rights** belong to the Crown under the terms of their contract.
+#
+# 4. Permitted Use
+#
+# You may:
+#
+# - View, use, and modify the code as required to fulfil your responsibilities under the NDTP.
+# - Collaborate within authorised NDTP teams and with approved suppliers under existing contracts.
+#
+# You may not:
+#
+# - Share, publish, or release this repository publicly.
+# - Fork, clone, or redistribute this code outside approved NDTP channels.
+# - Apply any license other than the NDTP InnerSource License to this repository or its contents, unless instructed by the NDTP Management Team.
+#
+# 5. Future Publication
+#
+# At the discretion of the NDTP Management Team, this repository may later be designated for release under an approved open source licence.
+#
+# Any such designation must follow NDTP's internal governance processes.
+#
+# Until such designation is explicitly made and executed, this repository remains **confidential and proprietary**.
+#
+# 6. Enforcement
+#
+# Any unauthorised disclosure, publication, or redistribution of this repository or its contents may:
+#
+# - Constitute a breach of contract
+# - Trigger formal investigation
+# - Result in legal, disciplinary, or commercial action, including revocation of access rights
+#
+# All actions will be escalated to the NDTP Management Team for appropriate handling.
+#
+# Contact
+#
+# For all enquiries regarding licensing, publication status, or contributor rights, please contact:
+#
+# NDTP Management Team
+# Department for Business and Trade (UK)
+# NDTP@BUSINESSANDTRADE.GOV.UK
+#
+# End of NDTP InnerSource Licence – Version 1.0
+#----------------------------------------------------------------------------------------------------
+
 
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -43,17 +100,16 @@ ies: a owl:Ontology ;
    dcterms:coverage "Classes, properties, and annotations for describing common concepts"@en-GB ;
    dcterms:type "IES Common Ontology"@en-GB ;
    dcterms:created "2020"^^xsd:gYear ;
-   dcterms:modified "2025-03-27"^^xsd:date ;
+   dcterms:modified "2026-03-30"^^xsd:date ;
    dcterms:publisher "UK Department for Business and Trade"@en-GB ;
    dcterms:language "en-GB" ;
-   dcterms:license <https://spdx.org/licenses/MIT.html> ;
    dcterms:rights "Crown Copyright 2020-2026"@en-GB ;
    dcterms:dateCopyrighted "2020"^^xsd:gYear ;
    vann:preferredNamespacePrefix "ies" ;
    vann:preferredNamespaceUri "http://informationexchangestandard.org/ont/ies/common/" ;
-   owl:versionInfo "5.0.1" ;
-   owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.1/> ;
-   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/5.0.0/> .
+   owl:versionInfo "5.0.3" ;
+   owl:versionIRI <http://informationexchangestandard.org/ont/ies/common/5.0.3/> ;
+   owl:priorVersion <http://ies.data.gov.uk/ontology/ies/5.0.2/> .
 
 
 ies:Accent a rdfs:Class ;
