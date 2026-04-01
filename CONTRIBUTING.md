@@ -10,7 +10,7 @@ The Department for Business and Trade (DBT) is the current custodian of this rep
 
 IES follows an **open-source governance model**, where all code is **publicly available** under open-source licences, and collaboration is invited from **approved contributors**. While direct code contributions from the general public are not currently accepted, we **welcome feedback, issue reporting, and documentation suggestions**.
 
-To see a list of contributing organisations and individuals, refer to [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) and the GitHub contributor insights page at [Contributors](https://github.com/IES-Org/ies/graphs/contributors).
+To see a list of contributing organisations and individuals, refer to [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) and the GitHub contributor insights page at [Contributors](https://github.com/IES-Org/ont-ies/graphs/contributors).
 
 ---
 

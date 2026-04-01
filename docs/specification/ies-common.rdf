@@ -2979,9 +2979,9 @@ The CheckIn may be part of another Event - e.g. an EntertainmentEvent or Transit
     <dcterms:dateCopyrighted rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2025</dcterms:dateCopyrighted>
     <vann:preferredNamespacePrefix>ies</vann:preferredNamespacePrefix>
     <vann:preferredNamespaceUri>http://informationexchangestandard.org/ont/ies/common/</vann:preferredNamespaceUri>
-    <owl:versionInfo>5.0.0</owl:versionInfo>
-    <owl:versionIRI rdf:resource="http://informationexchangestandard.org/ont/ies/common/5.0.0/"/>
-    <owl:priorVersion rdf:resource="http://ies.data.gov.uk/ontology/ies/4.4.0/"/>
+    <owl:versionInfo>5.0.1</owl:versionInfo>
+    <owl:versionIRI rdf:resource="http://informationexchangestandard.org/ont/ies/common/5.0.1/"/>
+    <owl:priorVersion rdf:resource="http://ies.data.gov.uk/ontology/ies/5.0.0/"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://informationexchangestandard.org/ont/ies/common/GeoPoint">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
