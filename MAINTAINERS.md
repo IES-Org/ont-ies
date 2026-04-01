@@ -1,6 +1,5 @@
 # Maintainers
-
-**Repository:** `Information Exchange Standard (IES)`  
+**Repository:** `Information Exchange Standard (IES) ont-ies`  
 **Description:** `Lists maintainers responsible for reviewing issues, security, and documentation updates.`
 
 ## Introduction
@@ -12,9 +11,7 @@ If you need to report a problem, suggest improvements, or seek guidance on using
 ---
 
 ## Responsibilities of Maintainers
-
 Maintainers are responsible for:
-
 - Reviewing and responding to **GitHub Issues**
 - Assessing **documentation updates and corrections**
 - Overseeing **code updates** developed by approved suppliers
@@ -25,30 +22,27 @@ The Information Exchange Standard does not accept public code contributions, but
 ---
 
 ## Current Maintainers
-
-| Name      | Organisation | Role               | Contact                      |
-| --------- | ------------ | ------------------ | ---------------------------- |
-| Dave Dyke | Agilit Ltd   | Lead Maintainer    | https://github.com/aigora-de |
-| Dave Dyke | Agilit Ltd   | Security Contact   | https://github.com/aigora-de |
-| Dave Dyke | Agilit Ltd  | Documentation Lead | https://github.com/aigora-de |
+ 
+| Name      | Organisation | Role | Contact                  |
+|-----------|--------------|------|--------------------------|
+| Alex Luck | IES-SG Chair | Lead Maintainer | https://github.com/ndtpd |
+| Alex Luck | IES-SG Chair | Security Contact | https://github.com/ndtpd |
+| Alex Luck | IES-SG Chair | Documentation Lead | https://github.com/ndtpd |
 
 For general issues, please **open a GitHub issue** rather than contacting maintainers directly.
 
 ---
 
 ## Escalation Contacts
-
 If you need to escalate an issue that has not been addressed within a reasonable time:
-
 1. **Security vulnerabilities** – Follow the responsible disclosure process in [SECURITY.md](SECURITY.md).
-2. **Governance and policy queries** – Contact DBT at [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20GitHub%20Request%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20your%20request%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue%20or%20query.%0D%0A-%20Relevant%20context%20or%20background.%0D%0A-%20Any%20supporting%20documentation%20or%20links.%0D%0A%0D%0A%3C%3CDetails%20of%20your%20request%20or%20concern%3E%3E).
+2. **Governance and policy queries** – Contact DBT at **[common@informationexchangestandard.org](mailto:common@informationexchangestandard.org)**.
 3. **Urgent operational issues** – Contact the **Lead Maintainer** listed above.
 
 ---
 
 ## Updating this File
-
-Maintainer details may change over time. If you are an authorised maintainer and need to update this file, please request changes through the IES GitHub administrators via [IES@businessandtrade.gov.uk](mailto:IES@businessandtrade.gov.uk?subject=IES%20GitHub%20Request%20-%20re%3A%20ONT-IES&body=Please%20provide%20detailed%20information%20about%20your%20request%2C%20including%3A%0D%0A-%20A%20clear%20description%20of%20the%20issue%20or%20query.%0D%0A-%20Relevant%20context%20or%20background.%0D%0A-%20Any%20supporting%20documentation%20or%20links.%0D%0A%0D%0A%3C%3CDetails%20of%20your%20request%20or%20concern%3E%3E).
+Maintainer details may change over time. If you are an authorised maintainer and need to update this file, please request changes through the IES GitHub administrators via **[common@informationexchangestandard.org](mailto:common@informationexchangestandard.org)**.
 
 ---
 
