@@ -25,9 +25,9 @@ The Information Exchange Standard does not accept public code contributions, but
  
 | Name      | Organisation | Role | Contact                  |
 |-----------|--------------|------|--------------------------|
-| Alex Luck | IES-SG Chair | Lead Maintainer | https://github.com/ndtpd |
-| Alex Luck | IES-SG Chair | Security Contact | https://github.com/ndtpd |
-| Alex Luck | IES-SG Chair | Documentation Lead | https://github.com/ndtpd |
+| Alex Luck | IES-SG Chair | Lead Maintainer | https://github.com/ndtppd |
+| Alex Luck | IES-SG Chair | Security Contact | https://github.com/ndtppd |
+| Alex Luck | IES-SG Chair | Documentation Lead | https://github.com/ndtppd |
 
 For general issues, please **open a GitHub issue** rather than contacting maintainers directly.
 
