@@ -33,7 +33,7 @@ For contact details, refer to [MAINTAINERS.md](MAINTAINERS.md).
 
 If you encounter a bug, error, or inconsistency, please follow these steps:
 
-1. Check for an existing issue under [Issues](https://github.com/IES-Org/ies/issues).
+1. Check for an existing issue under [Issues](https://github.com/IES-Org/ont-ies/issues).
 2. Open a new issue if none exists. Use one of the available templates.
 3. Provide a clear and detailed description, including steps to reproduce if applicable.
 4. Use labels (bug, documentation, enhancement, etc.) where appropriate.
