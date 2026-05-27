@@ -83,7 +83,7 @@ rapper -i turtle -o ntriples ies-common.ttl > ies-common.nt
 | **Modified** | 2026-03-30                                               |
 | **Publisher** | UK Department for Business and Trade                     |
 | **Language** | en-GB (British English)                                  |
-| **Licence** | NDTP Inner Source                                        |
+| **Licence** | MIT Licence                                              |
 | **Namespace** | `http://informationexchangestandard.org/ont/ies/common/` |
 | **Preferred Prefix** | `ies`                                                    |
 
