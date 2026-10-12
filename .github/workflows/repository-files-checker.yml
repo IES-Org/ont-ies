@@ -1,0 +1,422 @@
+# SPDX-License-Identifier: MIT
+# © Crown Copyright. This work forms part of the Information Exchange Standard initiative and is currently under the custodianship of the UK's Department for Business, Innovation, Science and Trade (BIST), acting on behalf of a cross-government group of stakeholders.
+
+name: Test for presence of required repository documentation files
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+  workflow_dispatch:
+
+jobs:
+  required-repository-documentation-checks:
+    permissions:
+      contents: read
+    if: github.actor != 'dependabot[bot]' &&
+      (github.event.repository.private == false ||
+      (github.event.repository.private == true &&
+      contains(join(github.event.pull_request.labels.*.name), 'public-release-preparation')))
+    runs-on: ubuntu-latest
+    outputs:
+      summary-table: ${{ steps.summarise_results.outputs.summaryTable }}
+      has-results: ${{ steps.summarise_results.outputs.hasResults }}
+
+    steps:
+      - name: Fetch GitHub App token for target repo
+        id: target_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.IES_PLATCO_APP_CLIENT_ID }}
+          private-key: ${{ secrets.IES_PLATCO_APP_PRIVATE_KEY }}
+          permission-contents: read
+
+      - name: Fetch GitHub App token for Platform and Communications Team source repo (read-only)
+        id: ies_platco_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.IES_PLATCO_APP_CLIENT_ID }}
+          private-key: ${{ secrets.IES_PLATCO_APP_PRIVATE_KEY }}
+          owner: IES-Org
+          repositories: ies-platco-resources
+          permission-contents: read
+
+      - name: Checkout target repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          token: ${{ steps.target_token.outputs.token }}
+
+      - name: Checkout Platform and Communications Team source repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: IES-Org/ies-platco-resources
+          path: ies-platco-resources
+          token: ${{ steps.ies_platco_token.outputs.token }}
+
+      - name: Checkout archetypes source repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: IES-Org/ies-archetypes
+          path: archetypes
+
+      - name: Test for presence of required documentation files and variation from templated content
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        if: success() || failure()
+        with:
+          script: |
+            const { existsSync, readFileSync, writeFileSync } = require('fs');
+
+            const checklistPath = 'ies-platco-resources/required-repository-documentation-files.txt';
+            const checklist = readFileSync(checklistPath, 'utf8')
+              .split('\n')
+              .map((line) => line.trim())
+              .filter((line) => line && !line.startsWith('#'));
+
+            const results = [];
+            const prHead = context.payload.pull_request?.head;
+            const repoFullName = prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown';
+            const commitSha = prHead?.sha ?? process.env.GITHUB_SHA ?? 'unknown';
+
+            for (const relativePath of checklist) {
+              const record = {
+                path: relativePath,
+                status: 'passed',
+                checks: {
+                  exists: false,
+                  differsFromTemplate: null,
+                },
+                failureReasons: [],
+              };
+
+              const targetPath = relativePath;
+              const archetypePath = `archetypes/${relativePath}`;
+
+              const fileExists = existsSync(targetPath);
+              record.checks.exists = fileExists;
+
+              if (!fileExists) {
+                record.status = 'failed';
+                record.failureReasons.push('missing or misnamed');
+                core.info(`Missing or misnamed required repository documentation file in target repository: ${targetPath}`);
+                results.push(record);
+                continue;
+              }
+
+              const targetContent = readFileSync(targetPath, 'utf8');
+
+              if (existsSync(archetypePath)) {
+                const archetypeContent = readFileSync(archetypePath, 'utf8');
+                const differsFromTemplate = targetContent !== archetypeContent;
+                record.checks.differsFromTemplate = differsFromTemplate;
+
+                if (!differsFromTemplate) {
+                  record.failureReasons.push('unchanged from archetype template');
+                  core.info(`Required repository documentation file unchanged from archetypes template: ${targetPath}`);
+                } else {
+                  core.info(`Required repository documentation file present and different from the archetypes template: ${targetPath}`);
+                }
+              } else {
+                record.checks.differsFromTemplate = null;
+                core.info(`Template file missing for ${relativePath}; skipping template comparison.`);
+              }
+
+              record.status = record.failureReasons.length > 0 ? 'failed' : 'passed';
+              results.push(record);
+            }
+
+            const passed = results.filter((result) => result.status === 'passed').length;
+            const failed = results.length - passed;
+            const score = results.length > 0 ? Number((passed / results.length).toFixed(2)) : 0;
+
+            const report = {
+              runMetadata: {
+                checklistFile: checklistPath,
+                timestamp: new Date().toISOString(),
+                repo: repoFullName,
+                commit: commitSha,
+                checkType: 'required repository documentation',
+              },
+              files: results,
+              summary: {
+                total: results.length,
+                passed,
+                failed,
+                score,
+              },
+            };
+
+            const reportPath = 'required-repository-documentation-results.json';
+            writeFileSync(reportPath, JSON.stringify(report, null, 2));
+            core.info(`Wrote checklist summary to ${reportPath}`);
+
+            if (failed > 0) {
+              const failedFiles = results
+                .filter((result) => result.status === 'failed')
+                .map((result) => result.path);
+              core.setFailed(`The following files failed checks:\n${failedFiles.join('\n')}`);
+            } else {
+              core.info('All required repository documentation files are present and have been updated from their original templated content.');
+            }
+
+      - name: Check GitHub template files are present
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        if: success() || failure()
+        with:
+          script: |
+            const { existsSync, writeFileSync  } = require('fs');
+
+            core.info('Checking for pull request and issue template files');
+
+            const filesToCheck = [
+              '.github/PULL_REQUEST_TEMPLATE.md'
+            ];
+
+            const results = filesToCheck.map((filePath) => {
+              const exists = existsSync(filePath);
+              return {
+                path: filePath,
+                status: exists ? 'passed' : 'failed',
+                checks: {
+                  exists,
+                  differsFromTemplate: null,
+                },
+                failureReasons: exists ? [] : ['missing or misnamed'],
+              };
+            });
+
+            const passed = results.filter((result) => result.status === 'passed').length;
+            const failed = results.length - passed;
+            const score = results.length > 0 ? Number((passed / results.length).toFixed(2)) : 0;
+
+            const prHead = context.payload.pull_request?.head;
+            const report = {
+              runMetadata: {
+                timestamp: new Date().toISOString(),
+                repo: prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown',
+                commit: prHead?.sha ?? process.env.GITHUB_SHA ?? 'unknown',
+                checkType: 'template',
+              },
+              files: results,
+              summary: {
+                total: results.length,
+                passed,
+                failed,
+                score,
+              },
+            };
+
+            const reportPath = 'template-results.json';
+            writeFileSync(reportPath, JSON.stringify(report, null, 2));
+            core.info(`Wrote template checklist summary to ${reportPath}`);
+
+            if (failed > 0) {
+              const missingTemplates = results
+                .filter((result) => result.status === 'failed')
+                .map((result) => result.path);
+
+              core.info('');
+              core.info('Required GitHub template files were not found or did not match expected casing:');
+              missingTemplates.forEach((file) => core.info(`  - ${file}`));
+              core.info('');
+              core.info('These files help improve project collaboration and are considered best practice.');
+              core.info('These need to be included in repository contents to improve the developer and repository consumer experience.');
+              core.setFailed('Missing or misnamed GitHub template files.');
+            } else {
+              core.info('Required pull request and issue template files present.');
+            }
+
+      - name: Generate summary
+        id: summarise_results
+        if: always()
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { existsSync, readFileSync } = require('fs');
+
+            const reportFiles = [
+              'required-repository-documentation-results.json',
+              'template-results.json',
+            ];
+
+            const reports = reportFiles
+              .filter((reportPath) => {
+                const present = existsSync(reportPath);
+                if (!present) {
+                  core.info(`Summary step skipping missing report: ${reportPath}`);
+                }
+                return present;
+              })
+              .map((reportPath) => JSON.parse(readFileSync(reportPath, 'utf8')));
+
+            if (reports.length === 0) {
+              core.info('No report files found; skipping combined summary.');
+              core.setOutput('hasResults', 'false');
+              return;
+            }
+
+            const allResults = reports.flatMap((report) =>
+              report.files.map((file) => ({
+                ...file,
+                category: report.runMetadata?.checkType ?? 'unknown',
+                repo: report.runMetadata?.repo ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown',
+                commit: report.runMetadata?.commit ?? process.env.GITHUB_SHA ?? 'unknown',
+              })),
+            );
+
+            const combinedTableMarkdown = [
+              '| File |  Result | Details |',
+              '| :--- | :---: | :--- |',
+              ...allResults.map((result) => {
+                const href = `https://github.com/${result.repo}/blob/${result.commit}/${result.path}`;
+                const details = result.failureReasons.length > 0
+                  ? result.failureReasons.join('; ')
+                  : 'Compliant';
+                const statusLabel = result.status === 'passed' ? 'Pass' : 'Fail';
+                return `| [${result.path}](${href}) | ${statusLabel} | ${details} |`;
+              }),
+            ].join('\n');
+
+            const total = allResults.length;
+            const passed = allResults.filter((result) => result.status === 'passed').length;
+            const failed = total - passed;
+            const score = total > 0 ? (passed / total) * 100 : 0;
+            const summary = { total, passed, failed, score };
+
+            const overallStatus = summary.failed === 0
+              ? 'Overall status: PASS (all files compliant).'
+              : ' Overall status: FAIL (see table below for details).';
+
+            const summaryMarkdown = [
+              '| Total Files | Passed | Failed | Score |',
+              '| ---: | ---: | ---: | ---: |',
+              `| ${summary.total} | ${summary.passed} | ${summary.failed} | ${summary.score.toFixed(0)}% |`
+            ].join('\n');
+
+            const prHead = context.payload.pull_request?.head;
+            const repoFullName = prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown';
+            const fullSha = prHead?.sha ?? process.env.GITHUB_SHA ?? '';
+            const shortSha = fullSha?.slice(0, 7) ?? 'unknown';
+            const commitUrl = fullSha
+              ? `https://github.com/${repoFullName}/commit/${fullSha}`
+              : null;
+            const commitLine = commitUrl
+              ? `Results from commit [\`${shortSha}\`](${commitUrl}).`
+              : `Results from commit \`${shortSha}\`.`;
+
+            await core.summary
+              .addRaw('# Required repository documentation check results\n', true)
+              .addRaw(`\n${combinedTableMarkdown}\n`, true)
+              .addRaw('\n# Summary\n', true)
+              .addRaw(`\n${overallStatus}\n`, true)
+              .addRaw(`\n${summaryMarkdown}\n`, true)
+              .addRaw(`\n${commitLine}\n`, true)
+              .write();
+
+            core.setOutput('hasResults', 'true');
+            core.setOutput('summaryTable', summaryMarkdown);
+
+            if (summary.failed > 0) {
+              core.setFailed('required repository documentation checks detected one or more failing files.');
+            }
+
+      - name: Upload required repository documentation result artifacts
+        if: ${{ steps.summarise_results.outputs.hasResults == 'true' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: required-repository-documentation-checks-${{ github.run_id }}
+          retention-days: 30
+          path: |
+            required-repository-documentation-results.json
+            template-results.json
+
+  comment-on-results:
+    needs: required-repository-documentation-checks
+    if: >-
+      always() &&
+      github.event_name == 'pull_request' &&
+      needs.required-repository-documentation-checks.outputs.has-results == 'true'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Comment with required repository documentation summary
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          SUMMARY_TABLE: ${{ needs.required-repository-documentation-checks.outputs.summary-table }}
+          JOB_RESULT: ${{ needs.required-repository-documentation-checks.result }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = context.payload.pull_request?.number;
+
+            if (!prNumber) {
+              core.info('No pull request context; skipping comment step.');
+              return;
+            }
+
+            const jobSummaryUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            const prHead = context.payload.pull_request?.head;
+            const headCommitSha = prHead?.sha ?? process.env.GITHUB_SHA ?? '';
+            const shortSha = headCommitSha ? headCommitSha.slice(0, 7) : 'unknown';
+            const runResult = process.env.JOB_RESULT?.toLowerCase() ?? '';
+            const isFailure = runResult === 'failure';
+
+            const marker = '<!-- required-repository-documentation-checks-comment -->';
+            const heading = isFailure
+              ? '## Required repository documentation checks failed'
+              : '## Required repository documentation checks passed';
+            const narration = isFailure
+              ? 'One or more required repository documentation checks failed in this run.'
+              : 'All required repository documentation checks passed in this run.';
+
+            const bodySections = [
+              heading,
+              narration,
+              process.env.SUMMARY_TABLE,
+              `Results from commit ${shortSha}, view the full [job summary](${jobSummaryUrl}) for detailed results.`
+            ];
+
+            const existingComments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner,
+                repo,
+                issue_number: prNumber,
+                per_page: 100,
+              },
+            );
+
+            const previous = existingComments.find((comment) =>
+              comment.body?.includes(marker),
+            );
+
+            if(previous) {
+              bodySections.push(':recycle: This comment has been updated with latest results.');
+            }
+
+            const body = `${marker}\n${bodySections.join('\n\n')}\n${marker}`;
+
+            if (previous) {
+              core.info(`Updating existing required repository documentation summary comment (${previous.id}).`);
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: previous.id,
+                body,
+              });
+            } else {
+              core.info('Creating new required repository documentation summary comment.');
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
